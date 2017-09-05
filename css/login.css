@@ -5,6 +5,10 @@ div.menuLogueo {
 	bottom: -130px;
 	}
  
+div.botonAceptar {
+		display: flex;
+	justify-content: center;
+}  
 /*
  codigo duplicado. 
 */
