@@ -6,6 +6,21 @@ div.search-container {
 }
 
 
+/** contenedor de label-text-container */
+
+div.label-text-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+/** centrar el encabezado */
+
+h3.label-text-header {
+    text-align: center;
+}
+
+
 /** labels donde esta la informacion adicional, los ponemos
  * en linea para que esten uno al lado del otro y no uno debajo
  * del otro
@@ -16,14 +31,6 @@ div.label-text {
     display: inline-block;
     margin-left: 50px;
     margin-right: 50px;
-}
-
-
-/** contenedor de label-text-container */
-
-div.label-text-container {
-    display: flex;
-    justify-content: center;
 }
 
 
