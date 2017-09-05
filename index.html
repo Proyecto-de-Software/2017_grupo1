@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <title>Página de Inicio</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <style type="text/css">
+            div.buscador {
+                float: right;
+            }
+
+            div.texto-info {
+                display: inline-block;
+                margin-left: 70px;
+                margin-right: 70px;
+            }
+
+            div.contenedor-info {
+                display: flex;
+                justify-content: center;
+            }
+
+            footer.pie {
+                position: absolute;
+                bottom: 0;
+                width: 99%;
+            }
+
+            p.parrafo-pie {
+                float: left;
+                margin: 0.3%;
+            }
+
+            p.parrafo-version {
+                float: right;
+                margin: 0.3%;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <!-- BARRA DE NAVEGACION -->
+        <nav> LOGO | <a href="">Hospital Dr. Ricardo Gutierréz</a> |
+            <div class="buscador">
+                <form action="#"> <input type="search" placeholder="Buscar.." name="busqueda"> <button> Busqueda </button> <a href="login.html"> Login</a>                    </form>
+            </div>
+        </nav> <br>
+        <hr>
+        <!-- RAYA SEPARADORA -->
+        <!-- INFORMACION DE LA PAGINA -->
+        <div class="contenedor-info">
+            <div class="texto-info">
+                <h3> TITULO 1 </h3>
+                <p> Parrafo 1 </p> <button> Más info >></button> </div>
+            <div class="texto-info">
+                <h3> TITULO 2 </h3>
+                <p> Parrafo 2 </p> <button> Más info >></button> </div>
+            <div class="texto-info">
+                <h3> TITULO 3 </h3>
+                <p> Parrafo 3 </p> <button> Más info >></button> </div>
+        </div>
+    </body>
+    <footer class="pie">
+        <hr>
+        <p class="parrafo-pie">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutiérrez</p>
+        <p class="parrafo-version">v 0.1.0</p>
+    </footer>
+
+</html>
