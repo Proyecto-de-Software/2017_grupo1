@@ -1,30 +1,54 @@
-div.buscador {
+/** contiene un input de tipo search,
+ * lo hacemos flotar a la derecha */
+
+div.search-container {
     float: right;
 }
 
-div.texto-info {
+
+/** labels donde esta la informacion adicional, los ponemos
+ * en linea para que esten uno al lado del otro y no uno debajo
+ * del otro
+ * el margen sirve para que quede mejor presentado
+ */
+
+div.label-text {
     display: inline-block;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
-div.contenedor-info {
+
+/** contenedor de label-text-container */
+
+div.label-text-container {
     display: flex;
     justify-content: center;
 }
 
-footer.pie {
+
+/** este footer se va a posicionar siempre al final
+ * el width en 99% es porque sino queda mas ancho que el head
+  */
+
+footer.bottom-page-footer {
     position: absolute;
     bottom: 0;
     width: 99%;
 }
 
-p.parrafo-pie {
+
+/** parrafo ubicado a la izquierda en el pie de pagina */
+
+p.left-footer-paragraph {
     float: left;
     margin: 0.3%;
 }
 
-p.parrafo-version {
+
+/** parrafo ubicado a la derecha en el pie de pagina */
+
+p.right-footer-paragraph {
     float: right;
     margin: 0.3%;
 }
