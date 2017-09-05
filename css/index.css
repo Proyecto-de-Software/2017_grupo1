@@ -1,0 +1,30 @@
+div.buscador {
+    float: right;
+}
+
+div.texto-info {
+    display: inline-block;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+div.contenedor-info {
+    display: flex;
+    justify-content: center;
+}
+
+footer.pie {
+    position: absolute;
+    bottom: 0;
+    width: 99%;
+}
+
+p.parrafo-pie {
+    float: left;
+    margin: 0.3%;
+}
+
+p.parrafo-version {
+    float: right;
+    margin: 0.3%;
+}
