@@ -1,11 +1,11 @@
-div.menuLogueo {
+div.login-menu {
 	display: flex;
 	justify-content: center;
 	position: relative;
 	bottom: -130px;
-	}
- 
-div.botonAceptar {
-		display: flex;
+}
+
+div.login-accept-button {
+	display: flex;
 	justify-content: center;
-}  
+}

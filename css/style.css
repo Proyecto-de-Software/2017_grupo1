@@ -1,18 +1,18 @@
 /** este footer se va a posicionar siempre al final
- * el width en 99% es porque sino queda mas ancho que el head
-  */
+ * el width en 99% es porque sino queda mas ancho que el head  */
 
-footer.bottom-page-footer { /*PIE*/
+footer.bottom-page-footer {
+    /*PIE*/
     position: absolute;
     bottom: 0;
     width: 99%;
 }
 
 
-
 /** parrafo ubicado a la izquierda en el pie de pagina */
 
-p.left-footer-paragraph { /*PARRAFO-PIE*/
+p.left-footer-paragraph {
+    /*PARRAFO-PIE*/
     float: left;
     margin: 0.3%;
 }
@@ -20,9 +20,8 @@ p.left-footer-paragraph { /*PARRAFO-PIE*/
 
 /** parrafo ubicado a la derecha en el pie de pagina */
 
-p.right-footer-paragraph { /*PARRAFO-VERSION*/
+p.right-footer-paragraph {
+    /*PARRAFO-VERSION*/
     float: right;
     margin: 0.3%;
 }
-
-
