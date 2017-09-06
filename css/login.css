@@ -9,30 +9,3 @@ div.botonAceptar {
 		display: flex;
 	justify-content: center;
 }  
-/*
- codigo duplicado. 
-*/
-
- footer.bottom-page-footer { /* PIE*/
-    position: absolute;
-    bottom: 0;
-    width: 99%;
-}
-
-p.left-footer-paragraph { /*parrafo-pie */
-    float: left;
-    margin: 0.3%;
-}
-
-p.right-footer-paragraph { /*parrafo-version*/
-    float: right;
-    margin: 0.3%;
-}
-
-
- /*
- codigo duplicado
-*/
- 
- 
- 
