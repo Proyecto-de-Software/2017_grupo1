@@ -1,0 +1,28 @@
+/** este footer se va a posicionar siempre al final
+ * el width en 99% es porque sino queda mas ancho que el head
+  */
+
+footer.bottom-page-footer { /*PIE*/
+    position: absolute;
+    bottom: 0;
+    width: 99%;
+}
+
+
+
+/** parrafo ubicado a la izquierda en el pie de pagina */
+
+p.left-footer-paragraph { /*PARRAFO-PIE*/
+    float: left;
+    margin: 0.3%;
+}
+
+
+/** parrafo ubicado a la derecha en el pie de pagina */
+
+p.right-footer-paragraph { /*PARRAFO-VERSION*/
+    float: right;
+    margin: 0.3%;
+}
+
+
