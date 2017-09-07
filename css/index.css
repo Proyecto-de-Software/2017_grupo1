@@ -9,31 +9,40 @@
 /** contenedor de label-text-container */
 
 @media (max-width: 640px) {
-  .container {
+  #header .container {
     width: 100%;
   }
-  #header.container{
-   /* We want the header to have a static height, 
-   it will always take up just as much space as it needs.  */
-   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
-   flex: 0 0 auto;
+  #header h1 {
+    padding-left: 3%;
+  }
+  #nav {
+    width: 100%;
+    top: 60px;
+  }
+  #nav:before {
+    content: '\2630';
+    display: block;
+    position: absolute;
+    right: 3%;
+    top: -50px;
+    line-height: 40px;
+    font-size: 1.4em;
+    cursor: pointer;
+  }
+  #nav ul {
+    background: #222;
+    width: 100%;
+    margin: 0px;
+  }
+  #nav ul li {
+    float: none;
+  }
+  #nav ul li a {
+    padding: 10px 3%;
+    line-height: 20px;
+    border-top: 1px solid #333;
+  }
 }
-
-.main-content{
-   /* By setting flex-grow to 1, the main content will take up 
-   all of the remaining space on the page. 
-   The other elements have flex-grow: 0 and won't contest the free space. */
-   /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
-   flex: 1 0 auto;
-}
-
-.footer{
-   /* Like the header, the footer will have a static height - it shouldn't grow or shrink.  */
-   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
-   flex: 0 0 auto;
-	}
-}
-
 
 /** centrar el encabezado */
 
