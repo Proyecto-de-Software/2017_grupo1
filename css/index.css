@@ -1,14 +1,14 @@
 /** contiene un input de tipo search,
  * lo hacemos flotar a la derecha */
 
-.search-container {
+div.search-container {
   float: right;
 }
 
 
 /** contenedor de label-text-container */
 
-@media (max-width: 640px) {
+@media (max-width: 599px) {
   #header .container {
     width: 100%;
   }
