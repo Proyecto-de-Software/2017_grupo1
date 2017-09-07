@@ -8,7 +8,7 @@ div.search-container {
 
 /** contenedor de label-text-container */
 
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   div.label-text-container {
     display: flex;
     justify-content: center;
@@ -26,11 +26,8 @@ h3.label-text-header {
 /** labels donde esta la informacion adicional, los ponemos
  * en linea para que esten uno al lado del otro y no uno debajo
  * del otro
- * el margen sirve para que quede mejor presentado
  */
 
 div.label-text {
   display: inline-block;
-  margin-left: 50px;
-  margin-right: 50px;
 }
