@@ -50,3 +50,7 @@
 .label-text {
   display: inline-block;
 }
+
+.label-text-container {
+  display: flex;
+}
