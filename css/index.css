@@ -12,7 +12,9 @@
   .container {
     width: 100%;
   }
-
+  .label-text-container {
+    display: flex;
+  }
   #header.container{
    /* We want the header to have a static height, 
    it will always take up just as much space as it needs.  */
