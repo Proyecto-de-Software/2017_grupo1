@@ -21,7 +21,7 @@
   }
   #nav:before {
     content: '\2630';
-    display: block;
+    display: flex;
     position: absolute;
     right: 3%;
     top: -50px;
