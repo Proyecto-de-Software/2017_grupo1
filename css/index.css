@@ -2,22 +2,24 @@
  * lo hacemos flotar a la derecha */
 
 div.search-container {
-    float: right;
+  float: right;
 }
 
 
 /** contenedor de label-text-container */
 
-div.label-text-container {
+@media (min-width: 600px) and (min-height: 600px) {
+  div.label-text-container {
     display: flex;
     justify-content: center;
+  }
 }
 
 
 /** centrar el encabezado */
 
 h3.label-text-header {
-    text-align: center;
+  text-align: center;
 }
 
 
@@ -28,7 +30,7 @@ h3.label-text-header {
  */
 
 div.label-text {
-    display: inline-block;
-    margin-left: 50px;
-    margin-right: 50px;
+  display: inline-block;
+  margin-left: 50px;
+  margin-right: 50px;
 }
