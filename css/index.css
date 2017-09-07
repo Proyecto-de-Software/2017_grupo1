@@ -1,8 +1,20 @@
 /** contiene un input de tipo search,
- * lo hacemos flotar a la derecha */
+ * lo hacemos flotar a la derecha, solamente en pc */
 
-div.search-container {
-  float: right;
+@media (min-width: 640px) { 
+  div.search-container {
+    float: right;
+  }
+}
+
+/** pero si estamos en celulares, que no flote y el margen es para
+que quede bien posicionado y no se corten los bordes del input */
+
+@media not all and (min-width: 640px) { 
+  div.search-container {
+    margin-top: 5px;
+    margin-left: 3px;
+  }
 }
 
 
