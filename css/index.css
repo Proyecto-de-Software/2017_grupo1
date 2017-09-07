@@ -8,7 +8,7 @@ div.search-container {
 
 /** contenedor de label-text-container */
 
-@media (min-width: 600px) and (min-height: 600px) {
+@media (min-width: 600px) {
   div.label-text-container {
     display: flex;
     justify-content: center;
