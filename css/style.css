@@ -2,27 +2,25 @@
  * el width en 99% es porque sino queda mas ancho que el head
  con los mediaquery logramos que se posicione bien tanto en pantallas moviles (acostado y parado) y pc */
 
-@media (min-width: 640px) and (min-height: 390px) { 
-        footer.bottom-page-footer {
-        position: absolute;
-        bottom: 0;
-        width: 99%;
-    }
+footer.bottom-page-footer {
+  position: absolute;
+  bottom: 0;
+  width: 99%;
+  clear: both;
 }
-
 
 
 /** parrafo ubicado a la izquierda en el pie de pagina */
 
 p.left-footer-paragraph {
-    float: left;
-    margin: 0.3%;
+  float: left;
+  margin: 0.3%;
 }
 
 
 /** parrafo ubicado a la derecha en el pie de pagina */
 
 p.right-footer-paragraph {
-    float: right;
-    margin: 0.3%;
+  float: right;
+  margin: 0.3%;
 }
