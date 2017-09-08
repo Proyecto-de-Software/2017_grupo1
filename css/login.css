@@ -1,11 +1,11 @@
 div.login-menu {
-	display: flex;
-	justify-content: center;
-	position: relative;
-	bottom: -130px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: -130px;
 }
 
 div.login-accept-button {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
