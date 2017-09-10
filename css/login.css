@@ -1,5 +1,5 @@
 div.login-menu {
-  display: flex;
+  display: block;
   justify-content: center;
   position: relative;
   bottom: -130px;
