@@ -41,3 +41,26 @@ p.right-footer-paragraph {
   float: right;
   margin: 0.3%;
 }
+
+
+/* nuevos estilos */
+
+body {
+  color: black; /*color del texto*/
+  background-color: #72BFB0;
+  font-family: "Calibri";
+       }
+
+
+a.link1:hover { 
+	text-decoration: none; /*esto quita el subrayado*/ 
+	color: #ffffff; /*se sobreentiende*/ 
+	afont-weight: bold; 
+} 
+
+hr.separatingStripe{
+   height: 1px;
+   border: 0;
+   background-color: #000000;
+   margin-top: 13px;
+}
