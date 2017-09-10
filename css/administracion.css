@@ -7,17 +7,35 @@ div.search-container {
 }
 
 
-/* Dropdown Button */
+/* boton desplegable "administracion", estilo comun a todas las resoluciones */
 
 .dropbtn {
-  margin-right: 20px;
-  margin-top: -5px;
   background-color: transparent;
   font-weight: bold;
   padding: 5%;
   border: none;
   cursor: pointer;
   display: block;
+}
+
+
+/* boton desplegable "administracion", estilo para PC */
+
+@media (min-width: 640px) {
+  .dropbtn {
+    margin-right: 20px;
+    margin-top: -5px;
+  }
+}
+
+
+/* boton desplegable "administracion", estilo para celulares */
+
+@media not all and (min-width: 640px) {
+  .dropbtn {
+    margin-left: -5px;
+    margin-right: 10px;
+  }
 }
 
 
@@ -29,8 +47,7 @@ div.search-container {
 }
 
 
-/* menu desplegable, por defecto lo tenemos que ocultar
-  usando display none
+/* contenido menu desplegable, por defecto lo tenemos que ocultar usando display none
   el resto son ajustes esteticos como el efecto de sombreado */
 
 .dropdown-content {
@@ -66,6 +83,4 @@ div.search-container {
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
 }
