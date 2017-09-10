@@ -43,8 +43,6 @@ h3.label-text-header {
 
 div.label-text {
   display: inline-block;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 
@@ -60,20 +58,12 @@ div.label-text {
   }
 }
 
-@media (min-width: 640px) {
-  footer.index-bottom-page-footer {
-    font-size: 14px;
-  }
-}
-
-@media not all and (min-width: 640px) {
-  footer.index-bottom-page-footer {
-    font-size: 11px;
-  }
-}
 
 
 
+
+
+/* */
 /*BOTONES MAS INFO*/
 a.moreInfo{
 -moz-box-shadow: 3px 4px 0px 0px #899599;
@@ -99,6 +89,7 @@ a.moreInfo{
   padding:7px 25px;
   text-decoration:none;
   text-shadow:0px 1px 0px #e1e2ed;
+
 }
 a.moreInfo:hover {
   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bab1ba), color-stop(1, #ededed));
@@ -116,11 +107,11 @@ a.moreInfo:active {
 }
 
 
-.btnMoreInfo {
+
+div.btnMoreInfo {
   text-align:center;
 }
 
-/* texto con transparencia al pasar el raton*/ 
 span.text1 {
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
     color: #000000;
@@ -130,6 +121,6 @@ span.text1 {
 }
 
 span.text1:hover {
-     background: transparent;
-      color: #B2EFCE;
+      background: transparent;
+      color: #B2EFCE  ;
 }
