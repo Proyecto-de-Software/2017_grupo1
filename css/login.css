@@ -3,6 +3,7 @@ div.login-menu {
   justify-content: center;
   position: relative;
   bottom: -130px;
+  text-align:center;
 }
 
 div.login-accept-button {
