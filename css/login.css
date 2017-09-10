@@ -9,3 +9,7 @@ div.login-accept-button {
   display: flex;
   justify-content: center;
 }
+
+div.login-menu-title {
+		font-size:23px;
+}
