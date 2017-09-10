@@ -1,15 +1,16 @@
 /** este footer se va a posicionar siempre al final
  * el width en 99% es porque sino queda mas ancho que el head
  con los mediaquery logramos que se posicione bien tanto en pantallas moviles (acostado y parado) y pc */
+
 @media (min-width: 640px) {
-  footer.index-bottom-page-footer{
+  footer.index-bottom-page-footer {
     font-size: 14px;
   }
 }
 
 @media not all and (min-width: 640px) {
-  footer.index-bottom-page-footer{
-   font-size: 11px;
+  footer.index-bottom-page-footer {
+    font-size: 11px;
   }
 }
 
