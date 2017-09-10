@@ -116,8 +116,9 @@ a.moreInfo:active {
 }
 
 
-
-/* nuevos estilos */
+div.btnMoreInfo {
+  text-align:center;
+}
 
 /* BOTON BUSCAR*/
 #btnSubmit{
