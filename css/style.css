@@ -14,6 +14,18 @@
   }
 }
 
+@media (min-width: 640px) {
+  footer.bottom-page-footer{
+    font-size: 14px;
+  }
+}
+
+@media not all and (min-width: 640px) {
+  footer.bottom-page-footer{
+   font-size: 11px;
+  }
+}
+
 footer.bottom-page-footer {
   position: absolute;
   bottom: 0;
