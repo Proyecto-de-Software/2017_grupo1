@@ -33,6 +33,12 @@ footer.bottom-page-footer {
   clear: both;
 }
 
+/* esto se ejecuta solamente si es una pc */
+@media not all and (min-height: 640px) {
+    footer.bottom-page-footer {
+        width: 99%;
+    }
+}
 
 /** parrafo ubicado a la izquierda en el pie de pagina */
 
