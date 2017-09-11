@@ -9,7 +9,7 @@ div.login-menu {
 div.login-accept-button {
   display: flex;
   justify-content: center;
-   margin-bottom: 70px;
+  bottom:-130px;
 }
 
 div.login-menu-title {
