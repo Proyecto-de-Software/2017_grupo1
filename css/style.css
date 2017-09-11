@@ -4,6 +4,7 @@
 footer.bottom-page-footer {
   position: absolute;
   bottom: 0;
+  height:-100%;
 }
 
 
