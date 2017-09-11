@@ -82,7 +82,6 @@ a.moreInfo {
   background: -o-linear-gradient(top, #ededed 5%, #bab1ba 100%);
   background: -ms-linear-gradient(top, #ededed 5%, #bab1ba 100%);
   background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#bab1ba', GradientType=0);
   background-color: #ededed;
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
@@ -105,7 +104,6 @@ a.moreInfo:hover {
   background: -o-linear-gradient(top, #bab1ba 5%, #ededed 100%);
   background: -ms-linear-gradient(top, #bab1ba 5%, #ededed 100%);
   background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#bab1ba', endColorstr='#ededed', GradientType=0);
   background-color: #bab1ba;
 }
 
