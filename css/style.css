@@ -4,7 +4,6 @@
 footer.bottom-page-footer {
   position: absolute;
   bottom: 0;
-  height:-100%;
 }
 
 
@@ -24,6 +23,8 @@ footer.bottom-page-footer {
   footer.bottom-page-footer {
     font-size: 11px;
     width: 97%;
+    height: -100%;
+    position: fixed;
   }
 }
 
