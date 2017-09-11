@@ -45,13 +45,16 @@ div.label-text {
   display: inline-block;
 }
 
+footer.index-bottom-page-footer {
+  width: 99%;
+}
+
 
 /** estilo del footer para PC */
 
 @media (min-width: 640px) {
   footer.index-bottom-page-footer {
     font-size: 14px;
-    width: 99%;
     position: absolute;
     bottom: 0;
   }
@@ -63,7 +66,6 @@ div.label-text {
 @media not all and (min-width: 640px) {
   footer.index-bottom-page-footer {
     font-size: 11px;
-    width: 97%;
   }
 }
 
