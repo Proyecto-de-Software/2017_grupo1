@@ -23,6 +23,8 @@ footer.bottom-page-footer {
   footer.bottom-page-footer {
     font-size: 11px;
     width: 97%;
+    height: 60px;
+    position: absolute;
   }
 }
 
