@@ -15,4 +15,4 @@ function getFrontEndController()
   return $frontEndController;
 }
 
-getFrontEndController()->getController('index')->showIndex();
+getFrontEndController()-> getController('index')->showIndex();

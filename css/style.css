@@ -2,7 +2,6 @@
  * el width en 99% es porque sino queda mas ancho que el head */
 
 footer.bottom-page-footer {
-  position: absolute;
   bottom: 0;
 }
 
@@ -116,4 +115,26 @@ span.text1 {
 span.text1:hover {
   background: transparent;
   color: #B2EFCE;
+}
+
+
+
+/** contiene un input de tipo search,
+ * lo hacemos flotar a la derecha, solamente en pc */
+
+@media (min-width: 640px) {
+  div.search-container {
+    float: right;
+  }
+}
+
+
+/** pero si estamos en celulares, que no flote y el margen es para
+que quede bien posicionado y no se corten los bordes del input */
+
+@media not all and (min-width: 640px) {
+  div.search-container {
+    margin-top: 5px;
+    margin-left: 3px;
+  }
 }
