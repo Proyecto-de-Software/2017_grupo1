@@ -1,14 +1,14 @@
 <?php
 class User
 {
-  private $id;
-  private $name;
-  private $password;
-  private $active;
-  private $updated_at;
-  private $created_at;
-  private $first_name;
-  private $last_name;
+  public $id;
+  public $name;
+  public $password;
+  public $active;
+  public $updated_at;
+  public $created_at;
+  public $first_name;
+  public $last_name;
 
   public function __construct($id, $name, $password, $active, $updated_at, $created_at, $first_name, $last_name)
   {

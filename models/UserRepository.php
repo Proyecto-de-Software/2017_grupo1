@@ -8,7 +8,7 @@ class UserRepository extends PDORepository
     foreach ($data as &$element) {
       $answer[] = new User(
         $element['id'],
-        $element['name'],
+        $element['username'],
         $element['password'],
         $element['active'],
         $element['updated_at'],
@@ -16,8 +16,8 @@ class UserRepository extends PDORepository
         $element['first_name'],
         $element['last_name']
       );
-    }
 
-    return $answer;
+    return $data;
+  	}
   }
 }
