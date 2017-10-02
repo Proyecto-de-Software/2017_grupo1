@@ -1,40 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'plantilla_base.html' %}
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="../css/login.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <title>Hospital Dr. Ricardo Gutierréz</title>
-</head>
+{% block head%} <link rel="stylesheet" type="text/css" href="../css/login.css"> {% endblock %}
 
-<body>
+{% block body%}
 
-  <nav> LOGO | <a href="./?action=index" class='link1'>Hospital Dr. Ricardo Gutiérrez</a> </nav>
-  <hr class="separatingStripe">
   <div class="login-menu">
-   <div class="login-menu-title">
-    <span class="text1"> Iniciar sesión </span>
-   </div>
+      <div class="login-menu-title">
+        <span class="text1"> Iniciar sesión </span>
+     </div>
 
-    <form action="./?action=admin" method="post">
-    <br>
-      <div>Usuario </div>
-      <input type="text" required name="usuario" id="usuario" title="usuario" placeholder="Usuario">
-      <div>Contraseña </div>
-      <input type="password" required name="contra" id="contra" title="contra" placeholder="Contraseña">
-      <br> <br>
-      <div class="login-accept-button">
-      <button type= "submit" id='btnSubmit'> Aceptar </button>
-        </div>
-    </form>
+      <form action="./?action=admin" method="post">
+        <br>
+          <div>Usuario </div>
+          <input type="text" required name="usuario" id="usuario" title="usuario" placeholder="Usuario">
+          <div>Contraseña </div>
+          <input type="password" required name="contra" id="contra" title="contra" placeholder="Contraseña">
+          <br> <br>
+          <div class="login-accept-button">
+            <button type= "submit" id='btnSubmit'> Aceptar </button>
+          </div>
+      </form>
   </div>
-  <footer class="bottom-page-footer">
-    <hr class="separatingStripe">
-    <p class="left-footer-paragraph">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutiérrez</p>
-    <p class="right-footer-paragraph">v 0.1.0</p>
-  </footer>
-</body>
-
-</html>
+{% endblock %}
