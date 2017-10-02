@@ -1,5 +1,5 @@
 <?php
-class UserView extends TwigView
+class UserListView extends TwigView
 {
   protected function getTemplateFile()
   {
