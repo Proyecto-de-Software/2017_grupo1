@@ -8,7 +8,7 @@ class UserController {
     $this->view = $view;
   }
 
-  public function showUsers() {
+  public function showView() {
     $this->view->show($this->repository->getAll());
   }
 }
