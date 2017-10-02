@@ -1,35 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'plantilla_base.html' %}
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="../css/administracion.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <title>Hospital Dr. Ricardo Gutierrez - Administración</title>
-</head>
+{% block head%}  <link rel="stylesheet" type="text/css" href="../css/administracion.css"> {% endblock %}
+{% block title%}  Hospital Dr. Ricardo Gutierrez - Administración {% endblock %}
 
-<body>
-  <nav>
-    <a href="./?action=index" class="link1">Inicio</a>
-    <a href="#Paciente"  class="link1"> Paciente</a>
-    <div class="dropdown">
-        <button class="dropbtn">Administracion&darr;</button>
-      <div class="dropdown-content"> <a href="#">Usuarios</a> <a href="#Roles">Roles</a> <a href="#Permisos">Permisos</a> </div>
-    </div>
-    <div class="search-container">
-      <form action="#"> <input type="search" placeholder="Buscar.." name="busqueda">
-        <button type= "submit" id='btnSubmit'> Busqueda </button>
-        <a href="./?action=login" class= "link1" > LOGIN </a>
-      </form>
-    </div>
-  </nav>
-   <hr class= "separatingStripe">
-  <footer class="bottom-page-footer">
-      <hr class= "separatingStripe">
-    <p class="left-footer-paragraph">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutiérrez</p>
-    <p class="right-footer-paragraph">v 0.1.0</p>
-  </footer>
-</body>
-
-</html>
+{% block nav %}
+  <a href="#Paciente"  class="link1"> Paciente</a>
+  <div class="dropdown"> 
+    <button class="dropbtn">Administracion&darr;</button>
+      <div class= " dropdown-content" >
+          <a href="#">Usuarios</a> 
+          <a href="#Roles">Roles</a> 
+          <a href="#Permisos">Permisos</a> 
+      </div>
+  </div>
+  {% endblock %}

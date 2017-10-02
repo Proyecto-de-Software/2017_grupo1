@@ -1,4 +1,3 @@
-{# app/Resources/views/base.html.twig #}
 <!DOCTYPE html>
 <html>
     <head>   <!-- esto va en todas las paginas -->
@@ -12,16 +11,25 @@
     </head>
 
  <body> 
-    <nav> LOGO |  <a href="./?action=index" class='link1'>Hospital Dr. Ricardo Gutiérrez</a>
-    <div class="search-container">
-      <form action="#" id="searchform">
-          <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
-           <button type= "submit" id='btnSubmit'> Buscar </button>
-           <a href="./?action=login" class='link1'> LOGIN </a>
-      </form>
 
-    </div>
-  </nav>
+  <nav>
+      LOGO |  <a href="./?action=index" class='link1'>Hospital Dr. Ricardo Gutiérrez</a>
+      {% block nav %}   {% endblock %}
+      <div class="search-container">
+          <form action="#" id="searchform">
+              <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
+               <button type= "submit" id='btnSubmit'> Buscar </button>
+               <a href="./?action=login" class='link1'> LOGIN </a>
+          </form>
+         <div id="dropdown"> 
+          {% block dropdown %} 
+          {% endblock %} 
+         </div>
+
+      </div>
+
+    </nav>
+
    <hr class= "separatingStripe">
    {% block body %}
    {% endblock %}
