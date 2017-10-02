@@ -16,7 +16,7 @@ class UserRepository extends PDORepository
         $element['last_name']
       );
 
-    return $data;
+    return $answer;
   	}
   }
 
