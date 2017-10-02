@@ -11,7 +11,7 @@ class UserRepository extends PDORepository
         $element['password'],
         $element['active'],
         $element['updated_at'],
-        $element['creadted_at'],
+        $element['created_at'],
         $element['first_name'],
         $element['last_name']
       );
