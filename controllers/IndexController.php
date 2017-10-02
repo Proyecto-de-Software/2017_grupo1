@@ -7,7 +7,7 @@ class IndexController
     $this->view = $indexView;
   }
 
-  public function showIndex()
+  public function showView()
   {
     $this->view->show();
   }
