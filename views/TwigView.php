@@ -5,9 +5,9 @@ abstract class TwigView
 
   protected abstract function getTemplateFile();
 
-  protected function render()
+  protected function render($args = [])
   {
-    echo self::getTwig()->render($this->getTemplateFile());
+    echo self::getTwig()->render($this->getTemplateFile(), $args);
   }
 
   public static function getTwig()
