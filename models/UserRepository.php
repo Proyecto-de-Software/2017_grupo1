@@ -1,23 +1,37 @@
 <?php
 class UserRepository extends PDORepository
 {
-  public function getAll()
+  private function queryToUserArray($query)
   {
-    $data = $this->queryList("select * from users", []);
     $answer = [];
-    foreach ($data as &$element) {
+    foreach ($query as &$element) {
       $answer[] = new User(
         $element['id'],
-        $element['name'],
+        $element['username'],
         $element['password'],
         $element['active'],
         $element['updated_at'],
-        $element['created_at'],
+        $element['creadted_at'],
         $element['first_name'],
         $element['last_name']
       );
     }
 
     return $answer;
+  }
+
+  public function getAll()
+  {
+    return $this->queryToUserArray($this->queryList("select * from users", []));
+  }
+
+  public function getAllActive($isActive)
+  {
+    return $this->queryToUserArray($this->queryList("select * from users where active = ?", [$isActive]));
+  }
+
+  public function getAllByName($name)
+  {
+    return $this->queryToUserArray($this->queryList("select * from users where name LIKE ?", [$$name]));
   }
 }
