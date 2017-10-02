@@ -11,8 +11,15 @@ function getFrontEndController()
   if (!isset($frontEndController)) {
     $frontEndController = new FrontEndController;
     $frontEndController->addController('index', new IndexController(new IndexView));
+    $frontEndController->addController('login', new LoginController(new LoginView));
+    $frontEndController->addController('admin', new AdminController(new AdminView));
   }
   return $frontEndController;
 }
 
-getFrontEndController()->getController('index')->showIndex();
+if (isset($_GET['action'])) {
+	getFrontEndController()-> getController($_GET['action'])->showView();
+} else
+{
+	getFrontEndController()-> getController('index')->showView();
+}
