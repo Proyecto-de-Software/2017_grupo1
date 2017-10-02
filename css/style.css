@@ -12,6 +12,7 @@ footer.bottom-page-footer {
   footer.bottom-page-footer {
     font-size: 14px;
     width: 99%;
+    position: absolute;
   }
 }
 
