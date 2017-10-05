@@ -5,23 +5,32 @@
 
 {% block body%}
 
-  <h1>Usuarios</h1>
+  <h1>Listado de Usuarios</h1>
   <table>
 <tr>
   <td><strong>Nombre</strong></td>
   <td><strong>Apellido</strong></td>
   <td><strong>Usuario</strong></td>
+  <td><strong>Estado</strong></td>
+
 </tr>
         {% for item in users %}
           	<tr> 
             <td>{{ item.first_name }}</td>
             <td>{{ item.last_name }}</td>
             <td>{{ item.username }}</td>
-                </tr>
+            <td>{{ item.active }}</td>
+            <td>  <input type="submit" class="btn btn-success" value="Modificar" id="boton_eliminar"/> </td>
+            <td>  <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/> </td>
+            <td>  <input type="submit" class="btn btn-success" value="Bloquear" id="boton_bloquear"/> </td>
+            </tr>
+
         {% endfor %}
+
 
   <table>
 {% endblock %}
+
 
 
 
