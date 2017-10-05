@@ -19,8 +19,3 @@ require_once "./views/IndexView.php";
 require_once "./views/LoginView.php";
 require_once "./views/AdminView.php";
 require_once "./views/PacientViews.php";
-<<<<<<< HEAD
-?>
-=======
-?>
->>>>>>> e482a46487c9128e34d9f6cab4a9cb48a07205f0
