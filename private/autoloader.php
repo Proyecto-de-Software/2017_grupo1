@@ -10,6 +10,7 @@ require_once "./models/PDORepository.php";
 require_once "./models/UserRepository.php";
 require_once "./models/PacientsRepository.php";
 require_once "./models/User.php";
+require_once "./models/Pacient.php";
 require_once "./views/TwigView.php";
 require_once "./views/IndexView.php";
 require_once "./views/UsersView.php";
@@ -17,4 +18,5 @@ require_once "./views/TwigView.php";
 require_once "./views/IndexView.php";
 require_once "./views/LoginView.php";
 require_once "./views/AdminView.php";
+require_once "./views/PacientViews.php";
 ?>
