@@ -1,0 +1,39 @@
+{% extends 'plantilla_base.html' %}
+
+{% block title%} Pacientes {% endblock %}
+
+
+{% block body%}
+
+  <h1>Listado de Paciente</h1>
+  <table>
+<tr>
+  <td><strong>Nombre</strong></td>
+  <td><strong>Apellido</strong></td>
+  <td><strong>Fecha de Nacimiento</strong></td>
+  <td><strong>Genero</strong></td>
+  <td><strong>Tipo Doc. </strong></td>
+  <td><strong>DNI</strong></td>
+  <td><strong>Dirección</strong></td>
+  <td><strong>Telefono</strong></td>
+
+</tr>
+        {% for item in pacients%}
+            <tr> 
+            <td>{{ item.first_name }}</td>
+            <td>{{ item.last_name }}</td>
+            <td>{{ item.birth_date }}</td>
+            <td>{{ item.gender }}</td>
+            <td>{{ item.doc_type }}</td>
+            <td>{{ item.dni }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.phone }}</td>
+            <td>  <input type="submit" class="btn btn-success" value="Modificar" id="boton_eliminar"/> </td>
+            <td>  <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/> </td>
+            </tr>
+
+        {% endfor %}
+
+
+  <table>
+{% endblock %}
