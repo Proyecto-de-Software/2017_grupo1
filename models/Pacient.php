@@ -60,56 +60,70 @@ class Pacient
   {
     return $this->first_name;
   }
+
   public function getLast_Name()
   {
     return $this->last_name;
   }
+
   public function getBirth_Date()
   {
     return $this->birth_date;
   }
+
   public function getGender()
   {
     return $this->gender;
   }
+
   public function getDoc_Type()
   {
     return $this->doc_type;
   }
+
   public function getAddress()
   {
     return $this->address;
   }
+
   public function getPhone()
   {
     return $this->phone;
   }
+
   public function getId_Medical_Insurance()
   {
     return $this->id_medical_insurance;
   }
+
   public function getHas_Refrigerator()
   {
     return $this->has_refrigerator;
   }
+
   public function getHas_Electricity()
   {
     return $this->has_electricity;
   }
+
   public function getHas_Pet()
   {
     return $this->hast_pet;
   }
+
   public function getHome_Type()
   {
     return $this->home_type;
   }
+
   public function getHeating_Type()
   {
     return $this->heating_type;
   }
+
   public function getWater_Type()
   {
     return $this->water_type;
   }
+
 }
