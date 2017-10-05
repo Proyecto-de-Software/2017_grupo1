@@ -7,8 +7,14 @@ class PacientsRepository extends PDORepository
     foreach ($query as &$element) {
       $answer[] = new Pacient(
         $element['id'],
-        $element['name']
-      );
+        $element['first_name'],
+        $element['last_name'],
+        $element['gender'],
+        $element['$doc_type'],
+        $element['$dni'],
+        $element['address'],
+        $element['phone'],
+        $element['id_medical_insurance'] );
     }
 
     return $answer;
