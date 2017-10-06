@@ -10,7 +10,4 @@ class PacientsListView extends TwigView
   {
     $this->render(array('pacients' => $pacients));
   }
-  public function getUpdateFile(){
-  	return "paciente_update.html";
-  }
 }
