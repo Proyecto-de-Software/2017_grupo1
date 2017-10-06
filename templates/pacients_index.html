@@ -28,7 +28,11 @@
             <td>{{ item.dni }}</td>
             <td>{{ item.address }}</td>
             <td>{{ item.phone }}</td>
-            <td>  <input type="submit" class="btn btn-success" value="Modificar" id="boton_eliminar"/> </td>
+            <td>  
+              <form action="./?action=paciente_update" method="post">
+               <input type="submit" action=class="btn btn-success" value="Modificar" id="boton_eliminar"/> 
+              </form>
+            </td>
             <td>  <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/> </td>
             </tr>
 

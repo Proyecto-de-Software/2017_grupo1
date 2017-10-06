@@ -19,3 +19,4 @@ require_once "./views/IndexView.php";
 require_once "./views/LoginView.php";
 require_once "./views/AdminView.php";
 require_once "./views/PacientViews.php";
+require_once "./views/PacientFormView.php";
