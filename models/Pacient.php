@@ -7,6 +7,7 @@ class Pacient
   private $birth_date;
   private $gender;
   private $doc_type;
+  private $dni;
   private $address;
   private $phone;
   private $id_medical_insurance;
@@ -24,6 +25,7 @@ class Pacient
     $birth_date,
     $gender,
     $doc_type,
+    $dni,
     $address,
     $phone,
     $id_medical_insurance,
@@ -40,6 +42,7 @@ class Pacient
     $this->birth_date = $birth_date;
     $this->gender = $gender;
     $this->doc_type = $doc_type;
+    $this->dni = $dni;
     $this->address = $address;
     $this->phone = $phone;
     $this->id_medical_insurance = $id_medical_insurance;
@@ -80,7 +83,10 @@ class Pacient
   {
     return $this->doc_type;
   }
-
+  public function getDNI()
+  {
+    return $this->dni;
+  }
   public function getAddress()
   {
     return $this->address;
