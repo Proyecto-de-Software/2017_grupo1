@@ -51,6 +51,6 @@ class UserRepository extends PDORepository
 
   public function delete($userId)
   {
-    $this->stmtDelete->execute($userId);
+    $this->stmtDelete->execute([$userId]);
   }
 }
