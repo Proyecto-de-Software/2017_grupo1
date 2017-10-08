@@ -4,6 +4,7 @@ class UserRepository extends PDORepository
   private $stmtToggleActive;
   private $stmtDelete;
   private $stmtCreate;
+  private $stmtUpdate;
 
   private function queryToUserArray($query)
   {
@@ -29,9 +30,12 @@ class UserRepository extends PDORepository
   {
     $this->stmtToggleActive = $this->newPreparedStmt("update users set active = not active where id = ?");
     $this->stmtDelete = $this->newPreparedStmt("delete from users where id = ?");
-    $this->stmtCreate = $this->newPreparedStmt("insert into users (id, email, username, password, first_name, last_name,
+    $this->stmtCreate = $this->newPreparedStmt("insert into users (id, username, email, password, first_name, last_name,
                                                 active, updated_at, created_at)
                                                 VALUES (NULL, ?, ?, ?, ?, ?, 1, NOW(), NOW()");
+    $this->stmtUpdate = $this->newPreparedStmt("update users set username = ?, email = ?, password = ?, first_name = ?, last_name = ?,
+                                                updated_at = NOW()
+                                                where Id = ?");
   }
 
   public function getAll()
@@ -62,5 +66,10 @@ class UserRepository extends PDORepository
   public function create($username, $email, $password, $first_name, $last_name)
   {
     $this->stmtCreate->execute([$username, $email, $password, $first_name, $last_name]);
+  }
+
+  public function update($username, $email, $password, $first_name, $last_name, $userId)
+  {
+    $this->stmtUpdate->execute([$username, $email, $password, $first_name, $last_name, $userId]);
   }
 }
