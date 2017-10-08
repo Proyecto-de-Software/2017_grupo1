@@ -13,6 +13,7 @@ class UserRepository extends PDORepository
         $element['id'],
         $element['username'],
         $element['password'],
+        $element['email'],
         $element['active'],
         $element['updated_at'],
         $element['created_at'],
