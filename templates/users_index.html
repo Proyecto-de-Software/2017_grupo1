@@ -5,22 +5,69 @@
 
 {% block body%}
 
-<h1>Listado de Usuarios</h1>
-<td>
-  <form action="./?action=user_create">
-    <input type="submit" class="btn btn-success" value="Agregar usuario"/>
-  </form>
-</td>
+<h1 align="center">Listado de Usuarios</h1>
+<table align="center">
+  <tr>
+    <td>
+      <form action="#" id="searchform">
+          <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
+          <button type= "submit" id='btnSubmit'> Buscar </button>
+      </form>
+    </td>
+    <td>
+      <form action="./?action=user_create">
+        <input type="submit" id='btnSubmit' value="Agregar usuario +"/>
+      </form>
+    </td>
+  </tr>
+</table>
 <br>
-
+<div class="datagrid">
 <table class='list'>
-<tr>
+      <thead>
+<tr  class="alt">
   <td><strong>Nombre</strong></td>
   <td><strong>Apellido</strong></td>
   <td><strong>Usuario</strong></td>
   <td><strong>Email</strong></td>
   <td><strong>Estado</strong></td>
 </tr>
+</thead>
+<tfoot>
+  <tr>
+    <td colspan="8">
+      <br>
+      <div id="paging">
+        <ul>
+          <li>
+            <a href="#">
+              <span>Anterior</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="active">
+              <span>1</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>2</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>3</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>Siguiente</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </tr>
+  </tfoot>
   {% for item in users %}
   <tr>
     <td>{{ item.first_name }}</td>
@@ -32,12 +79,125 @@
     {% elseif item.active == 0%}
       <td> Bloqueado </td>
     {% endif %}
-    <td> <input type="submit" class="btn btn-success" value="Modificar" id="boton_eliminar"/> </td>
-    <td> <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/> </td>
-    <td> <input type="submit" class="btn btn-success" value="Bloquear/Desbloquear" id="boton_bloquear"/> </td>
+    <td> <input type="submit" class="btn btn-success" value="Modificar"  id='btnSubmit'/> </td>
+    <td> <input type="submit" class="btn btn-success" value="Eliminar"  id='btnSubmit'/> </td>
+    <td> <input type="submit" class="btn btn-success" value="Bloquear/Desbloquear"  id='btnSubmit'/> </td>
   </tr>
   {% endfor %}
  </table>
 
 
+<style> /*EL CSS NO FUNCIONA BIEN SI SE PONE EN UN ARCHIVO EXTERNO. HAY QUE ARREGLARLO*/
+.datagrid table { 
+  border-collapse: collapse; 
+  text-align: left; 
+  width: 100%; } 
+
+  .datagrid {
+    font: normal 12px/150% Arial, Helvetica, sans-serif; 
+    background: #fff; 
+    overflow: hidden; 
+    border: 1px solid #006699; 
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    border-radius: 3px; 
+    }
+
+
+.datagrid table td, .datagrid table th { 
+  padding: 3px 10px; 
+  }
+
+.datagrid table thead th {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #004161), color-stop(1, #599BB3) );
+  background:-moz-linear-gradient( center top, #004161 5%, #599BB3 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#004161', endColorstr='#599BB3');
+  background-color:#004161; 
+  color:#FFFFFF; 
+  font-size: 15px; 
+  font-weight: bold; 
+  border-left: 1px solid #0070A8; 
+  } 
+
+  .datagrid table thead th:first-child { 
+    border: none; 
+    }
+
+  .datagrid table tbody td { 
+    color: #00557F; 
+    border-left: 1px solid #E1EEF4;
+    font-size: 12px;
+    font-weight: normal; 
+    }
+
+  .datagrid table tbody .alt td { 
+    background: #CDD8DE; 
+    color: #00557F; 
+    }
+
+  .datagrid table tbody td:first-child { 
+    border-left: none; 
+    }
+
+  .datagrid table tbody tr:last-child td { 
+    border-bottom: none; 
+    }
+
+  .datagrid table tfoot td div { 
+    border-top: 1px solid #006699;
+    background: #E1EEf4;
+    } 
+
+  .datagrid table tfoot td { 
+    padding: 0; 
+    font-size: 12px 
+    } 
+
+  .datagrid table tfoot td div{ 
+    padding: 2px; 
+    }
+
+
+  .datagrid table tfoot td ul { 
+    margin: 0; 
+    padding:0; 
+    list-style: none; 
+    text-align: right; 
+    }
+
+  .datagrid table tfoot  li { 
+    display: inline; 
+    }
+
+  .datagrid table tfoot li a { 
+    text-decoration: none; 
+    display: inline-block;  
+    padding: 2px 8px; 
+    margin: 1px;
+    color: #004161;
+    border: 1px solid #599BB3;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    border-radius: 3px; 
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #599BB3), color-stop(1, #599BB3) );
+    background:-moz-linear-gradient( center top, #599BB3 5%, #599BB3 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599BB3', endColorstr='#599BB3');
+    background-color:#599BB3; 
+    }
+
+  .datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { 
+    text-decoration: none;border-color: #599BB3; 
+    color: #FFFFFF; 
+    background: none; 
+    background-color:#599BB3;
+    }
+
+  div.dhtmlx_window_active, div.dhx_modal_cover_dv { 
+    position: fixed !important; 
+  }
+
+
+</style>
+
 {% endblock %}
+
