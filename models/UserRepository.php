@@ -1,6 +1,8 @@
 <?php
 class UserRepository extends PDORepository
 {
+  private $stmtToggleActive;
+
   private function queryToUserArray($query)
   {
     $answer = [];
@@ -16,9 +18,13 @@ class UserRepository extends PDORepository
         $element['last_name']
       );
 
+    }
+    return $answer;
+  }
 
-  	}
-        return $answer;
+  public function __construct()
+  {
+    $this->stmtToggleActive = $this->newPreparedStmt("update usets set active = not active where id = ?");
   }
 
   public function getAll()
@@ -33,6 +39,11 @@ class UserRepository extends PDORepository
 
   public function getAllByName($name)
   {
-    return $this->queryToUserArray($this->queryList("select * from users where name LIKE ?", [$$name]));
+    return $this->queryToUserArray($this->queryList("select * from users where name LIKE ?", [$ $name]));
+  }
+
+  public function toggleActive($userId)
+  {
+    $this->stmtToggleActive->execute([$userIdid]);
   }
 }
