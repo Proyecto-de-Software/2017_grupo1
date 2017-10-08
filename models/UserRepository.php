@@ -2,6 +2,7 @@
 class UserRepository extends PDORepository
 {
   private $stmtToggleActive;
+  private $stmtDelete;
 
   private function queryToUserArray($query)
   {
@@ -24,7 +25,8 @@ class UserRepository extends PDORepository
 
   public function __construct()
   {
-    $this->stmtToggleActive = $this->newPreparedStmt("update usets set active = not active where id = ?");
+    $this->stmtToggleActive = $this->newPreparedStmt("update users set active = not active where id = ?");
+    $this->stmtDelete = $this->newPreparedStmt("delete from users where id = ?");
   }
 
   public function getAll()
@@ -45,5 +47,10 @@ class UserRepository extends PDORepository
   public function toggleActive($userId)
   {
     $this->stmtToggleActive->execute([$userIdid]);
+  }
+
+  public function delete($userId)
+  {
+    $this->stmtDelete->execute($userId);
   }
 }
