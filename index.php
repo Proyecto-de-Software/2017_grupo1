@@ -15,9 +15,9 @@ function getFrontEndController()
     $frontEndController->addController('index', new IndexController(new IndexView));
     $frontEndController->addController('login', new LoginController(new LoginView));
     $frontEndController->addController('admin', new AdminController(new AdminView));
-    $frontEndController->addController('users_list', new UserController(new UserListView, $userRepository));
-    $frontEndController->addController('pacient_index', new PacientsController(new PacientsListView, $pacientsRepository));
     $frontEndController->addController('user_create', new UserController(new UserCreateView, $userRepository));
+    $frontEndController->addController('users_list', new UserListController(new UserListView, $userRepository));
+    $frontEndController->addController('pacient_index', new PacientsController(new PacientsListView, $pacientsRepository));
     $frontEndController->addController('paciente_update', new PacientsController(new PacientsFormView, $pacientsRepository));
   }
   return $frontEndController;
