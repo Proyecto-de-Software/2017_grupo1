@@ -1,6 +1,6 @@
 {% extends 'plantilla_base.html' %}
 
-{% block title%} Creación de nuevo usuario {% endblock %}
+{% block head%} <link rel="stylesheet" type="text/css" href="../css/user_create.css"> {% endblock %}
 
 {% block body %}
 
@@ -14,7 +14,7 @@
             <div class="well well-sm">
                 <form class="form-horizontal" method="post">
                     <fieldset>
-                        <legend class="text-center header">Creación de nuevo usuario</legend>
+                        <legend class="text-center header">Ingreso de nuevo usuario</legend>
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
@@ -62,15 +62,4 @@
     </div>
 </div>
 
-
-
-<style>
-.header {
-    font-size: 27px;
-    padding: 10px;
-}
-
-.bigicon {
-    font-size: 35px;
-}
 {% endblock %}
