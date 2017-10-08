@@ -31,6 +31,6 @@ class UserListController extends UserController
 
   public function showView()
   {
-    $this->getView()->show($this->getRepository()->getAll());
+    $this->getView()->show($this->getRepository()->getAllActive());
   }
 }
