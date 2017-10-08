@@ -6,8 +6,8 @@ class UserCreateView extends TwigView
     return "user_create.html";
   }
 
-  public function show($users)
+  public function show()
   {
-    $this->render(array('users' => $users));
+    $this->render();
   }
 }
