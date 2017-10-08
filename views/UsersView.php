@@ -3,7 +3,7 @@ class UserListView extends TwigView
 {
   protected function getTemplateFile()
   {
-    return "users.html";
+    return "users_index.html";
   }
 
   public function show($users)

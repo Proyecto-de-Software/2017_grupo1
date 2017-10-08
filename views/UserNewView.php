@@ -3,7 +3,7 @@ class UserCreateView extends TwigView
 {
   protected function getTemplateFile()
   {
-    return "user_create.html";
+    return "user_new.html";
   }
 
   public function show()
