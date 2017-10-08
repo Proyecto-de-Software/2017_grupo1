@@ -16,6 +16,7 @@ function getFrontEndController()
     $frontEndController->addController('users_list', new UserController(new UserListView, new UserRepository));
     $frontEndController->addController('pacient_index', new PacientsController(new PacientsListView, new PacientsRepository));
     $frontEndController->addController('user_create', new UserController(new UserCreateView, new UserRepository));
+    $frontEndController->addController('paciente_update', new PacientsController(new PacientsFormView, new PacientsRepository));
   }
   return $frontEndController;
 }

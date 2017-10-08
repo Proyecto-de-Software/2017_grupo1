@@ -1,0 +1,37 @@
+{% extends 'plantilla_base.html' %}
+
+{% block title%} Pacientes {% endblock %}
+
+{% block body%}
+ <h1>Actualizar Paciente</h1>
+ <td>
+  	<form>
+ 		Nombre:
+ 		<input type="text" value= "<?php echo ($first_name);?>"> 
+ 		<br> 		
+ 		Apellido:
+  		<input type="text" value="<?php echo ($last_name);?>">
+  		<br>
+  		Fecha de Nacimiento:
+  		<br>
+  		Genero:
+  		<br>
+  		Tipo Documento:
+  		<br>
+  		DNI:
+  		<input type="text" value="<?php echo ($dni);?>">
+  		<br>
+  		Direccion:
+  		<input type="text" value="<?php echo ($address);?>">
+  		<br>
+  		Telefono:
+  		<input type="text" value="<?php echo ($phone);?>">
+  		<br>
+  		<input type="submit" action="./actualizar_pacient.php" method= "post" value="Actualizar">
+  		<br>
+	</form> 
+  </form>
+ </td>
+{% endblock %}
+
+
