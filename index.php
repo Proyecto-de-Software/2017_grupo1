@@ -9,14 +9,16 @@ $frontEndController = NULL;
 function getFrontEndController()
 {
   if (!isset($frontEndController)) {
+    $userRepository = new UserRepository;
+    $pacientsRepository = new PacientsRepository;
     $frontEndController = new FrontEndController;
     $frontEndController->addController('index', new IndexController(new IndexView));
     $frontEndController->addController('login', new LoginController(new LoginView));
     $frontEndController->addController('admin', new AdminController(new AdminView));
-    $frontEndController->addController('users_list', new UserController(new UserListView, new UserRepository));
-    $frontEndController->addController('pacient_index', new PacientsController(new PacientsListView, new PacientsRepository));
-    $frontEndController->addController('user_create', new UserController(new UserCreateView, new UserRepository));
-    $frontEndController->addController('paciente_update', new PacientsController(new PacientsFormView, new PacientsRepository));
+    $frontEndController->addController('users_list', new UserController(new UserListView, $userRepository));
+    $frontEndController->addController('pacient_index', new PacientsController(new PacientsListView, $pacientsRepository));
+    $frontEndController->addController('user_create', new UserController(new UserCreateView, $userRepository));
+    $frontEndController->addController('paciente_update', new PacientsController(new PacientsFormView, $pacientsRepository));
   }
   return $frontEndController;
 }
