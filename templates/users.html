@@ -5,41 +5,37 @@
 
 {% block body%}
 
-  <h1>Listado de Usuarios</h1>
-  <td>  
-<form action="./?action=user_create">
-      <input type="submit" class="btn btn-success" value="Agregar usuario"/>
-      </form>
-  </td>
-  <br>
-  <table class='list'>
+<h1>Listado de Usuarios</h1>
+<td>
+  <form action="./?action=user_create">
+    <input type="submit" class="btn btn-success" value="Agregar usuario"/>
+  </form>
+</td>
+<br>
 
+<table class='list'>
 <tr>
   <td><strong>Nombre</strong></td>
   <td><strong>Apellido</strong></td>
   <td><strong>Usuario</strong></td>
   <td><strong>Estado</strong></td>
-
 </tr>
-        {% for item in users %}
-          	<tr> 
-              <td>{{ item.first_name }}</td>
-              <td>{{ item.last_name }}</td>
-              <td>{{ item.username }}</td>
-              {% if item.active == 1 %}
-                <td> Activo </td>
-                  {% elseif item.active == 0%}
-                    <td> Bloqueado </td>
-              {% endif %}
-                <td>  <input type="submit" class="btn btn-success" value="Modificar" id="boton_eliminar"/> </td>
-                <td>  <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/> </td>
-                <td>  <input type="submit" class="btn btn-success" value="Bloquear" id="boton_bloquear"/> </td>
-            </tr>
-    
-
-    {% endfor %}
-
-  </table>
+  {% for item in users %}
+  <tr>
+    <td>{{ item.first_name }}</td>
+    <td>{{ item.last_name }}</td>
+    <td>{{ item.username }}</td>
+    {% if item.active == 1 %}
+      <td> Activo </td>
+    {% elseif item.active == 0%}
+      <td> Bloqueado </td>
+    {% endif %}
+    <td> <input type="submit" class="btn btn-success" value="Modificar" id="boton_eliminar"/> </td>
+    <td> <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/> </td>
+    <td> <input type="submit" class="btn btn-success" value="Bloquear/Desbloquear" id="boton_bloquear"/> </td>
+  </tr>
+  {% endfor %}
+ </table>
 
 
 {% endblock %}
