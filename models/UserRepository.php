@@ -28,29 +28,29 @@ class UserRepository extends PDORepository
 
   public function __construct()
   {
-    $this->stmtToggleActive = $this->newPreparedStmt("update users set active = not active where id = ?");
-    $this->stmtDelete = $this->newPreparedStmt("delete from users where id = ?");
-    $this->stmtCreate = $this->newPreparedStmt("insert into users (id, username, email, password, first_name, last_name,
+    $this->stmtToggleActive = $this->newPreparedStmt("UPDATE users SET active = not active WHERE id = ?");
+    $this->stmtDelete = $this->newPreparedStmt("DELETE FROM users WHERE id = ?");
+    $this->stmtCreate = $this->newPreparedStmt("INSERT INTO users (id, username, email, password, first_name, last_name,
                                                 active, updated_at, created_at)
                                                 VALUES (NULL, ?, ?, ?, ?, ?, 1, NOW(), NOW()");
-    $this->stmtUpdate = $this->newPreparedStmt("update users set username = ?, email = ?, password = ?, first_name = ?, last_name = ?,
+    $this->stmtUpdate = $this->newPreparedStmt("UPDATE users SET username = ?, email = ?, password = ?, first_name = ?, last_name = ?,
                                                 updated_at = NOW()
-                                                where Id = ?");
+                                                WHERE Id = ?");
   }
 
   public function getAll()
   {
-    return $this->queryToUserArray($this->queryList("select * from users", []));
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users", []));
   }
 
   public function getAllActive($isActive)
   {
-    return $this->queryToUserArray($this->queryList("select * from users where active = ?", [$isActive]));
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE active = ?", [$isActive]));
   }
 
   public function getAllByName($name)
   {
-    return $this->queryToUserArray($this->queryList("select * from users where name LIKE ?", [$ $name]));
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE name LIKE ?", [$ $name]));
   }
 
   public function toggleActive($userId)

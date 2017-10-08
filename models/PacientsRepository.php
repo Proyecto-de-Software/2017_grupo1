@@ -29,6 +29,6 @@ class PacientsRepository extends PDORepository
 
   public function getAll()
   {
-    return $this->queryToPacientArray($this->queryList("select * from pacients", []));
+    return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients", []));
   }
 }
