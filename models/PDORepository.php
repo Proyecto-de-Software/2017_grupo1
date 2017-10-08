@@ -16,10 +16,15 @@ abstract class PDORepository
     return $connection;
   }
 
-  protected function queryList($sql, $args)
+  protected function newPreparedStmt($sql)
   {
     $connection = $this->getConnection();
-    $stmt = $connection->prepare($sql);
+    return $connection->prepare($sql);
+  }
+
+  protected function queryList($sql, $args)
+  {
+    $stmt = $this->newPreparedStmt($sql);
     $stmt->execute($args);
     return $stmt->fetchAll();
   }
