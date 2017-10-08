@@ -10,7 +10,7 @@ class UserController
     $this->view = $view;
   }
 
-  public function showView()
+  public function showView($args)
   {
     $this->getView()->show();
   }
@@ -26,10 +26,19 @@ class UserController
   }
 }
 
+class UserAddedController extends UserController 
+{
+  public function showView($args) 
+  {
+    if ($this->getRepository()->create($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name'])) 
+    $this->getView()->show(); 
+
+  }
+}
+
 class UserListController extends UserController
 {
-
-  public function showView()
+  public function showView($args)
   {
     $this->getView()->show($this->getRepository()->getAllActive());
   }

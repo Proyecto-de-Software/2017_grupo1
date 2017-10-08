@@ -23,5 +23,6 @@ require_once "./views/LoginView.php";
 require_once "./views/AdminView.php";
 require_once "./views/UsersView.php";
 require_once "./views/UserNewView.php";
+require_once "./views/UserAddedView.php";
 require_once "./views/PacientViews.php";
 require_once "./views/PacientFormView.php";
