@@ -55,7 +55,7 @@ class UserRepository extends PDORepository
 
   public function toggleActive($userId)
   {
-    $this->stmtToggleActive->execute([$userIdid]);
+    $this->stmtToggleActive->execute([$userId]);
   }
 
   public function delete($userId)
