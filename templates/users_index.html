@@ -5,6 +5,9 @@
 
 {% block body%}
 
+
+
+
 <h1 align="center">Listado de Usuarios</h1>
 <table align="center">
   <tr>
@@ -15,9 +18,10 @@
       </form>
     </td>
     <td>
-      <form action="./?action=user_create">
-        <input type="submit" id='btnSubmit' value="Agregar usuario +"/>
+       <form action="./?action=user_new" method="post">
+          <button type= "submit" id='btnSubmit'> Crear usuario + </button>
       </form>
+
     </td>
   </tr>
 </table>
@@ -79,9 +83,21 @@
     {% elseif item.active == 0%}
       <td> Bloqueado </td>
     {% endif %}
-    <td> <input type="submit" class="btn btn-success" value="Modificar"  id='btnSubmit'/> </td>
-    <td> <input type="submit" class="btn btn-success" value="Eliminar"  id='btnSubmit'/> </td>
-    <td> <input type="submit" class="btn btn-success" value="Bloquear/Desbloquear"  id='btnSubmit'/> </td>
+    <td> 
+      <form action="./?action=user_update">
+        <input type="submit" id='btnSubmit' value="Modificar"/>
+      </form>
+    </td>
+    <td> 
+      <form action="./?action=user_destroy">
+        <input type="submit" id='btnSubmit' value="Eliminar"/>
+      </form>
+    </td>
+    <td> 
+      <form action="">
+        <input type="submit" id='btnSubmit' value="Bloquear/Desbloquear"/>
+      </form>
+    </td>
   </tr>
   {% endfor %}
  </table>
