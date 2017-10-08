@@ -32,7 +32,7 @@ class UserRepository extends PDORepository
     $this->stmtDelete = $this->newPreparedStmt("DELETE FROM users WHERE id = ?");
     $this->stmtCreate = $this->newPreparedStmt("INSERT INTO users (username, email, password, first_name, last_name,
                                                 active, updated_at, created_at)
-                                                VALUES (NULL, ?, ?, ?, ?, ?, 1, NOW(), NOW())");
+                                                VALUES (?, ?, ?, ?, ?, 1, NOW(), NOW())");
     $this->stmtUpdate = $this->newPreparedStmt("UPDATE users SET username = ?, email = ?, password = ?, first_name = ?, last_name = ?,
                                                 updated_at = NOW()
                                                 WHERE Id = ?");
@@ -55,21 +55,21 @@ class UserRepository extends PDORepository
 
   public function toggleActive($userId)
   {
-    $this->stmtToggleActive->execute([$userId]);
+    return $this->stmtToggleActive->execute([$userId]);
   }
 
   public function delete($userId)
   {
-    $this->stmtDelete->execute([$userId]);
+    return $this->stmtDelete->execute([$userId]);
   }
 
   public function create($username, $email, $password, $first_name, $last_name)
-  { 
-    return ($this->stmtCreate->execute(array_values([$username, $email, $password, $first_name, $last_name])));
+  {
+    return $this->stmtCreate->execute([$username, $email, $password, $first_name, $last_name]);
   }
 
   public function update($username, $email, $password, $first_name, $last_name, $userId)
   {
-    $this->stmtUpdate->execute([$username, $email, $password, $first_name, $last_name, $userId]);
+    return $this->stmtUpdate->execute([$username, $email, $password, $first_name, $last_name, $userId]);
   }
 }
