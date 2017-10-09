@@ -26,3 +26,6 @@ require_once "./views/UserNewView.php";
 require_once "./views/UserAddedView.php";
 require_once "./views/PacientViews.php";
 require_once "./views/PacientFormView.php";
+require_once "./views/PacientNewView.php";
+require_once "./views/PacientAddedView.php";
+require_once "./views/PacientUpdatedView.php";

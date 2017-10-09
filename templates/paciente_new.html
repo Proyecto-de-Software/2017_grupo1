@@ -1,17 +1,24 @@
 {% extends 'plantilla_base.html' %}
-{% block title%} Pacientes {% endblock %}
 
-{% block body%}
- <h1>Actualizar Paciente</h1>
- <td>
-  
-  	 <form action="./?action=pacient_updated" class="form-horizontal" method="get">
+{% block head%} <link rel="stylesheet" type="text/css" href="../css/user_create.css"> {% endblock %}
+
+{% block body %}
+
+<div id="alta-paciente" align="center">
+
+<form action="./?action=pacient_added" method='post'>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-sm">
+                    <form class="form-horizontal" method="post">
                         <fieldset>
+                            <legend class="text-center header">Ingreso nuevo de paciente</legend>
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                 <div class="col-md-8">
                                    Nombre:
-                                      <input id="first_name" name="first_name" type="text" placeholder="Nombre" value="<?php echo $first_name;?>"  class="form-control" required >
+                                    <input id="first_name" name="first_name" type="text" placeholder="Nombre" class="form-control" required >
                                 </div>
                             </div>
                             <br>
@@ -19,7 +26,7 @@
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                 <div class="col-md-8">
                                    Apellido:
-                                    <input id="last_name" name="last_name" type="text" placeholder="Apellido" value="<?php echo $last_name;?>" class="form-control" required>
+                                    <input id="last_name" name="last_name" type="text" placeholder="Apellido" class="form-control" required>
                                 </div>
                             </div>
                             <br>
@@ -27,7 +34,7 @@
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                    Fecha de Nacimiento:
-                                    <input id="fecha_de_nacimiento" name="birth_date" type="date" placeholder="Fecha de Nacimiento" value="<?php echo $birth_date;?>" class="form-control" required>
+                                    <input id="fecha_de_nacimiento" name="birth_date" type="date" placeholder="Fecha de Nacimiento" class="form-control" required>
                                 </div>
                             </div>
                     
@@ -36,7 +43,7 @@
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                 <div class="col-md-8">
                                   Sexo:
-                                     <select name="gender" value="<?php echo $gender;?>" required>
+                                     <select name="gender" required>
                                           <option value="F">Femenino</option>
                                           <option value="M">Masculino</option>
                                     </select> 
@@ -47,7 +54,7 @@
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                     Tipo de Documento:
-                                      <select name="doc_type" value="<?php echo $doc_type;?>" required >
+                                      <select name="doc_type" required >
                                           <option value="Libreta electoral o DNI">L.E/DNI</option>
                                           <option value="Carnet de extranjeria">CARNET EXT.</option>
                                           <option value="Reg. unico de contribuyentes">RUC</option>
@@ -60,7 +67,7 @@
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                  Numero de Documento:
-                                   <input id="documento" name="dni" type="text" placeholder="N de Tipo Doc" value="<?php echo $dni;?>" class="form-control" required>
+                                   <input id="documento" name="dni" type="text" placeholder="N de Tipo Doc" class="form-control" required>
                                 </div>
                             </div>
                             <br>
@@ -68,7 +75,7 @@
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                  Domicilio:
-                                   <input id="domicilio" name="address" type="text" placeholder="Direccion de Domicilio" value="<?php echo $address;?>" class="form-control" required>
+                                   <input id="domicilio" name="address" type="text" placeholder="Direccion de Domicilio" class="form-control" required>
                                 </div>
                             </div>
                             <br>
@@ -76,7 +83,7 @@
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                  Tel/Cel:
-                                   <input id="telefono" name="phone" type="text" placeholder="Telefono" value="<?php echo $phone;?>" class="form-control" required>
+                                   <input id="telefono" name="phone" type="text" placeholder="Telefono" class="form-control" required>
                                 </div>
                             </div>
                             <br>
@@ -84,7 +91,7 @@
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                     Obra Social:
-                                      <select name="id_medical_insurance" value="<?php echo $id_medical_insurance;?>">
+                                      <select name="id_medical_insurance">
                                           <option value="">-</option>
                                           <option value="Ioma">IOMA</option>
                                           <option value="Osecac">OSECAC</option>
@@ -97,12 +104,15 @@
 
                             <div class="form-group">
                                 <div class="col-md-12 text-center">
-                                    <button type="submit"  id='btnSubmit'>Actualizar paciente</button>
+                                    <button type="submit"  id='btnSubmit'>Agregar paciente</button>
                                 </div>
                             </div>
                         </fieldset>
                     </form>
- </td>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 {% endblock %}
-
-

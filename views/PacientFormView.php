@@ -8,4 +8,5 @@ class PacientsFormView extends TwigView{
   {
     $this->render(array('pacients' => $pacients));
   }
+
 }
