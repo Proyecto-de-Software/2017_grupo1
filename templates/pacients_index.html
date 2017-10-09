@@ -1,13 +1,25 @@
 {% extends 'plantilla_base.html' %}
-
-{% block title%} Pacientes {% endblock %}
+{% block head%} <link rel="stylesheet" type="text/css" href="../css/users_index.css"> {% endblock %}
 
 
 {% block body%}
 
-  <h1>Listado de Paciente</h1>
-  <table>
-<tr>
+<h1 align="center">Listado de Pacientes</h1>
+<table align="center">
+  <tr>
+    <td>
+       <form action="./?action=paciente_new" method="post">
+          <button type= "submit" id='btnSubmit'> Agregar paciente + </button>
+      </form>
+
+    </td>
+  </tr>
+</table>
+<br>
+<div class="datagrid">
+<table class='list'>
+   <thead>
+<tr  class="alt">
   <td><strong>Nombre</strong></td>
   <td><strong>Apellido</strong></td>
   <td><strong>Fecha de Nacimiento</strong></td>
@@ -18,6 +30,43 @@
   <td><strong>Telefono</strong></td>
 
 </tr>
+
+</thead>
+<tfoot>
+  <tr>
+    <td colspan="8">
+      <br>
+      <div id="paging">
+        <ul>
+          <li>
+            <a href="#">
+              <span>Anterior</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="active">
+              <span>1</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>2</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>3</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>Siguiente</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </tr>
+  </tfoot>
         {% for item in pacients%}
             <tr> 
             <td>{{ item.first_name }}</td>
@@ -33,11 +82,16 @@
                <input type="submit" action=class="btn btn-success" value="Modificar" id="boton_eliminar"/> 
               </form>
             </td>
-            <td>  <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/> </td>
+            <td>  
+              <form action="./?action=paciente_destroy" method="post">
+              <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/> </td>
             </tr>
 
         {% endfor %}
 
 
-  <table>
+</table>
+
+
+
 {% endblock %}
