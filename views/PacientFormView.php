@@ -2,7 +2,7 @@
 class PacientsFormView extends TwigView{
   
   protected function getTemplateFile(){
-  	return "paciente_form_update.html";
+  	return "pacient_form_update.html";
   }
    public function show($pacients)
   {
