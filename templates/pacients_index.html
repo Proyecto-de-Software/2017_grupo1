@@ -83,8 +83,12 @@
             <td>{{ item.phone }}</td>
             <td>  
               <form action="./?action=pacient_form_update" method="post">
+<<<<<<< HEAD
                <input type="submit" action=class="btn btn-success" name=id value="Modificar - id: {{ item.id }}"> 
                <input type="hidden" name="id" id="id" value= "{{ item.id }}"> 
+=======
+               <input type="submit" action=class="btn btn-success" name=id value="{{ item.id }}" id="boton_eliminar" placeholder="Modificar"> 
+>>>>>>> a8703c236e431e24bd27debccc8ec03560a68490
               </form>
             </td>
             <td>  
