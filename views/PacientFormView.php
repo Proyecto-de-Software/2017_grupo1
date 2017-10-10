@@ -4,9 +4,9 @@ class PacientsFormView extends TwigView{
   protected function getTemplateFile(){
   	return "pacient_form_update.html";
   }
-   public function show($pacients)
+   public function show($pacient)
   {
-    $this->render(array('pacients' => $pacients));
+    $this->render(array('pacient' => $pacient));
   }
 
 }

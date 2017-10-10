@@ -58,7 +58,6 @@ class PacientFormController extends PacientsController
 {
   public function showView($args)
   {
-    print_r($args);
     $this->getView()->show($this->getRepository()->getPacient($args['id']));
   } 
 
