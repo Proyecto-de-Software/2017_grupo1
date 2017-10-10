@@ -11,7 +11,7 @@
       </form>
     </td>
     <td>
-       <form action="./?action=paciente_new" method="post">
+       <form action="./?action=pacient_new" method="post">
           <button type= "submit" id='btnSubmit'> Agregar paciente + </button>
       </form>
 
@@ -38,7 +38,7 @@
 </thead>
 <tfoot>
   <tr>
-    <td colspan="8">
+    <td colspan="10">
       <br>
       <div id="paging">
         <ul>
@@ -82,7 +82,7 @@
             <td>{{ item.address }}</td>
             <td>{{ item.phone }}</td>
             <td>  
-              <form action="./?action=paciente_form_update" method="post">
+              <form action="./?action=pacient_form_update" method="post">
                <input type="submit" action=class="btn btn-success" name=id value="{{ item.id }}" id="boton_eliminar" placeholder="Modificar"> 
               </form>
             </td>
@@ -96,7 +96,5 @@
         {% endfor %}
 
 </table>
-
-
 
 {% endblock %}

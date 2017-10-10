@@ -3,7 +3,7 @@ class PacientNewView extends TwigView
 {
   protected function getTemplateFile()
   {
-    return "paciente_new.html";
+    return "pacient_new.html";
   }
 
   public function show()
