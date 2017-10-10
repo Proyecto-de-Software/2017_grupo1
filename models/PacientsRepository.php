@@ -31,7 +31,7 @@ public function __construct()
     $this->stmtCreate = $this->newPreparedStmt("INSERT INTO pacients (first_name, last_name, birth_date, gender, doc_type,
                                                 dni, address, phone, id_medical_insurance)
                                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $this->stmtUpdate = $this->newPreparedStmt("UPDATE `pacients` SET `first_name` = ?, `last_name` = ?, `birth_date` = ?, `gender` = ?, `doc_type` = ?, `dni` = ?, `address` = ?, `phone` = ?, `id_medical_insurance` = ?  WHERE `id` = ?");
+    $this->stmtUpdate = $this->newPreparedStmt("UPDATE pacients SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, doc_type = ?, dni = ?, address = ?, phone = ?, id_medical_insurance = ?  WHERE id = ?");
 
     $this->stmtSelectPacient = $this->newPreparedStmt("SELECT * FROM pacients WHERE id= ?");
   }
@@ -60,3 +60,6 @@ public function getPacient($pacientId)
    return $this->stmtSelectPacient->execute([$pacientId]);
   }
 }
+
+
+

@@ -30,8 +30,8 @@
   <td><strong>Genero</strong></td>
   <td><strong>Tipo Doc. </strong></td>
   <td><strong>DNI</strong></td>
-  <td><strong>Dirección</strong></td>
-  <td><strong>Telefono</strong></td>
+  <td><strong>Direcci&oacute;n</strong></td>
+  <td><strong>Tel&eacute;fono</strong></td>
 
 </tr>
 
@@ -83,7 +83,8 @@
             <td>{{ item.phone }}</td>
             <td>  
               <form action="./?action=pacient_form_update" method="post">
-               <input type="submit" action=class="btn btn-success" name=id value="{{ item.id }}" id="boton_eliminar" placeholder="Modificar"> 
+               <input type="submit" action=class="btn btn-success" name=id value="Modificar - id: {{ item.id }}"> 
+               <input type="hidden" name="id" id="id" value= "{{ item.id }}"> 
               </form>
             </td>
             <td>  
