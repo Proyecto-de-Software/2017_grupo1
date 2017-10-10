@@ -4,6 +4,7 @@ class PacientsRepository extends PDORepository
   private $stmtDelete;
   private $stmtCreate;
   private $stmtUpdate;
+  private $stmtSelectPacient;
   private function queryToPacientArray($query)
   {
     $answer = [];
@@ -18,15 +19,9 @@ class PacientsRepository extends PDORepository
         $element['dni'],
         $element['address'],
         $element['phone'],
-        $element['id_medical_insurance'],
-        $element['has_refrigerator'],
-        $element['has_electricity'],
-        $element['has_pet'],
-        $element['home_type'],
-        $element['heating_type'],
-        $element['water_type']);
+        $element['id_medical_insurance']
+      );
     }
-
     return $answer;
   }
 
@@ -36,9 +31,10 @@ public function __construct()
     $this->stmtCreate = $this->newPreparedStmt("INSERT INTO pacients (first_name, last_name, birth_date, gender, doc_type,
                                                 dni, address, phone, id_medical_insurance)
                                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $this->stmtUpdate = $this->newPreparedStmt("UPDATE pacients SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, doc_type = ?, dni= ?, address= ?, phone=?, id_medical_insurance=?, id= ? WHERE Id = ?");
-  }
+    $this->stmtUpdate = $this->newPreparedStmt("UPDATE `pacients` SET `first_name` = ?, `last_name` = ?, `birth_date` = ?, `gender` = ?, `doc_type` = ?, `dni` = ?, `address` = ?, `phone` = ?, `id_medical_insurance` = ?  WHERE `id` = ?");
 
+    $this->stmtSelectPacient = $this->newPreparedStmt("SELECT * FROM pacients WHERE id= ?");
+  }
 
   public function getAll()
   {
@@ -54,13 +50,13 @@ public function __construct()
   {
     return $this->stmtDelete->execute([$pacientId]);
   }
-  public function update($first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $id)
+  public function update($first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $pacientId)
   {
-    return $this->stmtUpdate->execute([$first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $id]);
+    return $this->stmtUpdate->execute([$first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $pacientId]);
   }
  
 public function getPacient($pacientId)
   {
-    return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients WHERE id=$pacientId", [$pacientId]));
+   return $this->stmtSelectPacient->execute([$pacientId]);
   }
 }

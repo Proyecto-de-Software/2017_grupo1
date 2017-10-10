@@ -20,6 +20,7 @@
 <table class='list'>
    <thead>
 <tr  class="alt">
+
   <td><strong>Nombre</strong></td>
   <td><strong>Apellido</strong></td>
   <td><strong>Fecha de Nacimiento</strong></td>
@@ -79,7 +80,7 @@
             <td>{{ item.phone }}</td>
             <td>  
               <form action="./?action=paciente_form_update" method="post">
-               <input type="submit" action=class="btn btn-success" value="Modificar" id="boton_eliminar"/> 
+               <input type="submit" action=class="btn btn-success" name=id value="{{ item.id }}" id="boton_eliminar" placeholder="Modificar"> 
               </form>
             </td>
             <td>  
