@@ -1,12 +1,15 @@
 {% extends 'plantilla_base.html' %}
-{% block head%} <link rel="stylesheet" type="text/css" href="../css/users_index.css"> {% endblock %}
-
-
 {% block body%}
 
 <h1 align="center">Listado de Pacientes</h1>
 <table align="center">
   <tr>
+    <td>
+      <form action="#" id="searchform">
+          <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
+          <button type= "submit" id='btnSubmit'> Buscar </button>
+      </form>
+    </td>
     <td>
        <form action="./?action=paciente_new" method="post">
           <button type= "submit" id='btnSubmit'> Agregar paciente + </button>
