@@ -19,7 +19,7 @@ class FrontEndController
 
   public function getController($key)
   {
-    if ($this->appConfig->isSiteEnabled())
+    if ($this->appConfig->getIsSiteEnabled())
       return $this->controllers[$key];
     else
       return $this->disabledSiteController;

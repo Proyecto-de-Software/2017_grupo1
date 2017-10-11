@@ -1,16 +1,15 @@
 {% extends 'plantilla_base.html' %}
 
 {% block head%}  <link rel="stylesheet" type="text/css" href="../css/administracion.css"> {% endblock %}
-{% block title%}  Hospital Dr. Ricardo Gutierrez - Administración {% endblock %}
 
 {% block nav %}
   <a href="./?action=pacients_index"  class="link1"> Pacientes</a>
-  <div class="dropdown"> 
+  <div class="dropdown">
     <button class="dropbtn">Administracion&darr;</button>
       <div class= " dropdown-content" >
-          <a href="./?action=users_index">Usuarios</a> 
-          <a href="#Roles">Roles</a> 
-          <a href="#Permisos">Permisos</a> 
+          <a href="./?action=users_index">Usuarios</a>
+          <a href="#Roles">Roles</a>
+          <a href="#Permisos">Permisos</a>
       </div>
   </div>
   {% endblock %}

@@ -1,43 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>   <!-- esto va en todas las paginas -->
+    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="content-type" content="text/html;charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         {% block head%}{% endblock %}
-        <meta charset="UTF-8"> 
-         <!-- esto va en todas las paginas -->
-        <title>{% block title %}Hospital Dr. Ricardo Gutiérrez {% endblock %}</title>
+        <meta charset="UTF-8">
+        <title>{{ config.title }}</title>
     </head>
 
- <body> 
-
+ <body>
   <nav>
       LOGO |  <a href="./?action=index" class='link1'>Hospital Dr. Ricardo Gutiérrez</a>
       {% block nav %}   {% endblock %}
       <div class="search-container">
           <a href="./?action=login" class='link1'> LOGIN </a>
       </div>
-         <div id="dropdown"> 
-          {% block dropdown %} 
-          {% endblock %} 
+         <div id="dropdown">
+          {% block dropdown %}
+          {% endblock %}
          </div>
-
       </div>
-
     </nav>
 
    <hr class= "separatingStripe">
    {% block body %}
    {% endblock %}
-       
-<!-- esto va en todas las paginas -->
+
 <footer class="bottom-page-footer">
     <hr class= "separatingStripe">
     <p class="left-footer-paragraph">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutiérrez</p>
     <p class="right-footer-paragraph">v 0.1.0</p>
 </footer>
-   <!-- esto va en todas las paginas -->
     </body>
 </html>
 

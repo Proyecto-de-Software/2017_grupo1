@@ -11,7 +11,9 @@ function getFrontEndController()
   if (!isset($frontEndController)) {
     $userRepository = new UserRepository;
     $pacientsRepository = new PacientsRepository;
-    $frontEndController = new FrontEndController(new AppConfig());
+    $appConfig = new AppConfig();
+    TwigView::setAppConfig($appConfig);
+    $frontEndController = new FrontEndController($appConfig);
 
     $frontEndController->addController('index', new IndexController(new IndexView));
     $frontEndController->addController('login', new LoginController(new LoginView));

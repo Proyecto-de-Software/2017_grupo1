@@ -3,25 +3,26 @@ class AppConfig extends PDORepository
 {
   private function queryValue($field)
   {
-    $qry = $this->getConnection()->query("SELECT '$field' FROM app_settings");
+    $data = $this->getConnection()->query("SELECT * FROM app_settings")->fetch();
+    return $data[$field];
   }
 
-  public function isSiteEnabled()
+  public function getIsSiteEnabled()
   {
     return $this->queryValue("avaible");
   }
 
-  public function title()
+  public function getTitle()
   {
     return $this->queryValue("title");
   }
 
-  public function contact_mail()
+  public function getContact_mail()
   {
     return $this->queryValue("contact_mail");
   }
 
-  public function page_row_size()
+  public function getPage_row_size()
   {
     return $this->queryValue("page_row_size");
   }
