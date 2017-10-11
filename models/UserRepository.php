@@ -21,7 +21,6 @@ class UserRepository extends PDORepository
         $element['first_name'],
         $element['last_name']
       );
-
     }
     return $answer;
   }
@@ -36,7 +35,6 @@ class UserRepository extends PDORepository
     $this->stmtUpdate = $this->newPreparedStmt("UPDATE users SET username = ?, email = ?, password = ?, first_name = ?, last_name = ?,
                                                 updated_at = NOW()
                                                 WHERE Id = ?");
-    $this->stmtSelectUser = $this->newPreparedStmt("SELECT * FROM users WHERE id= ?");
   }
 
   public function getAll()
@@ -74,9 +72,9 @@ class UserRepository extends PDORepository
     return $this->stmtUpdate->execute([$username, $email, $password, $first_name, $last_name, $userId]);
   }
 
-public function getUser($userId)
+  public function getUser($userId)
   {
-   return $this->stmtSelectUser->execute([$userId]);
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users where id = ?", [$userId]))[0];
   }
 }
 
