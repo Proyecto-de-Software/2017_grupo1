@@ -36,6 +36,23 @@ class UserAddedController extends UserController
   }
 }
 
+class UserUpdatedController extends UserController 
+{
+  public function showView($args) 
+  {
+    if ($this->getRepository()->update($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name'])) 
+    $this->getView()->show(); 
+  }
+}
+
+class UserFormController extends UserController //para el formulario de modificacion de datos//
+{
+  public function showView($args)
+  {
+    $this->getView()->show($this->getRepository()->getUser($args['id']));
+  } 
+}
+
 class UserListController extends UserController
 {
   public function showView($args)

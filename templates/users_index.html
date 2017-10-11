@@ -77,15 +77,16 @@
     {% elseif item.active == 0%}
       <td> Bloqueado </td>
     {% endif %}
-    <td> 
-      <form action="./?action=user_update">
-        <input type="submit" id='btnSubmit' value="Modificar"/>
+    <td>  
+      <form action="./?action=user_form_update" method="post">
+        <input type="submit" class="btn btn-success" name="id" value="Modificar - id: {{ item.id }}"> 
+        <input type="hidden" name="id" id="id" value= "{{ item.id }}">
       </form>
     </td>
-    <td> 
-      <form action="./?action=user_destroy">
-        <input type="submit" id='btnSubmit' value="Eliminar"/>
-      </form>
+   <td>  
+    <form action="./?action=user_destroy" method="post">
+      <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/>
+     </form>
     </td>
     <td> 
       <form action="">
