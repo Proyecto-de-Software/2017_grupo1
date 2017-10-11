@@ -83,11 +83,20 @@ class PacientListController extends PacientsController
   }
 }
 
-class PacientFormController extends PacientsController //modificacion
-
+class PacientEditController extends PacientsController
 {
   public function showView($args)
   {
     $this->getView()->show($this->getRepository()->getPacient($args['id']));
+  }
+}
+
+//baja
+class PacientDestroyedController extends PacientsController
+{
+  public function showView($args)
+  {
+    if ($this->getRepository()->delete($args['id']))
+      $this->getView()->show();
   }
 }

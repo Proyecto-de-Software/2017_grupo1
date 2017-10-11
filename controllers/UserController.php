@@ -41,7 +41,7 @@ class UserUpdatedController extends UserController
 {
   public function showView($args)
   {
-    if ($this->getRepository()->update($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name']))
+    if ($this->getRepository()->update($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name'], $args['id']))
       $this->getView()->show();
   }
 }
@@ -71,7 +71,7 @@ class UserListController extends UserController
 
 
 //baja
-class UserDestroyedController extends UserController 
+class UserDestroyedController extends UserController
 {
   public function showView($args)
   {
