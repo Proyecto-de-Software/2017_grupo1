@@ -1,4 +1,4 @@
-<?php
+0<?php
 class UserController
 {
   private $view;
@@ -59,7 +59,12 @@ class UserListController extends UserController
 {
   public function showView($args)
   {
-    $this->getView()->show($this->getRepository()->getAllActive());
+    if (empty($args['filter'])){
+      $this->getView()->show($this->getRepository()->getAllActive());
+    } else
+    { 
+      $this->getView()->show($this->getRepository()->getAllByFilter($args['filter']));
+    }
   }
 }
 
