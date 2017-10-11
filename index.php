@@ -11,7 +11,7 @@ function getFrontEndController()
   if (!isset($frontEndController)) {
     $userRepository = new UserRepository;
     $pacientsRepository = new PacientsRepository;
-    $frontEndController = new FrontEndController;
+    $frontEndController = new FrontEndController(new AppConfig());
 
     $frontEndController->addController('index', new IndexController(new IndexView));
     $frontEndController->addController('login', new LoginController(new LoginView));
@@ -51,9 +51,7 @@ if (isset($_SESSION))
 
 echo '<br>';
 
-if (isset($_GET['action'])) {
-	getFrontEndController()-> getController($_GET['action'])->showView($_POST);
-} else
-{
-	getFrontEndController()-> getController('index')->showView();
-}
+if (isset($_GET['action']))
+  getFrontEndController()->getController($_GET['action'])->showView($_POST);
+else
+  getFrontEndController()->getController('index')->showView([]);
