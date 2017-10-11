@@ -23,7 +23,7 @@ abstract class PDORepository
     return $connection->prepare($sql);
   }
 
-  protected function queryList($sql, $args)
+  protected function queryList($sql, $args = [])
   {
     $stmt = $this->newPreparedStmt($sql);
     $stmt->execute($args);
