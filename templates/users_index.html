@@ -6,6 +6,7 @@
   <tr>
     <td>
       <form action="./?action=users_index" method="post" id="searchform">
+
           <input type="text" placeholder="Buscar aqu&iacute;..." name="filter" id="filter">
           <button type= "submit" id='btnSubmit'> Buscar </button>
       </form>
@@ -14,8 +15,12 @@
        <form action="./?action=user_new" method="post">
           <button type= "submit" id='btnSubmit'> Crear usuario + </button>
       </form>
-
     </td>
+
+    <th> <form action="./?action=users_index" method="post" id="searchform">
+    <input type='checkbox' id='status' name='status' checked> Activos
+  </form>
+</th>
   </tr>
 </table>
 <br>

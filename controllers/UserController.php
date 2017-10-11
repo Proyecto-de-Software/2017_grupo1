@@ -59,6 +59,7 @@ class UserListController extends UserController
 {
   public function showView($args)
   {
+    
     if (empty($args['filter'])){
       $this->getView()->show($this->getRepository()->getAllActive());
     } else
