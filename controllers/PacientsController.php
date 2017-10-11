@@ -83,7 +83,7 @@ class PacientListController extends PacientsController
   }
 }
 
-class PacientFormController extends PacientsController
+class PacientEditController extends PacientsController
 {
   public function showView($args)
   {
