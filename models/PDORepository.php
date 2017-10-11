@@ -6,7 +6,7 @@ abstract class PDORepository
   const HOST = "localhost";
   const DB = "grupo1";
 
-  private function getConnection()
+  protected function getConnection()
   {
     $u = self::USERNAME;
     $p = self::PASSWORD;
