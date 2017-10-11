@@ -85,7 +85,7 @@
     </td>
    <td>  
     <form action="./?action=user_destroyed" method="post">
-      <input type="submit" onclick='confirm("Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
+      <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
       <input type="hidden" name="id" id="id" value= "{{ item.id }}">
      </form>
     </td>
