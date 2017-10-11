@@ -54,12 +54,32 @@ class UserFormController extends UserController //para el formulario de modifica
   }
 }
 
+
 //listado
 class UserListController extends UserController
 {
   public function showView($args)
   {
     $this->getView()->show($this->getRepository()->getAllActive());
+  }
+}
+
+class UserToggleStatusController
+{
+  private $userListController;
+  private $repository;
+
+  public function __construct($userListController, $repository)
+  {
+    $this->repository = $repository;
+    $this->userListController = $userListController;
+  }
+
+  public function showView($args)
+  {
+    var_dump($args);
+    $this->repository->toggleActive($args['id']);
+    $this->userListController->showView([]);
   }
 }
 
