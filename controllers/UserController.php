@@ -25,7 +25,7 @@ class UserController
     return $this->repository;
   }
 }
-
+//alta//
 class UserAddedController extends UserController 
 {
   public function showView($args) 
@@ -36,6 +36,7 @@ class UserAddedController extends UserController
   }
 }
 
+//modificacion//
 class UserUpdatedController extends UserController 
 {
   public function showView($args) 
@@ -53,10 +54,21 @@ class UserFormController extends UserController //para el formulario de modifica
   } 
 }
 
+//listado
 class UserListController extends UserController
 {
   public function showView($args)
   {
     $this->getView()->show($this->getRepository()->getAllActive());
+  }
+}
+
+
+class UserDestroyedController extends UserController 
+{
+  public function showView($args) 
+  {
+    if ($this->getRepository()->delete($args['id'])) 
+    $this->getView()->show(); 
   }
 }

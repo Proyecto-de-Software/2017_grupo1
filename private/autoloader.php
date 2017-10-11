@@ -21,14 +21,16 @@ require_once "./views/TwigView.php";
 require_once "./views/IndexView.php";
 require_once "./views/LoginView.php";
 require_once "./views/AdminView.php";
+
 require_once "./views/UsersView.php";
-require_once "./views/UserNewView.php";
-require_once "./views/UserAddedView.php";
-require_once "./views/UserFormView.php";
-require_once "./views/UserUpdatedView.php";
+require_once "./views/UserNewView.php"; //alta//
+require_once "./views/UserAddedView.php"; //alta//
+require_once "./views/UserFormView.php"; //modificacion//
+require_once "./views/UserUpdatedView.php"; //modificacion//
+require_once "./views/UserDestroyedView.php"; //baja
 
 require_once "./views/PacientViews.php";
-require_once "./views/PacientFormView.php";
-require_once "./views/PacientNewView.php";
-require_once "./views/PacientAddedView.php";
-require_once "./views/PacientUpdatedView.php";
+require_once "./views/PacientNewView.php"; //alta//
+require_once "./views/PacientAddedView.php";//alta//
+require_once "./views/PacientFormView.php"; //modificacion//
+require_once "./views/PacientUpdatedView.php";//modificacion//
