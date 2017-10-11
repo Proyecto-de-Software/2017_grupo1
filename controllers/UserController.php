@@ -26,23 +26,23 @@ class UserController
   }
 }
 //alta//
-class UserAddedController extends UserController 
+class UserAddedController extends UserController
 {
-  public function showView($args) 
+  public function showView($args)
   {
-    if ($this->getRepository()->create($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name'])) 
-    $this->getView()->show(); 
+    if ($this->getRepository()->create($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name']))
+      $this->getView()->show();
 
   }
 }
 
 //modificacion//
-class UserUpdatedController extends UserController 
+class UserUpdatedController extends UserController
 {
-  public function showView($args) 
+  public function showView($args)
   {
-    if ($this->getRepository()->update($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name'])) 
-    $this->getView()->show(); 
+    if ($this->getRepository()->update($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name']))
+      $this->getView()->show();
   }
 }
 
@@ -51,7 +51,7 @@ class UserFormController extends UserController //para el formulario de modifica
   public function showView($args)
   {
     $this->getView()->show($this->getRepository()->getUser($args['id']));
-  } 
+  }
 }
 
 //listado
@@ -63,12 +63,11 @@ class UserListController extends UserController
   }
 }
 
-
-class UserDestroyedController extends UserController 
+class UserDestroyedController extends UserController
 {
-  public function showView($args) 
+  public function showView($args)
   {
-    if ($this->getRepository()->delete($args['id'])) 
-    $this->getView()->show(); 
+    if ($this->getRepository()->delete($args['id']))
+      $this->getView()->show();
   }
 }
