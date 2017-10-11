@@ -4,7 +4,7 @@ class PacientsRepository extends PDORepository
   private $stmtDelete;
   private $stmtCreate;
   private $stmtUpdate;
-  private $stmtSelectPacient;
+
   private function queryToPacientArray($query)
   {
     $answer = [];
@@ -25,15 +25,14 @@ class PacientsRepository extends PDORepository
     return $answer;
   }
 
-public function __construct()
+  public function __construct()
   {
     $this->stmtDelete = $this->newPreparedStmt("DELETE FROM pacients WHERE id = ?");
     $this->stmtCreate = $this->newPreparedStmt("INSERT INTO pacients (first_name, last_name, birth_date, gender, doc_type,
                                                 dni, address, phone, id_medical_insurance)
                                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $this->stmtUpdate = $this->newPreparedStmt("UPDATE pacients SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, doc_type = ?, dni = ?, address = ?, phone = ?, id_medical_insurance = ?  WHERE id = ?");
-
-    $this->stmtSelectPacient = $this->newPreparedStmt("SELECT * FROM pacients WHERE id= ?");
+    $this->stmtUpdate = $this->newPreparedStmt("UPDATE pacients SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, doc_type = ?,
+                                                dni = ?, address = ?, phone = ?, id_medical_insurance = ?  WHERE id = ?");
   }
 
   public function getAll()
@@ -50,14 +49,15 @@ public function __construct()
   {
     return $this->stmtDelete->execute([$pacientId]);
   }
+
   public function update($first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $pacientId)
   {
     return $this->stmtUpdate->execute([$first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $pacientId]);
   }
- 
-public function getPacient($pacientId)
+
+  public function getPacient($pacientId)
   {
-   return $this->stmtSelectPacient->execute([$pacientId]);
+    return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients WHERE id = ?", [$pacientId]))[0];
   }
 }
 
