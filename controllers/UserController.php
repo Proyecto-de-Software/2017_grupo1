@@ -63,7 +63,7 @@ class UserListController extends UserController
   }
 }
 
-
+//baja
 class UserDestroyedController extends UserController 
 {
   public function showView($args) 
