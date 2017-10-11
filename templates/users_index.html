@@ -81,21 +81,22 @@
     {% elseif item.active == 0%}
       <td> Bloqueado </td>
     {% endif %}
-    <td>  
+    <td>
       <form action="./?action=user_form_update" method="post">
-        <input type="submit" class="btn btn-success" name="id" value="Modificar"> 
+        <input type="submit" class="btn btn-success" name="id" value="Modificar">
         <input type="hidden" name="id" id="id" value= "{{ item.id }}">
       </form>
     </td>
-   <td>  
+   <td>
     <form action="./?action=user_destroyed" method="post">
-      <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
+      <input type="submit" onclick='return confirm("¿Estás seguro?")' value="Eliminar" id="boton_borrar"/>
       <input type="hidden" name="id" id="id" value= "{{ item.id }}">
      </form>
     </td>
-    <td> 
-      <form action="">
-        <input type="submit" id='btnSubmit' value="Bloquear/Desbloquear"/>
+    <td>
+      <form action="./?action=user_toggle_status" method="post">
+        <input type="submit" onclick='return confirm("¿Estás seguro?")' id="boton_bloquear_desbloquear" value="Bloquear/Desbloquear"/>
+        <input type="hidden" name="id" id="id" value= "{{ item.id }}">
       </form>
     </td>
   </tr>

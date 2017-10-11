@@ -54,6 +54,7 @@ class UserRepository extends PDORepository
 
   public function toggleActive($userId)
   {
+      var_dump($userId);
     return $this->stmtToggleActive->execute([$userId]);
   }
 
