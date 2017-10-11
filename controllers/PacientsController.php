@@ -90,3 +90,13 @@ class PacientEditController extends PacientsController
     $this->getView()->show($this->getRepository()->getPacient($args['id']));
   }
 }
+
+//baja
+class PacientDestroyedController extends PacientsController
+{
+  public function showView($args)
+  {
+    if ($this->getRepository()->delete($args['id']))
+      $this->getView()->show();
+  }
+}
