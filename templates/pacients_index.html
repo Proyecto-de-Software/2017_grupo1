@@ -83,6 +83,7 @@
             <td>{{ item.phone }}</td>
             <td>
               <form action="./?action=pacient_form_update" method="post">
+<<<<<<< HEAD
                <input type="submit" class="btn btn-success" name="id" value="Modificar">
                <input type="hidden" name="id" id="id" value= "{{ item.id }}">
               </form>
@@ -92,6 +93,18 @@
               <input type="submit" class="btn btn-success" value="Eliminar" id="boton_borrar"/>
               </form>
                </td>
+=======
+               <input type="submit" class="btn btn-success" name="id" value="Modificar"> 
+               <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+              </form>
+            </td>
+            <td>  
+              <form action="./?action=pacient_destroyed" method="post">
+                 <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
+                  <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+               </form>
+             </td>
+>>>>>>> 448db4b4a183c1463acda7dba4248b70ad04235d
             </tr>
 
         {% endfor %}

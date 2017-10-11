@@ -34,3 +34,5 @@ require_once "./views/PacientNewView.php"; //alta//
 require_once "./views/PacientAddedView.php";//alta//
 require_once "./views/PacientFormView.php"; //modificacion//
 require_once "./views/PacientUpdatedView.php";//modificacion//
+require_once "./views/PacientDestroyedView.php"; //baja
+
