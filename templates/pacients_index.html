@@ -64,32 +64,11 @@
                     <input type="hidden" name="id" id="id" value= "{{ item.id }}">
                  </form>
                </td>
-
-            <td>{{ item.first_name }}</td>
-            <td>{{ item.last_name }}</td>
-            <td>{{ item.birth_date }}</td>
-            <td>{{ item.gender }}</td>
-            <td>{{ item.doc_type }}</td>
-            <td>{{ item.dni }}</td>
-            <td>{{ item.address }}</td>
-            <td>{{ item.phone }}</td>
-            <td>
-              <form action="./?action=pacient_form_update" method="post">
-               <input type="submit" class="btn btn-primary" name="id" value="Modificar">
-               <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-              </form>
-            </td>
-            <td>
-              <form action="./?action=pacient_destroyed" method="post">
-                 <input type="submit" class="btn btn-primary" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
-                  <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-               </form>
                <td>  
               <form action="./?action=pacient_demographic_data" method="post">
                  <input type="submit" class="btn btn-primary" value="Datos Demogr&aacute;ficos" id="boton_datos_demograficos"/>
                   <input type="hidden" name="id" id="id" value= "{{ item.id }}">
                </form>
-             </td>
              </td>
             </tr>
         {% endfor %}
