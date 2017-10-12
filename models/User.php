@@ -68,4 +68,9 @@ class User
   {
     return $this->email;
   }
+
+  public function getFull_Name()
+  {
+    return $this->getFirst_Name() . ',' . $this->getLast_Name();
+  }
 }
