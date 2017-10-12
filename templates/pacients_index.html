@@ -19,57 +19,23 @@
   </tr>
 </table>
 <br>
-<div class="datagrid">
-<table class='list'>
-   <thead>
-<tr  class="alt">
 
-  <td><strong>Nombre</strong></td>
-  <td><strong>Apellido</strong></td>
-  <td><strong>Fecha de Nacimiento</strong></td>
-  <td><strong>Genero</strong></td>
-  <td><strong>Tipo Doc. </strong></td>
-  <td><strong>DNI</strong></td>
-  <td><strong>Direcci&oacute;n</strong></td>
-  <td><strong>Tel&eacute;fono</strong></td>
-
-</tr>
+<div class="container">
+ <div class="table-responsive">          
+  <table class="table table-condensed">
+ <thead>
+      <tr>
+  <th>Nombre</th>
+  <th>Apellido</th>
+  <th>Fecha de Nacimiento</th>
+  <th>Genero</th>
+  <th>Tipo Doc. </th>
+  <th>DNI<th>
+  <th>Direcci&oacute;n</th>
+  <th>Tel&eacute;fono</th>
 
 </thead>
-<tfoot>
-  <tr>
-    <td colspan="10">
-      <br>
-      <div id="paging">
-        <ul>
-          <li>
-            <a href="#">
-              <span>Anterior</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="active">
-              <span>1</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span>2</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span>3</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span>Siguiente</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </tr>
+
   </tfoot>
         {% for item in pacients%}
             <tr>
@@ -99,4 +65,10 @@
 
 </table>
 
+
+<style>
+div.table-responsive {
+  background: white;
+}
+</style>
 {% endblock %}
