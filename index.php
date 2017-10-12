@@ -11,14 +11,11 @@ function getFrontEndController()
   if (!isset($frontEndController)) {
     $userRepository = new UserRepository;
     $pacientsRepository = new PacientsRepository;
-<<<<<<< HEAD
     $demographicdataRepository = new DemographicDataRepository;
     $frontEndController = new FrontEndController;
-=======
     $appConfig = new AppConfig();
     TwigView::setAppConfig($appConfig);
     $frontEndController = new FrontEndController($appConfig);
->>>>>>> 61c1a7b1d7983e89af692f700016854d91ff4a7a
 
     $frontEndController->addController('index', new IndexController(new IndexView));
     $frontEndController->addController('login', new LoginController(new LoginView));
