@@ -49,7 +49,7 @@ class UserRepository extends PDORepository
 
   public function getAllByFilter($filter)
   {
-    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE (first_name LIKE '%$filter%' OR last_name LIKE '%$filter%' OR email LIKE '%$filter%') ORDER BY last_name, first_name ASC", [$filter]));
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE (first_name LIKE '%$filter%' OR last_name LIKE '%$filter%' OR email LIKE '%$filter%' OR username LIKE '%$filter%') ORDER BY last_name, first_name ASC", [$filter]));
   }
 
   public function toggleActive($userId)
