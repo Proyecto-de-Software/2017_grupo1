@@ -34,11 +34,6 @@ p.left-footer-paragraph {
   margin: 0.3%;
 }
 
-/** link con el mail de contacto */
-a.contact-mail {
-  float: left;
-  margin: 0.3%;
-}
 
 
 /** parrafo ubicado a la derecha en el pie de pagina */
