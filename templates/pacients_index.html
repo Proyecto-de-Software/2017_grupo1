@@ -92,6 +92,12 @@
                  <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
                   <input type="hidden" name="id" id="id" value= "{{ item.id }}">
                </form>
+               <td>  
+              <form action="./?action=pacient_demographic_data" method="post">
+                 <input type="submit" class="btn btn-success" value="Datos Demogr&aacute;ficos" id="boton_datos_demograficos"/>
+                  <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+               </form>
+             </td>
              </td>
             </tr>
 
