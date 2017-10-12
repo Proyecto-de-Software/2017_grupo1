@@ -1,5 +1,5 @@
 <?php
-class PacientsController extends Controller
+class PacientDemographicDataController extends Controller
 {
   private $view;
   private $repository;
@@ -26,20 +26,12 @@ class PacientsController extends Controller
   }
 }
 
-class PacientAddedController extends PacientsController
+class DemographicDataAddedController extends PacientDemographicDataController
 {
   private function canCreate($args)
   {
     return $this->getRepository()->create(
-      $args['first_name'],
-      $args['last_name'],
-      $args['birth_date'],
-      $args['gender'],
-      $args['doc_type'],
-      $args['dni'],
-      $args['address'],
-      $args['phone'],
-      $args['id_medical_insurance'],
+      $args['id_pacient'],
       $args['has_electricity'],
       $args['has_pet'],
       $args['has_refrigerator'],
@@ -56,27 +48,18 @@ class PacientAddedController extends PacientsController
   }
 }
 
-class PacientUpdatedController extends PacientsController
+class DemographicDataUpdatedController extends PacientDemographicDataController
 {
   private function canUpdate($args)
   {
     return $this->getRepository()->update(
-      $args['first_name'],
-      $args['last_name'],
-      $args['birth_date'],
-      $args['gender'],
-      $args['doc_type'],
-      $args['dni'],
-      $args['address'],
-      $args['phone'],
-      $args['id_medical_insurance'],
+      $args['id_pacient'],
       $args['has_electricity'],
       $args['has_pet'],
       $args['has_refrigerator'],
       $args['heating_type'],
       $args['home_type'],
-      $args['water_type'],
-      $args['id']
+      $args['water_type']
     );
   }
 
@@ -87,28 +70,20 @@ class PacientUpdatedController extends PacientsController
   }
 }
 
-class PacientListController extends PacientsController
+class DemographicDataListController extends PacientDemographicDataController
 {
   public function showView($args)
   {
-    $this->getView()->show($this->getRepository()->getAll());
+    var_dump($args);
+    $this->getView()->show($this->getRepository()->getDemographicData($args['id']));
   }
 }
 
-class PacientEditController extends PacientsController
+class DemographicDataDestroyedController extends PacientDemographicDataController
 {
   public function showView($args)
   {
-    $this->getView()->show($this->getRepository()->getPacient($args['id']));
-  }
-}
-
-//baja
-class PacientDestroyedController extends PacientsController
-{
-  public function showView($args)
-  {
-    if ($this->getRepository()->delete($args['id']))
+    if ($this->getRepository()->delete($args['id_pacient']))
       $this->getView()->show();
   }
 }

@@ -54,7 +54,6 @@ class UserRepository extends PDORepository
 
   public function toggleActive($userId)
   {
-      var_dump($userId);
     return $this->stmtToggleActive->execute([$userId]);
   }
 
@@ -76,6 +75,21 @@ class UserRepository extends PDORepository
   public function getUser($userId)
   {
     return $this->queryToUserArray($this->queryList("SELECT * FROM users where id = ?", [$userId]))[0];
+  }
+
+  private function queryUser($username, $password)
+  {
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users where username = ? AND password = ? and active = 1", [$username, $password]));
+  }
+
+  public function containsUser($username, $password)
+  {
+    return count($this->queryUser($username, $password)) > 0;
+  }
+
+  public function findUser($username, $password)
+  {
+    return $this->queryUser($username, $password)[0];
   }
 }
 
