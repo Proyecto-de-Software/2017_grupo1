@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 require_once "./private/autoloader.php";
 
+session_start();
 $frontEndController = NULL;
 
 function getFrontEndController()
@@ -11,12 +12,20 @@ function getFrontEndController()
   if (!isset($frontEndController)) {
     $userRepository = new UserRepository;
     $pacientsRepository = new PacientsRepository;
+
+    $indexView = new IndexView();
+    $loginView = new LoginView();
     $appConfig = new AppConfig();
+
+    $indexController = new IndexController($indexView);
+
     TwigView::setAppConfig($appConfig);
     $frontEndController = new FrontEndController($appConfig);
 
-    $frontEndController->addController('index', new IndexController(new IndexView));
-    $frontEndController->addController('login', new LoginController(new LoginView));
+    $frontEndController->addController('index', $indexController);
+    $frontEndController->addController('login', new LoginController($loginView));
+    $frontEndController->addController('do-login', new DoLoginController(new $indexView, $loginView, $userRepository));
+    $frontEndController->addController('do-logout', new DoLogoutController($indexController));
     $frontEndController->addController('admin', new AdminController(new AdminView));
 
     $userListController = new UserListController(new UserListView, $userRepository);
@@ -35,9 +44,8 @@ function getFrontEndController()
     $frontEndController->addController('pacient_updated', new PacientUpdatedController(new PacientUpdatedView, $pacientsRepository));
     $frontEndController->addController('pacient_destroyed', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
     $frontEndController->addController('pacient_demographic_data', new PacientsController(new PacientDemographicDataView, $pacientsRepository));
-
-
   }
+
   return $frontEndController;
 }
 
@@ -51,12 +59,14 @@ if (isset($_GET)) {
   echo '<br>';
 }
 
-if (isset($_SESSION))
+if (isset($_SESSION)) {
   echo '$_SESSION ----->', var_dump($_SESSION);
+  echo session_id();
+}
 
 echo '<br>';
 
 if (isset($_GET['action']))
   getFrontEndController()->getController($_GET['action'])->showView($_POST);
 else
-  getFrontEndController()->getController('index')->showView([]);
+  getFrontEndController()->getController('index')->showView($_POST);

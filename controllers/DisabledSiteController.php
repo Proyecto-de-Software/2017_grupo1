@@ -1,5 +1,5 @@
 <?php
-class DisabledSiteController
+class DisabledSiteController extends Controller
 {
   private $view;
 

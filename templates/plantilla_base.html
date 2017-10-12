@@ -11,7 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- -->
 
-        {% block head%}{% endblock %}
+        {% block head%} {% endblock %}
         <meta charset="UTF-8">
         <title>{{ config.title }}</title>
     </head>
@@ -37,21 +37,24 @@
 
      {% block dropdown %}   {% endblock %}
 
-   
-        <li><a href="./?action=pacients_index">Pacientes</a></li> 
+      {% if session.IsLoggedIn %}
+        <li><a href="./?action=pacients_index">Pacientes</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Administraci&oacute;n <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="./?action=users_index">Usuarios</a> </li>
                 <li><a href="#Roles">Roles</a> </li>
                 <li><a href="#Permisos">Permisos</a> </li>
             </ul>
-        </li> 
-  
+        </li>
+      {% endif %}
 
     </ul>
     <ul class="nav navbar-nav navbar-right">
-     <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+     {% if session.IsLoggedIn %}
+      <li><a href=./?action=do-logout><span class="glyphicon glyphicon-log-out"></span> Cerrar sesión</a></li>
+     {% else %}
       <li><a href=./?action=login><span class="glyphicon glyphicon-log-in"></span> Iniciar sesión</a></li>
+    {% endif %}
     </ul>
   </div>
 </nav>
@@ -60,7 +63,7 @@
    {% block body %}
    {% endblock %}
 
-       
+
    <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <p class="footer" align="center"> Proyecto de Software 2017 - Hospital Dr. Ricardo Gutiérrez - v 0.1.0</p>
     <p  align="center"> <a class="contact-mail"  href="mailto:{{ config.contact_mail }}"> Mail de contacto </a> </p>
@@ -83,5 +86,5 @@ function cancelar() {
 body {
   color: black;
   background-color: #2C8D89;
-} 
+}
 </style>

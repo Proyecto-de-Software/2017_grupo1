@@ -1,5 +1,5 @@
 0<?php
-class UserController
+class UserController extends Controller
 {
   private $view;
   private $repository;

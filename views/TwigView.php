@@ -3,6 +3,7 @@ abstract class TwigView
 {
   private static $twig;
   private static $appConfig;
+  private static $session;
 
   private static function getTwig()
   {
@@ -19,11 +20,17 @@ abstract class TwigView
     return self::$appConfig;
   }
 
+  private function getSession()
+  {
+    return new Session();
+  }
+
   protected abstract function getTemplateFile();
 
   protected function render($args = [])
   {
     $args['config'] = self::getAppConfig();
+    $args['session'] = $this->getSession();
     echo self::getTwig()->render($this->getTemplateFile(), $args);
   }
 

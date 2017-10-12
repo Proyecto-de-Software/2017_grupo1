@@ -1,13 +1,14 @@
 <?php
-class AdminController
+class AdminController extends Controller
 {
   private $view;
 
-  public function __construct($adminView) {
+  public function __construct($adminView)
+  {
     $this->view = $adminView;
   }
 
-  public function showView()
+  public function showView($args)
   {
     $this->view->show();
   }
