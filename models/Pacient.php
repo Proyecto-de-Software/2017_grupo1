@@ -54,7 +54,11 @@ class Pacient
     $this->heating_type = $heating_type;
     $this->home_type = $home_type;
     $this->water_type = $water_type;
-  
+  }
+
+  public function getFull_Name()
+  {
+    return $this->getFirst_Name() .','. $this->getLast_Name();
   }
 
   public function getId()
