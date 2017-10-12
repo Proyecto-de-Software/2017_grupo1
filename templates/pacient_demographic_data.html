@@ -4,48 +4,39 @@
 <h1 align="center"> Datos Demogr&aacute;ficos</h1>  
 
 <table align="center">
-  <tr>
-    <td>
-       <form action="./?action=pacient_new" method="post">
-          <button type= "submit" id='btnSubmit'> Agregar datos + </button>
-      </form>
-
-    </td>
-  </tr>
 </table>
 <br>
-<div class="datagrid">
-<table class='list'>
-   <thead>
-<tr  class="alt">
 
-  <td><strong>ID</strong></td>
-  <td><strong>Electricidad?</strong></td>
-  <td><strong>Mascota(s)?</strong></td>
-  <td><strong>Heladera?</strong></td>
-  <td><strong>Tipo de Calefaccion? </strong></td>
-  <td><strong>Tipo de Vivienda?</strong></td>
-  <td><strong>Tipo de Agua?</strong></td>
-
-</tr>
+<div class="container">
+ <div class="table-responsive">          
+  <table class="table table-condensed">
+ <thead>
+      <tr>
+  <th>Tiene Heladera?</th>
+  <th>Tiene Mascota(s)?</th>
+  <th>Tiene Electricidad?</th>
+  <th>Tipo de Calefaccion</th>
+  <th>Tipo de Casa </th>
+  <th>Tipo de Agua<th>
 
 </thead>
-        {% for i in demographic_data %}
-            <tr> 
-            <td>{{ i.id_pacient }}</td>
-            <td>{{ i.has_electricity }}</td>
-            <td>{{ i.has_pet }}</td>
-            <td>{{ i.has_refrigerator }}</td>
-            <td>{{ i.heating_type }}</td>
-            <td>{{ i.home_type }}</td>
-            <td>{{ i.water_type }}</td>
-            <td>  
+
+  </tfoot>
+            <tr>
+            <td> {{ pacients.id }}
+            <td>{{ pacients.has_refrigerator }}</td>
+            <td>{{ pacients.has_pet }}</td>
+            <td>{{ pacients.has_electricity }}</td>
+            <td>{{ pacients.heating_type }}</td>
+            <td>{{ pacients.home_type }}</td>
+            <td>{{ pacients.water_type }}</td>
+            <td>
               <form action="./?action=pacient_form_update" method="post">
-               <input type="submit" class="btn btn-success" name="id" value="Modificar"> 
+               <input type="submit" class="btn btn-success" name="id" value="Modificar">
                <input type="hidden" name="id" id="id" value= "{{ item.id }}">
               </form>
             </td>
-            <td>  
+            <td>
               <form action="./?action=pacient_destroyed" method="post">
                  <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
                   <input type="hidden" name="id" id="id" value= "{{ item.id }}">
@@ -53,8 +44,12 @@
              </td>
             </tr>
 
-        {% endfor %}
-
 </table>
 
+
+<style>
+div.table-responsive {
+  background: white;
+}
+</style>
 {% endblock %}
