@@ -6,8 +6,8 @@ class LoginView extends TwigView
     return "login.html";
   }
 
-  public function show()
+  public function show($showLoginError = false)
   {
-    $this->render();
+    $this->render(array('showLoginError' => $showLoginError));
   }
 }

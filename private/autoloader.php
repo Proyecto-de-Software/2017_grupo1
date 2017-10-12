@@ -1,15 +1,14 @@
 <?php
 require_once "./vendor/Twig/lib/Twig/Autoloader.php";
+
+require_once "./controllers/Controller.php";
 require_once "./controllers/FrontEndController.php";
 require_once "./controllers/IndexController.php";
 require_once "./controllers/UserController.php";
 require_once "./controllers/LoginController.php";
 require_once "./controllers/AdminController.php";
 require_once "./controllers/PacientsController.php";
-
 require_once "./controllers/PacientDemographicDataController.php";
-
-
 require_once "./controllers/DisabledSiteController.php";
 
 require_once "./models/PDORepository.php";
@@ -22,7 +21,7 @@ require_once "./models/DemographicDataRepository.php";
 
 
 require_once "./models/AppConfig.php";
-
+require_once "./private/Session.php";
 
 require_once "./views/TwigView.php";
 require_once "./views/IndexView.php";

@@ -1,5 +1,5 @@
 <?php
-class PacientsController
+class PacientsController extends Controller
 {
   private $view;
   private $repository;

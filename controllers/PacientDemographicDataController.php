@@ -1,5 +1,5 @@
 <?php
-class PacientDemographicDataController
+class PacientDemographicDataController extends Controller
 {
   private $view;
   private $repository;
@@ -70,7 +70,6 @@ class DemographicDataUpdatedController extends PacientDemographicDataController
   }
 }
 
-
 class DemographicDataListController extends PacientDemographicDataController
 {
   public function showView($args)
@@ -80,7 +79,6 @@ class DemographicDataListController extends PacientDemographicDataController
   }
 }
 
-//baja
 class DemographicDataDestroyedController extends PacientDemographicDataController
 {
   public function showView($args)

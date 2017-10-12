@@ -1,5 +1,5 @@
 <?php
-class IndexController
+class IndexController extends Controller
 {
   private $view;
 
@@ -7,7 +7,7 @@ class IndexController
     $this->view = $indexView;
   }
 
-  public function showView()
+  public function showView($args)
   {
     $this->view->show();
   }
