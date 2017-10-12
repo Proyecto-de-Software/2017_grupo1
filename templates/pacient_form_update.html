@@ -1,118 +1,144 @@
 {% extends 'plantilla_base.html' %}
 
 {% block body%}
-
-
-<div id="modificacion-paciente" align="center">
-  <h1> Actualizar Paciente </h1>
-   <form action="./?action=pacient_updated" class="form-horizontal" method="post">
-    <div class="container">
+<form action="./?action=pacient_updated" method='post'>
+  <h2 align="center">Actualizar paciente</h2>
+   <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div align="center">
                 <div class="well well-sm">
-                        <fieldset>
+                    <form class="form-horizontal" method="post">
 
-                            <div class="form-group">
+                        <fieldset>
+                          <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                 <div class="col-md-8">
                                    Nombre:
-                                      <input id="first_name" name="first_name" type="text" value="{{ pacient.first_name }} "  class="form-control" required>
+                                    <input id="first_name" name="first_name" type="text" value="{{ pacient.first_name }}"class="form-control" required >
                                 </div>
                             </div>
+                            </fieldset>
                             <br>
+
+                            <fieldset>
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                 <div class="col-md-8">
                                    Apellido:
-                                    <input id="last_name" name="last_name" type="text" value="{{ pacient.last_name }} " class="form-control" required>
+                                    <input id="last_name" name="last_name" type="text" value="{{ pacient.last_name }}" class="form-control" required>
                                 </div>
                             </div>
+                            </fieldset>
                             <br>
+
+                            <fieldset>
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                    Fecha de Nacimiento:
-                                    <input id="fecha_de_nacimiento" name="birth_date" type="date" value=" {{ pacient.birth_date }}" class="form-control" required>
+                                    <input id="birth_date" name="birth_date" type="date" value="{{ pacient.birth_date }}" class="form-control" required>
                                 </div>
                             </div>
-
+                            </fieldset>
                             <br>
+                            
+                            <fieldset>
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                 <div class="col-md-8">
                                   Sexo:
-                                     <select name="gender" value="gender" required>
+                                     <select name="gender" required>
                                           <option value="F">Femenino</option>
                                           <option value="M">Masculino</option>
-                                    </select>
+                                    </select> 
                                 </div>
                             </div>
+                            </fieldset>
                             <br>
+
+                            <fieldset>
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                     Tipo de Documento:
-                                      <select name="doc_type" value="doc_type" required >
+                                      <select name="doc_type" required >
                                           <option value="Libreta electoral o DNI">L.E/DNI</option>
                                           <option value="Carnet de extranjeria">CARNET EXT.</option>
                                           <option value="Reg. unico de contribuyentes">RUC</option>
                                           <option value="Pasaporte">PASAPORTE</option>
-                                    </select>
+                                    </select> 
                                 </div>
                             </div>
+                            </fieldset>
                             <br>
+
+                            <fieldset>
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                  Numero de Documento:
-                                   <input id="documento" name="dni" type="text" value=" {{ pacient.dni }}" class="form-control" required>
+                                   <input id="dni" name="dni" type="numeric" value="{{ pacient.dni }}" class="form-control" required>
                                 </div>
                             </div>
+                            </fieldset>
                             <br>
+
+                            <fieldset>
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                  Domicilio:
-                                   <input id="domicilio" name="address" type="text" value="{{ pacient.address}} " class="form-control" required>
+                                   <input id="address" name="address" type="text" value="{{ pacient.address }}" class="form-control" required>
                                 </div>
                             </div>
+                            </fieldset>
                             <br>
+
+                            <fieldset>
                              <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                  Tel/Cel:
-                                   <input id="telefono" name="phone" type="text" value="{{ pacient.phone }}" class="form-control" required>
+                                   <input id="phone" name="phone" type="text" value="{{ pacient.phone }}" class="form-control" required>
                                 </div>
                             </div>
+                            </fieldset>
                             <br>
+
+                            <fieldset>
                              <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                 <div class="col-md-8">
                                     Obra Social:
-                                      <select name="id_medical_insurance" value="id_medical_insurance">
+                                      <select name="id_medical_insurance">
                                           <option value="">-</option>
                                           <option value="Ioma">IOMA</option>
                                           <option value="Osecac">OSECAC</option>
                                           <option value="Osde">OSDE</option>
                                           <option value="Medicus">Medicus</option>
-                                    </select>
+                                    </select> 
                                 </div>
-                            </div>
-                            <input type="hidden" name="id" id="id" value={{ pacient.id }}>
+                              </div>
+                            </fieldset>
                             <br>
 
+                            <input type="hidden" id='id' name='id' value={{ pacient.id }}> 
+                            <fieldset>
                             <div class="form-group">
                                 <div class="col-md-12 text-center">
-                                  <button type="submit" id='btnSubmit'>Actualizar paciente</button>
-
+                                    <button type="submit"  id='btnSubmit'>Agregar paciente</button>
                                 </div>
                             </div>
                         </fieldset>
-
-
-                    </form>
- </div>
- </td>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+<br>
+<br>
 
 {% endblock %}
 

@@ -1,29 +1,25 @@
 {% extends 'plantilla_base.html' %}
+
 {% block body%}
 
 <h1 align="center">Listado de Usuarios</h1>
-<table align="center">
-  <tr>
-    <td>
-      <form action="./?action=users_index" method="post" id="searchform">
 
-          <input type="text" placeholder="Buscar aqu&iacute;..." name="filter" id="filter">
-          <button type= "submit" id='btnSubmit'> Buscar </button>
-      </form>
-    </td>
-    <td>
-       <form action="./?action=user_new" method="post">
-          <button type= "submit" id='btnSubmit'> Crear usuario + </button>
-      </form>
-    </td>
-
-    <th> <form action="./?action=users_index" method="post" id="searchform">
-    <input type='checkbox' id='status' name='status' checked> Activos
-  </form>
-</th>
-  </tr>
-</table>
-<br>
+<div class="container">
+ <div class="table-responsive">          
+  <table class="table table-condensed">
+    <thead>
+    <tr>
+         &nbsp; <form action="#" id="searchform">
+        <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
+           &nbsp; 
+           <button type= "submit" id='btnSubmit'> Buscar </button>
+         </form>
+        &nbsp; 
+          <form action="./?action=user_new" method="post">
+            <button type= "submit" id='btnSubmit'> Agregar usuario <span class="glyphicon glyphicon-pencil"></span> </button>
+          </form>
+      
+    </tr>
 
 <div class="container">
  <div class="table-responsive">          
@@ -51,19 +47,19 @@
         {% endif %}
         <td>
           <form action="./?action=user_form_update" method="post">
-            <input type="submit" class="btn btn-success" name="id" value="Modificar">
+            <input type="submit" class="btn btn-primary" name="id" value="Modificar">
             <input type="hidden" name="id" id="id" value= "{{ item.id }}">
           </form>
         </td>
        <td>
         <form action="./?action=user_destroyed" method="post">
-          <input type="submit" onclick='return confirm("¿Estás seguro?")' value="Eliminar" id="boton_borrar"/>
+          <input type="submit" class="btn btn-primary"  onclick='return confirm("¿Estás seguro?")' value="Eliminar" id="boton_borrar"/>
           <input type="hidden" name="id" id="id" value= "{{ item.id }}">
          </form>
         </td>
         <td>
           <form action="./?action=user_toggle_status" method="post">
-            <input type="submit" onclick='return confirm("¿Estás seguro?")' id="boton_bloquear_desbloquear" value="Bloquear/Desbloquear"/>
+            <input type="submit" class="btn btn-primary" onclick='return confirm("¿Estás seguro?")' id="boton_bloquear_desbloquear" value="Bloquear/Desbloquear"/>
             <input type="hidden" name="id" id="id" value= "{{ item.id }}">
           </form>
         </td>

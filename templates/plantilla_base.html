@@ -24,8 +24,20 @@
       <a class="navbar-brand" href="#">Hospital Dr. Ricardo Gutiérrez</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="./?action=index" >Inicio</a></li>
+      <li><a href="./?action=index"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
       {% block dropdown %}   {% endblock %}
+
+   
+        <li><a href="./?action=pacients_index">Pacientes</a></li> 
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Administraci&oacute;n <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="./?action=users_index">Usuarios</a> </li>
+                <li><a href="#Roles">Roles</a> </li>
+                <li><a href="#Permisos">Permisos</a> </li>
+            </ul>
+        </li> 
+  
+
     </ul>
     <ul class="nav navbar-nav navbar-right">
      {% if session.IsLoggedIn %}
@@ -37,7 +49,6 @@
   </div>
 </nav>
 
-   <hr class= "separatingStripe">
 
    {% block body %}
    {% endblock %}
