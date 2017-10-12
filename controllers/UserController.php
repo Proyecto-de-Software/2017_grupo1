@@ -25,6 +25,7 @@ class UserController
     return $this->repository;
   }
 }
+
 //alta//
 class UserAddedController extends UserController
 {
@@ -60,11 +61,11 @@ class UserListController extends UserController
 {
   public function showView($args)
   {
-    
+
     if (empty($args['filter'])){
       $this->getView()->show($this->getRepository()->getAllActive());
     } else
-    { 
+    {
       $this->getView()->show($this->getRepository()->getAllByFilter($args['filter']));
     }
   }
@@ -83,12 +84,10 @@ class UserToggleStatusController
 
   public function showView($args)
   {
-    var_dump($args);
     $this->repository->toggleActive($args['id']);
     $this->userListController->showView([]);
   }
 }
-
 
 //baja
 class UserDestroyedController extends UserController
