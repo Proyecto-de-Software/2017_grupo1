@@ -12,7 +12,6 @@ function getFrontEndController()
     $userRepository = new UserRepository;
     $pacientsRepository = new PacientsRepository;
     $demographicdataRepository = new DemographicDataRepository;
-    $frontEndController = new FrontEndController;
     $appConfig = new AppConfig();
     TwigView::setAppConfig($appConfig);
     $frontEndController = new FrontEndController($appConfig);
