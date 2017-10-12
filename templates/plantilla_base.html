@@ -11,7 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- -->
 
-        {% block head%}{% endblock %}
+        {% block head%} {% endblock %}
         <meta charset="UTF-8">
         <title>{{ config.title }}</title>
     </head>
@@ -27,16 +27,16 @@
       <li><a href="./?action=index"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
       {% block dropdown %}   {% endblock %}
 
-   
-        <li><a href="./?action=pacients_index">Pacientes</a></li> 
+      {% if session.IsLoggedIn %}
+        <li><a href="./?action=pacients_index">Pacientes</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Administraci&oacute;n <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="./?action=users_index">Usuarios</a> </li>
                 <li><a href="#Roles">Roles</a> </li>
                 <li><a href="#Permisos">Permisos</a> </li>
             </ul>
-        </li> 
-  
+        </li>
+      {% endif %}
 
     </ul>
     <ul class="nav navbar-nav navbar-right">
