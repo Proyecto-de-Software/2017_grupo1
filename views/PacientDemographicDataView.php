@@ -6,8 +6,9 @@ class PacientDemographicDataView extends TwigView
     return "pacient_demographic_data.html";
   }
 
-  public function show($demographic_data)
+  public function show($pacient)
   {
-    $this->render(array('data' => $demographic_data));
+    echo $pacient->getFull_Name();
+    $this->render(array('pacient' => $pacient));
   }
 }

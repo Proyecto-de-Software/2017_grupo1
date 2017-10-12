@@ -33,7 +33,7 @@ class DoLoginController extends Controller
     {
       $user = $this->userRepository->findUser($args['username'], $args['password']);
       $_SESSION['userId'] = $user->getId();
-      $_SESSION['userName'] = $user->getFirst_Name() + ',' + $user->getLast_Name();
+      $_SESSION['userName'] = $user->getFull_Name();
       $this->indexView->show();
     }
     else

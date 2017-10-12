@@ -1,14 +1,14 @@
 {% extends 'plantilla_base.html' %}
 {% block body%}
 
-<h1 align="center"> Datos Demogr&aacute;ficos</h1>  
+<h1 align="center"> Datos Demogr&aacute;ficos de {{ pacient.getFull_Name() }} </h1>
 
 <table align="center">
 </table>
 <br>
 
 <div class="container">
- <div class="table-responsive">          
+ <div class="table-responsive">
   <table class="table table-condensed">
  <thead>
       <tr>
@@ -18,31 +18,29 @@
   <th>Tipo de Calefaccion</th>
   <th>Tipo de Casa </th>
   <th>Tipo de Agua<th>
-
 </thead>
 
   </tfoot>
-            <tr>
-            <td> {{ pacients.id }}
-            <td>{{ pacients.has_refrigerator }}</td>
-            <td>{{ pacients.has_pet }}</td>
-            <td>{{ pacients.has_electricity }}</td>
-            <td>{{ pacients.heating_type }}</td>
-            <td>{{ pacients.home_type }}</td>
-            <td>{{ pacients.water_type }}</td>
-            <td>
-              <form action="./?action=pacient_form_update" method="post">
-               <input type="submit" class="btn btn-success" name="id" value="Modificar">
-               <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-              </form>
-            </td>
-            <td>
-              <form action="./?action=pacient_destroyed" method="post">
-                 <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
-                  <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-               </form>
-             </td>
-            </tr>
+    <tr>
+    <td>{{ pacient.has_refrigerator }}</td>
+    <td>{{ pacient.has_pet }}</td>
+    <td>{{ pacient.has_electricity }}</td>
+    <td>{{ pacient.heating_type }}</td>
+    <td>{{ pacient.home_type }}</td>
+    <td>{{ pacient.water_type }}</td>
+    <td>
+      <form action="./?action=pacient_form_update" method="post">
+        <input type="submit" class="btn btn-success" name="id" value="Modificar">
+        <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+      </form>
+    </td>
+    <td>
+      <form action="./?action=pacient_destroyed" method="post">
+          <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
+          <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+        </form>
+      </td>
+    </tr>
 
 </table>
 
