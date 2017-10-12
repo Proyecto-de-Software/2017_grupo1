@@ -1,0 +1,60 @@
+{% extends 'plantilla_base.html' %}
+{% block body%}
+
+<h1 align="center"> Datos Demogr&aacute;ficos</h1>  
+
+<table align="center">
+  <tr>
+    <td>
+       <form action="./?action=pacient_new" method="post">
+          <button type= "submit" id='btnSubmit'> Agregar datos + </button>
+      </form>
+
+    </td>
+  </tr>
+</table>
+<br>
+<div class="datagrid">
+<table class='list'>
+   <thead>
+<tr  class="alt">
+
+  <td><strong>ID</strong></td>
+  <td><strong>Electricidad?</strong></td>
+  <td><strong>Mascota(s)?</strong></td>
+  <td><strong>Heladera?</strong></td>
+  <td><strong>Tipo de Calefaccion? </strong></td>
+  <td><strong>Tipo de Vivienda?</strong></td>
+  <td><strong>Tipo de Agua?</strong></td>
+
+</tr>
+
+</thead>
+        {% for i in demographic_data %}
+            <tr> 
+            <td>{{ i.id_pacient }}</td>
+            <td>{{ i.has_electricity }}</td>
+            <td>{{ i.has_pet }}</td>
+            <td>{{ i.has_refrigerator }}</td>
+            <td>{{ i.heating_type }}</td>
+            <td>{{ i.home_type }}</td>
+            <td>{{ i.water_type }}</td>
+            <td>  
+              <form action="./?action=pacient_form_update" method="post">
+               <input type="submit" class="btn btn-success" name="id" value="Modificar"> 
+               <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+              </form>
+            </td>
+            <td>  
+              <form action="./?action=pacient_destroyed" method="post">
+                 <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
+                  <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+               </form>
+             </td>
+            </tr>
+
+        {% endfor %}
+
+</table>
+
+{% endblock %}

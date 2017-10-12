@@ -39,7 +39,13 @@ class PacientAddedController extends PacientsController
       $args['dni'],
       $args['address'],
       $args['phone'],
-      $args['id_medical_insurance']
+      $args['id_medical_insurance'],
+      $args['has_electricity'],
+      $args['has_pet'],
+      $args['has_refrigerator'],
+      $args['heating_type'],
+      $args['home_type'],
+      $args['water_type']
     );
   }
 
@@ -64,6 +70,12 @@ class PacientUpdatedController extends PacientsController
       $args['address'],
       $args['phone'],
       $args['id_medical_insurance'],
+      $args['has_electricity'],
+      $args['has_pet'],
+      $args['has_refrigerator'],
+      $args['heating_type'],
+      $args['home_type'],
+      $args['water_type'],
       $args['id']
     );
   }

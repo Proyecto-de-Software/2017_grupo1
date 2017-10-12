@@ -34,6 +34,9 @@ function getFrontEndController()
     $frontEndController->addController('pacient_form_update', new PacientEditController(new PacientsFormView, $pacientsRepository));
     $frontEndController->addController('pacient_updated', new PacientUpdatedController(new PacientUpdatedView, $pacientsRepository));
     $frontEndController->addController('pacient_destroyed', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
+    $frontEndController->addController('pacient_demographic_data', new PacientsController(new PacientDemographicDataView, $pacientsRepository));
+
+
   }
   return $frontEndController;
 }

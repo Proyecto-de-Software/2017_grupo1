@@ -11,6 +11,12 @@ class Pacient
   private $address;
   private $phone;
   private $id_medical_insurance;
+  private $has_electricity;
+  private $has_pet;
+  private $has_refrigerator;
+  private $heating_type;
+  private $home_type;
+  private $water_type;
 
 
   public function __construct(
@@ -23,7 +29,13 @@ class Pacient
     $dni,
     $address,
     $phone,
-    $id_medical_insurance
+    $id_medical_insurance,
+    $has_electricity,
+    $has_pet,
+    $has_refrigerator,
+    $heating_type,
+    $home_type,
+    $water_type
    )
   {
     $this->id = $id;
@@ -36,6 +48,12 @@ class Pacient
     $this->address = $address;
     $this->phone = $phone;
     $this->id_medical_insurance = $id_medical_insurance;
+    $this->has_electricity = $has_electricity;
+    $this->has_pet = $has_pet;
+    $this->has_refrigerator = $has_refrigerator;
+    $this->heating_type = $heating_type;
+    $this->home_type = $home_type;
+    $this->water_type = $water_type;
   
   }
 
@@ -86,5 +104,35 @@ class Pacient
   {
     return $this->id_medical_insurance;
   }
+  public function getHas_Electricity()
+  {
+    return $this->has_electricity;
+  }
+
+  public function getHas_Pet()
+  {
+    return $this->has_pet;
+  }
+
+  public function getHas_Refrigerator()
+  {
+    return $this->has_refrigerator;
+  }
+
+  public function getHeating_Type()
+  {
+    return $this->heating_type;
+  }
+
+  public function getHome_Type()
+  {
+    return $this->home_type;
+  }
+   public function getWater_Type()
+  {
+    return $this->water_type;
+  }
 
 }
+
+
