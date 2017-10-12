@@ -26,5 +26,5 @@ div.login-menu-title {
 /* CELULARES */
 @media not all and (min-width: 640px) {
 	div.login-menu {
-		bottom: -100px;	
+		bottom: -80px;	
 	}
