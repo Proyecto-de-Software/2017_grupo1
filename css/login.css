@@ -2,7 +2,6 @@ div.login-menu {
   display: block;
   justify-content: center;
   position: relative;
-  bottom: -130px;
   text-align:center;
 }
 
@@ -15,3 +14,17 @@ div.login-accept-button {
 div.login-menu-title {
 		font-size:23px;
 }
+
+
+/* PC */
+
+@media (min-width: 640px) {
+	div.login-menu {
+		bottom: -130px;	
+		}
+
+/* CELULARES */
+@media not all and (min-width: 640px) {
+	div.login-menu {
+		bottom: -100px;	
+	}

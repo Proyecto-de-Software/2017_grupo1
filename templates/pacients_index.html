@@ -2,73 +2,85 @@
 {% block body%}
 
 <h1 align="center">Listado de Pacientes</h1>
-<table align="center">
-  <tr>
-    <td>
-      <form action="#" id="searchform">
-          <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
-          <button type= "submit" id='btnSubmit'> Buscar </button>
-      </form>
-    </td>
-    <td>
-       <form action="./?action=pacient_new" method="post">
-          <button type= "submit" id='btnSubmit'> Agregar paciente + </button>
-      </form>
-
-    </td>
-  </tr>
-</table>
-<br>
 
 <div class="container">
  <div class="table-responsive">          
   <table class="table table-condensed">
  <thead>
-      <tr>
-  <th>Nombre</th>
+    <tr>
+    
+         &nbsp; <form action="#" id="searchform">
+           <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
+           &nbsp; 
+           <button type= "submit" id='btnSubmit'> Buscar </button>
+         </form>
+        &nbsp; 
+          <form action="./?action=pacient_new" method="post">
+            <button type= "submit" id='btnSubmit'> Agregar paciente  <span class="glyphicon glyphicon-pencil"></span></button>
+          </form>
+      
+    </tr>
+
+<div class="container">
+ <div class="table-responsive">          
+  <table class="table table-condensed">
+    <thead>
+      <tr>  <th>Nombre</th>
   <th>Apellido</th>
   <th>Fecha de Nacimiento</th>
   <th>Genero</th>
   <th>Tipo Doc. </th>
-  <th>DNI<th>
+  <th>DNI</th>
   <th>Direcci&oacute;n</th>
   <th>Tel&eacute;fono</th>
-
+  <th>Obra social</th>
+  <th> </th>
+  <th> </th>
+</tr>
 </thead>
 
   </tfoot>
         {% for item in pacients%}
             <tr>
-            <td>{{ item.first_name }}</td>
-            <td>{{ item.last_name }}</td>
-            <td>{{ item.birth_date }}</td>
-            <td>{{ item.gender }}</td>
-            <td>{{ item.doc_type }}</td>
-            <td>{{ item.dni }}</td>
-            <td>{{ item.address }}</td>
-            <td>{{ item.phone }}</td>
-            <td>
-              <form action="./?action=pacient_form_update" method="post">
-               <input type="submit" class="btn btn-success" name="id" value="Modificar">
-               <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-              </form>
-            </td>
-            <td>
-              <form action="./?action=pacient_destroyed" method="post">
-                 <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
-                  <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-               </form>
-             </td>
+              <td>{{ item.first_name }}</td>
+              <td>{{ item.last_name }}</td>
+              <td>{{ item.birth_date }}</td>
+              <td>{{ item.gender }}</td>
+              <td>{{ item.doc_type }}</td>
+              <td>{{ item.dni }}</td>
+              <td>{{ item.address }}</td>
+              <td>{{ item.phone }}</td>
+              <td>{{ item.id_medical_insurance }}</td>
+              <td>
+                <form action="./?action=pacient_form_update" method="post">
+                 <input type="submit" class="btn btn-primary" name="id" value="Modificar">
+                 <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+                </form>
+              </td>
+              <td>
+                <form action="./?action=pacient_destroyed" method="post">
+                   <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-primary" value="Eliminar" id="boton_borrar"/>
+                    <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+                 </form>
+               </td>
             </tr>
-
         {% endfor %}
 
 </table>
-
+</div>
+</div>
 
 <style>
 div.table-responsive {
   background: white;
 }
 </style>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 {% endblock %}
