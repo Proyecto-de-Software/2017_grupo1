@@ -1,3 +1,11 @@
+#logo {
+  top:  30px; 
+  left: 30px;
+  width: 33px;
+  height: 33px;
+}
+
+
 /** este footer se va a posicionar siempre al final
  * el width en 99% es porque sino queda mas ancho que el head */
 
