@@ -7,7 +7,6 @@ require_once "./controllers/LoginController.php";
 require_once "./controllers/AdminController.php";
 require_once "./controllers/PacientsController.php";
 
-require_once "./controllers/PacientDemographicDataController.php";
 
 
 require_once "./controllers/DisabledSiteController.php";
@@ -17,8 +16,7 @@ require_once "./models/UserRepository.php";
 require_once "./models/PacientsRepository.php";
 require_once "./models/User.php";
 require_once "./models/Pacient.php";
-require_once "./models/Demographic_data.php";
-require_once "./models/DemographicDataRepository.php";
+
 
 
 require_once "./models/AppConfig.php";
