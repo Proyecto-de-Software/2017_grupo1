@@ -1,4 +1,4 @@
-<?php
+0<?php
 class UserController
 {
   private $view;
@@ -54,12 +54,38 @@ class UserFormController extends UserController //para el formulario de modifica
   }
 }
 
+
 //listado
 class UserListController extends UserController
 {
   public function showView($args)
   {
-    $this->getView()->show($this->getRepository()->getAllActive());
+    
+    if (empty($args['filter'])){
+      $this->getView()->show($this->getRepository()->getAllActive());
+    } else
+    { 
+      $this->getView()->show($this->getRepository()->getAllByFilter($args['filter']));
+    }
+  }
+}
+
+class UserToggleStatusController
+{
+  private $userListController;
+  private $repository;
+
+  public function __construct($userListController, $repository)
+  {
+    $this->repository = $repository;
+    $this->userListController = $userListController;
+  }
+
+  public function showView($args)
+  {
+    var_dump($args);
+    $this->repository->toggleActive($args['id']);
+    $this->userListController->showView([]);
   }
 }
 

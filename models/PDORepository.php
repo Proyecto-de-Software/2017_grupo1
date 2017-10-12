@@ -6,7 +6,7 @@ abstract class PDORepository
   const HOST = "localhost";
   const DB = "grupo1";
 
-  private function getConnection()
+  protected function getConnection()
   {
     $u = self::USERNAME;
     $p = self::PASSWORD;
@@ -23,7 +23,7 @@ abstract class PDORepository
     return $connection->prepare($sql);
   }
 
-  protected function queryList($sql, $args)
+  protected function queryList($sql, $args = [])
   {
     $stmt = $this->newPreparedStmt($sql);
     $stmt->execute($args);

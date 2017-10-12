@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>   <!-- esto va en todas las paginas -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
         <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+        <!--BOOTSTRAP -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- -->
+
         {% block head%}{% endblock %}
-        <meta charset="UTF-8"> 
-         <!-- esto va en todas las paginas -->
-        <title>{% block title %}Hospital Dr. Ricardo Gutiérrez {% endblock %}</title>
+        <meta charset="UTF-8">
+        <title>{{ config.title }}</title>
     </head>
 
- <body> 
+ <body>
 
-  <nav>
-      LOGO |  <a href="./?action=index" class='link1'>Hospital Dr. Ricardo Gutiérrez</a>
-      {% block nav %}   {% endblock %}
-      <div class="search-container">
-          <a href="./?action=login" class='link1'> LOGIN </a>
-      </div>
-         <div id="dropdown"> 
-          {% block dropdown %} 
-          {% endblock %} 
-         </div>
-
-      </div>
-
-    </nav>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Hospital Dr. Ricardo Gutiérrez</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="./?action=index" >Inicio</a></li>
+      {% block dropdown %}   {% endblock %}
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+     <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+      <li><a href=./?action=login><span class="glyphicon glyphicon-log-in"></span> Iniciar sesión</a></li>
+    </ul>
+  </div>
+</nav>
 
    <hr class= "separatingStripe">
+
    {% block body %}
    {% endblock %}
+
        
-<!-- esto va en todas las paginas -->
-<footer class="bottom-page-footer">
-    <hr class= "separatingStripe">
-    <p class="left-footer-paragraph">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutiérrez</p>
-    <p class="right-footer-paragraph">v 0.1.0</p>
-</footer>
-   <!-- esto va en todas las paginas -->
-    </body>
+   <nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <p class="footer" align="center"> Proyecto de Software 2017 - Hospital Dr. Ricardo Gutiérrez - v 0.1.0</p>
+    <p  align="center"> <a class="contact-mail"  href="mailto:{{ config.contact_mail }}"> Mail de contacto </a> </p>
+  </nav>
+
+</body>
+
 </html>
 
 <script type="text/javascript">
@@ -48,3 +56,11 @@ function cancelar() {
     }
 }
 </script>
+
+
+<style> /* Lo pongo aca porque en style.css no me lo toma */
+body {
+  color: black;
+  background-color: #2C8D89;
+} 
+</style>

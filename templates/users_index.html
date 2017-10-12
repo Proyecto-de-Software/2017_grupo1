@@ -5,8 +5,9 @@
 <table align="center">
   <tr>
     <td>
-      <form action="#" id="searchform">
-          <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
+      <form action="./?action=users_index" method="post" id="searchform">
+
+          <input type="text" placeholder="Buscar aqu&iacute;..." name="filter" id="filter">
           <button type= "submit" id='btnSubmit'> Buscar </button>
       </form>
     </td>
@@ -14,90 +15,70 @@
        <form action="./?action=user_new" method="post">
           <button type= "submit" id='btnSubmit'> Crear usuario + </button>
       </form>
-
     </td>
+
+    <th> <form action="./?action=users_index" method="post" id="searchform">
+    <input type='checkbox' id='status' name='status' checked> Activos
+  </form>
+</th>
   </tr>
 </table>
 <br>
-<div class="datagrid">
-<table class='list'>
-      <thead>
-<tr  class="alt">
-  <td><strong>Nombre</strong></td>
-  <td><strong>Apellido</strong></td>
-  <td><strong>Usuario</strong></td>
-  <td><strong>Email</strong></td>
-  <td><strong>Estado</strong></td>
-</tr>
-</thead>
-<tfoot>
-  <tr>
-    <td colspan="8">
-      <br>
-      <div id="paging">
-        <ul>
-          <li>
-            <a href="#">
-              <span>Anterior</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="active">
-              <span>1</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span>2</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span>3</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span>Siguiente</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </tr>
-  </tfoot>
-  {% for item in users %}
-  <tr>
-    <td>{{ item.first_name }}</td>
-    <td>{{ item.last_name }}</td>
-    <td>{{ item.username }}</td>
-    <td>{{ item.email }}</td>
-    {% if item.active == 1 %}
-      <td> Activo </td>
-    {% elseif item.active == 0%}
-      <td> Bloqueado </td>
-    {% endif %}
-    <td>  
-      <form action="./?action=user_form_update" method="post">
-        <input type="submit" class="btn btn-success" name="id" value="Modificar"> 
-        <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-      </form>
-    </td>
-   <td>  
-    <form action="./?action=user_destroyed" method="post">
-      <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
-      <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-     </form>
-    </td>
-    <td> 
-      <form action="">
-        <input type="submit" id='btnSubmit' value="Bloquear/Desbloquear"/>
-      </form>
-    </td>
-  </tr>
-  {% endfor %}
- </table>
 
+<div class="container">
+ <div class="table-responsive">          
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Usuario</th>
+        <th>Email</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in users %}
+      <tr>
+        <td>{{ item.first_name }}</td>
+       <td>{{ item.last_name }}</td>
+        <td>{{ item.username }}</td>
+        <td>{{ item.email }}</td>
+        {% if item.active == 1 %}
+          <td> Activo </td>
+        {% elseif item.active == 0%}
+          <td> Bloqueado </td>
+        {% endif %}
+        <td>
+          <form action="./?action=user_form_update" method="post">
+            <input type="submit" class="btn btn-success" name="id" value="Modificar">
+            <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+          </form>
+        </td>
+       <td>
+        <form action="./?action=user_destroyed" method="post">
+          <input type="submit" onclick='return confirm("¿Estás seguro?")' value="Eliminar" id="boton_borrar"/>
+          <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+         </form>
+        </td>
+        <td>
+          <form action="./?action=user_toggle_status" method="post">
+            <input type="submit" onclick='return confirm("¿Estás seguro?")' id="boton_bloquear_desbloquear" value="Bloquear/Desbloquear"/>
+            <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
 
+<style>
+div.table-responsive {
+  background: white;
+}
+</style>
 
 {% endblock %}
 

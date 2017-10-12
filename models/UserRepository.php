@@ -47,13 +47,14 @@ class UserRepository extends PDORepository
     return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE active = ?", [true]));
   }
 
-  public function getAllByName($name)
+  public function getAllByFilter($filter)
   {
-    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE name LIKE ?", [$name]));
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE (first_name LIKE '%$filter%' OR last_name LIKE '%$filter%' OR email LIKE '%$filter%') ORDER BY last_name, first_name ASC", [$filter]));
   }
 
   public function toggleActive($userId)
   {
+      var_dump($userId);
     return $this->stmtToggleActive->execute([$userId]);
   }
 

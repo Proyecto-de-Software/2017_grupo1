@@ -2,9 +2,13 @@
 class FrontEndController
 {
   private $controllers;
+  private $appConfig;
+  private $disabledSiteController;
 
-  public function __construct()
+  public function __construct($appConfig)
   {
+    $this->disabledSiteController = new DisabledSiteController();
+    $this->appConfig = $appConfig;
     $this->controllers = [];
   }
 
@@ -15,6 +19,9 @@ class FrontEndController
 
   public function getController($key)
   {
-    return $this->controllers[$key];
+    if ($this->appConfig->getIsSiteEnabled())
+      return $this->controllers[$key];
+    else
+      return $this->disabledSiteController;
   }
 }
