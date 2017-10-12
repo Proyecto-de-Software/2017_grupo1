@@ -19,7 +19,13 @@ class PacientsRepository extends PDORepository
         $element['dni'],
         $element['address'],
         $element['phone'],
-        $element['id_medical_insurance']
+        $element['id_medical_insurance'],
+        $element['has_electricity'],
+        $element['has_pet'],
+        $element['has_refrigerator'],
+        $element['heating_type'],
+        $element['home_type'],
+        $element['water_type']
       );
     }
     return $answer;
@@ -29,10 +35,10 @@ class PacientsRepository extends PDORepository
   {
     $this->stmtDelete = $this->newPreparedStmt("DELETE FROM pacients WHERE id = ?");
     $this->stmtCreate = $this->newPreparedStmt("INSERT INTO pacients (first_name, last_name, birth_date, gender, doc_type,
-                                                dni, address, phone, id_medical_insurance)
-                                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                                dni, address, phone, id_medical_insurance, has_electricity, has_pet, has_refrigerator, heating_type, home_type, water_type)
+                                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $this->stmtUpdate = $this->newPreparedStmt("UPDATE pacients SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, doc_type = ?,
-                                                dni = ?, address = ?, phone = ?, id_medical_insurance = ?  WHERE id = ?");
+                                                dni = ?, address = ?, phone = ?, id_medical_insurance = ?, has_electricity = ?, has_pet = ?, has_refrigerator = ?, heating_type = ?, home_type = ?, water_type = ? WHERE id = ?");
   }
 
   public function getAll()
@@ -40,9 +46,9 @@ class PacientsRepository extends PDORepository
     return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients", []));
   }
 
-  public function create($first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance)
+  public function create($first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $has_electricity, $has_pet, $has_refrigerator, $heating_type, $home_type, $water_type)
   {
-    return $this->stmtCreate->execute([$first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance]);
+    return $this->stmtCreate->execute([$first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance,  $has_electricity, $has_pet, $has_refrigerator, $heating_type, $home_type, $water_type]);
   }
 
   public function delete($pacientId)
@@ -50,9 +56,9 @@ class PacientsRepository extends PDORepository
     return $this->stmtDelete->execute([$pacientId]);
   }
 
-  public function update($first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $pacientId)
+  public function update($first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $has_electricity, $has_pet, $has_refrigerator, $heating_type, $home_type, $water_type, $pacientId)
   {
-    return $this->stmtUpdate->execute([$first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $pacientId]);
+    return $this->stmtUpdate->execute([$first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $has_electricity, $has_pet, $has_refrigerator, $heating_type, $home_type, $water_type, $pacientId]);
   }
 
   public function getPacient($pacientId)
