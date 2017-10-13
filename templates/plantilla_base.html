@@ -30,10 +30,10 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
-     
-      <a class="navbar-brand">  <img src= "/img/logo.gif" id="logo" width="30" height="30"  > 
+
+      <a class="navbar-brand">  <img src= "/img/logo.gif" id="logo" width="30" height="30"  >
       <a class="navbar-brand" href="#">Hospital Dr. Ricardo Gutiérrez</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -57,6 +57,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
      {% if session.IsLoggedIn %}
+      <p class="navbar-text"> <span class="glyphicon glyphicon-user"></span> Bienvenido, {{ session.UserName }} !</p>
       <li><a href=./?action=do-logout><span class="glyphicon glyphicon-log-out"></span> Cerrar sesión</a></li>
      {% else %}
       <li><a href=./?action=login><span class="glyphicon glyphicon-log-in"></span> Iniciar sesión</a></li>
