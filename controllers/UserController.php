@@ -1,4 +1,4 @@
-0<?php
+<?php
 class UserController extends Controller
 {
   private $view;

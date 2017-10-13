@@ -8,7 +8,6 @@ class PacientDemographicDataView extends TwigView
 
   public function show($pacient)
   {
-    echo $pacient->getFull_Name();
     $this->render(array('pacient' => $pacient));
   }
 }
