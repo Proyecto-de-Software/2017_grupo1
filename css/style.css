@@ -60,7 +60,6 @@ p.footer {
 body {
   color: black;
   background-color: #0070A8;
-  font-family: "Calibri";
 }
 
 a.link1:hover {
@@ -94,7 +93,6 @@ hr.separatingStripe {
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
   font-size: 11px;
   font-weight: bold;
   padding: 7px;
@@ -120,7 +118,6 @@ span.text1 {
   text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   color: #000000;
   font-weight: bold;
-  font-family: 'Orbitron', sans-serif;
   text-align: center;
 }
 
