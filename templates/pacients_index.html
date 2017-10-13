@@ -51,7 +51,15 @@
               <td>{{ item.dni }}</td>
               <td>{{ item.address }}</td>
               <td>{{ item.phone }}</td>
-              <td>{{ item.id_medical_insurance }}</td>
+              {% if item.id_medical_insurance == 1 %}
+                    <td> IOMA </td>
+              {% elseif item.id_medical_insurance == 2%}
+                   <td> OSECAC </td>
+              {% elseif item.id_medical_insurance == 3%}
+                   <td> OSDE </td>
+              {% elseif item.id_medical_insurance == 4%}
+                   <td> Medicus </td>
+              {% endif %}
               <td>
                 <form action="./?action=pacient_form_update" method="post">
                  <input type="submit" class="btn btn-primary" name="id" value="Modificar">

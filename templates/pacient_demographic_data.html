@@ -22,22 +22,34 @@
 
   </tfoot>
     <tr>
-    <td>{{ pacient.has_refrigerator }}</td>
-    <td>{{ pacient.has_pet }}</td>
-    <td>{{ pacient.has_electricity }}</td>
+    {% if pacient.has_refrigerator == 1 %}
+          <td> SI </td>
+        {% elseif pacient.refrigerator == 0%}
+          <td> NO </td>
+        {% endif %}
+    {% if pacient.has_pet == 1 %}
+          <td> SI </td>
+        {% elseif pacient.pet == 0%}
+          <td> NO </td>
+        {% endif %}
+    {% if pacient.has_electricity == 1 %}
+          <td> SI </td>
+        {% elseif pacient.electricity == 0%}
+          <td> NO </td>
+        {% endif %}
     <td>{{ pacient.heating_type }}</td>
     <td>{{ pacient.home_type }}</td>
     <td>{{ pacient.water_type }}</td>
     <td>
-      <form action="./?action=pacient_form_update" method="post">
+      <form action="./?action=demographicdata_form_update" method="post">
         <input type="submit" class="btn btn-success" name="id" value="Modificar">
-        <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+        <input type="hidden" name="id" id="id" value= "{{ pacient.id }}">
       </form>
     </td>
     <td>
-      <form action="./?action=pacient_destroyed" method="post">
+      <form action="./?action=demographicdata_destroyed" method="post">
           <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-success" value="Eliminar" id="boton_borrar"/>
-          <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+          <input type="hidden" name="id" id="id" value= "{{ pacient.id }}">
         </form>
       </td>
     </tr>
