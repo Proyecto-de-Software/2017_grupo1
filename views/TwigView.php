@@ -3,7 +3,6 @@ abstract class TwigView
 {
   private static $twig;
   private static $appConfig;
-  private static $session;
 
   private static function getTwig()
   {
