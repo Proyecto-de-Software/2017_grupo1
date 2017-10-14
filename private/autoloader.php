@@ -43,7 +43,7 @@ require_once "./views/UserFormView.php";
 require_once "./views/UserUpdatedView.php";
 require_once "./views/UserDestroyedView.php";
 
-require_once "./views/PacientViews.php";
+require_once "./views/PacientsListView.php";
 require_once "./views/PacientAddedView.php";
 require_once "./views/PacientFormView.php";
 require_once "./views/PacientUpdatedView.php";
