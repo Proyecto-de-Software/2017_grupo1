@@ -1,25 +1,12 @@
-{% extends 'plantilla_base.html' %}
+{% extends 'list_base.html' %}
 
-{% block body%}
+{% block header %} Listado de Usuarios {% endblock %}
+{% block new_action %} ./?action=user_new {% endblock %}
+{% block new_action_label %} Agregar usuario {% endblock %}
 
-<h1 align="center">Listado de Usuarios</h1>
 
-<div class="container">
- <div class="table-responsive">          
-  <table class="table table-condensed">
-    <thead>
-    <tr>
-         &nbsp; <form action="#" id="searchform">
-        <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
-           &nbsp; 
-           <button type= "submit" id='btnSubmit'> Buscar </button>
-         </form>
-        &nbsp; 
-          <form action="./?action=user_new" method="post">
-            <button type= "submit" id='btnSubmit'> Agregar usuario <span class="glyphicon glyphicon-pencil"></span> </button>
-          </form>
-      
-    </tr>
+{% block inner_body %}
+
 
 <div class="container">
  <div class="table-responsive">          

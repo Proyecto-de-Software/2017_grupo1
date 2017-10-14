@@ -1,26 +1,11 @@
-{% extends 'plantilla_base.html' %}
-{% block body%}
+{% extends 'list_base.html' %}
 
-<h1 align="center">Listado de Pacientes</h1>
+{% block header %} Listado de Pacientes {% endblock %}
+{% block new_action %} ./?action=pacient_new {% endblock %}
+{% block new_action_label %} Agregar paciente {% endblock %}
 
-<div class="container">
- <div class="table-responsive">          
-  <table class="table table-condensed">
- <thead>
-    <tr>
-    
-         &nbsp; <form action="#" id="searchform">
-           <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
-           &nbsp; 
-           <button type= "submit" id='btnSubmit'> Buscar </button>
-         </form>
-        &nbsp; 
-          <form action="./?action=pacient_new" method="post">
-            <button type= "submit" id='btnSubmit'> Agregar paciente  <span class="glyphicon glyphicon-pencil"></span></button>
-          </form>
-      
-    </tr>
 
+{% block inner_body %}
 <div class="container">
  <div class="table-responsive">          
   <table class="table table-condensed">
@@ -97,5 +82,5 @@ div.table-responsive {
 <br>
 <br>
 
-
 {% endblock %}
+
