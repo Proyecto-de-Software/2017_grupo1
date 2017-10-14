@@ -1,5 +1,5 @@
 <?php
-class PacientsListView extends TwigView
+class PacientListView extends TwigView
 {
   protected function getTemplateFile()
   {
