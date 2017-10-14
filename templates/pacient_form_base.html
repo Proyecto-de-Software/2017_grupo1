@@ -4,7 +4,6 @@
 
 <div id="div-top" align="center">
 <h1>{% block header %} {% endblock %} </h1>
-
 <form action="{% block action %} {% endblock %}" method='post'>
   <div class="container">
     <div class="row">
@@ -202,7 +201,7 @@
             <div class="form-group">
               <div class="col-md-12 text-center">
                 <button type="submit" id='btnSubmit'>Confirmar</button>
-                <button type="submit" onclick="return cancelar('pacients_index')"; id='btnSubmit'>Cancelar</button>
+                <input type="button" onclick="return cancelar('pacients_index')"; value="Cancelar" id='btnSubmit'></button>
               </div>
             </div>
           </div>
