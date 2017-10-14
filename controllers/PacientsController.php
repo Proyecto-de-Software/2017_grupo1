@@ -115,6 +115,7 @@ class PacientListController extends PacientsController
       $data_count = count($data);
     }
 
+    echo $data_count;
     $this->getView()->show($data, round($data_count / $this->appConfig->getPage_row_size()));
   }
 }
