@@ -14,7 +14,7 @@ class AppConfig extends PDORepository
 
   public function getDescription()
   {
-    return $this->queryValue("avaible");
+    return $this->queryValue("description");
   }
 
   public function getTitle()
