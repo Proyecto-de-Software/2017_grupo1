@@ -1,0 +1,28 @@
+{% extends 'plantilla_base.html' %}
+
+{% block body %}
+
+<h1 align="center">{% block header %} {% endblock %}</h1>
+<div class="container">
+  <div class="table-responsive">          
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+        <br>
+          &nbsp; 
+          <form action="#" id="searchform">
+            <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
+          &nbsp;
+            <button type= "submit" class="btn btn-info"> Buscar <span class="glyphicon glyphicon-search"></span> </button>
+          </form>
+          &nbsp; 
+          <form action="{% block new_action %} {% endblock %}" method="post">
+            <button type= "submit" class="btn btn-success"> {% block new_action_label %} {% endblock %} <span class="glyphicon glyphicon-plus"></span></button>
+          </form>
+        </tr>
+
+{% block inner_body %}
+{% endblock %}
+
+
+{% endblock %}
