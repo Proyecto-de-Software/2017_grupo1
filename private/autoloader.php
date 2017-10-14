@@ -9,6 +9,7 @@ require_once "./controllers/LoginController.php";
 require_once "./controllers/AdminController.php";
 require_once "./controllers/PacientsController.php";
 require_once "./controllers/DisabledSiteController.php";
+require_once "./controllers/NonAuthorizedController.php";
 
 require_once "./models/PDORepository.php";
 require_once "./models/UserRepository.php";
@@ -33,6 +34,7 @@ require_once "./views/IndexView.php";
 require_once "./views/LoginView.php";
 require_once "./views/AdminView.php";
 require_once "./views/DisabledSiteView.php";
+require_once "./views/NonAuthorizedView.php";
 
 require_once "./views/UserListView.php";
 require_once "./views/UserAddedView.php";

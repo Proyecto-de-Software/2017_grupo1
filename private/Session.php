@@ -13,4 +13,9 @@ class Session
     else
       return '';
   }
+
+  public function hasPermission($action)
+  {
+    return true;
+  }
 }
