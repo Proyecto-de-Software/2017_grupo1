@@ -19,7 +19,7 @@ class NewPacientView extends PacientsFormView
 {
   protected function getTemplateFile()
   {
-    return "pacient_new.html";
+    return "pacient_form_new.html";
   }
 
   public function show($pacient)
