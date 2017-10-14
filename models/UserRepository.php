@@ -5,6 +5,7 @@ class UserRepository extends PDORepository
   private $stmtDelete;
   private $stmtCreate;
   private $stmtUpdate;
+  private $appConfig;
 
   private function queryToUserArray($query)
   {
@@ -25,7 +26,7 @@ class UserRepository extends PDORepository
     return $answer;
   }
 
-  public function __construct()
+  public function __construct($appConfig)
   {
     $this->stmtToggleActive = $this->newPreparedStmt("UPDATE users SET active = not active WHERE id = ?");
     $this->stmtDelete = $this->newPreparedStmt("DELETE FROM users WHERE id = ?");
@@ -35,23 +36,24 @@ class UserRepository extends PDORepository
     $this->stmtUpdate = $this->newPreparedStmt("UPDATE users SET username = ?, email = ?, password = ?, first_name = ?, last_name = ?,
                                                 updated_at = NOW()
                                                 WHERE Id = ?");
+    $this->appConfig = $appConfig;
   }
 
   public function getAll($page)
-  { 
+  {
     $count = $this->appConfig->getPage_row_size();
     $offset = ($page - 1) * $count;
-    return $this->queryToUserArray($this->queryList("SELECT * FROM users LIMIT $count OFFSET $offset", []));
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE active = ? LIMIT $count OFFSET $offset", [true]));
   }
 
-  public function getAllActive()
+  public function getAllByFilter($filter, $page)
   {
-    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE active = ?", [true]));
-  }
-
-  public function getAllByFilter($filter)
-  {
-    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE (first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR username LIKE ?) ORDER BY last_name, first_name ASC", ['%'.$filter.'%','%'.$filter.'%','%'.$filter.'%','%'.$filter.'%']));
+    $count = $this->appConfig->getPage_row_size();
+    $offset = ($page - 1) * $count;
+    return $this->queryToUserArray($this->queryList(
+        "SELECT * FROM users WHERE (first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR username LIKE ?)
+        ORDER BY last_name, first_name ASC
+        LIMIT $count OFFSET $offset", ['%'.$filter.'%','%'.$filter.'%','%'.$filter.'%','%'.$filter.'%']));
   }
 
   public function toggleActive($userId)
@@ -105,6 +107,18 @@ class UserRepository extends PDORepository
   public function hasPermission($userId, $action)
   {
     return count($this->queryUserPermission($userId, $action)) > 0;
+  }
+
+  public function getUserCount()
+  {
+    $stmt = $this->newPreparedStmt("SELECT COUNT(*) FROM users");
+    $stmt->execute();
+    return $stmt->fetchColumn();
+  }
+
+  public function getPageCount()
+  {
+    return round($this->getPacientCount() / $this->appConfig->getPage_row_size());
   }
 }
 

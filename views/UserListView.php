@@ -6,8 +6,11 @@ class UserListView extends TwigView
     return "users_index.html";
   }
 
-  public function show($users)
+  public function show($users, $pageCount)
   {
-    $this->render(array('users' => $users));
+    $this->render(array(
+      'users' => $users,
+      'pageCount' => $pageCount
+    ));
   }
 }

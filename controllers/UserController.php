@@ -26,7 +26,6 @@ class UserController extends Controller
   }
 }
 
-//alta//
 class UserAddedController extends UserController
 {
   public function showView($args)
@@ -37,7 +36,6 @@ class UserAddedController extends UserController
   }
 }
 
-//modificacion//
 class UserUpdatedController extends UserController
 {
   public function showView($args)
@@ -47,7 +45,7 @@ class UserUpdatedController extends UserController
   }
 }
 
-class UserFormController extends UserController //para el formulario de modificacion de datos//
+class UserFormController extends UserController
 {
   public function showView($args)
   {
@@ -55,19 +53,35 @@ class UserFormController extends UserController //para el formulario de modifica
   }
 }
 
-
-//listado
 class UserListController extends UserController
 {
+  private $appConfig;
+
+  public function __construct($view, $repository, $appConfig)
+  {
+    parent::__construct($view, $repository);
+    $this->appConfig = $appConfig;
+  }
+
   public function showView($args)
   {
+    if (!isset($args['page']))
+      $page = 1;
+    else
+      $page = $args['page'];
 
-    if (empty($args['filter'])){
-      $this->getView()->show($this->getRepository()->getAllActive());
-    } else
+    if (!isset($args['filter']) || empty($args['filter']))
     {
-      $this->getView()->show($this->getRepository()->getAllByFilter($args['filter']));
+      $data = $this->getRepository()->getAll($page);
+      $data_count = $this->getRepository()->getUserCount();
     }
+    else
+    {
+      $data = $this->getRepository()->getAllByFilter($args['filter'], $page);
+      $data_count = count($data);
+    }
+
+    $this->getView()->show($data, round($data_count / $this->appConfig->getPage_row_size()));
   }
 }
 
@@ -89,7 +103,6 @@ class UserToggleStatusController
   }
 }
 
-//baja
 class UserDestroyedController extends UserController
 {
   public function showView($args)

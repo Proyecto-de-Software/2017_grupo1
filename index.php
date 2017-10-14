@@ -11,8 +11,8 @@ $frontEndController = NULL;
 function getFrontEndController()
 {
   if (!isset($frontEndController)) {
-    $userRepository = new UserRepository;
     $appConfig = new AppConfig;
+    $userRepository = new UserRepository($appConfig);
     $pacientsRepository = new PacientsRepository($appConfig);
     $referenceDataService = new ReferenceDataService(
       new WaterTypeRepository,
@@ -24,7 +24,7 @@ function getFrontEndController()
 
     $indexView = new IndexView;
     $loginView = new LoginView;
-    
+
 
     $indexController = new IndexController($indexView);
 
@@ -37,7 +37,7 @@ function getFrontEndController()
     $frontEndController->addController('do-logout', new DoLogoutController($indexController));
     $frontEndController->addController('admin', new AdminController(new AdminView));
 
-    $userListController = new UserListController(new UserListView, $userRepository);
+    $userListController = new UserListController(new UserListView, $userRepository, $appConfig);
     $frontEndController->addController('users_index', $userListController);
     $frontEndController->addController('user_new', new UserController(new NewUserView, $userRepository));
     $frontEndController->addController('user_added', new UserAddedController(new UserAddedView, $userRepository));
