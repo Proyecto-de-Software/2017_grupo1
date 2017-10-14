@@ -83,9 +83,9 @@ class PacientsRepository extends PDORepository
     return round($this->getPacientCount() / $this->appConfig->getPage_row_size());
   }
 
-  public function getAllByFilter($filter)
+   public function getAllByFilter($filter)
   {
-    return $this->queryToPacientsArray($this->queryList("SELECT * FROM pacients WHERE (first_name LIKE '%$filter%' OR last_name LIKE '%$filter%' OR email LIKE '%$filter%' OR dni LIKE '%$filter%') ORDER BY last_name, first_name ASC", [$filter]));
+    return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients WHERE (first_name LIKE ? OR last_name LIKE ? OR dni LIKE ?) ORDER BY last_name, first_name ASC", ['%'.$filter.'%','%'.$filter.'%','%'.$filter.'%']));
   }
 }
 
