@@ -10,8 +10,8 @@
         <tr>
         <br>
           &nbsp;
-          <form action="#" id="searchform">
-            <input type="text" placeholder="Buscar aqu&iacute;..." name="busqueda" id="busqueda" title="busqueda">
+          <form action="{% block search_action %} {% endblock %}" method="post" id="searchform">
+            <input type="text" placeholder="Buscar aqu&iacute;..." name="filter" id="filter" title="busqueda">
           &nbsp;
             <button type= "submit" class="btn btn-info"> Buscar <span class="glyphicon glyphicon-search"></span> </button>
           </form>
@@ -51,3 +51,5 @@
   </style>
 
 {% endblock %}
+
+
