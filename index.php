@@ -12,6 +12,13 @@ function getFrontEndController()
   if (!isset($frontEndController)) {
     $userRepository = new UserRepository;
     $pacientsRepository = new PacientsRepository;
+    $referenceDataService = new ReferenceDataService(
+      new WaterTypeRepository(),
+      new HeatingTypeRepository(),
+      new DocumentTypeRepository(),
+      new SocialInsuranceRepository(),
+      new HomeTypeRepository()
+    );
 
     $indexView = new IndexView();
     $loginView = new LoginView();
@@ -38,9 +45,9 @@ function getFrontEndController()
     $frontEndController->addController('user_toggle_status', new UserToggleStatusController($userListController, $userRepository));
 
     $frontEndController->addController('pacients_index', new PacientListController(new PacientsListView, $pacientsRepository));
-    $frontEndController->addController('pacient_new', new PacientsController(new PacientNewView, $pacientsRepository));
+    $frontEndController->addController('pacient_new', new PacientsController(new NewPacientView($referenceDataService), $pacientsRepository));
     $frontEndController->addController('pacient_added', new PacientAddedController(new PacientAddedView, $pacientsRepository));
-    $frontEndController->addController('pacient_form_update', new PacientEditController(new PacientsFormView, $pacientsRepository));
+    $frontEndController->addController('pacient_form_update', new PacientEditController(new EditPacientView($referenceDataService), $pacientsRepository));
     $frontEndController->addController('pacient_updated', new PacientUpdatedController(new PacientUpdatedView, $pacientsRepository));
     $frontEndController->addController('pacient_destroyed', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
     $frontEndController->addController('pacient_demographic_data', new PacientEditController(new PacientDemographicDataView, $pacientsRepository));

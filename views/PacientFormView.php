@@ -1,12 +1,42 @@
 <?php
-class PacientsFormView extends TwigView{
-  
-  protected function getTemplateFile(){
-  	return "pacient_form_update.html";
-  }
-   public function show($pacient)
+abstract class PacientsFormView extends TwigView
+{
+  private $referenceDataService;
+
+  protected function doShow($args = [])
   {
-    $this->render(array('pacient' => $pacient));
+    $args['referenceData'] = $this->referenceDataService;
+    $this->render($args);
   }
 
+  public function __construct($referenceDataService)
+  {
+    $this->referenceDataService = $referenceDataService;
+  }
+}
+
+class NewPacientView extends PacientsFormView
+{
+  protected function getTemplateFile()
+  {
+    return "pacient_new.html";
+  }
+
+  public function show($pacient)
+  {
+    $this->doShow([]);
+  }
+}
+
+class EditPacientView extends PacientsFormView
+{
+  protected function getTemplateFile()
+  {
+    return "pacient_form_update.html";
+  }
+
+  public function show($pacient)
+  {
+    $this->doShow(array('pacient' => $pacient));
+  }
 }

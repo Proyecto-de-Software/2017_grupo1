@@ -13,6 +13,15 @@ require_once "./controllers/DisabledSiteController.php";
 require_once "./models/PDORepository.php";
 require_once "./models/UserRepository.php";
 require_once "./models/PacientsRepository.php";
+require_once "./models/ReferenceData.php";
+require_once "./models/ReferenceDataRepository.php";
+require_once "./models/DocumentTypeRepository.php";
+require_once "./models/HomeTypeRepository.php";
+require_once "./models/HeatingTypeRepository.php";
+require_once "./models/WaterTypeRepository.php";
+require_once "./models/SocialInsuranceRepository.php";
+require_once "./models/ReferenceDataService.php";
+
 require_once "./models/User.php";
 require_once "./models/Pacient.php";
 
@@ -28,16 +37,15 @@ require_once "./views/AdminView.php";
 require_once "./views/DisabledSiteView.php";
 
 require_once "./views/UsersView.php";
-require_once "./views/UserNewView.php"; //alta//
-require_once "./views/UserAddedView.php"; //alta//
-require_once "./views/UserFormView.php"; //modificacion//
-require_once "./views/UserUpdatedView.php"; //modificacion//
-require_once "./views/UserDestroyedView.php"; //baja
+require_once "./views/UserNewView.php";
+require_once "./views/UserAddedView.php";
+require_once "./views/UserFormView.php";
+require_once "./views/UserUpdatedView.php";
+require_once "./views/UserDestroyedView.php";
 
 require_once "./views/PacientViews.php";
-require_once "./views/PacientNewView.php"; //alta//
-require_once "./views/PacientAddedView.php";//alta//
-require_once "./views/PacientFormView.php"; //modificacion//
-require_once "./views/PacientUpdatedView.php";//modificacion//
-require_once "./views/PacientDestroyedView.php"; //baja
-require_once "./views/PacientDemographicDataView.php"; //datos demograficos de un paciente
+require_once "./views/PacientAddedView.php";
+require_once "./views/PacientFormView.php";
+require_once "./views/PacientUpdatedView.php";
+require_once "./views/PacientDestroyedView.php";
+require_once "./views/PacientDemographicDataView.php";

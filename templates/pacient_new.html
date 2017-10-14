@@ -1,223 +1,27 @@
-{% extends 'plantilla_base.html' %}
+{% extends 'pacient_form_base.html' %}
 
-{% block body %}
+{% block header %}
+Ingreso de nuevo Paciente
+{% endblock %}
 
-<div id="alta-paciente" align="center">
- <h1>Ingreso nuevo de paciente</h1>
-<form action="./?action=pacient_added" method='post'>
-   <div class="container">
-        <div class="row">
-            <div align="center">
-                <div class="well well-sm">
-                    <form class="form-horizontal" method="post">
-                        <fieldset>
-                          <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                                <div class="col-md-8">
-                                   Nombre:
-                                    <input id="first_name" name="first_name" type="text" placeholder="Nombre" class="form-control" required >
-                                </div>
-                            </div>
-                            </fieldset>
-                            <br>
+{% block action %}
+./?action=pacient_added
+{% endblock %}
 
-                            <fieldset>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                                <div class="col-md-8">
-                                   Apellido:
-                                    <input id="last_name" name="last_name" type="text" placeholder="Apellido" class="form-control" required>
-                                </div>
-                            </div>
-                            </fieldset>
-                            <br>
+{% block first_name_value %}
+{% endblock %}
 
-                            <fieldset>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                   Fecha de Nacimiento:
-                                    <input id="fecha_de_nacimiento" name="birth_date" type="date" placeholder="Fecha de Nacimiento" class="form-control" required>
-                                </div>
-                            </div>
-                            </fieldset>
-                            <br>
-                            
-                            <fieldset>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                                <div class="col-md-8">
-                                  Sexo:
-                                     <select name="gender" required>
-                                          <option value="F">Femenino</option>
-                                          <option value="M">Masculino</option>
-                                    </select> 
-                                </div>
-                            </div>
-                            </fieldset>
-                            <br>
+{% block last_name_value %}
+{% endblock %}
 
-                            <fieldset>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    Tipo de Documento:
-                                      <select name="doc_type" required >
-                                          <option value="Libreta electoral o DNI">L.E/DNI</option>
-                                          <option value="Carnet de extranjeria">CARNET EXT.</option>
-                                          <option value="Reg. unico de contribuyentes">RUC</option>
-                                          <option value="Pasaporte">PASAPORTE</option>
-                                    </select> 
-                                </div>
-                            </div>
-                            </fieldset>
-                            <br>
+{% block birth_date_value %}
+{% endblock %}
 
-                            <fieldset>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                 Numero de Documento:
-                                   <input id="documento" name="dni" type="numeric" placeholder="N de Doc" class="form-control" required>
-                                </div>
-                            </div>
-                            </fieldset>
-                            <br>
+{% block dni_value %}
+{% endblock %}
 
-                            <fieldset>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                 Domicilio:
-                                   <input id="domicilio" name="address" type="text" placeholder="Direccion de Domicilio" class="form-control" required>
-                                </div>
-                            </div>
-                            </fieldset>
-                            <br>
+{% block address_value %}
+{% endblock %}
 
-                            <fieldset>
-                             <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                 Tel/Cel:
-                                   <input id="telefono" name="phone" type="text" placeholder="Telefono" class="form-control" required>
-                                </div>
-                            </div>
-                            </fieldset>
-                            <br>
-
-                            <fieldset>
-                             <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    Obra Social:
-                                      <select name="id_medical_insurance">
-                                          <option value="">-</option>
-                                          <option value="1">IOMA</option>
-                                          <option value="2">OSECAC</option>
-                                          <option value="3">OSDE</option>
-                                          <option value="4">Medicus</option>
-                                    </select> 
-                                </div>
-                              </div>
-                            </fieldset>
-                            <br>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    Tiene Heladera?:
-                                      <select name="has_refrigerator" required>
-                                          <option value="">-</option>
-                                          <option value="1">SI</option>
-                                          <option value="0">NO</option>
-                                    </select> 
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    Tiene Electricidad?:
-                                      <select name="has_electricity" required>
-                                          <option value="">-</option>
-                                          <option value="1">SI</option>
-                                          <option value="0">NO</option>
-                                    </select> 
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    Tiene Mascota(s)?:
-                                      <select name="has_pet" required>
-                                          <option value="">-</option>
-                                          <option value="1">SI</option>
-                                          <option value="0">NO</option>
-                                    </select> 
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    Tipo de Vivienda:
-                                      <select name="home_type" required>
-                                          <option value="">-</option>
-                                          <option value="casa">Casa</option>
-                                          <option value="departamento">Departamento</option>
-                                          <option value="hotel">Hotel</option>
-                                          <option value="no_tiene_hogar">No tiene hogar</option>
-
-                                    </select> 
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    Tipo de Calefaccion:
-                                      <select name="heating_type" required>
-                                          <option value="">-</option>
-                                          <option value="estufa">Estufa</option>
-                                          <option value="aire">Aire Acondicionado</option>
-                                          <option value="nada">Nada</option>
-
-                                    </select> 
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    Tipo de Agua:
-                                      <select name="water_type" required>
-                                          <option value="">-</option>
-                                          <option value="potable">Agua Potable</option>
-
-                                    </select> 
-                                </div>
-                            </div>
-
-
-
-
-
-                            <fieldset>
-                            <div class="form-group">
-                                <div class="col-md-12 text-center">
-                                    <button type="submit"  id='btnSubmit'>Agregar paciente</button>
-                                </div>
-                            </div>
-
-                        </fieldset>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-<br>
-<br>
-<br>
-<br>
+{% block phone_value %}
 {% endblock %}
