@@ -104,7 +104,7 @@ class PacientListController extends PacientsController
     else
       $page = $args['page'];
 
-    if (!isset($args['filter']) or empty($args['filter']))
+    if (!isset($args['filter']) || empty($args['filter']))
     {
       $data = $this->getRepository()->getAll($page);
       $data_count = $this->getRepository()->getPacientCount();
