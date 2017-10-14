@@ -22,12 +22,12 @@ require_once "./models/HeatingTypeRepository.php";
 require_once "./models/WaterTypeRepository.php";
 require_once "./models/SocialInsuranceRepository.php";
 require_once "./models/ReferenceDataService.php";
-
 require_once "./models/User.php";
 require_once "./models/Pacient.php";
-
 require_once "./models/AppConfig.php";
+
 require_once "./private/Session.php";
+require_once "./private/UserSession.php";
 
 require_once "./views/TwigView.php";
 require_once "./views/IndexView.php";

@@ -91,5 +91,18 @@ class UserRepository extends PDORepository
   {
     return $this->queryUser($username, $password)[0];
   }
+
+  private function queryUserPermission($userId, $permissionName)
+  {
+    return $this->queryList("SELECT * FROM users_has_role UR
+                            INNER JOIN role_has_permission RP ON (UR.role_id = RP.role_id)
+                            INNER JOIN user_permission P ON (P.id = RP.permission_id)
+                            WHERE (UR.user_id = ?) AND P.name = ?", [$userId, $permissionName]);
+  }
+
+  public function hasPermission($userId, $action)
+  {
+    return count($this->queryUserPermission($userId, $action)) > 0;
+  }
 }
 

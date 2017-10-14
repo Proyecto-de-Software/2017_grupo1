@@ -8,7 +8,7 @@
 {% block inner_body %}
 <form method="post">
 <div class="container">
- <div class="table-responsive">          
+ <div class="table-responsive">
   <table class="table table-condensed">
     <thead>
       <tr>
@@ -54,12 +54,12 @@
                 </form>
               </td>
               <td>
-                <form action="./?action=pacient_destroyed" method="post">
+                <form action="./?action=pacient_destroy" method="post">
                    <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-primary" value="Eliminar" id="boton_borrar"/>
                     <input type="hidden" name="id" id="id" value= "{{ item.id }}">
                  </form>
                </td>
-               <td>  
+               <td>
               <form action="./?action=pacient_demographic_data" method="post">
                  <input type="submit" class="btn btn-primary" value="Datos Demogr&aacute;ficos" id="boton_datos_demograficos"/>
                   <input type="hidden" name="id" id="id" value= "{{ item.id }}">

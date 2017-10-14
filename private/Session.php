@@ -14,8 +14,11 @@ class Session
       return '';
   }
 
-  public function hasPermission($action)
+  public function getUserId()
   {
-    return true;
+    if ($this->getIsLoggedIn())
+      return $_SESSION['userId'];
+    else
+      return -1;
   }
 }
