@@ -7,83 +7,73 @@
 
 {% block inner_body %}
 <form method="post">
-<div class="container">
- <div class="table-responsive">
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-  <th>Nombre</th>
-  <th>Apellido</th>
-  <th>Fecha de Nacimiento</th>
-  <th>Genero</th>
-  <th>Tipo Doc. </th>
-  <th>DNI</th>
-  <th>Direcci&oacute;n</th>
-  <th>Tel&eacute;fono</th>
-  <th>Obra social</th>
-  <th> </th>
-  <th> </th>
-</tr>
-</thead>
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Genero</th>
+            <th>Tipo Doc. </th>
+            <th>DNI</th>
+            <th>Direcci&oacute;n</th>
+            <th>Tel&eacute;fono</th>
+            <th>Obra social</th>
+            <th> </th>
+            <th> </th>
+          </tr>
+        </thead>
 
-  </tfoot>
         {% for item in pacients%}
-            <tr>
-
-              <td>{{ item.first_name }}</td>
-              <td>{{ item.last_name }}</td>
-              <td>{{ item.birth_date }}</td>
-              <td>{{ item.gender }}</td>
-              <td>{{ item.doc_type }}</td>
-              <td>{{ item.dni }}</td>
-              <td>{{ item.address }}</td>
-              <td>{{ item.phone }}</td>
-              {% if item.id_medical_insurance == 1 %}
-                    <td> IOMA </td>
-              {% elseif item.id_medical_insurance == 2%}
-                   <td> OSECAC </td>
-              {% elseif item.id_medical_insurance == 3%}
-                   <td> OSDE </td>
-              {% elseif item.id_medical_insurance == 4%}
-                   <td> Medicus </td>
-              {% endif %}
-              <td>
-                <form action="./?action=pacient_form_update" method="post">
-                 <input type="submit" class="btn btn-primary" name="id" value="Modificar">
-                 <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-                </form>
-              </td>
-              <td>
-                <form action="./?action=pacient_destroy" method="post">
-                   <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-primary" value="Eliminar" id="boton_borrar"/>
-                    <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-                 </form>
-               </td>
-               <td>
+          <tr>
+            <td>{{ item.first_name }}</td>
+            <td>{{ item.last_name }}</td>
+            <td>{{ item.birth_date }}</td>
+            <td>{{ item.gender }}</td>
+            <td>{{ item.doc_type }}</td>
+            <td>{{ item.dni }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.phone }}</td>
+            <td> OBRA SOCIAL ACA </td>
+            <td>
+              <form action="./?action=pacient_form_update" method="post">
+                <input type="submit" class="btn btn-primary" name="id" value="Modificar">
+                <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+              </form>
+            </td>
+            <td>
+              <form action="./?action=pacient_destroy" method="post">
+                <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-primary" value="Eliminar" id="boton_borrar"/>
+                <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+              </form>
+            </td>
+            <td>
               <form action="./?action=pacient_demographic_data" method="post">
-                 <input type="submit" class="btn btn-primary" value="Datos Demogr&aacute;ficos" id="boton_datos_demograficos"/>
-                  <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-               </form>
-             </td>
-            </tr>
-            <input type="hidden" name="page_number" id="page_number" value= "">
+                <input type="submit" class="btn btn-primary" value="Datos Demogr&aacute;ficos" id="boton_datos_demograficos"/>
+                <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+              </form>
+            </td>
+          </tr>
+          <input type="hidden" name="page_number" id="page_number" value= "">
         {% endfor %}
-
-
-</table>
-<form action= ./?action=pacients_index align="right" method="post">
-  <ul class="pagination"> 
-    {% for i in 1..pageCount %}
-      <li>
-        <input type="submit" class="btn .btn-link"  id="page" name="page"  value={{ i }}> &nbsp;
-      </li>
-    {% endfor %}
-  </ul>
+      </table>
+      {% if pageCount > 0 %}
+        <form action= ./?action=pacients_index align="right" method="post">
+          <ul class="pagination">
+          {% for i in 1..pageCount %}
+            <li>
+              <input type="submit" class="btn .btn-link" id="page" name="page"  value={{ i }}> &nbsp;
+            </li>
+          {% endfor %}
+          </ul>
+        </form>
+      {% endif %}
+    </div>
+  </div>
 </form>
 
-</div>
-</div>
-</form>
 <style>
 div.table-responsive {
   background: white;
