@@ -26,4 +26,19 @@ class AppConfig extends PDORepository
   {
     return $this->queryValue("page_row_size");
   }
+
+  public function update($title, $description, $contact_mail, $page_row_size, $site_available)
+  {
+    $stmt = $this->newPreparedStmt(
+      "UPDATE app_settings SET
+        title = ?,
+        description = ?,
+        contact_mail = ?,
+        page_row_size = ?,
+        site_available = ?",
+      [$title, $description, $contact_mail, $page_row_size, $site_available]
+    );
+
+    $stmt->execute();
+  }
 }
