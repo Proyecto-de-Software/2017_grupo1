@@ -9,7 +9,7 @@
 
 
 <div class="container">
- <div class="table-responsive">          
+ <div class="table-responsive">
   <table class="table table-condensed">
     <thead>
       <tr>
@@ -39,7 +39,7 @@
           </form>
         </td>
        <td>
-        <form action="./?action=user_destroyed" method="post">
+        <form action="./?action=user_destroy" method="post">
           <input type="submit" class="btn btn-primary"  onclick='return confirm("¿Estás seguro?")' value="Eliminar" id="boton_borrar"/>
           <input type="hidden" name="id" id="id" value= "{{ item.id }}">
          </form>

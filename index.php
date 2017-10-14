@@ -27,7 +27,7 @@ function getFrontEndController()
     $indexController = new IndexController($indexView);
 
     TwigView::setAppConfig($appConfig);
-    $frontEndController = new FrontEndController($appConfig);
+    $frontEndController = new FrontEndController($appConfig, $userRepository);
 
     $frontEndController->addController('index', $indexController);
     $frontEndController->addController('login', new LoginController($loginView));
@@ -41,7 +41,7 @@ function getFrontEndController()
     $frontEndController->addController('user_added', new UserAddedController(new UserAddedView, $userRepository));
     $frontEndController->addController('user_form_update', new UserFormController(new EditUserView, $userRepository));
     $frontEndController->addController('user_updated', new UserUpdatedController(new UserUpdatedView, $userRepository));
-    $frontEndController->addController('user_destroyed', new UserDestroyedController(new UserDestroyedView, $userRepository));
+    $frontEndController->addController('user_destroy', new UserDestroyedController(new UserDestroyedView, $userRepository));
     $frontEndController->addController('user_toggle_status', new UserToggleStatusController($userListController, $userRepository));
 
     $frontEndController->addController('pacients_index', new PacientListController(new PacientListView, $pacientsRepository));
@@ -49,7 +49,7 @@ function getFrontEndController()
     $frontEndController->addController('pacient_added', new PacientAddedController(new PacientAddedView, $pacientsRepository));
     $frontEndController->addController('pacient_form_update', new PacientEditController(new EditPacientView($referenceDataService), $pacientsRepository));
     $frontEndController->addController('pacient_updated', new PacientUpdatedController(new PacientUpdatedView, $pacientsRepository));
-    $frontEndController->addController('pacient_destroyed', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
+    $frontEndController->addController('pacient_destroy', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
     $frontEndController->addController('pacient_demographic_data', new PacientEditController(new PacientDemographicDataView, $pacientsRepository));
   }
 
