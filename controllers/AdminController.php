@@ -23,15 +23,14 @@ protected function getView()
   {
     return $this->repository;
   }
-
-class AdminUpdateController extends UserController
+}
+class AdminUpdateController extends AdminController
 {
   public function showView($args)
   {
-    if ($this->getRepository()->update($args['title'], $args['description'], $args['contact_mail'], $args['page_row_size']),$args['avaiable']))
+    if ($this->getRepository()->update($args['title'], $args['description'], $args['contact_mail'], $args['page_row_size'],$args['avaiable']))
       $this->getView()->show();
   }
 }
 
   
-}
