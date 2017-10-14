@@ -13,16 +13,16 @@ function getFrontEndController()
     $userRepository = new UserRepository;
     $pacientsRepository = new PacientsRepository;
     $referenceDataService = new ReferenceDataService(
-      new WaterTypeRepository(),
-      new HeatingTypeRepository(),
-      new DocumentTypeRepository(),
-      new SocialInsuranceRepository(),
-      new HomeTypeRepository()
+      new WaterTypeRepository,
+      new HeatingTypeRepository,
+      new DocumentTypeRepository,
+      new SocialInsuranceRepository,
+      new HomeTypeRepository
     );
 
-    $indexView = new IndexView();
-    $loginView = new LoginView();
-    $appConfig = new AppConfig();
+    $indexView = new IndexView;
+    $loginView = new LoginView;
+    $appConfig = new AppConfig;
 
     $indexController = new IndexController($indexView);
 
@@ -37,9 +37,9 @@ function getFrontEndController()
 
     $userListController = new UserListController(new UserListView, $userRepository);
     $frontEndController->addController('users_index', $userListController);
-    $frontEndController->addController('user_new', new UserController(new UserNewView, $userRepository));
+    $frontEndController->addController('user_new', new UserController(new NewUserView, $userRepository));
     $frontEndController->addController('user_added', new UserAddedController(new UserAddedView, $userRepository));
-    $frontEndController->addController('user_form_update', new UserFormController(new UserFormView, $userRepository));
+    $frontEndController->addController('user_form_update', new UserFormController(new EditUserView, $userRepository));
     $frontEndController->addController('user_updated', new UserUpdatedController(new UserUpdatedView, $userRepository));
     $frontEndController->addController('user_destroyed', new UserDestroyedController(new UserDestroyedView, $userRepository));
     $frontEndController->addController('user_toggle_status', new UserToggleStatusController($userListController, $userRepository));

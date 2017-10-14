@@ -35,7 +35,6 @@ require_once "./views/AdminView.php";
 require_once "./views/DisabledSiteView.php";
 
 require_once "./views/UserListView.php";
-require_once "./views/UserNewView.php";
 require_once "./views/UserAddedView.php";
 require_once "./views/UserFormView.php";
 require_once "./views/UserUpdatedView.php";
