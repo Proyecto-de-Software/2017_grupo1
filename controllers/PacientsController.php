@@ -92,25 +92,30 @@ class PacientListController extends PacientsController
   private $appConfig;
 
   public function __construct($view, $repository,$appConfig)
-  { 
+  {
     parent::__construct($view, $repository);
     $this->appConfig= $appConfig;
   }
 
   public function showView($args)
   {
-    if (!isset($args['page'])) 
+    if (!isset($args['page']))
       $page = 1;
-    else 
+    else
       $page = $args['page'];
 
-    if (!isset($args['filter'])) 
+    if (!isset($args['filter']))
+    {
+      $data_count = $this->getRepository()->getPacientCount();
       $data = $this->getRepository()->getAll($page);
+    }
     else
-      $data = $this->getRepository()->getAllByFilter($args['filter'],$page);
+    {
+      $data_count = count($data);
+      $data = $this->getRepository()->getAllByFilter($args['filter'], $page);
+    }
 
-
-    $this->getView()->show($data, count($data) / $this->appConfig->getPage_row_size());
+    $this->getView()->show($data, $data_count / $this->appConfig->getPage_row_size());
   }
 }
 

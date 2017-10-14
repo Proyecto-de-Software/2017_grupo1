@@ -47,7 +47,7 @@ class PacientsRepository extends PDORepository
   {
     $count = $this->appConfig->getPage_row_size();
     $offset = ($page - 1) * $count;
-    return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients LIMIT $count OFFSET $offset", []));
+    return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients LIMIT $count OFFSET $offset"));
   }
 
 
