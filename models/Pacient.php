@@ -58,7 +58,7 @@ class Pacient
 
   public function getFull_Name()
   {
-    return $this->getFirst_Name() .','. $this->getLast_Name();
+    return $this->getLast_Name() .','. $this->getFirst_Name();
   }
 
   public function getId()
