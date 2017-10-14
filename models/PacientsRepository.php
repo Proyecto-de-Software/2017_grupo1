@@ -4,6 +4,7 @@ class PacientsRepository extends PDORepository
   private $stmtDelete;
   private $stmtCreate;
   private $stmtUpdate;
+  private $appConfig;
 
   private function queryToPacientArray($query)
   {
@@ -31,7 +32,7 @@ class PacientsRepository extends PDORepository
     return $answer;
   }
 
-  public function __construct()
+  public function __construct($appConfig)
   {
     $this->stmtDelete = $this->newPreparedStmt("DELETE FROM pacients WHERE id = ?");
     $this->stmtCreate = $this->newPreparedStmt("INSERT INTO pacients (first_name, last_name, birth_date, gender, doc_type,
@@ -39,11 +40,14 @@ class PacientsRepository extends PDORepository
                                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $this->stmtUpdate = $this->newPreparedStmt("UPDATE pacients SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, doc_type = ?,
                                                 dni = ?, address = ?, phone = ?, id_medical_insurance = ?, has_electricity = ?, has_pet = ?, has_refrigerator = ?, heating_type = ?, home_type = ?, water_type = ? WHERE id = ?");
+    $this->appConfig = $appConfig;
   }
 
-  public function getAll()
-  {
-    return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients", []));
+   public function getAll($page)
+  { 
+    $count = $this->appConfig->getPage_row_size();
+    $offset = ($page - 1) * $count;
+    return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients LIMIT $count OFFSET $offset", []));
   }
 
   public function create($first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $has_electricity, $has_pet, $has_refrigerator, $heating_type, $home_type, $water_type)
@@ -64,6 +68,18 @@ class PacientsRepository extends PDORepository
   public function getPacient($pacientId)
   {
     return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients WHERE id = ?", [$pacientId]))[0];
+  }
+
+  public function getPacientCount()
+  { 
+    $stmt = $this->newPreparedStmt("SELECT COUNT(*) FROM pacients");   
+    $stmt->execute();
+    return $stmt->fetchColumn();    
+  }
+
+    public function getPageCount()
+  {
+    return $this->getPacientCount() / $this->appConfig->getPage_row_size();
   }
 }
 

@@ -6,11 +6,13 @@
 
 
 {% block inner_body %}
+<form method="post">
 <div class="container">
  <div class="table-responsive">          
   <table class="table table-condensed">
     <thead>
-      <tr>  <th>Nombre</th>
+      <tr>
+  <th>Nombre</th>
   <th>Apellido</th>
   <th>Fecha de Nacimiento</th>
   <th>Genero</th>
@@ -64,12 +66,24 @@
                </form>
              </td>
             </tr>
+            <input type="hidden" name="page_number" id="page_number" value= "">
         {% endfor %}
 
-</table>
-</div>
-</div>
 
+</table>
+<form action= ./?action=pacients_index align="right" method="post">
+  <ul class="pagination"> 
+    {% for i in 1..pageCount %}
+      <li>
+        <input type="submit" class="btn .btn-link"  id="page" name="page"  value={{ i }}> &nbsp;
+      </li>
+    {% endfor %}
+  </ul>
+</form>
+
+</div>
+</div>
+</form>
 <style>
 div.table-responsive {
   background: white;

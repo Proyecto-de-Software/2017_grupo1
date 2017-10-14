@@ -2,6 +2,7 @@
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
+
 require_once "./private/autoloader.php";
 
 session_start();
@@ -11,7 +12,8 @@ function getFrontEndController()
 {
   if (!isset($frontEndController)) {
     $userRepository = new UserRepository;
-    $pacientsRepository = new PacientsRepository;
+    $appConfig = new AppConfig;
+    $pacientsRepository = new PacientsRepository($appConfig);
     $referenceDataService = new ReferenceDataService(
       new WaterTypeRepository,
       new HeatingTypeRepository,
@@ -22,7 +24,7 @@ function getFrontEndController()
 
     $indexView = new IndexView;
     $loginView = new LoginView;
-    $appConfig = new AppConfig;
+    
 
     $indexController = new IndexController($indexView);
 

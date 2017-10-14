@@ -91,7 +91,12 @@ class PacientListController extends PacientsController
 {
   public function showView($args)
   {
-    $this->getView()->show($this->getRepository()->getAll());
+    if (!isset($args['page'])) 
+      $page = 1;
+    else 
+      $page = $args['page'];
+
+    $this->getView()->show($this->getRepository()->getAll($page), $this->getRepository()->getPageCount());
   }
 }
 

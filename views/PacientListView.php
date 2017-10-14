@@ -6,8 +6,9 @@ class PacientListView extends TwigView
     return "pacients_index.html";
   }
 
-  public function show($pacients)
+  public function show($pacients, $pageCount)
   {
-    $this->render(array('pacients' => $pacients));
+    $this->render(array('pacients' => $pacients,
+                        'pageCount' => $pageCount));
   }
 }
