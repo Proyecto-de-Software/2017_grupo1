@@ -56,23 +56,6 @@ function getFrontEndController()
   return $frontEndController;
 }
 
-if (isset($_POST)) {
-  echo '$_POST ----->', var_dump($_POST);
-  echo '<br>';
-}
-
-if (isset($_GET)) {
-  echo '$_GET ----->', var_dump($_GET);
-  echo '<br>';
-}
-
-if (isset($_SESSION)) {
-  echo '$_SESSION ----->', var_dump($_SESSION);
-  echo session_id();
-}
-
-echo '<br>';
-
 if (isset($_GET['action']))
   getFrontEndController()->getController($_GET['action'])->showView($_POST);
 else
