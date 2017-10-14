@@ -3,7 +3,7 @@
 {%block body %}
 <div id="div-top" align="center">
 <h1> Configuraci&oacute;n </h1>
-<form action="{% block action %} {% endblock %}" method='post'>
+<form action="./?action=admin_updated" method='post'>
   <div class="container">
     <div class="row">
       <div align="left">
@@ -14,7 +14,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-8">
                   T&iacute;titulo:
-                  <input id="title" name="title" type="text" value="{{ app.title }}" class="form-control" required >
+                  <input id="title" name="title" type="text" value="{{ config.title }}" class="form-control" required >
                 </div>
               </div>
             </fieldset>
@@ -24,7 +24,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-8">
                   Descripci&oacute;n:
-                    <textarea id="description"  name="description" type="text" value="{{ app.description }}" class="form-control" required > </textarea>
+                    <textarea id="description"  name="description" type="text" value="{{ config.description }}" class="form-control" required > </textarea>
                 </div>
               </div>
             </fieldset>
@@ -34,7 +34,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-8">
                   E-mail de contacto:
-                    <input id="contact_mail" name="contact_mail" type="email" value="{{ app.contact_mail }}" class="form-control" required>
+                    <input id="contact_mail" name="contact_mail" type="email" value="{{ config.contact_mail }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -44,7 +44,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-8">
                   Cantidad de elementos por p&aacute;gina:
-                    <input id="page_row_size" name="page_row_size" type="text" value="{{ app.page_row_size }}" class="form-control" required>
+                    <input id="page_row_size" name="page_row_size" type="text" value="{{ config.page_row_size }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -65,7 +65,7 @@
              <div class="form-group">
               <div class="col-md-12 text-center">
                 <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar">
-               
+
                 <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('index')"; value="Cancelar"></button>
               </div>
             </div>

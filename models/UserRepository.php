@@ -104,9 +104,22 @@ class UserRepository extends PDORepository
                             WHERE (UR.user_id = ?) AND P.name = ?", [$userId, $permissionName]);
   }
 
+  private function queryUserRole($userId, $roleName)
+  {
+    return $this->queryList("SELECT * FROM users_has_role UR
+                            INNER JOIN user_role R ON (R.id = UR.role_id)
+                            WHERE (UR.user_id = ?) AND R.name = ?", [$userId, $roleName]);
+  }
+
+
   public function hasPermission($userId, $action)
   {
     return count($this->queryUserPermission($userId, $action)) > 0;
+  }
+
+  public function hasRole($userId, $roleName)
+  {
+    return count($this->queryUserRole($userId, $roleName)) > 0;
   }
 
   public function getUserCount()

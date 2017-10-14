@@ -24,8 +24,6 @@ function getFrontEndController()
 
     $indexView = new IndexView;
     $loginView = new LoginView;
-
-
     $indexController = new IndexController($indexView);
 
     TwigView::setAppConfig($appConfig);
@@ -36,6 +34,7 @@ function getFrontEndController()
     $frontEndController->addController('do-login', new DoLoginController(new $indexView, $loginView, $userRepository));
     $frontEndController->addController('do-logout', new DoLogoutController($indexController));
     $frontEndController->addController('admin', new AdminController(new AdminView));
+    $frontEndController->addController('admin_updated', new AdminUpdateController($indexView, $appConfig));
 
     $userListController = new UserListController(new UserListView, $userRepository, $appConfig);
     $frontEndController->addController('users_index', $userListController);

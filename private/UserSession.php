@@ -29,4 +29,9 @@ class UserSession
 
     return $this->userRepository->hasPermission($this->getUserId(), $action);
   }
+
+  public function hasRole($roleName)
+  {
+    return $this->userRepository->hasRole($this->getUserId(), $roleName);
+  }
 }

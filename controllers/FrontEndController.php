@@ -6,6 +6,7 @@ class FrontEndController
   private $disabledSiteController;
   private $nonAuthorizedController;
   private $userRepository;
+  private static $admin_actions = array('admin', 'admin_updated');
 
   private function getUserSession()
   {
@@ -29,7 +30,12 @@ class FrontEndController
   public function getController($key)
   {
     if (!$this->appConfig->getIsSiteEnabled())
-      return $this->disabledSiteController;
+    {
+      if (($this->getUserSession()->hasRole('ADMINISTRADOR')) && (in_array($key, self::$admin_actions)))
+        return $this->controllers[$key];
+      else
+        return $this->disabledSiteController;
+    }
 
     if (!$this->getUserSession()->hasPermission($key))
       return $this->nonAuthorizedController;

@@ -12,6 +12,11 @@ class AppConfig extends PDORepository
     return $this->queryValue("avaible");
   }
 
+  public function getDescription()
+  {
+    return $this->queryValue("avaible");
+  }
+
   public function getTitle()
   {
     return $this->queryValue("title");
@@ -35,10 +40,8 @@ class AppConfig extends PDORepository
         description = ?,
         contact_mail = ?,
         page_row_size = ?,
-        site_available = ?",
-      [$title, $description, $contact_mail, $page_row_size, $site_available]
-    );
+        avaible = ?");
 
-    $stmt->execute();
+    return $stmt->execute([$title, $description, $contact_mail, $page_row_size, $site_available]);
   }
 }
