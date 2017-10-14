@@ -58,32 +58,9 @@
           </tr>
         {% endfor %}
       </table>
-      {% if pageCount > 0 %}
-        <form action= ./?action=pacients_index align="right" method="post">
-          <ul class="pagination">
-          {% for i in 1..pageCount %}
-            <li>
-              <input type="submit" class="btn .btn-link" id="page" name="page"  value={{ i }}> &nbsp;
-            </li>
-          {% endfor %}
-          </ul>
-        </form>
-      {% endif %}
     </div>
   </div>
 </form>
-
-<style>
-div.table-responsive {
-  background: white;
-}
-</style>
-
-<br>
-<br>
-<br>
-<br>
-<br>
 
 {% endblock %}
 
