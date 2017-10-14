@@ -1,12 +1,13 @@
 <?php
-class UserUpdatedView extends TwigView{
-  
-  protected function getTemplateFile(){
-  	return "user_updated.html";
+class UserUpdatedView extends TwigView
+{
+  protected function getTemplateFile()
+  {
+    return "user_updated.html";
   }
-   public function show()
+
+  public function show()
   {
     $this->render();
   }
-
 }
