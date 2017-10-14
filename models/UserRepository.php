@@ -37,9 +37,11 @@ class UserRepository extends PDORepository
                                                 WHERE Id = ?");
   }
 
-  public function getAll()
-  {
-    return $this->queryToUserArray($this->queryList("SELECT * FROM users", []));
+  public function getAll($page)
+  { 
+    $count = $this->appConfig->getPage_row_size();
+    $offset = ($page - 1) * $count;
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users LIMIT $count OFFSET $offset", []));
   }
 
   public function getAllActive()

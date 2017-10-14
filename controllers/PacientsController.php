@@ -89,6 +89,14 @@ class PacientUpdatedController extends PacientsController
 
 class PacientListController extends PacientsController
 {
+  private $appConfig;
+
+  public function __construct($view, $repository,$appConfig)
+  { 
+    parent::__construct($view, $repository);
+    $this->appConfig= $appConfig;
+  }
+
   public function showView($args)
   {
     if (!isset($args['page'])) 
@@ -96,7 +104,13 @@ class PacientListController extends PacientsController
     else 
       $page = $args['page'];
 
-    $this->getView()->show($this->getRepository()->getAll($page), $this->getRepository()->getPageCount());
+    if (!isset($args['filter'])) 
+      $data = $this->getRepository()->getAll($page);
+    else
+      $data = $this->getRepository()->getAllByFilter($args['filter'],$page);
+
+
+    $this->getView()->show($data, count($data) / $this->appConfig->getPage_row_size());
   }
 }
 

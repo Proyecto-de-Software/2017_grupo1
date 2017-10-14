@@ -50,6 +50,7 @@ class PacientsRepository extends PDORepository
     return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients LIMIT $count OFFSET $offset", []));
   }
 
+
   public function create($first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance, $has_electricity, $has_pet, $has_refrigerator, $heating_type, $home_type, $water_type)
   {
     return $this->stmtCreate->execute([$first_name, $last_name, $birth_date, $gender, $doc_type, $dni, $address, $phone, $id_medical_insurance,  $has_electricity, $has_pet, $has_refrigerator, $heating_type, $home_type, $water_type]);
@@ -80,6 +81,11 @@ class PacientsRepository extends PDORepository
     public function getPageCount()
   {
     return $this->getPacientCount() / $this->appConfig->getPage_row_size();
+  }
+
+  public function getAllByFilter($filter)
+  {
+    return $this->queryToPacientsArray($this->queryList("SELECT * FROM pacients WHERE (first_name LIKE '%$filter%' OR last_name LIKE '%$filter%' OR email LIKE '%$filter%' OR dni LIKE '%$filter%') ORDER BY last_name, first_name ASC", [$filter]));
   }
 }
 

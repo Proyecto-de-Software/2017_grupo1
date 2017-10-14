@@ -46,7 +46,7 @@ function getFrontEndController()
     $frontEndController->addController('user_destroy', new UserDestroyedController(new UserDestroyedView, $userRepository));
     $frontEndController->addController('user_toggle_status', new UserToggleStatusController($userListController, $userRepository));
 
-    $frontEndController->addController('pacients_index', new PacientListController(new PacientListView, $pacientsRepository));
+    $frontEndController->addController('pacients_index', new PacientListController(new PacientListView, $pacientsRepository,$appConfig));
     $frontEndController->addController('pacient_new', new PacientsController(new NewPacientView($referenceDataService), $pacientsRepository));
     $frontEndController->addController('pacient_added', new PacientAddedController(new PacientAddedView, $pacientsRepository));
     $frontEndController->addController('pacient_form_update', new PacientEditController(new EditPacientView($referenceDataService), $pacientsRepository));
