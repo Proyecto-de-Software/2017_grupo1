@@ -1,14 +1,76 @@
 {% extends 'plantilla_base.html' %}
 
-{% block head%}  <link rel="stylesheet" type="text/css" href="../css/administracion.css"> {% endblock %}
+{%block body %}
+<div id="div-top" align="center">
+<h1> Configuraci&oacute;n </h1>
+<form action="{% block action %} {% endblock %}" method='post'>
+  <div class="container">
+    <div class="row">
+      <div align="left">
+        <div class="well well-sm">
+          <div class="form-horizontal">
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-8">
+                  T&iacute;titulo:
+                  <input id="title" name="title" type="text" value="{{ app.title }}" class="form-control" required >
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-8">
+                  Descripci&oacute;n:
+                    <input id="description" name="description" type="text" value="{{ app.description }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-8">
+                  E-mail de contacto:
+                    <input id="contact_mail" name="contact_mail" type="text" value="{{ app.contact_mail }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-8">
+                  Cantidad de elementos por p&aacute;gina:
+                    <input id="page_row_size" name="page_row_size" type="text" value="{{ app.page_row_size }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+           <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-8">
+                  Sitio Disponible:
+                    <input id="avaiable" name="avaiable" type="text" value="{{ app.avaiable }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+             <div class="form-group">
+              <div class="col-md-12 text-center">
+                <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar">
+               
+                <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('index')"; value="Cancelar"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
 
-{% block dropdown %}
-  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Administraci&oacute;n <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="./?action=users_index">Usuarios</a> </li>
-          <li><a href="#Roles">Roles</a> </li>
-          <li><a href="#Permisos">Permisos</a> </li>
-        </ul>
-  </li> 
-  <li><a href="./?action=pacients_index">Pacientes</a></li> 
 {% endblock %}
