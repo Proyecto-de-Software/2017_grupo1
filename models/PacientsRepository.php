@@ -44,7 +44,7 @@ class PacientsRepository extends PDORepository
   }
 
    public function getAll($page)
-  { 
+  {
     $count = $this->appConfig->getPage_row_size();
     $offset = ($page - 1) * $count;
     return $this->queryToPacientArray($this->queryList("SELECT * FROM pacients LIMIT $count OFFSET $offset", []));
@@ -72,15 +72,15 @@ class PacientsRepository extends PDORepository
   }
 
   public function getPacientCount()
-  { 
-    $stmt = $this->newPreparedStmt("SELECT COUNT(*) FROM pacients");   
+  {
+    $stmt = $this->newPreparedStmt("SELECT COUNT(*) FROM pacients");
     $stmt->execute();
-    return $stmt->fetchColumn();    
+    return $stmt->fetchColumn();
   }
 
     public function getPageCount()
   {
-    return $this->getPacientCount() / $this->appConfig->getPage_row_size();
+    return round($this->getPacientCount() / $this->appConfig->getPage_row_size());
   }
 
   public function getAllByFilter($filter)
