@@ -36,6 +36,7 @@ require_once "./views/AdminView.php";
 require_once "./views/DisabledSiteView.php";
 require_once "./views/NonAuthorizedView.php";
 require_once "./views/InvalidArgsView.php";
+require_once "./views/ErrorMessageView.php";
 
 require_once "./views/UserListView.php";
 require_once "./views/UserAddedView.php";

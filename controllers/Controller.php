@@ -18,6 +18,11 @@ abstract class Controller
     $this->getInvalidArgsView()->show();
   }
 
+  protected function getErrorView($errMsg)
+  {
+    return new ErrorMessageView($errMsg);
+  }
+
   public function showView($args)
   {
     if ($this->checkArgs($args))

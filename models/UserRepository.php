@@ -96,6 +96,11 @@ class UserRepository extends PDORepository
     return $this->queryUser($username, $password)[0];
   }
 
+  public function userNameExists($username)
+  {
+    return count($this->queryList("SELECT * FROM users where username = ?", [$username]));
+  }
+
   private function queryUserPermission($userId, $permissionName)
   {
     return $this->queryList("SELECT * FROM users_has_role UR

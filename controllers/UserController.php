@@ -76,15 +76,33 @@ abstract class UsersCRUDController extends UsersController
 
 class UserAddedController extends UsersCRUDController
 {
+  private function canCreate($args)
+  {
+    return $this->getRepository()->create($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name']);
+  }
+
+  private function doCreate($args)
+  {
+    if ($this->getRepository()->userNameExists($args['username']))
+      return $this->getErrorView('El nombre de usuario ya existe');
+
+    if ($this->canCreate($args))
+      return $this->getView();
+  }
+
   protected function doShowView($args)
   {
-    if ($this->getRepository()->create($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name']))
-      $this->getView()->show();
+    $this->doCreate($args)->show();
   }
 }
 
 class UserUpdatedController extends UsersCRUDController
 {
+  private function canUpdate($args)
+  {
+    return $this->getRepository()->update($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name'], $args['id']);
+  }
+
   protected function checkArgs($args)
   {
     if (!isset($args['id']))
@@ -98,7 +116,7 @@ class UserUpdatedController extends UsersCRUDController
 
   protected function doShowView($args)
   {
-    if ($this->getRepository()->update($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name'], $args['id']))
+    if ($this->canUpdate($args))
       $this->getView()->show();
   }
 }
@@ -138,12 +156,12 @@ class UserListController extends UsersCRUDController
       $page = $args['page'];
 
     if (!isset($args['filter']) || empty($args['filter']))
-    {
+      {
       $data = $this->getRepository()->getAll($page);
       $data_count = $this->getRepository()->getUserCount();
     }
     else
-    {
+      {
       $data = $this->getRepository()->getAllByFilter($args['filter'], $page);
       $data_count = count($data);
     }
