@@ -8,7 +8,7 @@ class LoginController extends Controller
     $this->view = $loginView;
   }
 
-  public function showView($args)
+  protected function doShowView($args)
   {
     $this->view->show();
   }
@@ -27,7 +27,7 @@ class DoLoginController extends Controller
     $this->userRepository = $userRepository;
   }
 
-  public function showView($args)
+  protected function doShowView($args)
   {
     if ($this->userRepository->containsUser($args['username'], $args['password']))
     {
@@ -50,7 +50,7 @@ class DoLogoutController extends Controller
     $this->indexController = $indexController;
   }
 
-  public function showView($args)
+  protected function doShowView($args)
   {
     session_unset();
     session_destroy();

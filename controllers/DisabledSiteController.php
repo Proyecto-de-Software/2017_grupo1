@@ -8,7 +8,7 @@ class DisabledSiteController extends Controller
     $this->view = new DisabledSiteView;
   }
 
-  public function showView($args)
+  protected function doShowView($args)
   {
     $this->view->show($args);
   }

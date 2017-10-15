@@ -38,7 +38,7 @@ function getFrontEndController()
 
     $userListController = new UserListController(new UserListView, $userRepository, $appConfig);
     $frontEndController->addController('users_index', $userListController);
-    $frontEndController->addController('user_new', new UserController(new NewUserView, $userRepository));
+    $frontEndController->addController('user_new', new UserNewController(new NewUserView, $userRepository));
     $frontEndController->addController('user_added', new UserAddedController(new UserAddedView, $userRepository));
     $frontEndController->addController('user_form_update', new UserFormController(new EditUserView, $userRepository));
     $frontEndController->addController('user_updated', new UserUpdatedController(new UserUpdatedView, $userRepository));
@@ -46,7 +46,7 @@ function getFrontEndController()
     $frontEndController->addController('user_toggle_status', new UserToggleStatusController($userListController, $userRepository));
 
     $frontEndController->addController('pacients_index', new PacientListController(new PacientListView, $pacientsRepository,$appConfig));
-    $frontEndController->addController('pacient_new', new PacientsController(new NewPacientView($referenceDataService), $pacientsRepository));
+    $frontEndController->addController('pacient_new', new PacientNewController(new NewPacientView($referenceDataService), $pacientsRepository));
     $frontEndController->addController('pacient_added', new PacientAddedController(new PacientAddedView, $pacientsRepository));
     $frontEndController->addController('pacient_form_update', new PacientEditController(new EditPacientView($referenceDataService), $pacientsRepository));
     $frontEndController->addController('pacient_updated', new PacientUpdatedController(new PacientUpdatedView, $pacientsRepository));

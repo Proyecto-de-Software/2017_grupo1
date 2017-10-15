@@ -1,16 +1,14 @@
 <?php
-class PacientsController extends Controller
+abstract class PacientsController extends Controller
 {
   private $view;
-  private $repository;
 
-  public function __construct($view, $repository)
+  public function __construct($view)
   {
-    $this->repository = $repository;
     $this->view = $view;
   }
 
-  public function showView($args)
+  protected function doShowView($args)
   {
     $this->getView()->show($args);
   }
@@ -19,14 +17,131 @@ class PacientsController extends Controller
   {
     return $this->view;
   }
+}
+
+class PacientNewController extends PacientsController
+{
+}
+
+abstract class PacientsCRUDController extends PacientsController
+{
+  private $repository;
+  private static $gender_types = array('F', 'M');
+
+  public function __construct($view, $repository)
+  {
+    parent::__construct($view);
+    $this->repository = $repository;
+  }
 
   protected function getRepository()
   {
     return $this->repository;
   }
+
+  protected function checkArgs($args)
+  {
+    if (!isset($args['first_name']))
+      return false;
+
+    if (!isset($args['last_name']))
+      return false;
+
+    if (!isset($args['birth_date']))
+      return false;
+
+    if (!isset($args['gender']))
+      return false;
+
+    if (!isset($args['doc_type']))
+      return false;
+
+    if (!isset($args['dni']))
+      return false;
+
+    if (!isset($args['address']))
+      return false;
+
+    if (!isset($args['phone']))
+      return false;
+
+    if (!isset($args['id_medical_insurance']))
+      return false;
+
+    if (!isset($args['has_electricity']))
+      return false;
+
+    if (!isset($args['has_pet']))
+      return false;
+
+    if (!isset($args['has_refrigerator']))
+      return false;
+
+    if (!isset($args['heating_type']))
+      return false;
+
+    if (!isset($args['home_type']))
+      return false;
+
+    if (!isset($args['water_type']))
+      return false;
+
+    if (empty($args['first_name']))
+      return false;
+
+    if (empty($args['last_name']))
+      return false;
+
+    if (empty($args['birth_date']))
+      return false;
+
+    if (empty($args['gender']))
+      return false;
+
+    if (empty($args['doc_type']))
+      return false;
+
+    if (empty($args['dni']))
+      return false;
+
+    if (empty($args['address']))
+      return false;
+
+    if (empty($args['phone']))
+      return false;
+
+    if (empty($args['id_medical_insurance']))
+      return false;
+
+    if (empty($args['has_electricity']))
+      return false;
+
+    if (empty($args['has_pet']))
+      return false;
+
+    if (empty($args['has_refrigerator']))
+      return false;
+
+    if (empty($args['heating_type']))
+      return false;
+
+    if (empty($args['home_type']))
+      return false;
+
+    if (empty($args['water_type']))
+      return false;
+
+    if (!is_numeric($args['dni']))
+      return false;
+
+    if (!in_array($args['gender'], self::$gender_types))
+      return false;
+
+    return true;
+  }
 }
 
-class PacientAddedController extends PacientsController
+class PacientAddedController extends PacientsCRUDController
 {
   private function canCreate($args)
   {
@@ -49,15 +164,26 @@ class PacientAddedController extends PacientsController
     );
   }
 
-  public function showView($args)
+  protected function doShowView($args)
   {
     if ($this->canCreate($args))
       $this->getView()->show();
   }
 }
 
-class PacientUpdatedController extends PacientsController
+class PacientUpdatedController extends PacientsCRUDController
 {
+  protected function checkArgs($args)
+  {
+    if (!isset($args['id']))
+      return false;
+
+    if (!is_numeric($args['id']))
+      return false;
+
+    return parent::checkArgs($args);
+  }
+
   private function canUpdate($args)
   {
     return $this->getRepository()->update(
@@ -80,24 +206,29 @@ class PacientUpdatedController extends PacientsController
     );
   }
 
-  public function showView($args)
+  protected function doShowView($args)
   {
     if ($this->canUpdate($args))
       $this->getView()->show();
   }
 }
 
-class PacientListController extends PacientsController
+class PacientListController extends PacientsCRUDController
 {
   private $appConfig;
 
-  public function __construct($view, $repository,$appConfig)
+  public function __construct($view, $repository, $appConfig)
   {
     parent::__construct($view, $repository);
     $this->appConfig= $appConfig;
   }
 
-  public function showView($args)
+  protected function checkArgs($args)
+  {
+    return true;
+  }
+
+  protected function doShowView($args)
   {
     if (!isset($args['page']))
       $page = 1;
@@ -122,16 +253,33 @@ class PacientListController extends PacientsController
 
 class PacientEditController extends PacientsController
 {
-  public function showView($args)
+  protected function checkArgs($args)
+  {
+    if (!isset($args['id']))
+      return false;
+
+    if (!is_numeric($args['id']))
+      return false;
+  }
+
+  protected function doShowView($args)
   {
     $this->getView()->show($this->getRepository()->getPacient($args['id']));
   }
 }
 
-//baja
 class PacientDestroyedController extends PacientsController
 {
-  public function showView($args)
+  protected function checkArgs($args)
+  {
+    if (!isset($args['id']))
+      return false;
+
+    if (!is_numeric($args['id']))
+      return false;
+  }
+
+  protected function doShowView($args)
   {
     if ($this->getRepository()->delete($args['id']))
       $this->getView()->show();

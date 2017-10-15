@@ -7,7 +7,7 @@ class IndexController extends Controller
     $this->view = $indexView;
   }
 
-  public function showView($args)
+  protected function doShowView($args)
   {
     $this->view->show();
   }
