@@ -27,6 +27,22 @@ class DoLoginController extends Controller
     $this->userRepository = $userRepository;
   }
 
+  protected function showInvalidArgsView()
+  {
+    $this->loginView->show(true);
+  }
+
+  protected function checkArgs($args)
+  {
+    if (!isset($args['username']))
+      return false;
+
+    if (!isset($args['password']))
+      return false;
+
+    return true;
+  }
+
   protected function doShowView($args)
   {
     if ($this->userRepository->containsUser($args['username'], $args['password']))
@@ -37,7 +53,7 @@ class DoLoginController extends Controller
       $this->indexView->show();
     }
     else
-      $this->loginView->show(true);
+      $this->showInvalidArgsView();
   }
 }
 

@@ -13,11 +13,16 @@ abstract class Controller
     return true;
   }
 
+  protected function showInvalidArgsView()
+  {
+    $this->getInvalidArgsView()->show();
+  }
+
   public function showView($args)
   {
     if ($this->checkArgs($args))
       $this->doShowView($args);
     else
-      $this->getInvalidArgsView()->show();
+      $this->showInvalidArgsView();
   }
 }
