@@ -191,7 +191,7 @@ class UserListController extends UsersCRUDController
   }
 }
 
-class UserToggleStatusController
+class UserToggleStatusController extends Controller
 {
   private $userListController;
   private $repository;
