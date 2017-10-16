@@ -33,7 +33,7 @@ class UserRepository extends PDORepository
     $this->stmtCreate = $this->newPreparedStmt("INSERT INTO users (username, email, password, first_name, last_name,
                                                 active, updated_at, created_at)
                                                 VALUES (?, ?, ?, ?, ?, 1, NOW(), NOW())");
-    $this->stmtUpdate = $this->newPreparedStmt("UPDATE users SET username = ?, email = ?, password = ?, first_name = ?, last_name = ?,
+    $this->stmtUpdate = $this->newPreparedStmt("UPDATE users SET email = ?, password = ?, first_name = ?, last_name = ?,
                                                 updated_at = NOW()
                                                 WHERE Id = ?");
     $this->appConfig = $appConfig;
@@ -71,9 +71,9 @@ class UserRepository extends PDORepository
     return $this->stmtCreate->execute([$username, $email, $password, $first_name, $last_name]);
   }
 
-  public function update($username, $email, $password, $first_name, $last_name, $userId)
+  public function update($email, $password, $first_name, $last_name, $userId)
   {
-    return $this->stmtUpdate->execute([$username, $email, $password, $first_name, $last_name, $userId]);
+    return $this->stmtUpdate->execute([$email, $password, $first_name, $last_name, $userId]);
   }
 
   public function getUser($userId)

@@ -40,9 +40,6 @@ abstract class UsersCRUDController extends UsersController
 
   protected function checkArgs($args)
   {
-    if (!isset($args['username']))
-      return false;
-
     if (!isset($args['email']))
       return false;
 
@@ -53,9 +50,6 @@ abstract class UsersCRUDController extends UsersController
       return false;
 
     if (!isset($args['last_name']))
-      return false;
-
-    if (empty($args['username']))
       return false;
 
     if (empty($args['email']))
@@ -76,6 +70,17 @@ abstract class UsersCRUDController extends UsersController
 
 class UserAddedController extends UsersCRUDController
 {
+  protected function checkArgs($args)
+  {
+    if (!isset($args['username']))
+      return false;
+
+    if (!is_numeric($args['username']))
+      return false;
+
+    return parent::checkArgs($args);
+  }
+
   private function canCreate($args)
   {
     return $this->getRepository()->create($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name']);
@@ -102,14 +107,11 @@ class UserUpdatedController extends UsersCRUDController
 {
   private function canUpdate($args)
   {
-    return $this->getRepository()->update($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name'], $args['id']);
+    return $this->getRepository()->update($args['email'], $args['password'], $args['first_name'], $args['last_name'], $args['id']);
   }
 
   private function doUpdate($args)
   {
-    if ($this->getRepository()->userNameExists($args['username']))
-      return $this->getErrorView('El nombre de usuario ya existe');
-
     if ($this->canUpdate($args))
       return $this->getView();
 
@@ -142,6 +144,8 @@ class UserFormController extends UsersCRUDController
 
     if (!is_numeric($args['id']))
       return false;
+
+    return true;
   }
 
   protected function doShowView($args)
@@ -205,6 +209,8 @@ class UserToggleStatusController
 
     if (!is_numeric($args['id']))
       return false;
+
+    return true;
   }
 
   protected function doShowView($args)
@@ -223,6 +229,8 @@ class UserDestroyedController extends UsersController
 
     if (!is_numeric($args['id']))
       return false;
+
+    return true;
   }
 
   protected function doShowView($args)

@@ -8,7 +8,10 @@ class EditUserView extends TwigView
 
   public function show($user)
   {
-    $this->render(array('user' => $user));
+    $this->render(array(
+      'user' => $user,
+      'username_disabled' => true
+    ));
   }
 }
 
@@ -21,6 +24,8 @@ class NewUserView extends TwigView
 
   public function show()
   {
-    $this->render();
+    $this->render(array(
+      'username_disabled' => false
+    ));
   }
 }
