@@ -21,6 +21,7 @@
           <th>DNI</th>
           <th>Direcci&oacute;n</th>
           <th>Tel&eacute;fono</th>
+          <th>Obra social</th>
           <th> </th>
           <th> </th>
         </tr>
@@ -32,10 +33,11 @@
           <td>{{ item.last_name }}</td>
           <td>{{ item.birth_date }}</td>
           <td>{{ item.gender }}</td>
-          <td>{{ item.doc_type }}</td>
+          <td>{{ referenceData.getDocumentTypeById(item.doc_type).description }}</td>
           <td>{{ item.dni }}</td>
           <td>{{ item.address }}</td>
           <td>{{ item.phone }}</td>
+          <td>{{ referenceData.getSocialInsuranceById(item.id_medical_insurance).description }}</td>
           <td>
             <form action="./?action=pacient_form_update" method="post">
               <input type="submit" class="btn btn-primary" name="id" value="Modificar">
