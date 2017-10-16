@@ -148,6 +148,11 @@ class UserListController extends UsersCRUDController
     $this->appConfig = $appConfig;
   }
 
+  protected function checkArgs($args)
+  {
+    return true;
+  }
+
   protected function doShowView($args)
   {
     if (!isset($args['page']))
