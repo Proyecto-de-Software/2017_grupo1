@@ -58,7 +58,6 @@ function getFrontEndController()
 }
 
 
-print_r($_POST);
 if (isset($_GET['action']))
   getFrontEndController()->getController($_GET['action'])->showView($_POST);
 else
