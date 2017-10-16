@@ -88,6 +88,8 @@ class UserAddedController extends UsersCRUDController
 
     if ($this->canCreate($args))
       return $this->getView();
+
+    return $this->getErrorView('Ocurrió un error y no se pudo grabar el usuario, intente nuevamente');
   }
 
   protected function doShowView($args)
@@ -103,6 +105,17 @@ class UserUpdatedController extends UsersCRUDController
     return $this->getRepository()->update($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name'], $args['id']);
   }
 
+  private function doUpdate($args)
+  {
+    if ($this->getRepository()->userNameExists($args['username']))
+      return $this->getErrorView('El nombre de usuario ya existe');
+
+    if ($this->canUpdate($args))
+      return $this->getView();
+
+    return $this->getErrorView('Ocurrió un error y no se pudo actualizar el usuario, intente nuevamente');
+  }
+
   protected function checkArgs($args)
   {
     if (!isset($args['id']))
@@ -116,8 +129,7 @@ class UserUpdatedController extends UsersCRUDController
 
   protected function doShowView($args)
   {
-    if ($this->canUpdate($args))
-      $this->getView()->show();
+    $this->doUpdate($args)->show();
   }
 }
 
