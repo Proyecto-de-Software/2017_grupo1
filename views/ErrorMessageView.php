@@ -15,6 +15,6 @@ class ErrorMessageView extends TwigView
 
   public function show()
   {
-    $this->render(array('error_message' => $error_message));
+    $this->render(array('error_message' => $this->error_message));
   }
 }
