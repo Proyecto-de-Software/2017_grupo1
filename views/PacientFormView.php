@@ -37,6 +37,7 @@ class EditPacientView extends PacientsFormView
 
   public function show($pacient)
   {
+
     $this->doShow(array('pacient' => $pacient));
   }
 }
