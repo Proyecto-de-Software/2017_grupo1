@@ -164,10 +164,20 @@ class PacientAddedController extends PacientsCRUDController
     );
   }
 
+  private function doCreate($args)
+  {
+    if ($this->getRepository()->dniExists($args['dni']))
+      return $this->getErrorView('El DNI ya existe en el sistema');
+
+    if ($this->canCreate($args))
+      return $this->getView();
+
+    return $this->getErrorView('Ocurrió un error y no se pudo grabar el paciente, intente nuevamente');
+  }
+
   protected function doShowView($args)
   {
-    if ($this->canCreate($args))
-      $this->getView()->show();
+    $this->doCreate($args)->show();
   }
 }
 
@@ -206,10 +216,22 @@ class PacientUpdatedController extends PacientsCRUDController
     );
   }
 
+  private function doUpdate($args)
+  {
+    $user = $this->getRepository()->getPacient($args['id']);
+
+    if (($user->getDni() != $args['dni']) && ($this->getRepository()->dniExists($args['dni'])))
+      return $this->getErrorView('El DNI ya existe en el sistema');
+
+    if ($this->canUpdate($args))
+      return $this->getView();
+
+    return $this->getErrorView('Ocurrió un error y no se pudo actualizar el paciente, intente nuevamente');
+  }
+
   protected function doShowView($args)
   {
-    if ($this->canUpdate($args))
-      $this->getView()->show();
+    $this->doUpdate($args)->show();
   }
 }
 
@@ -246,12 +268,11 @@ class PacientListController extends PacientsCRUDController
       $data_count = count($data);
     }
 
-    echo $data_count;
     $this->getView()->show($data, round($data_count / $this->appConfig->getPage_row_size()));
   }
 }
 
-class PacientEditController extends PacientsController
+class PacientEditController extends PacientsCRUDController
 {
   protected function checkArgs($args)
   {
@@ -260,6 +281,8 @@ class PacientEditController extends PacientsController
 
     if (!is_numeric($args['id']))
       return false;
+
+    return true;
   }
 
   protected function doShowView($args)
@@ -268,7 +291,7 @@ class PacientEditController extends PacientsController
   }
 }
 
-class PacientDestroyedController extends PacientsController
+class PacientDestroyedController extends PacientsCRUDController
 {
   protected function checkArgs($args)
   {
@@ -277,6 +300,8 @@ class PacientDestroyedController extends PacientsController
 
     if (!is_numeric($args['id']))
       return false;
+
+    return true;
   }
 
   protected function doShowView($args)

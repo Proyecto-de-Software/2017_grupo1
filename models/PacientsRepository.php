@@ -92,6 +92,11 @@ class PacientsRepository extends PDORepository
         ORDER BY last_name, first_name ASC
         LIMIT $count OFFSET $offset", ['%'.$filter.'%','%'.$filter.'%','%'.$filter.'%']));
   }
+
+  public function dniExists($dni)
+  {
+    return count($this->queryList("SELECT * FROM pacients where dni = ?", [$dni]));
+  }
 }
 
 
