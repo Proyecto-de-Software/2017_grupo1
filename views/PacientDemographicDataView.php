@@ -1,6 +1,13 @@
 <?php
 class PacientDemographicDataView extends TwigView
 {
+  private $referenceDataService;
+
+  public function __construct($referenceDataService)
+  {
+    $this->referenceDataService = $referenceDataService;
+  }
+
   protected function getTemplateFile()
   {
     return "pacient_demographic_data.html";
@@ -8,6 +15,9 @@ class PacientDemographicDataView extends TwigView
 
   public function show($pacient)
   {
-    $this->render(array('pacient' => $pacient));
+    $this->render(array(
+      'pacient' => $pacient,
+      'referenceData' => $this->referenceDataService
+    ));
   }
 }
