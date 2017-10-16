@@ -75,7 +75,7 @@ class UserAddedController extends UsersCRUDController
     if (!isset($args['username']))
       return false;
 
-    if (!is_numeric($args['username']))
+    if (empty($args['username']))
       return false;
 
     return parent::checkArgs($args);
