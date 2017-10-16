@@ -13,6 +13,12 @@
           <form action="{% block search_action %} {% endblock %}" method="post" id="searchform">
             <input type="text" placeholder="Buscar aqu&iacute;..." name="filter" id="filter" title="busqueda">
           &nbsp;
+
+            <select id="users_state" name="users_state"> &nbsp;
+              <option> Activos </option>
+              <option> Bloqueados </option>
+            </select>
+
             <button type= "submit" class="btn btn-info"> Buscar <span class="glyphicon glyphicon-search"></span> </button>
           </form>
           &nbsp;
@@ -37,6 +43,7 @@
   </form>
   {% endif %}
 </div>
+
 
 <br>
 <br>
