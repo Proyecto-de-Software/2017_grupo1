@@ -39,21 +39,21 @@ class UserRepository extends PDORepository
     $this->appConfig = $appConfig;
   }
 
-  public function getAll($page)
+  public function getAll($page, $users_state)
   {
     $count = $this->appConfig->getPage_row_size();
     $offset = ($page - 1) * $count;
-    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE active = ? LIMIT $count OFFSET $offset", [true]));
+    return $this->queryToUserArray($this->queryList("SELECT * FROM users WHERE active = ? LIMIT $count OFFSET $offset", [$users_state]));
   }
 
-  public function getAllByFilter($filter, $page)
+  public function getAllByFilter($filter, $page, $users_state)
   {
     $count = $this->appConfig->getPage_row_size();
     $offset = ($page - 1) * $count;
     return $this->queryToUserArray($this->queryList(
-        "SELECT * FROM users WHERE (first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR username LIKE ?)
+        "SELECT * FROM users WHERE (first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR username LIKE ?) AND active = ?
         ORDER BY last_name, first_name ASC
-        LIMIT $count OFFSET $offset", ['%'.$filter.'%','%'.$filter.'%','%'.$filter.'%','%'.$filter.'%']));
+        LIMIT $count OFFSET $offset", ['%'.$filter.'%','%'.$filter.'%','%'.$filter.'%','%'.$filter.'%', $users_state]));
   }
 
   public function toggleActive($userId)

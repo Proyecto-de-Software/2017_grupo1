@@ -176,14 +176,19 @@ class UserListController extends UsersCRUDController
     else
       $page = $args['page'];
 
+    if (!isset($args['users_state']))
+      $users_state = true;
+    else
+      $users_state =  $args['users_state'] == "Activos";
+
     if (!isset($args['filter']) || empty($args['filter']))
       {
-      $data = $this->getRepository()->getAll($page);
+      $data = $this->getRepository()->getAll($page, $users_state);
       $data_count = $this->getRepository()->getUserCount();
     }
     else
       {
-      $data = $this->getRepository()->getAllByFilter($args['filter'], $page);
+      $data = $this->getRepository()->getAllByFilter($args['filter'], $page, $users_state);
       $data_count = count($data);
     }
 
