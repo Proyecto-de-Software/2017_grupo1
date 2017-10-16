@@ -225,7 +225,7 @@ class UserToggleStatusController extends Controller
   }
 }
 
-class UserDestroyedController extends UsersController
+class UserDestroyedController extends UsersCRUDController
 {
   protected function checkArgs($args)
   {
