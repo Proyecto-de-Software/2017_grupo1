@@ -2,7 +2,7 @@
 require_once "./vendor/Twig/lib/Twig/Autoloader.php";
 
 require_once "./controllers/Controller.php";
-require_once "./controllers/FrontEndController.php";
+require_once "./controllers/Router.php";
 require_once "./controllers/IndexController.php";
 require_once "./controllers/UserController.php";
 require_once "./controllers/LoginController.php";

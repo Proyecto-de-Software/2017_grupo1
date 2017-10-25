@@ -1,5 +1,5 @@
 <?php
-class FrontEndController
+class Router
 {
   private $controllers;
   private $appConfig;
