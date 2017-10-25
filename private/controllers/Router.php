@@ -51,11 +51,11 @@ class Router
       $userRepository = new UserRepository($appConfig);
       $pacientsRepository = new PacientsRepository($appConfig);
       $referenceDataService = new ReferenceDataService(
-        new WaterTypeRepository,
-        new HeatingTypeRepository,
-        new DocumentTypeRepository,
-        new SocialInsuranceRepository,
-        new HomeTypeRepository
+        new APIReferenceDataRepository("tipo-agua"),
+        new APIReferenceDataRepository("tipo-calefaccion"),
+        new APIReferenceDataRepository("tipo-documento"),
+        new APIReferenceDataRepository("obra-social"),
+        new APIReferenceDataRepository("tipo-vivienda")
       );
 
       $indexView = new IndexView;

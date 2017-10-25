@@ -1,5 +1,5 @@
 <?php
-abstract class ReferenceData
+class ReferenceData
 {
   private $id;
   private $desciption;
@@ -19,29 +19,4 @@ abstract class ReferenceData
   {
     return $this->desciption;
   }
-}
-
-class Document extends ReferenceData
-{
-
-}
-
-class SocialInsurance extends ReferenceData
-{
-
-}
-
-class HeatingType extends ReferenceData
-{
-
-}
-
-class HomeType extends ReferenceData
-{
-
-}
-
-class WaterType extends ReferenceData
-{
-
 }
