@@ -1,5 +1,5 @@
 <?php
-require_once "./private/vendor/Twig/lib/Twig/Autoloader.php";
+require_once "./vendor/Twig/lib/Twig/Autoloader.php";
 
 require_once "./private/controllers/Controller.php";
 require_once "./private/controllers/Router.php";
