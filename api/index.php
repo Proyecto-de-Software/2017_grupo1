@@ -4,55 +4,49 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 require_once "../vendor/autoload.php";
-require_once "validations.php";
+require_once "autoloader.php";
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
+$repository = new AppointmentsRepository;
 $app = new \Slim\App;
 $app->get("/", function (Request $request, Response $response) {
   return $response->withStatus(200)->withHeader('Content-Type', 'text/html')->getBody()->write(file_get_contents('index.html'));
 });
 
-$app->get("/turnos[/[{fecha}]]", function (Request $request, Response $response, $args) {
+$app->get("/turnos[/[{fecha}]]", function (Request $request, Response $response, $args) use ($repository) {
   $body = $response->getBody();
   $date =  $request->getAttribute('fecha', date('d-m-Y'));
 
   if (!validateDate($date, $body))
     return $response->withStatus(400);
 
-    $body->write("<html> <body>");
-      $body->write("<h1> Grupo 1 - API de Turnos - Proyecto de Software </h1>");
-      $body->write("La fecha recibida es: $date");
-    $body->write("</body> </html>");
-  return $response->withStatus(200);
+  return $response->withStatus(200)->withJson($repository->getAppointments($date));
 });
 
-$app->post("/turnos", function (Request $request, Response $response, $args) {
+$app->post("/turnos", function (Request $request, Response $response, $args) use ($repository) {
   $body = $response->getBody();
-  $date =  $request->getParsedBodyParam('fecha', date('d-m-Y'));
+  $date = $request->getParsedBodyParam('fecha', date('d-m-Y'));
   $time = $request->getParsedBodyParam('hora');
   $dni = $request->getParsedBodyParam('dni');
 
   if (!validateDate($date, $body))
     return $response->withStatus(400);
 
-    if (!validateTime($time, $body))
+  if (!validateTime($time, $body))
     return $response->withStatus(400);
 
   if (!validateDni($dni, $body))
     return $response->withStatus(400);
 
-  $body->write("<html> <body>");
-    $body->write("<h1> Grupo 1 - API de Turnos - Proyecto de Software </h1>");
-    $body->write("Los parametros recibidos son:");
-    $body->write("<ul>");
-      $body->write("<li> DNI: " . $request->getParsedBodyParam('dni') . "</li>");
-      $body->write("<li> Fecha: " . $request->getParsedBodyParam('fecha') . "</li>");
-      $body->write("<li> Hora: " . $request->getParsedBodyParam('hora') . "</li>");
-    $body->write("</ul>");
-  $body->write("</body> </html>");
-  return $response->withStatus(200);
+  $success = $repository->appoint($date, $time, $dni);
+  if ($success)
+    $message = "El turno fue asignado correctamente para DNI: $dni en la fecha $date $time";
+  else
+    $message = 'El turno solicitado ya se encuentra ocupado';
+
+  return $response->withStatus(200)->withJson(array('success' => $success, 'message' => $message));
 });
 
 $app->run();
