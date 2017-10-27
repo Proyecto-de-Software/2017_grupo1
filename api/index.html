@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<title>Grupo 1 - API de Turnos </title>
+<xmp theme="cerulean" style="display:none;">
+# API de Turnos
+
+Url base: `https://grupo1.proyecto2017.linti.unlp.edu.ar/api/`
+
+La API de turnos provee dos endpoints:
+
+## Lista de turnos:
+
+Se debe enviar un requerimiento `HTTP GET` a la URL `/turnos/{:fecha}`.
+El parametro fecha incluido en la URL debe tener el formato: `dd-mm-yyyy`, por ejemplo: `10-10-2017`. Si se omite, el valor es el dia actual (hora servidor)
+
+La respuesta es un array `JSON` que contiene la informacion de los turnos:
+
+```JSON
+[
+  {
+    "id": "1",
+    "dni": "37058719",
+    "fecha": "25-10-2017",
+    "fecha_solicitud": "20-10-2017",
+    "hora": "10:30"
+  }
+]
+```
+
+## Reservar turno:
+
+Se debe enviar un requerimiento `HTTP POST` a la URL `/turnos`.
+La solicitud debe incluir en el `body` un objeto `JSON` en donde se indiquen los siguientes parametros: DNI, Fecha y Hora
+
+Ejemplo:
+
+```JSON
+{
+  "dni": "37058719",
+  "fecha": "25-10-2017",
+  "hora": "10:30"
+}
+```
+Esto da como resultado un nuevo objeto `JSON` que indica el resultado de la operacion:
+
+```JSON
+{
+  "success": "true",
+  "message": "El turno fue asignado correctamente para DNI: 37058719 en la fecha 25-10-2017 10:30"
+}
+```
+
+```JSON
+{
+  "success": "false",
+  "message": "El turno solicitado ya se encuentra ocupado"
+}
+```
+
+</xmp>
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
