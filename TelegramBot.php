@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-require  '/private/Telegram/bot_config.php';
+require  './private/Telegram/bot_config.php';
 
 $commands_paths = [__DIR__ . '/private/Telegram/Commands'];
 try
