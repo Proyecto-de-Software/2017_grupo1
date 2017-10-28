@@ -1,16 +1,16 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
+require  '/private/Telegram/bot_config.php';
 
-$bot_api_key  = '473002661:AAEizN1pskV5usMG2yKh7vzhYEDQL71DLCY';
-$bot_username = 'grupo1_proyecto2017_bot';
 $commands_paths = [__DIR__ . '/private/Telegram/Commands'];
 try
 {
-    $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
+    $telegram = new Longman\TelegramBot\Telegram(TelegramBotConfig::$bot_api_key, TelegramBotConfig::$bot_username);
     $telegram->addCommandsPaths($commands_paths);
     $telegram->enableLimiter();
     $telegram->handle();
 }
-catch (Longman\TelegramBot\Exception\TelegramException $e) {
+catch (Longman\TelegramBot\Exception\TelegramException $e)
+{
   // aca podriamos guardar las excepciones en algun lado
 }

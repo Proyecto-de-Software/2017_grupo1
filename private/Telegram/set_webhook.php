@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__. 'config.php';
+require __DIR__. '/bot_config.php';
 
 /* Al ejecutar este script PHP en un browser cualquiera, se vincula el WebHook del Bot */
 try
