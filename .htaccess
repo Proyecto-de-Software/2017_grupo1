@@ -1,2 +1,3 @@
 RewriteEngine On
 RewriteRule ^api api/index.php
+RewriteRule ^api/bot473002661:AAEsj26lXrKllYBfe5JXHphdHWYxX41dfjA api/TelegramBot.php
