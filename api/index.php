@@ -40,13 +40,20 @@ $app->post("/turnos", function (Request $request, Response $response, $args) use
   if (!validateDni($dni, $body))
     return $response->withStatus(400);
 
-  $success = $repository->appoint($date, $time, $dni);
-  if ($success)
-    $message = "El turno fue asignado correctamente para DNI: $dni en la fecha $date $time";
-  else
-    $message = 'El turno solicitado ya se encuentra ocupado';
+    try
+    {
+      $success = $repository->appoint($date, $time, $dni);
+      if ($success)
+        $message = "El turno fue asignado correctamente para DNI: $dni en la fecha $date $time";
+      else
+        $message = 'El turno solicitado ya se encuentra ocupado';
 
-  return $response->withStatus(200)->withJson(array('success' => $success, 'message' => $message));
+      return $response->withStatus(200)->withJson(array('success' => $success, 'message' => $message));
+    }
+    catch(\Exception $e)
+    {
+      return $response->withStatus(500)->getBody()->write($e->getMessage());
+    }
 });
 
 $app->run();
