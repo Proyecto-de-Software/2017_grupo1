@@ -20,7 +20,7 @@ $app->get("/turnos[/[{fecha}]]", function (Request $request, Response $response,
   $date =  $request->getAttribute('fecha', date('d-m-Y'));
 
   if (!validateDate($date, $body))
-    return $response->withStatus(400);
+    return $response->withHeader('Content-Type', 'text/plain')->withStatus(400);
 
   return $response->withStatus(200)->withJson($repository->getAppointments($date));
 });
@@ -32,13 +32,13 @@ $app->post("/turnos", function (Request $request, Response $response, $args) use
   $dni = $request->getParsedBodyParam('dni');
 
   if (!validateDate($date, $body))
-    return $response->withStatus(400);
+    return $response->withHeader('Content-Type', 'text/plain')->withStatus(400);
 
   if (!validateTime($time, $body))
-    return $response->withStatus(400);
+    return $response->withHeader('Content-Type', 'text/plain')->withStatus(400);
 
   if (!validateDni($dni, $body))
-    return $response->withStatus(400);
+    return $response->withHeader('Content-Type', 'text/plain')->withStatus(400);
 
     try
     {
@@ -52,7 +52,7 @@ $app->post("/turnos", function (Request $request, Response $response, $args) use
     }
     catch(\Exception $e)
     {
-      return $response->withStatus(500)->getBody()->write($e->getMessage());
+      return $response->withHeader('Content-Type', 'text/plain')->withStatus(500)->getBody()->write($e->getMessage());
     }
 });
 
