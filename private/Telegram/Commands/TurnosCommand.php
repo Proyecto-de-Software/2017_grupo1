@@ -31,24 +31,34 @@ class TurnosCommand extends UserCommand
 
     public function execute()
     {
-      $message = $this->getMessage();
-      $chat_id = $message->getChat()->getId();
-      $date = $message->getText(true);
+      try
+      {
+        $message = $this->getMessage();
+        $chat_id = $message->getChat()->getId();
+        $date = $message->getText(true);
 
-      if (!$this->isValidDate($date))
-      {
-        $data = [
-          'chat_id' => $chat_id,
-          'text' => "$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>"
-          ];
+        if (!$this->isValidDate($date))
+        {
+          $data = [
+            'chat_id' => $chat_id,
+            'text' => "$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>"
+            ];
+        }
+        else
+        {
+          $data = [
+            'chat_id' => $chat_id,
+            'text' => $this->getAppointments($date)
+            ];
+        }
       }
-      else
-      {
-        $data = [
-          'chat_id' => $chat_id,
-          'text' => $this->getAppointments($date)
-          ];
-      }
+        catch (Exception $e)
+        {
+          $data = [
+            'chat_id' => $chat_id,
+            'text' => "error $e->getMessage()"
+            ];
+        }
 
       return Request::sendMessage($data);
     }
