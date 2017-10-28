@@ -4,6 +4,8 @@ namespace Longman\TelegramBot\Commands\UserCommands;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 
+require_once __DIR__ . '/private/Telegram/Commands/autoloader.php';
+
 class ReservarCommand extends UserCommand
 {
     protected $name = 'reservar';
