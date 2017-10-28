@@ -54,12 +54,9 @@ class AppointmentsRepository extends PDORepository
 
   public function getAppointments($date)
   {
-    /*return $this->queryToAppointmentArray($this->queryList("SELECT A.*, P.dni FROM appointments A
-                                                                                                   INNER JOIN pacients P ON A.id_patient = P.id
-                                                                                                   WHERE fecha = ?", [$date]));*/
-
     return $this->queryToAppointmentArray($this->queryList("SELECT A.*, P.dni FROM appointments A
-                                                                                                   INNER JOIN pacients P ON A.id_patient = P.id"));
+                                                                                                   INNER JOIN pacients P ON A.id_patient = P.id
+                                                                                                   WHERE DATE(fecha) = DATE(?)", [$this->mysql_datetime($date)]));
   }
 
   public function appoint($date, $time, $dni)
