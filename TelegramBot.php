@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-$bot_api_key  = '473002661:AAEsj26lXrKllYBfe5JXHphdHWYxX41dfjA';
+$bot_api_key  = '473002661:AAEizN1pskV5usMG2yKh7vzhYEDQL71DLCY';
 $bot_username = 'grupo1_proyecto2017_bot';
 $commands_paths = [__DIR__ . '/private/Telegram/Commands'];
 try
