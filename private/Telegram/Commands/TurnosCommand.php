@@ -25,26 +25,18 @@ class TurnosCommand extends UserCommand
     $date = $message->getText(true);
 
     try
-      {
-      if (AppointmentCommand::isValidDate($date))
-      {
-        $data = [
-          'chat_id' => $chat_id,
-          'text' =>$this->getAvailableAppointments($date)
-        ];
-      }
-      else
-      {
-        $data = [
-          'chat_id' => $chat_id,
-          'text' => "$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>"
-        ];
-      }
-    } catch (\Exception $e)
-      {
+    {
+      AppointmentCommand::isValidDate($date);
       $data = [
         'chat_id' => $chat_id,
-        'text' => 'Ocurrio un error: ' . e . getMessage()
+        'text' => $this->getAvailableAppointments($date)
+      ];
+    }
+    catch (\Exception $e)
+    {
+      $data = [
+        'chat_id' => $chat_id,
+        'text' => e . getMessage()
       ];
     }
 

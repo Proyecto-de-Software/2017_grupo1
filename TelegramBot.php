@@ -6,6 +6,7 @@ error_reporting(-1);
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/private/Telegram/Commands/autoloader.php';
 require  './private/Telegram/bot_config.php';
+require  './private/autoloader.php';
 
 $commands_paths = [__DIR__ . '/private/Telegram/Commands'];
 try

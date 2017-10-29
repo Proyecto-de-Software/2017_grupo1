@@ -83,4 +83,12 @@ class AppointmentsRepository extends PDORepository
   {
     return $this->stmtCreate->execute([$this->getPatientId($dni), $this->mysql_datetime($date), $time]);
   }
+
+  public function getLastId()
+  {
+    $qry = $this->newPreparedStmt("SELECT id FROM appointments ORDER BY id DESC LIMIT 1");
+    $qry->execute();
+    $id = $qry->fetchColumn();
+    return $id;
+  }
 }
