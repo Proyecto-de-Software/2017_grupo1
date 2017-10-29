@@ -1,6 +1,7 @@
 {
     "require": {
         "slim/slim": "^3.0",
-        "longman/telegram-bot": "^0.50.0"
+        "longman/telegram-bot": "^0.50.0",
+        "guzzlehttp/guzzle": "^6.3"
     }
 }
