@@ -13,11 +13,13 @@ class TurnosCommand extends UserCommand
 
   private function isValidDate($date)
   {
-    $test_arr  = explode('-', $date);
-    if (count($test_arr) != 3)
+    $d = date_create_from_format('d-m-Y', $date);
+    if (!($d && $d->format('d-m-Y') == $date))
+    {
       return false;
+    }
 
-    return checkdate($test_arr[0], $test_arr[1], $test_arr[2]);
+    return true;
   }
 
   private function getRepository()
