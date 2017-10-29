@@ -13,8 +13,7 @@ class TurnosCommand extends UserCommand
 
   private function getAvailableAppointments($date)
   {
-    $available_appointments = \TelegramCommandHelper::getRepository()->getAvailableAppointments($date);
-    return 'Los turnos disponibles son: ' . implode(" | ", $available_appointments);
+    return 'Los turnos disponibles son: ' . implode(" | ", \TelegramCommandHelper::getAvailableAppointments($date));
   }
 
   public function execute()
@@ -25,7 +24,6 @@ class TurnosCommand extends UserCommand
 
     try
     {
-      \TelegramCommandHelper::isValidDate($date);
       $data = [
         'chat_id' => $chat_id,
         'text' => $this->getAvailableAppointments($date)

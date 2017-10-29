@@ -25,25 +25,21 @@ class ReservarCommand extends UserCommand
     );
   }
 
-  private function getPatientRepository()
-  {
-    return new \PacientsRepository(new \AppConfig);
-  }
-
-  private function checkDni($dni)
-  {
-    if (!isset($dni))
-      throw new \Exception("$dni es un DNI invalido");
-
-    if (!$this->getPatientRepository()->dniExists($dni))
-      throw new \Exception("$dni no existe en el sistema");
-  }
-
   private function checkArgs($args)
   {
-    $this->checkDni($args['dni']);
-    \TelegramCommandHelper::isValidDate($args['fecha']);
-    \TelegramCommandHelper::isValidTime($args['hora']);
+    if (!isset($args['dni']))
+      throw new \Exception('DNI invalido');
+
+    if (!isset($args['fecha']))
+      throw new \Exception('Fecha invalida');
+
+    if (!isset($args['hora']))
+      throw new \Exception('Hora invalida');
+  }
+
+  private function requestAppointment($date, $time, $dni)
+  {
+    return \TelegramCommandHelper::appoint($date, $time, $dni);
   }
 
   public function execute()
@@ -55,15 +51,13 @@ class ReservarCommand extends UserCommand
     {
       $params = $this->parseArgs($message->getText(true));
       $this->checkArgs($params);
-      $fecha = $params['fecha'];
-      $hora = $params['hora'];
+      $date = $params['fecha'];
+      $time = $params['hora'];
       $dni = $params['dni'];
-      \TelegramCommandHelper::getRepository()->appoint($fecha, $hora, $dni);
-      $id_turno = \TelegramCommandHelper::getRepository()->getLastId();
 
       $data = [
         'chat_id' => $chat_id,
-        'text' => "Te confirmamos el turno nro $id_turno para $dni, a las $hora del dia $fecha"
+        'text' => $this->requestAppointment($date, $time, $dni)
       ];
     }
     catch (\Exception $e)

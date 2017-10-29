@@ -1,40 +1,52 @@
 <?php
+use GuzzleHttp\Exception\RequestException;
+
 class TelegramCommandHelper
 {
-  private static function isBetween($value, $min, $max)
+  public static $API_BASE_URI = 'https://grupo1.proyecto2017.linti.unlp.edu.ar/api/';
+
+  public static function getAvailableAppointments($date)
   {
-    return ($value >= $min && $value <= $max);
+    $answer = [];
+    $response = self::sendGet('turnos');
+    if ($response->getStatusCode() == 200)
+      $answer = \json_decode($response->getBody()->getContents());
+    return $answer;
   }
 
-  public static function isValidDate($date)
+  public static function appoint($date, $time, $dni)
   {
-    $d = \DateTime::createFromFormat('d-m-Y', $date);
-    if (!($d && $d->format('d-m-Y') == $date))
-      throw new \Exception("$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>");
+    $args = array('fecha'  => $date, 'hora' => $time, 'dni' => $dni);
+    $response = self::sendPost('turnos', $args);
+    if ($response->getStatusCode() != 200)
+      return $response->getBody()->getContents();
+
+    $appointment = \json_decode($response->getBody()->getContents());
+    return $appointment->{'message'};
   }
 
-  public static function isValidTime($time_str)
+  private static function executeRequest($method, $endpoint, $args = NULL)
   {
-    if (!preg_match("/(2[0-3]|[01][0-9]):([0-5][0-9])/", $time_str))
-      throw new \Exception("$time_str es una hora invalida");
+    $client = new \GuzzleHttp\Client(['base_uri' => self::$API_BASE_URI]);
 
-    $time = \DateTime::createFromFormat('H:i', $time_str);
-    if (!$time)
-      throw new \Exception("$time_str es una hora invalida");
-
-    $date_time = date_parse($time->format('H:i'));
-    $hour = $date_time['hour'];
-    $minute = $date_time['minute'];
-
-    if (!self::isBetween($hour, 8, 20))
-      throw new \Exception('La hora debe ser entre 8:00 y 20:00');
-
-    if ($minute != 30 && $minute != 0)
-      throw new \Exception('Horario de turno invalido, debe ser cada 30 minutos');
+    try
+    {
+      return $client->request($method, $endpoint, ['form_params' => $args]);
+    }
+    catch (RequestException $e)
+    {
+      if ($e->hasResponse())
+        return ($e->getResponse());
+    }
   }
 
-  public static function getRepository()
+  private static function sendGet($endpoint)
   {
-    return new \AppointmentsRepository;
+    return self::executeRequest('GET', $endpoint);
+  }
+
+  private static function sendPost($endpoint, $args)
+  {
+    return self::executeRequest('POST', $endpoint, $args);
   }
 }
