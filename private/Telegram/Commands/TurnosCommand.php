@@ -7,10 +7,7 @@ use Longman\TelegramBot\Request;
 function validateDate($date)
 {
     $d = DateTime::createFromFormat('d-m-Y', $date);
-    if (!($d && $d->format('d-m-Y') == $date))
-      return false;
-
-    return true;
+    return $d;
 }
 
 class TurnosCommand extends UserCommand
