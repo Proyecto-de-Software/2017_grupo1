@@ -57,6 +57,11 @@ class AppointmentsRepository extends PDORepository
     return $answer;
   }
 
+  private function checkAvaiable($date, $time)
+  {
+    return array_search($time, $this->getAvailableAppointments($date));
+  }
+
   public function __construct()
   {
     $this->stmtCreate = $this->newPreparedStmt("INSERT INTO appointments (id_patient, fecha, hora, fecha_solicitud) VALUES (?, ?, ?, NOW()) ");
@@ -81,6 +86,9 @@ class AppointmentsRepository extends PDORepository
 
   public function appoint($date, $time, $dni)
   {
+    if (!$this->checkAvaiable($date, $time))
+      return false;
+
     return $this->stmtCreate->execute([$this->getPatientId($dni), $this->mysql_datetime($date), $time]);
   }
 
