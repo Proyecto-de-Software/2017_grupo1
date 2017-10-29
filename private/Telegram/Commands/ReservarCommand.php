@@ -42,7 +42,7 @@ class ReservarCommand extends UserCommand
 
   private function checkArgs($args)
   {
-    # $this->checkDni($args['dni']);
+    $this->checkDni($args['dni']);
     AppointmentCommand::isValidDate($args['fecha']);
     # AppointmentCommand::isValidTime($args['hora']);
   }
