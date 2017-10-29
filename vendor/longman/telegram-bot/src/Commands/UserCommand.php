@@ -32,7 +32,7 @@ class AppointmentCommand
     if (!preg_match("/(2[0-3]|[01][0-9]):([0-5][0-9])/", $time_str))
       throw new \Exception("$time_str es una hora invalida");
 
-    $time = DateTime::createFromFormat('H:i', $time_str);
+    $time = \DateTime::createFromFormat('H:i', $time_str);
     if (!$time)
       throw new \Exception("$time_str es una hora invalida");
 
