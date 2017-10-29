@@ -4,7 +4,12 @@ namespace Longman\TelegramBot\Commands\UserCommands;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 
-require_once __DIR__ . '/private/Telegram/Commands/autoloader.php';
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
+require_once './autoloader.php';
+require_once '../../../vendor/autoload.php';
 
 class TurnosCommand extends UserCommand
 {
