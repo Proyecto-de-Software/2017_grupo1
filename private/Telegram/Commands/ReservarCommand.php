@@ -71,7 +71,7 @@ class ReservarCommand extends UserCommand
     {
       $data = [
         'chat_id' => $chat_id,
-        'text' => 'Ocurrio un error: ' . $e.getMessage()
+        'text' => 'Ocurrio un error: ' . $e->getMessage()
       ];
     }
 
