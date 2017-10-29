@@ -37,8 +37,8 @@ class AppointmentCommand
     $hour = $date_time['hour'];
     $minute = $date_time['minute'];
 
-
-    throw new \Exception('blabla');
+    if ($minute != 30 && $minute != 0)
+      throw new \Exception('Horario de turno invalido, debe ser cada 30 minutos');
   }
 
   public static function getRepository()
