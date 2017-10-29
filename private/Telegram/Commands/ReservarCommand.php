@@ -2,7 +2,6 @@
 namespace Longman\TelegramBot\Commands\UserCommands;
 
 use Longman\TelegramBot\Commands\UserCommand;
-use Longman\TelegramBot\Commands\AppointmentCommand;
 use Longman\TelegramBot\Request;
 
 class ReservarCommand extends UserCommand
@@ -43,8 +42,8 @@ class ReservarCommand extends UserCommand
   private function checkArgs($args)
   {
     $this->checkDni($args['dni']);
-    AppointmentCommand::isValidDate($args['fecha']);
-    AppointmentCommand::isValidTime($args['hora']);
+    \TelegramCommandHelper::isValidDate($args['fecha']);
+    \TelegramCommandHelper::isValidTime($args['hora']);
   }
 
   public function execute()
@@ -59,8 +58,8 @@ class ReservarCommand extends UserCommand
       $fecha = $params['fecha'];
       $hora = $params['hora'];
       $dni = $params['dni'];
-      AppointmentCommand::getRepository()->appoint($fecha, $hora, $dni);
-      $id_turno = AppointmentCommand::getRepository()->getLastId();
+      \TelegramCommandHelper::getRepository()->appoint($fecha, $hora, $dni);
+      $id_turno = \TelegramCommandHelper::getRepository()->getLastId();
 
       $data = [
         'chat_id' => $chat_id,
