@@ -13,7 +13,7 @@ class TurnosCommand extends UserCommand
 
   private function isValidDate($date)
   {
-    $d = date_create_from_format('d-m-Y', $date);
+    $d = \DateTime::createFromFormat('d-m-Y', $date);
     if (!($d && $d->format('d-m-Y') == $date))
     {
       return false;
@@ -24,12 +24,12 @@ class TurnosCommand extends UserCommand
 
   private function getRepository()
   {
-    return new AppointmentsRepository;
+    return new \AppointmentsRepository;
   }
 
   private function getAppointments($date)
   {
-    return $this->getRepository()->getAppointments($date);
+    return print_r($this->getRepository()->getAppointments($date));
   }
 
   public function execute()
@@ -41,11 +41,9 @@ class TurnosCommand extends UserCommand
     try
       {
       if ($this->isValidDate($date))
-      {
-       $repo = new AppointmentsRepository;
         $data = [
           'chat_id' => $chat_id,
-          'text' =>"blabla"
+          'text' =>$this->getAppointments()
         ];
       }
       else
@@ -55,7 +53,7 @@ class TurnosCommand extends UserCommand
           'text' => "$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>"
         ];
       }
-    } catch (Exception $e)
+    } catch (\Exception $e)
       {
       $data = [
         'chat_id' => $chat_id,
