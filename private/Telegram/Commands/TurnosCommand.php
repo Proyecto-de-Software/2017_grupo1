@@ -24,7 +24,7 @@ class TurnosCommand extends UserCommand
 
   private function getRepository()
   {
-    return new AppointmentsRepository();
+    return new AppointmentsRepository;
   }
 
   private function getAppointments($date)
@@ -42,7 +42,7 @@ class TurnosCommand extends UserCommand
       {
       if ($this->isValidDate($date))
       {
-       $repo = $this->getRepository();
+       $repo = new AppointmentsRepository;
         $data = [
           'chat_id' => $chat_id,
           'text' =>"blabla"
