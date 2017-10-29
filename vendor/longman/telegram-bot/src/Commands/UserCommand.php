@@ -40,7 +40,7 @@ class AppointmentCommand
     if (!isBetween($hour, 8, 20))
       throw new \Exception("La hora debe ser entre 8:00 y 20:00");
 
-    throw new \Exception(var_dump($date_time));
+    throw new \Exception('blabla');
   }
 
   public static function getRepository()
