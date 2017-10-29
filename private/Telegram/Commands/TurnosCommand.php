@@ -6,10 +6,6 @@ use Longman\TelegramBot\Request;
 
 function isValidDate($text)
 {
-  $d = DateTime::createFromFormat('d-m-Y', $text);
-  if (! ($d && $d->format('d-m-Y') == $text))
-    return false;
-
   return true;
 }
 
