@@ -4,6 +4,8 @@ namespace Longman\TelegramBot\Commands\UserCommands;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 
+require_once "./autoloader.php";
+
 class TurnosCommand extends UserCommand
 {
   protected $name = 'turnos';
@@ -20,6 +22,16 @@ class TurnosCommand extends UserCommand
     return checkdate($test_arr[0], $test_arr[1], $test_arr[2]);
   }
 
+  private function getRepository()
+  {
+    return new AppointmentsRepository();
+  }
+
+  private function getAppointments($date)
+  {
+    return print_r($this->getRepository()->getAppointments($date));
+  }
+
   public function execute()
   {
     $message = $this->getMessage();
@@ -32,7 +44,7 @@ class TurnosCommand extends UserCommand
       {
         $data = [
           'chat_id' => $chat_id,
-          'text' => "la fecha es $date"
+          'text' =>$this->getAppointments($date)
         ];
       }
       else
