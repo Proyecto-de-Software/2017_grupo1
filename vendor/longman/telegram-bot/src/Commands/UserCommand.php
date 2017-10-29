@@ -29,17 +29,9 @@ class AppointmentCommand
     if (!preg_match("/(2[0-3]|[01][0-9]):([0-5][0-9])/", $time_str))
       throw new \Exception("$time_str es una hora invalida");
 
-
-
-    $date_time = date_parse($time->format('H:i'));
-    $hour = $date_time['hour'];
-    $minute = $date_time['minute'];
-
-    if (!isBetween($hour, 8, 20))
-      throw new \Exception("La hora debe ser entre 8:00 y 20:00");
-
-    if ($minute != 30 && $minute != 0)
-      throw new \Exception('Horario de turno invalido, debe ser cada 30 minutos');
+    $time = \DateTime::createFromFormat('H:i', $time_str);
+    if (!$time)
+      throw new \Exception("$time_str es una hora invalida");
   }
 
   public static function getRepository()
