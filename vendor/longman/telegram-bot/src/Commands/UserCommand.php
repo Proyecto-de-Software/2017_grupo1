@@ -15,9 +15,9 @@ abstract class UserCommand extends Command
 
 }
 
-abstract class AppointmentCommand extends UserCommand
+class AppointmentCommand
 {
-  protected function isValidDate($date)
+  public static function isValidDate($date)
   {
     $d = \DateTime::createFromFormat('d-m-Y', $date);
     if (!($d && $d->format('d-m-Y') == $date))
@@ -28,7 +28,7 @@ abstract class AppointmentCommand extends UserCommand
     return true;
   }
 
-  protected function getRepository()
+  public static function getRepository()
   {
     return new \AppointmentsRepository;
   }

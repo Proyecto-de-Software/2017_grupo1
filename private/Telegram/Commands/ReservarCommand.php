@@ -5,7 +5,7 @@ use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Commands\AppointmentCommand;
 use Longman\TelegramBot\Request;
 
-class ReservarCommand extends AppointmentCommand
+class ReservarCommand extends UserCommand
 {
     protected $name = 'reservar';
     protected $description = '/reservar dni dd-mm-aaaa hh-mm: Permite reservar un turno para un paciente indicando su dni, la fecha y la hora. Retorna un identificador único de turno.';

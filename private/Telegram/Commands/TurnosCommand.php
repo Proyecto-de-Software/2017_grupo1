@@ -5,7 +5,7 @@ use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Commands\AppointmentCommand;
 use Longman\TelegramBot\Request;
 
-class TurnosCommand extends AppointmentCommand
+class TurnosCommand extends UserCommand
 {
   protected $name = 'turnos';
   protected $description = '/turnos dd-mm-aaaa: Devuelve  los turnos disponibles para la fecha indicada';
@@ -14,7 +14,7 @@ class TurnosCommand extends AppointmentCommand
 
   private function getAvailableAppointments($date)
   {
-    $available_appointments = $this->getRepository()->getAvailableAppointments($date);
+    $available_appointments = AppointmentCommand::getRepository()->getAvailableAppointments($date);
     return 'Los turnos disponibles son: ' . implode(" | ", $available_appointments);
   }
 
@@ -26,7 +26,7 @@ class TurnosCommand extends AppointmentCommand
 
     try
       {
-      if ($this->isValidDate($date))
+      if (AppointmentCommand::isValidDate($date))
       {
         $data = [
           'chat_id' => $chat_id,
