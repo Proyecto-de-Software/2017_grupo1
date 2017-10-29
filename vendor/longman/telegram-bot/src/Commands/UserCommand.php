@@ -26,9 +26,6 @@ class AppointmentCommand
 
   public static function isValidTime($time_str)
   {
-    if (!isset($time_str))
-      throw new \Exception("$time_str es una hora invalida");
-
     if (!preg_match("/(2[0-3]|[01][0-9]):([0-5][0-9])/", $time_str))
       throw new \Exception("$time_str es una hora invalida");
 
