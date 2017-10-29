@@ -13,40 +13,29 @@ class TurnosCommand extends UserCommand
 
     private function isValidDate($text)
     {
-      $d = DateTime::createFromFormat('d-m-Y', $text);
-      return ($d && $d->format('d-m-Y') == $text);
+      return (rand(10) % 2 == 0);
     }
 
     public function execute()
     {
-      try
-      {
-        $message = $this->getMessage();
-        $chat_id = $message->getChat()->getId();
-        $date = $message->getText(true);
+    $message = $this->getMessage();
+    $chat_id = $message->getChat()->getId();
+    $date = $message->getText(true);
 
-        if (!$this->isValidDate($date))
-        {
-          $data = [
-            'chat_id' => $chat_id,
-            'text' => "$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>"
-            ];
-        }
-        else
-        {
-          $data = [
-            'chat_id' => $chat_id,
-            'text' => "la fecha es $date"
-            ];
-        }
-      }
-        catch (Exception $e)
-        {
-          $data = [
-            'chat_id' => $chat_id,
-            'text' => "error $e->getMessage()"
-            ];
-        }
+    if (!$this->isValidDate($date))
+      {
+      $data = [
+        'chat_id' => $chat_id,
+        'text' => "$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>"
+      ];
+    }
+    else
+    {
+      $data = [
+        'chat_id' => $chat_id,
+        'text' => "la fecha es $date"
+      ];
+    }
 
       return Request::sendMessage($data);
     }
