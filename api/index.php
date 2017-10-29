@@ -39,7 +39,7 @@ $app->get("/turnos[/[{fecha}]]", function (Request $request, Response $response,
 
 $app->post("/turnos", function (Request $request, Response $response, $args) use ($appointmentsRepository, $patientsRepository)
 {
-  $date = $request->getParsedBodyParam('fecha', date('d-m-Y'));
+  $date = $request->getParsedBodyParam('fecha');
   $time = $request->getParsedBodyParam('hora');
   $dni = $request->getParsedBodyParam('dni');
   \APIHelper::isValidDate($date);
