@@ -4,8 +4,6 @@ namespace Longman\TelegramBot\Commands\UserCommands;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 
-require_once "./autoloader.php";
-
 class TurnosCommand extends UserCommand
 {
   protected $name = 'turnos';

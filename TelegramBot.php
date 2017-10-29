@@ -1,5 +1,10 @@
 <?php
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . 'private/Telegram/Commands/autoloader.php';
 require  './private/Telegram/bot_config.php';
 
 $commands_paths = [__DIR__ . '/private/Telegram/Commands'];
