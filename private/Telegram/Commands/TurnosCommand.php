@@ -1,31 +1,15 @@
 <?php
 namespace Longman\TelegramBot\Commands\UserCommands;
 
-use Longman\TelegramBot\Commands\UserCommand;
+use Longman\TelegramBot\Commands\AppointmentCommand;
 use Longman\TelegramBot\Request;
 
-class TurnosCommand extends UserCommand
+class TurnosCommand extends AppointmentCommand
 {
   protected $name = 'turnos';
   protected $description = '/turnos dd-mm-aaaa: Devuelve  los turnos disponibles para la fecha indicada';
   protected $usage = '/turnos';
   protected $version = '1.0.0';
-
-  private function isValidDate($date)
-  {
-    $d = \DateTime::createFromFormat('d-m-Y', $date);
-    if (!($d && $d->format('d-m-Y') == $date))
-    {
-      return false;
-    }
-
-    return true;
-  }
-
-  private function getRepository()
-  {
-    return new \AppointmentsRepository;
-  }
 
   private function getAvailableAppointments($date)
   {
