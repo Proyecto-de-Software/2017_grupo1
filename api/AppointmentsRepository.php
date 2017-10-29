@@ -57,9 +57,9 @@ class AppointmentsRepository extends PDORepository
     return $answer;
   }
 
-  private function checkAvaiable($date, $time)
+  public function checkAvaiable($date, $time)
   {
-    return array_search($time, $this->getAvailableAppointments($date));
+    return !array_search($time, $this->getAvailableAppointments($date));
   }
 
   public function __construct()
