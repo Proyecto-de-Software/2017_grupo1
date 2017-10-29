@@ -17,6 +17,11 @@ abstract class UserCommand extends Command
 
 class AppointmentCommand
 {
+  private static function isBetween($value, $min, $max)
+  {
+    return ($value >= $min && $value <= $max);
+  }
+
   public static function isValidDate($date)
   {
     $d = \DateTime::createFromFormat('d-m-Y', $date);
@@ -37,7 +42,7 @@ class AppointmentCommand
     $hour = $date_time['hour'];
     $minute = $date_time['minute'];
 
-    if (!\isBetween($hour, 8, 20))
+    if (!self::isBetween($hour, 8, 20))
       throw new \Exception('La hora debe ser entre 8:00 y 20:00');
 
     if ($minute != 30 && $minute != 0)
