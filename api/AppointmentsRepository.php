@@ -5,6 +5,17 @@ class AppointmentsRepository extends PDORepository
   private static $mysql_datetime_format = 'Y-m-d H:i:s';
   private static $date_only_format = 'd-m-Y';
 
+  private function all_appointment_times()
+  {
+    $times = array();
+    for ($i=8; $i <= 20; $i++) {
+      $times[] = sprintf("%02d:00", $i);
+      $times[] = sprintf("%02d:30", $i);
+    }
+    array_pop($times); // saco el horario 20:30
+    return $times;
+  }
+
   function mysql_datetime($datetime)
   {
     return $this->convertDate($datetime, self::$date_only_format, self::$mysql_datetime_format);
@@ -17,7 +28,7 @@ class AppointmentsRepository extends PDORepository
 
   function convertDate($value, $format_from, $format_to)
   {
-    return date_create_from_format($format_from, $value)->format($format_to);
+    return DateTime::createFromFormat($format_from, $value)->format($format_to);
   }
 
   function time_without_seconds($time)
@@ -56,6 +67,16 @@ class AppointmentsRepository extends PDORepository
     return $this->queryToAppointmentArray($this->queryList("SELECT A.*, P.dni FROM appointments A
                                                                                                    INNER JOIN pacients P ON A.id_patient = P.id
                                                                                                    WHERE DATE(fecha) = DATE(?)", [$this->mysql_datetime($date)]));
+  }
+
+  public function getAvailableAppointments($date)
+  {
+    $answer = $this->all_appointment_times();
+    foreach ($this->getAppointments($date) as &$each) {
+      unset($answer[array_search($each->hora, $answer)]);
+    }
+
+    return array_values($answer);
   }
 
   public function appoint($date, $time, $dni)
