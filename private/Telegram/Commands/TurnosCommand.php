@@ -4,9 +4,13 @@ namespace Longman\TelegramBot\Commands\UserCommands;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 
-function isValidDate($text)
+function validateDate($date)
 {
-  return true;
+    $d = DateTime::createFromFormat('d-m-Y', $date);
+    if (!($d && $d->format('d-m-Y') == $date))
+      return false;
+
+    return true;
 }
 
 class TurnosCommand extends UserCommand
@@ -24,7 +28,7 @@ class TurnosCommand extends UserCommand
 
     try
       {
-      if (isValidDate($date))
+      if (validateDate($date))
       {
         $data = [
           'chat_id' => $chat_id,
