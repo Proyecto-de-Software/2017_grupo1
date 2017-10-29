@@ -42,9 +42,10 @@ class TurnosCommand extends UserCommand
       {
       if ($this->isValidDate($date))
       {
+        $repo = $this->getRepository();
         $data = [
           'chat_id' => $chat_id,
-          'text' =>$this->getAppointments()
+          'text' =>"todo ok"
         ];
       }
       else
