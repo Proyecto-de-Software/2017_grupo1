@@ -32,6 +32,10 @@ class AppointmentCommand
     $time = \DateTime::createFromFormat('H:i', $time_str);
     if (!$time)
       throw new \Exception("$time_str es una hora invalida");
+
+    $date_time = date_parse($time->format('H:i'));
+    $hour = $date_time['hour'];
+    $minute = $date_time['minute'];
   }
 
   public static function getRepository()
