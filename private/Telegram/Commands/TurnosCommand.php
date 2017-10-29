@@ -36,7 +36,7 @@ class TurnosCommand extends UserCommand
     {
       $data = [
         'chat_id' => $chat_id,
-        'text' => e . getMessage()
+        'text' => $e .getMessage()
       ];
     }
 
