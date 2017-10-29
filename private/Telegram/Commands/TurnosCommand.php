@@ -7,7 +7,7 @@ use Longman\TelegramBot\Request;
 class TurnosCommand extends UserCommand
 {
   protected $name = 'turnos';
-  protected $description = '/turnos dd-mm-aaaa: Devolverá los turnos disponibles para la fecha indicada';
+  protected $description = '/turnos dd-mm-aaaa: Devuelve  los turnos disponibles para la fecha indicada';
   protected $usage = '/turnos';
   protected $version = '1.0.0';
 
@@ -27,9 +27,10 @@ class TurnosCommand extends UserCommand
     return new \AppointmentsRepository;
   }
 
-  private function getAppointments($date)
+  private function getAvailableAppointments($date)
   {
-    return $this->getRepository()->getAppointments($date);
+    $available_appointments = $this->getRepository()->getAvailableAppointments($date);
+    return 'Los turnos disponibles son: ' . implode(" | ", $available_appointments);
   }
 
   public function execute()
@@ -42,10 +43,9 @@ class TurnosCommand extends UserCommand
       {
       if ($this->isValidDate($date))
       {
-        $turnos = $this->getAppointments($date);
         $data = [
           'chat_id' => $chat_id,
-          'text' =>print_r($turnos)
+          'text' =>$this->getAvailableAppointments($date)
         ];
       }
       else
@@ -59,7 +59,7 @@ class TurnosCommand extends UserCommand
       {
       $data = [
         'chat_id' => $chat_id,
-        'text' => e . getMessage()
+        'text' => 'Ocurrio un error: ' . e . getMessage()
       ];
     }
 
