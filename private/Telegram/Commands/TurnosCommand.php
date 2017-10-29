@@ -41,6 +41,7 @@ class TurnosCommand extends UserCommand
     try
       {
       if ($this->isValidDate($date))
+      {
         $data = [
           'chat_id' => $chat_id,
           'text' =>$this->getAppointments()
