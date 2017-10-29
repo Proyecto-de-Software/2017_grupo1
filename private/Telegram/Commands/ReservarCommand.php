@@ -1,6 +1,7 @@
 <?php
 namespace Longman\TelegramBot\Commands\UserCommands;
 
+use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Commands\AppointmentCommand;
 use Longman\TelegramBot\Request;
 
