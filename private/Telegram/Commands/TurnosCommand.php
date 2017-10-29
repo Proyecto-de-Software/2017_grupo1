@@ -13,7 +13,11 @@ class TurnosCommand extends UserCommand
 
     private function isValidDate($text)
     {
-      return (rand(10) % 2 == 0);
+      $d = DateTime::createFromFormat('d-m-Y', $text);
+      if (!($d && $d->format('d-m-Y') == $text))
+        return false;
+
+      return true;
     }
 
     public function execute()
