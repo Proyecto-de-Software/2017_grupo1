@@ -31,7 +31,7 @@ class TurnosCommand extends UserCommand
 
     private function getAppointments($date)
     {
-      return print_r($this->getRepository()->getAppointments($date));
+      return $this->getRepository()->getAppointments($date);
     }
 
     public function execute()
