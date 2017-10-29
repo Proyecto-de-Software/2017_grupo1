@@ -39,6 +39,12 @@ class AppointmentCommand
 
     if (!isBetween($hour, 8, 20))
       throw new \Exception("La hora debe ser entre 8:00 y 20:00");
+
+    if (!isset($minute))
+      throw new \Exception("$minute Horario de turno invalido, debe ser cada 30 minutos");
+
+    if ($minute != 30 && $minute != 0)
+      throw new \Exception('Horario de turno invalido, debe ser cada 30 minutos');
   }
 
   public static function getRepository()
