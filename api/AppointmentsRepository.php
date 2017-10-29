@@ -1,5 +1,4 @@
 <?php
-
 class AppointmentsRepository extends PDORepository
 {
   private $stmtCreate;
@@ -18,7 +17,7 @@ class AppointmentsRepository extends PDORepository
 
   function convertDate($value, $format_from, $format_to)
   {
-    return DateTime::createFromFormat($format_from, $value)->format($format_to);
+    return date_create_from_format($format_from, $value)->format($format_to);
   }
 
   function time_without_seconds($time)
