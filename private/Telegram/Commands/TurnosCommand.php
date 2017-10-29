@@ -44,7 +44,7 @@ class TurnosCommand extends UserCommand
       {
         $data = [
           'chat_id' => $chat_id,
-          'text' =>"$this->getAppointments($date)"
+          'text' =>$this->getAppointments($date)
         ];
       }
       else
