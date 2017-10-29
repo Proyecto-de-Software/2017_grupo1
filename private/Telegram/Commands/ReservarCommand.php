@@ -28,7 +28,7 @@ class ReservarCommand extends UserCommand
 
   private function getPatientRepository()
   {
-    return new PacientsRepository(new AppConfig);
+    return new \PacientsRepository(new \AppConfig);
   }
 
   private function checkDni($dni)
