@@ -13,10 +13,10 @@ require_once '../../../vendor/autoload.php';
 
 class TurnosCommand extends UserCommand
 {
-    private $name = 'turnos';
-    private $description = '/turnos dd-mm-aaaa: Devolverá los turnos disponibles para la fecha indicada';
-    private $usage = '/turnos';
-    private $version = '1.0.0';
+    protected $name = 'turnos';
+    protected $description = '/turnos dd-mm-aaaa: Devolverá los turnos disponibles para la fecha indicada';
+    protected $usage = '/turnos';
+    protected $version = '1.0.0';
 
     private function isValidDate($text)
     {
