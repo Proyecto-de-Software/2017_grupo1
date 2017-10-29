@@ -4,21 +4,21 @@ namespace Longman\TelegramBot\Commands\UserCommands;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 
+function isValidDate($text)
+{
+  $d = DateTime::createFromFormat('d-m-Y', $text);
+  if (! ($d && $d->format('d-m-Y') == $text))
+    return false;
+
+  return true;
+}
+
 class TurnosCommand extends UserCommand
 {
   protected $name = 'turnos';
   protected $description = '/turnos dd-mm-aaaa: Devolverá los turnos disponibles para la fecha indicada';
   protected $usage = '/turnos';
   protected $version = '1.0.0';
-
-  private function isValidDate($text)
-  {
-    $d = DateTime::createFromFormat('d-m-Y', $text);
-    if (! ($d && $d->format('d-m-Y') == $text))
-      return false;
-
-    return true;
-  }
 
   public function execute()
   {
@@ -28,18 +28,18 @@ class TurnosCommand extends UserCommand
 
     try
       {
-      if (!$this->isValidDate($date))
-        {
-        $data = [
-          'chat_id' => $chat_id,
-          'text' => "$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>"
-        ];
-      }
-      else
-        {
+      if (isValidDate($date))
+      {
         $data = [
           'chat_id' => $chat_id,
           'text' => "la fecha es $date"
+        ];
+      }
+      else
+      {
+        $data = [
+          'chat_id' => $chat_id,
+          'text' => "$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>"
         ];
       }
     } catch (Exception $e)
