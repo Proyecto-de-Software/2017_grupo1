@@ -11,7 +11,7 @@ class TurnosCommand extends UserCommand
   protected $usage = '/turnos';
   protected $version = '1.0.0';
 
-  private function validateDate($date)
+  private function isValidDate($date)
   {
     $test_arr  = explode('-', $date);
     if (count($test_arr) != 3)
@@ -28,7 +28,7 @@ class TurnosCommand extends UserCommand
 
     try
       {
-      if (validateDate($date))
+      if ($this->isValidDate($date))
       {
         $data = [
           'chat_id' => $chat_id,
