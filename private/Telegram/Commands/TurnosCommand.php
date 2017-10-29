@@ -4,18 +4,21 @@ namespace Longman\TelegramBot\Commands\UserCommands;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 
-function validateDate($date)
-{
-  $test_arr  = explode('-', $date);
-  return checkdate($test_arr[0], $test_arr[1], $test_arr[2]);
-}
-
 class TurnosCommand extends UserCommand
 {
   protected $name = 'turnos';
   protected $description = '/turnos dd-mm-aaaa: Devolverá los turnos disponibles para la fecha indicada';
   protected $usage = '/turnos';
   protected $version = '1.0.0';
+
+  private function validateDate($date)
+  {
+    $test_arr  = explode('-', $date);
+    if (count($test_arr) != 3)
+      return false;
+
+    return checkdate($test_arr[0], $test_arr[1], $test_arr[2]);
+  }
 
   public function execute()
   {
