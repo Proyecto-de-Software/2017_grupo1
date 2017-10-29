@@ -12,7 +12,6 @@ $commands_paths = [__DIR__ . '/private/Telegram/Commands'];
 try
 {
     $telegram = new Longman\TelegramBot\Telegram(TelegramBotConfig::bot_api_key, TelegramBotConfig::bot_username);
-    // Logging (Error, Debug and Raw Updates)
     $telegram->addCommandsPaths($commands_paths);
     $telegram->enableLimiter();
     $telegram->handle();

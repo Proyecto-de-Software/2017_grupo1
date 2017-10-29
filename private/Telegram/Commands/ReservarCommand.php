@@ -39,6 +39,7 @@ class ReservarCommand extends UserCommand
     if (!$this->getPatientRepository()->dniExists($dni))
       throw new \Exception("$dni no existe en el sistema");
   }
+
   private function checkArgs($args)
   {
     $this->checkDni($args['dni']);
@@ -54,7 +55,7 @@ class ReservarCommand extends UserCommand
     try
     {
       $params = $this->parseArgs($message->getText(true));
-      $this->checkArgs($params);
+      # $this->checkArgs($params);
       $fecha = $params['fecha'];
       $hora = $params['hora'];
       $dni = $params['dni'];
