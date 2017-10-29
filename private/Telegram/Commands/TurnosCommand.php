@@ -43,10 +43,9 @@ class TurnosCommand extends UserCommand
       if ($this->isValidDate($date))
       {
         $turnos = $this->getAppointments($date);
-        $count = count($turnos);
         $data = [
           'chat_id' => $chat_id,
-          'text' =>"hay $count turnos"
+          'text' =>"blabla"
         ];
       }
       else
