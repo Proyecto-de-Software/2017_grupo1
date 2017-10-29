@@ -21,13 +21,12 @@ class AppointmentCommand
   {
     $d = \DateTime::createFromFormat('d-m-Y', $date);
     if (!($d && $d->format('d-m-Y') == $date))
-      throw new \Exception("$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017");
+      throw new \Exception("$date no es una fecha valida, usar formato dd-mm-aaaa. Ejemplo <25-10-2017>");
   }
 
   public static function isValidTime($time_str)
   {
-    if (!preg_match("/(2[0-3]|[01][0-9]):([0-5][0-9])/", $time_str))
-      throw new \Exception("$time_str es una hora invalida");
+
 
     $time = \DateTime::createFromFormat('H:i', $time_str);
     if (!$time)
