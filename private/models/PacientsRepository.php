@@ -95,7 +95,7 @@ class PacientsRepository extends PDORepository
 
   public function dniExists($dni)
   {
-    return count($this->queryList("SELECT * FROM pacients where dni = ?", [$dni]));
+    return !empty($this->queryList("SELECT * FROM pacients where dni = ?", [$dni]));
   }
 }
 
