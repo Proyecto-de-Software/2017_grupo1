@@ -8,7 +8,7 @@ class TelegramCommandHelper
   public static function getAvailableAppointments($date)
   {
     $answer = [];
-    $response = self::sendGet('turnos');
+    $response = self::sendGet("turnos/$date");
     if ($response->getStatusCode() == 200)
       $answer = \json_decode($response->getBody()->getContents());
     return $answer;
