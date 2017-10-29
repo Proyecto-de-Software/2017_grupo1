@@ -9,51 +9,65 @@ require_once "autoloader.php";
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$repository = new AppointmentsRepository;
+$appointmentsRepository = \APIHelper::getAppointmentsRepository();
+$patientsRepository = new \PacientsRepository(new \AppConfig);
+
 $app = new \Slim\App;
-$app->get("/", function (Request $request, Response $response) {
+$container = $app->getContainer();
+$container['errorHandler'] = function ($container) {
+  return new \ErrorHandler;
+};
+
+$app->get("/", function (Request $request, Response $response)
+ {
   return $response->withStatus(200)->withHeader('Content-Type', 'text/html')->getBody()->write(file_get_contents('index.html'));
 });
 
-$app->get("/turnos[/[{fecha}]]", function (Request $request, Response $response, $args) use ($repository) {
-  $body = $response->getBody();
+$app->get("/consulta-turnos[/[{fecha}]]", function (Request $request, Response $response, $args) use ($appointmentsRepository)
+{
   $date =  $request->getAttribute('fecha', date('d-m-Y'));
-
-  if (!validateDate($date, $body))
-    return $response->withHeader('Content-Type', 'text/plain')->withStatus(400);
-
-  return $response->withStatus(200)->withJson($repository->getAppointments($date));
+  \APIHelper::isValidDate($date);
+  return $response->withStatus(200)->withJson($appointmentsRepository->getAppointments($date));
 });
 
-$app->post("/turnos", function (Request $request, Response $response, $args) use ($repository) {
-  $body = $response->getBody();
+$app->get("/turnos[/[{fecha}]]", function (Request $request, Response $response, $args) use ($appointmentsRepository)
+{
+  $date =  $request->getAttribute('fecha', date('d-m-Y'));
+  \APIHelper::isValidDate($date);
+  return $response->withStatus(200)->withJson($appointmentsRepository->getAvailableAppointments($date));
+});
+
+$app->post("/turnos", function (Request $request, Response $response, $args) use ($appointmentsRepository, $patientsRepository)
+{
   $date = $request->getParsedBodyParam('fecha', date('d-m-Y'));
   $time = $request->getParsedBodyParam('hora');
   $dni = $request->getParsedBodyParam('dni');
+  \APIHelper::isValidDate($date);
+  \APIHelper::isValidTime($time);
+  \APIHelper::isValidDni($dni);
+  $appointment = array('dni' => $dni, 'hora' => $time, 'fecha' => $date, 'id' => '');
 
-  if (!validateDate($date, $body))
-    return $response->withHeader('Content-Type', 'text/plain')->withStatus(400);
-
-  if (!validateTime($time, $body))
-    return $response->withHeader('Content-Type', 'text/plain')->withStatus(400);
-
-  if (!validateDni($dni, $body))
-    return $response->withHeader('Content-Type', 'text/plain')->withStatus(400);
-
-    try
+  $success = $patientsRepository->dniExists($dni);
+  if ($success)
+  {
+    $success = $appointmentsRepository->appoint($date, $time, $dni);
+    if ($success)
     {
-      $success = $repository->appoint($date, $time, $dni);
-      if ($success)
-        $message = "El turno fue asignado correctamente para DNI: $dni en la fecha $date $time";
-      else
-        $message = 'El turno solicitado ya se encuentra ocupado';
-
-      return $response->withStatus(200)->withJson(array('success' => $success, 'message' => $message));
+      $id_turno = $appointmentsRepository->getLastId();
+      $appointment['id'] = $id_turno;
+      $message = "Te confirmamos el turno nro $id_turno para $dni, a las $time del dia $date";
     }
-    catch(\Exception $e)
+    else
     {
-      return $response->withHeader('Content-Type', 'text/plain')->withStatus(500)->getBody()->write($e->getMessage());
+      $message = 'El turno solicitado ya se encuentra ocupado';
     }
+  }
+  else
+  {
+    $message = "El DNI $dni no existe en el sistema";
+  }
+
+  return $response->withStatus(200)->withJson(array('success' => $success, 'message' => $message, 'appointment' => $appointment));
 });
 
 $app->run();
