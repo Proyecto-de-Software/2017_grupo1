@@ -36,6 +36,9 @@ class AppointmentCommand
     $date_time = date_parse($time->format('H:i'));
     $hour = $date_time['hour'];
     $minute = $date_time['minute'];
+
+    if (!isBetween($hour, 8, 20))
+      throw new \Exception("La hora debe ser entre 8:00 y 20:00");
   }
 
   public static function getRepository()
