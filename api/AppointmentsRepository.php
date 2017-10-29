@@ -60,7 +60,7 @@ class AppointmentsRepository extends PDORepository
   public function checkAvaiable($date, $time)
   {
     $index = array_search($time, $this->getAvailableAppointments($date));
-    return $index > 0;
+    return $index >= 0;
   }
 
   public function __construct()
