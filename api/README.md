@@ -1,6 +1,4 @@
-# Proyecto de Software 2017
-## Grupo 1
-## API de Turnos
+# API de Turnos
 
 Consiste en una API REST que provee servicios para consulta y reserva de turnos
 
@@ -20,7 +18,7 @@ La API validará todas las entradas, indicando los errores en la respuesta utili
 
 Un requerimiento `HTTP GET` a la URL `'/'` retorna este documento
 
-2. `'/'turnos/{:fecha}` --> Lista de turnos disponibles
+2. `'/turnos/{:fecha}'` --> Lista de turnos disponibles
 
 Se debe enviar un requerimiento `HTTP GET` a la URL `/turnos/{:fecha}`.
 
@@ -38,7 +36,7 @@ La respuesta es un array `JSON` que contiene los horarios de turno disponibles p
 ]
 ```
 
-2. `'/'consulta-turnos/{:fecha}` --> Lista de turnos
+3. `'/consulta-turnos/{:fecha}'` --> Lista de turnos
 
 Se debe enviar un requerimiento `HTTP GET` a la URL `/turnos/{:fecha}`.
 
@@ -60,7 +58,7 @@ La respuesta es un array `JSON` que contiene la informacion de los turnos en la 
 ]
 ```
 
-3. `'/'turnos` --> Reservar turno
+4. `'/turnos'` --> Reservar turno
 
 Se debe enviar un requerimiento `HTTP POST` a la URL `/turnos`.
 
@@ -85,7 +83,8 @@ Los tres parametros serán validados:
   * Ejemplos validos: `08:00`, `10:30`, `18:00`
   * Ejemplos no validos: `08:15`, `10:34`, `21:00`
 
- Esto devuelve una respuesta en donde el `body` es un objeto `JSON` con la siguiente estructura:
+
+  Esto devuelve una respuesta en donde el `body` es un objeto `JSON` con la siguiente estructura:
 
     HTTP 200 OK
 
@@ -142,7 +141,7 @@ Donde:
 }
 ```
 
-4. '`/error_code/{:id_error_code}`' --> Consulta de código de error
+5. `'/error_code/{:id_error_code}'` --> Consulta de código de error
 
 Se debe enviar un requerimiento `HTTP GET` a la URL `/error_code/{:id_error_code}`.
 
@@ -157,4 +156,3 @@ La respuesta es un objeto `JSON` con la siguiente estructura:
   "id": "1",
   "description": "El turno solicitado ya se encuentra ocupado"
 }
-```
