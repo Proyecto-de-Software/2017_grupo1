@@ -1,6 +1,14 @@
 <?php
 use GuzzleHttp\Exception\RequestException;
 
+class BadRequestException extends Exception
+{
+  public function __construct($json_error_response)
+  {
+    parent::__construct($json_error_response->{'description'}, $json_error_response->{'error_code'});
+  }
+}
+
 class TelegramCommandHelper
 {
   public static $API_BASE_URI = 'https://grupo1.proyecto2017.linti.unlp.edu.ar/api/';
@@ -9,8 +17,7 @@ class TelegramCommandHelper
   {
     $answer = [];
     $response = self::sendGet("turnos/$date");
-    if ($response->getStatusCode() == 200)
-      $answer = \json_decode($response->getBody()->getContents());
+    $answer = \json_decode($response->getBody()->getContents());
     return $answer;
   }
 
@@ -18,9 +25,6 @@ class TelegramCommandHelper
   {
     $args = array('fecha'  => $date, 'hora' => $time, 'dni' => $dni);
     $response = self::sendPost('turnos', $args);
-    if ($response->getStatusCode() != 200)
-      return $response->getBody()->getContents();
-
     $appointment = \json_decode($response->getBody()->getContents());
     return $appointment->{'message'};
   }
@@ -31,7 +35,9 @@ class TelegramCommandHelper
 
     try
     {
-      return $client->request($method, $endpoint, ['form_params' => $args]);
+      $response = $client->request($method, $endpoint, ['form_params' => $args]);
+      if ($response->getStatusCode() == 400)
+        throw new \BadRequestException( \json_decode($response->getBody()->getContents()));
     }
     catch (RequestException $e)
     {
