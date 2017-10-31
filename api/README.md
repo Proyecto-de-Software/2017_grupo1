@@ -90,7 +90,6 @@ Los tres parametros serán validados:
 
 ```JSON
 {
-    "success": true | false,
     "message": "string",
     "appointment": {
         "dni": "string",
@@ -102,7 +101,6 @@ Los tres parametros serán validados:
 ```
 Donde:
 
-* `success`: es un `boolean` que si el turno se reservó correctamente
 * `message`: contiene un texto descriptivo del resultado de la operación
 * `appointment`: es un objeto `JSON` que contiene la información del turno reservado. Se agrega un campo `id` que es el identificador asignado por el sistema
 * `error_code`: este campo unicamente se incluye  cuando la respuesta `HTTP` vuelve con un `Status Code 400 Bad Request`. Es un codigo de error cuyo significado puede consultarse en el endpoint `/error_code/{:id_error_code}`
@@ -113,7 +111,6 @@ Donde:
 
 ```JSON
 {
-    "success": true,
     "message": "Te confirmamos el turno nro 3 para 37058719, a las 08:00 del dia 30-10-2017",
     "appointment": {
         "dni": "37058719",
@@ -129,7 +126,6 @@ Donde:
 
 ```JSON
 {
-    "success": false,
     "error_code": "1",
     "message": "El turno solicitado ya se encuentra ocupado",
     "appointment": {
