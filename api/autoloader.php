@@ -1,6 +1,6 @@
 <?php
-require_once "APIHelper.php";
-require_once "APIErrorHandler.php";
+require_once "TurnosAPIHelper.php";
+require_once "TurnosAPIErrorHandler.php";
 require_once "../private/models/PDORepository.php";
 require_once "../private/models/PacientsRepository.php";
 require_once "../private/models/Pacient.php";

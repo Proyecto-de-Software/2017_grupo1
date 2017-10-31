@@ -5,7 +5,6 @@ class ErrorHandler
   {
     return $response
       ->withStatus(400)
-      ->withHeader('Content-Type', 'text/plain')
-      ->write($exception->getMessage());
+      ->withJson(array('message' => $exception->getMessage(), 'error_code' => $exception->getCode()));
   }
 }
