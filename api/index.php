@@ -29,6 +29,12 @@ $app->get("/consulta-turnos[/[{fecha}]]", function (Request $request, Response $
   return $response->withStatus(200)->withJson($appointmentsRepository->getAppointments($date));
 });
 
+$app->get("/error_code/{id_error_code}", function (Request $request, Response $response, $args)
+{
+  $error_code =  $request->getAttribute('id_error_code');
+  return $response->withStatus(200)->withJson(array('error_code' => $error_code, 'description' => \TurnosAPIException::getDescription($error_code)));
+});
+
 $app->get("/turnos[/[{fecha}]]", function (Request $request, Response $response, $args) use ($appointmentsRepository)
 {
   $date =  $request->getAttribute('fecha', date('d-m-Y'));
@@ -48,7 +54,7 @@ $app->post("/turnos", function (Request $request, Response $response, $args) use
 
   $success = $appointmentsRepository->appoint($date, $time, $dni);
   if (!$success)
-    throw new \TurnosAPIException('El turno solicitado ya se encuentra ocupado', TurnosAPIException::ALREADY_APPOINTED);
+    throw new \TurnosAPIException(TurnosAPIException::ALREADY_APPOINTED);
 
   $id_turno = $appointmentsRepository->getLastId();
   $appointment['id'] = $id_turno;
