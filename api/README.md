@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html>
-<title>Grupo 1 - API de Turnos </title>
-<xmp theme="cerulean" style="display:none;">
 # Proyecto de Software 2017
 ## Grupo 1
 ## API de Turnos
@@ -89,7 +85,7 @@ Los tres parametros serán validados:
   * Ejemplos validos: `08:00`, `10:30`, `18:00`
   * Ejemplos no validos: `08:15`, `10:34`, `21:00`
 
-  Esto devuelve una respuesta en donde el `body` es un objeto `JSON` con la siguiente estructura:
+ Esto devuelve una respuesta en donde el `body` es un objeto `JSON` con la siguiente estructura:
 
     HTTP 200 OK
 
@@ -162,6 +158,3 @@ La respuesta es un objeto `JSON` con la siguiente estructura:
   "description": "El turno solicitado ya se encuentra ocupado"
 }
 ```
-</xmp>
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
-</html>
