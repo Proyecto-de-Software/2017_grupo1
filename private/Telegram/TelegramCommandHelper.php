@@ -38,6 +38,8 @@ class TelegramCommandHelper
       $response = $client->request($method, $endpoint, ['form_params' => $args]);
       if ($response->getStatusCode() == 400)
         throw new \BadRequestException( \json_decode($response->getBody()->getContents()));
+
+      return $response;
     }
     catch (RequestException $e)
     {
