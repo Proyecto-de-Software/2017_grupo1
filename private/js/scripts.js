@@ -3,3 +3,4 @@ function cancelar(action) {
         document.location.href = './?action='+ action;
     }
 }
+

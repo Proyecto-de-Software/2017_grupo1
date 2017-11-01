@@ -1,10 +1,35 @@
 {% extends 'plantilla_base.html' %}
 
+
+{% block head%}
+<script type="text/javascript">
+function validar(){
+
+/*creo una variable de tipo booleana que en principio tendrá un valor true(verdadero), 
+y que retornaremos en false(falso) cuando nuestra condición no se cumpla*/
+var todo_correcto = true;
+
+/*El primer campo que comprobamos es el del nombre. Lo traemos por id y verificamos 
+la condición, en este caso, por ejemplo, le decimos que tiene que tener más de 2 dígitos 
+para que sea un nombre válido. Si no tiene más de dos dígitos, la variable todo_correcto 
+devolverá false.*/
+
+nombre = document.getElementById('first_name').value;
+if (/[^a-zA-Z\s]/.test(nombre)) {
+    alert('Solo puede ingresar letras en el campo "Nombre"');
+    todo_correcto = false
+}
+
+return todo_correcto;
+}
+</script>
+
+{% endblock %}
 {% block body %}
 
 <div id="div-top" align="center">
 <h1>{% block header %} {% endblock %} </h1>
-<form action="{% block action %} {% endblock %}" method='post'>
+<form action="{% block action %}{% endblock %}"  onsubmit='return validar()' name="alta_paciente" method='post'>
   <div class="container">
     <div class="row">
       <div align="left">
@@ -200,7 +225,7 @@
             {% block form %} {% endblock %}
             <div class="form-group">
               <div class="col-md-12 text-center">
-                <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar">
+                <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar" onclick = "return validarAltaPaciente(this)" > 
                 <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('pacients_index')"; value="Cancelar"></button>
               </div>
             </div>
