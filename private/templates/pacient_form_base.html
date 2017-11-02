@@ -5,22 +5,30 @@
 <script type="text/javascript">
 function validar(){
 
-/*creo una variable de tipo booleana que en principio tendrá un valor true(verdadero), 
-y que retornaremos en false(falso) cuando nuestra condición no se cumpla*/
-var todo_correcto = true;
+  nombre = document.getElementById('first_name').value;
+  if (/[^a-zA-Z\s]/.test(nombre)) {
+      alert('Solo puede ingresar letras en el campo "Nombre"');
+      return false;
+  }
 
-/*El primer campo que comprobamos es el del nombre. Lo traemos por id y verificamos 
-la condición, en este caso, por ejemplo, le decimos que tiene que tener más de 2 dígitos 
-para que sea un nombre válido. Si no tiene más de dos dígitos, la variable todo_correcto 
-devolverá false.*/
+  apellido = document.getElementById('last_name').value;
+  if (/[^a-zA-Z\s]/.test(apellido)) {
+      alert('Solo puede ingresar letras en el campo "Apellido"');
+      return false;
+  }
 
-nombre = document.getElementById('first_name').value;
-if (/[^a-zA-Z\s]/.test(nombre)) {
-    alert('Solo puede ingresar letras en el campo "Nombre"');
-    todo_correcto = false
-}
+  telefono = document.getElementById('phone').value;
+  if (/\D/.test(telefono)) {
+      alert('Solo puede ingresar numeros en el campo "Telefono"');
+      return false;
+  }
 
-return todo_correcto;
+  dni = document.getElementById('dni').value;
+  if (/\D/.test(dni)) {
+      alert('Solo puede ingresar numeros en el campo "DNI"');
+      return false;
+  }
+
 }
 </script>
 
@@ -100,7 +108,7 @@ return todo_correcto;
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   N&uacute;mero de Documento:
-                    <input id="documento" name="dni" type="numeric" placeholder="Nro de Documento"
+                    <input id="dni" name="dni" type="numeric" placeholder="Nro de Documento"
                     value="{% block dni_value %} {% endblock %}" class="form-control" required>
                 </div>
               </div>
@@ -111,7 +119,7 @@ return todo_correcto;
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Domicilio:
-                    <input id="domicilio" name="address" type="text" placeholder="Direcci&oacute;n de Domicilio"
+                    <input id="address" name="address" type="text" placeholder="Direcci&oacute;n de Domicilio"
                     value="{% block address_value %} {% endblock %}" class="form-control" required>
                 </div>
               </div>
@@ -122,7 +130,7 @@ return todo_correcto;
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Tel&eacute;fono/Celular:
-                    <input id="telefono" name="phone" type="text" placeholder="Telefono/Celular"
+                    <input id="phone" name="phone" type="text" placeholder="Telefono/Celular"
                     value="{% block phone_value %} {% endblock %}" class="form-control" required>
                 </div>
               </div>
