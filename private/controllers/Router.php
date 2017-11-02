@@ -50,6 +50,7 @@ class Router
       $appConfig = new AppConfig;
       $userRepository = new UserRepository($appConfig);
       $pacientsRepository = new PacientsRepository($appConfig);
+      $clinicalHistoryRepository = new clinicalHistoryRepository();
       $referenceDataService = new ReferenceDataService(
         new APIReferenceDataRepository("tipo-agua"),
         new APIReferenceDataRepository("tipo-calefaccion"),
@@ -89,6 +90,7 @@ class Router
       self::$router->addController('pacient_updated', new PacientUpdatedController(new PacientUpdatedView, $pacientsRepository));
       self::$router->addController('pacient_destroy', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
       self::$router->addController('pacient_clinical_history', new PacientClinicalHistoryController(new PacientClinicalHistoryView, $pacientsRepository));
+      self::$router->addController('clinical_history_updated', new ClinicalHistoryUpdatedController(new ClinicalHistoryUpdatedView, $clinicalHistoryRepository));
 
 
       
