@@ -33,11 +33,11 @@
           <td>{{ item.last_name }}</td>
           <td>{{ item.birth_date }}</td>
           <td>{{ item.gender }}</td>
-          <td>{{ referenceData.getDocumentTypeById(item.doc_type).description }}</td>
+         <!-- <td>{{ referenceData.getDocumentTypeById(item.doc_type).description }}</td> -->
           <td>{{ item.dni }}</td>
           <td>{{ item.address }}</td>
           <td>{{ item.phone }}</td>
-          <td>{{ referenceData.getSocialInsuranceById(item.id_medical_insurance).description }}</td>
+          <!-- <td>{{ referenceData.getSocialInsuranceById(item.id_medical_insurance).description }}</td> -->
           <td>
             <form action="./?action=pacient_form_update" method="post">
               <input type="submit" class="btn btn-primary" name="id" value="Modificar">
@@ -53,6 +53,12 @@
           <td>
             <form action="./?action=pacient_demographic_data" method="post">
               <input type="submit" class="btn btn-primary" value="Datos Demogr&aacute;ficos" id="boton_datos_demograficos"/>
+              <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+            </form>
+          </td>
+            <td>
+            <form action="./?action=pacient_clinical_history" method="post">
+              <input type="submit" class="btn btn-primary" value="Historia cl&iacute;nica" />
               <input type="hidden" name="id" id="id" value= "{{ item.id }}">
             </form>
           </td>

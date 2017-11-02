@@ -1,0 +1,194 @@
+{% extends 'plantilla_base.html' %}
+{% block body%}
+
+
+<div id="div-top" align="center">
+<h1> Historia Cl&iacute;nica de {{ pacient.getFull_Name() }}</h1>
+<form action='./?action=clinical_history_updated'  method='post'>
+  <div class="container">
+    <div class="row">
+      <div align="left">
+        <div class="well well-sm">
+          <div class="form-horizontal">
+            Los campos marcados con <font size= 4 color="#EC2020">* </font> son obligatorios.
+            <br> <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-8">
+                  <font color="#EC2020" size= 4>* </font> Fecha de la consulta:
+                  <input id="date" name="date" type="date" value="{{ clinicalHistory.date }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-8">
+                  Edad:
+                    <input id="age" name="age" type="numeric" value="{{ pacient.edad }}" class="form-control">
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                 <font color="#EC2020" size= 4>* </font> Peso:
+                    <input id="peso" name="peso" type="number" value="{{ pacient.peso }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                  <font color="#EC2020" size= 4>* </font> Vacunas completas?:
+                  <select name="vacunas_completas" required>
+                    <option value="1">SI</option>
+                    <option value="0">NO</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+             <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                 <font color="#EC2020" size= 4>* </font> Vacunas observaciones:
+                    <input id="vacunas_obs" name="vacunas_obs" type="text" value="{{ clinicalHistory.vacunas_obs }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                  <font color="#EC2020" size= 4>* </font> Maduración acorde?:
+                  <select name="maduracion_acorde" required>
+                    <option value="1">SI</option>
+                    <option value="0">NO</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                 <font color="#EC2020" size= 4>* </font> Maduración observaciones:
+                    <input id="maduracion_obs" name="maduracion_obs" type="text" value="{{ clinicalHistory.maduracion_obs }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                <font color="#EC2020" size= 4>* </font> Exámen físico normal?:
+                  <select name="examen_fisico" required>
+                    <option value="1">SI</option>
+                    <option value="0">NO</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                 <font color="#EC2020" size= 4>* </font> Exámen físico observaciones:
+                    <input id="examenFisico_obs" name="examenFisico_obs" type="text" value="{{ clinicalHistory.examenFisico_obs }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                  PC: percentilo cefálico:
+                    <input id="percentilo_cefalico" name="percentilo_cefalico" type="number" value="{{ clinicalHistory.percentilo_cefalico }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                  PPC: percentilo perímetro cefálico:
+                    <input id="percentilo_perim_cefalico" name="percentilo_perim_cefalico" type="number" value="{{ clinicalHistory.percentilo_perim_cefalico }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                  Talla:
+                    <input id="talla" name="talla" type="number" value="{{ pacient.talla }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                  Alimentación:
+                    <input id="alimentacion" name="alimentacion" type="text" value="{{ clinicalHistory.alimentacion }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                  Observaciones generales:
+                    <input id="obs_generales" name="obs_generales" type="text" value="{{ clinicalHistory.obs_generales }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <br>
+            <fieldset>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
+                <div class="col-md-8">
+                  Usuario:
+                    <input id="usuario" name="usuario" type="text" value="{{ clinicalHistory.usuario }}" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+            <br>
+            <div class="form-group">
+              <div class="col-md-12 text-center">
+                <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar" onclick = "return validarAltaPaciente(this)" > 
+                <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('pacients_index')"; value="Cancelar"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<br>
+<br>
+<br>
+<br>
+
+
+{% endblock %}

@@ -10,6 +10,8 @@ require_once "./private/controllers/AdminController.php";
 require_once "./private/controllers/PacientsController.php";
 require_once "./private/controllers/DisabledSiteController.php";
 require_once "./private/controllers/NonAuthorizedController.php";
+require_once "./private/controllers/PacientClinicalHistoryController.php";
+
 
 require_once "./private/models/PDORepository.php";
 require_once "./private/models/UserRepository.php";
@@ -45,3 +47,4 @@ require_once "./private/views/PacientFormView.php";
 require_once "./private/views/PacientUpdatedView.php";
 require_once "./private/views/PacientDestroyedView.php";
 require_once "./private/views/PacientDemographicDataView.php";
+require_once "./private/views/PacientClinicalHistoryView.php";

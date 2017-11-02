@@ -88,6 +88,10 @@ class Router
       self::$router->addController('pacient_form_update', new PacientEditController(new EditPacientView($referenceDataService), $pacientsRepository));
       self::$router->addController('pacient_updated', new PacientUpdatedController(new PacientUpdatedView, $pacientsRepository));
       self::$router->addController('pacient_destroy', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
+      self::$router->addController('pacient_clinical_history', new PacientClinicalHistoryController(new PacientClinicalHistoryView, $pacientsRepository));
+
+
+      
     }
 
     return self::$router;
