@@ -89,8 +89,18 @@ class Router
       self::$router->addController('pacient_form_update', new PacientEditController(new EditPacientView($referenceDataService), $pacientsRepository));
       self::$router->addController('pacient_updated', new PacientUpdatedController(new PacientUpdatedView, $pacientsRepository));
       self::$router->addController('pacient_destroy', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
-      self::$router->addController('pacient_clinical_history', new PacientClinicalHistoryController(new PacientClinicalHistoryView, $pacientsRepository));
-      self::$router->addController('clinical_history_updated', new ClinicalHistoryUpdatedController(new ClinicalHistoryUpdatedView, $clinicalHistoryRepository));
+
+
+      /* CRUD HISTORIA CLINICA */
+      self::$router->addController('clinicalHistory_form_new', new ClinicalHistoryNewController(new NewClinicalHistoryView, $clinicalHistoryRepository));
+
+      self::$router->addController('clinicalHistory_added', new ClinicalHistoryAddedController(new ClinicalHistoryAddedView, $clinicalHistoryRepository));
+
+      self::$router->addController('clinicalHistory_form_update', new ClinicalHistoryEditController(new EditClinicalHistoryView, $clinicalHistoryRepository));
+
+      self::$router->addController('clinicalHistory_updated', new ClinicalHistoryUpdatedController(new ClinicalHistoryUpdatedView, $clinicalHistoryRepository));
+
+      self::$router->addController('clinicalHistory_destroy', new ClinicalHistoryDestroyedController(new ClinicalHistoryDestroyedView, $clinicalHistoryRepository));
 
 
       

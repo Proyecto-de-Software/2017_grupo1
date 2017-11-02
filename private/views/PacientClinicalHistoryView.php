@@ -9,6 +9,6 @@ class PacientClinicalHistoryView extends TwigView
   public function show($pacient)
   {
     $this->render(array(
-      'pacient' => $pacient));
+      'pacient_HC' => $pacient));
   }
 }

@@ -17,7 +17,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-8">
                   <font color="#EC2020" size= 4>* </font> Fecha de la consulta:
-                  <input id="date" name="date" type="date" value="{{ clinicalHistory.date }}" class="form-control" required>
+                  <input id="date" name="date" type="date" value="{{ clinicalHistory.fecha }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -27,7 +27,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-8">
                   Edad:
-                    <input id="edad" name="edad" type="numeric" value="{{ pacient.edad }}" class="form-control">
+                    <input id="edad" name="edad" type="numeric" value="{{ clinicalHistory.edad }}" class="form-control">
                 </div>
               </div>
             </fieldset>
@@ -37,7 +37,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                  <font color="#EC2020" size= 4>* </font> Peso:
-                    <input id="peso" name="peso" type="number" value="{{ pacient.peso }}" class="form-control" required>
+                    <input id="peso" name="peso" type="number" value="{{ clinicalHistory.peso }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -136,7 +136,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Talla:
-                    <input id="talla" name="talla" type="number" value="{{ pacient.talla }}" class="form-control" required>
+                    <input id="talla" name="talla" type="number" value="{{ clinicalHistory.talla }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -174,7 +174,7 @@
             <br>
             <div class="form-group">
               <div class="col-md-12 text-center">
-                <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar" onclick = "return validarAltaPaciente(this)" > 
+                <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar"> 
                 <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('pacients_index')"; value="Cancelar"></button>
               </div>
             </div>

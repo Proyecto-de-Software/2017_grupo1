@@ -10,7 +10,7 @@ require_once "./private/controllers/AdminController.php";
 require_once "./private/controllers/PacientsController.php";
 require_once "./private/controllers/DisabledSiteController.php";
 require_once "./private/controllers/NonAuthorizedController.php";
-require_once "./private/controllers/PacientClinicalHistoryController.php";
+require_once "./private/controllers/ClinicalHistoryController.php";
 
 
 require_once "./private/models/PDORepository.php";
@@ -19,10 +19,12 @@ require_once "./private/models/PacientsRepository.php";
 require_once "./private/models/ReferenceData.php";
 require_once "./private/models/ReferenceDataRepository.php";
 require_once "./private/models/ReferenceDataService.php";
+require_once "./private/models/ClinicalHistoryRepository.php";
+
 require_once "./private/models/User.php";
 require_once "./private/models/Pacient.php";
 require_once "./private/models/AppConfig.php";
-require_once "./private/models/ClinicalHistoryRepository.php";
+require_once "./private/models/ClinicalHistory.php";
 
 
 require_once "./private/Session.php";
@@ -49,5 +51,4 @@ require_once "./private/views/PacientFormView.php";
 require_once "./private/views/PacientUpdatedView.php";
 require_once "./private/views/PacientDestroyedView.php";
 require_once "./private/views/PacientDemographicDataView.php";
-require_once "./private/views/PacientClinicalHistoryView.php";
-require_once "./private/views/ClinicalHistoryUpdatedView.php";
+require_once "./private/views/ClinicalHistoryView.php";
