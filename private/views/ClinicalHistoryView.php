@@ -20,32 +20,6 @@ class NewClinicalHistoryView extends ClinicalHistoryView
   }
 }
 
-class EditClinicalHistoryView extends ClinicalHistoryView
-{
-  protected function getTemplateFile()
-  {
-    return "clinicalHistory_form_update.html";
-  }
-
-  public function show($clinicalHistory)
-  {
-
-    $this->doShow(array('clinicalHistory' => $clinicalHistory));
-  }
-}
-
-class ClinicalHistoryDestroyedView extends ClinicalHistoryView {
-  
-  protected function getTemplateFile(){
-    return "clinicalHistory_destroyed.html";
-  }
-   public function show()
-  {
-    $this->render();
-  }
-
-}
-
 class ClinicalHistoryAddedView extends ClinicalHistoryView {
 
   protected function getTemplateFile()
@@ -59,10 +33,36 @@ class ClinicalHistoryAddedView extends ClinicalHistoryView {
   }
 }
 
+class EditClinicalHistoryView extends ClinicalHistoryView
+{
+  protected function getTemplateFile()
+  {
+    return "clinicalHistory_form_update.html";
+  }
+
+  public function show($clinicalHistory)
+  {
+    var_dump($clinicalHistory);
+    $this->doShow(array('clinicalHistory' => $clinicalHistory));
+  }
+}
+
 class ClinicalHistoryUpdatedView extends ClinicalHistoryView {
   
   protected function getTemplateFile(){
     return "clinicalHistory_updated.html";
+  }
+   public function show()
+  {
+    $this->render();
+  }
+
+}
+
+class ClinicalHistoryDestroyedView extends ClinicalHistoryView {
+  
+  protected function getTemplateFile(){
+    return "clinicalHistory_destroyed.html";
   }
    public function show()
   {

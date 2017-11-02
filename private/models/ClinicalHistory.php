@@ -17,6 +17,7 @@ class ClinicalHistory
   private $alimentacion;
   private $obs_generales;
   private $usuario;
+  private $id_paciente;
 
   public function __construct(
     $id,
@@ -34,7 +35,8 @@ class ClinicalHistory
     $talla,
     $alimentacion,
     $obs_generales,
-    $usuario
+    $usuario,
+    $id_paciente
    )
   {
     $this->id = $id;
@@ -53,11 +55,12 @@ class ClinicalHistory
     $this->alimentacion = $alimentacion;
     $this->obs_generales = $obs_generales;
     $this->usuario = $usuario;
+    $this->id_paciente = $id_paciente;
   }
 
   public function getFull_Name()
   {
-    //
+    return $this->getPacient($id_paciente)->getFull_Name();
   }
 
   public function getId()
@@ -131,9 +134,15 @@ class ClinicalHistory
   {
     return $this->obs_generales;
   }
-   public function getUsuario()
+
+  public function getUsuario()
   {
     return $this->usuario;
+  }
+
+  public function getId_paciente()
+  {
+    return $this->id_paciente;
   }
 
 }

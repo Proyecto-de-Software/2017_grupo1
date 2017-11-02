@@ -83,6 +83,9 @@ abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
     if (!isset($args['usuario']))
       return false;
 
+    if(!isset($args['id_paciente']))
+      return false;
+
     if (empty($args['fecha']))
       return false;
 
@@ -128,6 +131,9 @@ abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
     if (empty($args['usuario']))
       return false;
 
+    if (empty($args['id_paciente']))
+      return false;
+
     return true;
   }
 }
@@ -153,7 +159,8 @@ class ClinicalHistoryAddedController extends ClinicalHistoryCRUDController
       $args['talla'],
       $args['alimentacion'],
       $args['obs_generales'],
-      $args['usuario']
+      $args['usuario'],
+      $args['id_paciente']
     );
   }
 
@@ -168,10 +175,10 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
 {
   protected function checkArgs($args)
   {
-    if (!isset($args['id']))
+    if (!isset($args['id_paciente']))
       return false;
 
-    if (!is_numeric($args['id']))
+    if (!is_numeric($args['id_paciente']))
       return false;
 
     return parent::checkArgs($args);
@@ -195,7 +202,7 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
       $args['alimentacion'],
       $args['obs_generales'],
       $args['usuario'],
-      $args['id']
+      $args['id_paciente']
     );
   }
 
@@ -228,10 +235,10 @@ class ClinicalHistoryEditController extends ClinicalHistoryCRUDController
 {
   protected function checkArgs($args)
   {
-    if (!isset($args['id']))
+    if (!isset($args['id_paciente']))
       return false;
 
-    if (!is_numeric($args['id']))
+    if (!is_numeric($args['id_paciente']))
       return false;
 
     return true;
@@ -247,10 +254,10 @@ class ClinicalHistoryDestroyedController extends ClinicalHistoryCRUDController
 {
   protected function checkArgs($args)
   {
-    if (!isset($args['id']))
+    if (!isset($args['id_paciente']))
       return false;
 
-    if (!is_numeric($args['id']))
+    if (!is_numeric($args['id_paciente']))
       return false;
 
     return true;
@@ -258,7 +265,7 @@ class ClinicalHistoryDestroyedController extends ClinicalHistoryCRUDController
 
   protected function doShowView($args)
   {
-    if ($this->getRepository()->delete($args['id']))
+    if ($this->getRepository()->delete($args['id_paciente']))
       $this->getView()->show();
   }
 }
