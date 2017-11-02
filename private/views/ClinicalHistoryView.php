@@ -42,8 +42,7 @@ class EditClinicalHistoryView extends ClinicalHistoryView
 
   public function show($clinicalHistory)
   {
-    var_dump($clinicalHistory);
-    $this->doShow(array('clinicalHistory' => $clinicalHistory));
+     $this->render(array('clinicalHistory' => $clinicalHistory));
   }
 }
 
