@@ -6,8 +6,9 @@ class PacientClinicalHistoryView extends TwigView
     return "pacient_clinical_history.html";
   }
 
-  public function show()
+  public function show($pacient)
   {
-    $this->render();
+    $this->render(array(
+      'pacient' => $pacient));
   }
 }
