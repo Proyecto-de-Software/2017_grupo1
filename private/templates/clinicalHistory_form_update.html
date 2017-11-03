@@ -37,7 +37,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                  <font color="#EC2020" size= 4>* </font> Peso:
-                    <input id="peso" name="peso" type="number" value="{{ clinicalHistory.peso }}" class="form-control" required>
+                    <input id="peso" name="peso" type="numeric" value="{{ clinicalHistory.peso }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -47,7 +47,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   <font color="#EC2020" size= 4>* </font> Vacunas completas?:
-                  <select name="vacunas_completas" required>
+                 <!-- <select name="vacunas_completas" required>
                     {% if clinicalHistory.vacunas_completas == 1 %}
                     <option value="1">SI</option>
                     <option value="0">NO</option>
@@ -56,7 +56,12 @@
                     <option value="0">NO</option>
                     <option value="1">SI</option>
                     {% endif %}
-                  </select>
+                  </select> -->
+
+                    <select name="vacunas_completas" required>
+                      <option value="1">SI</option>
+                      <option value="0">NO</option>
+                    </select>
                 </div>
               </div>
             </fieldset>
@@ -134,7 +139,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   PC: percentilo cefálico:
-                    <input id="percentilo_cefalico" name="percentilo_cefalico" type="number" value="{{ clinicalHistory.percentilo_cefalico }}" class="form-control" required>
+                    <input id="percentilo_cefalico" name="percentilo_cefalico" type="numeric" value="{{ clinicalHistory.percentilo_cefalico }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -144,7 +149,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   PPC: percentilo perímetro cefálico:
-                    <input id="percentilo_perim_cefalico" name="percentilo_perim_cefalico" type="number" value="{{ clinicalHistory.percentilo_perim_cefalico }}" class="form-control" required>
+                    <input id="percentilo_perim_cefalico" name="percentilo_perim_cefalico" type="numeric" value="{{ clinicalHistory.percentilo_perim_cefalico }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -192,7 +197,7 @@
             <br>
             <div class="form-group">
               <div class="col-md-12 text-center">
-                <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar"> 
+                <input type="submit" class="btn btn-primary" value="Confirmar"> 
                 <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('pacients_index')"; value="Cancelar"></button>
                 <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ clinicalHistory.id_paciente}}">
               </div>

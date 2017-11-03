@@ -38,101 +38,133 @@ abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
 
   protected function checkArgs($args)
   {
-    if (!isset($args['fecha']))
-      return false;
+    if (!isset($args['fecha'])){
+      echo('fecha');
+      return false;}
 
-    if (!isset($args['edad']))
-      return false;
+    if (!isset($args['edad'])){
+      echo('edad');
+      return false;}
 
-    if (!isset($args['peso']))
-      return false;
+    if (!isset($args['peso'])){
+      echo('peso');
+      return false;}
 
-    if (!isset($args['vacunas_completas']))
-      return false;
+    if (!isset($args['vacunas_completas'])){
+      echo('vacunas_completas');
+      return false;}
 
-    if (!isset($args['vacunas_obs']))
-      return false;
+    if (!isset($args['vacunas_obs'])){
+      echo('vacunas_obs');
+      return false;}
 
-    if (!isset($args['maduracion_acorde']))
-      return false;
+    if (!isset($args['maduracion_acorde'])){
+      echo('maduracion_acorde');
+      return false;}
 
-    if (!isset($args['maduracion_obs']))
-      return false;
+    if (!isset($args['maduracion_obs'])){
+      echo('maduracion_acorde');
+      return false;}
 
-    if (!isset($args['examen_fisico']))
-      return false;
+    if (!isset($args['examen_fisico'])){
+      echo('examen_fisico');
+      return false;}
 
-    if (!isset($args['examenFisico_obs']))
-      return false;
+    if (!isset($args['examenFisico_obs'])){
+      echo('examenFisico_obs');
+      return false;}
 
-    if (!isset($args['percentilo_cefalico']))
-      return false;
+    if (!isset($args['percentilo_cefalico'])){
+      echo('percentilo_cefalico');
+      return false;}
 
-    if (!isset($args['percentilo_perim_cefalico']))
-      return false;
+    if (!isset($args['percentilo_perim_cefalico'])){
+      echo('percentilo_perim_cefalico');
+      return false;}
 
-    if (!isset($args['talla']))
-      return false;
+    if (!isset($args['talla'])){
+      echo('talla');
+      return false;}
 
-    if (!isset($args['alimentacion']))
-      return false;
+    if (!isset($args['alimentacion'])){
+      echo('alimentacion');
+      return false;}
 
-    if (!isset($args['obs_generales']))
-      return false;
+    if (!isset($args['obs_generales'])){
+      echo('obs_generales');
+      return false;}
 
-    if (!isset($args['usuario']))
-      return false;
+    if (!isset($args['usuario'])){
+      echo('usuario');
+      return false;}
 
-    if(!isset($args['id_paciente']))
-      return false;
+    if(!isset($args['id_paciente'])){
+      echo('id_paciente');
+      return false;}
 
-    if (empty($args['fecha']))
-      return false;
+    if (empty($args['fecha'])){
+      echo('fecha');
+      return false;}
 
-    if (empty($args['edad']))
-      return false;
+    if (empty($args['edad'])){
+      echo('edad');
+      return false;}
 
-    if (empty($args['peso']))
-      return false;
+    if (empty($args['peso'])){
+      echo('peso');
+      return false;}
 
-    if (empty($args['vacunas_completas']))
-      return false;
+    if (empty($args['vacunas_completas'])){
+      echo('vacunas_completas');
+      return false;}
 
-    if (empty($args['vacunas_obs']))
-      return false;
+    if (empty($args['vacunas_obs'])){
+      echo('vacunas_obs');
+      return false;}
 
-    if (empty($args['maduracion_acorde']))
-      return false;
+    if (empty($args['maduracion_acorde'])){
+      echo('maduracion_acorde');
+      return false;}
 
-    if (empty($args['maduracion_obs']))
-      return false;
+    if (empty($args['maduracion_obs'])){
+      echo('maduracion_obs');
+      return false;}
 
-    if (empty($args['examen_fisico']))
-      return false;
+    if (empty($args['examen_fisico'])){
+      echo('examen_fisico');
+      return false;}
 
-    if (empty($args['examenFisico_obs']))
-      return false;
+    if (empty($args['examenFisico_obs'])){
+      echo('examenFisico_obs');
+      return false;}
 
-    if (empty($args['percentilo_cefalico']))
-      return false;
+    if (empty($args['percentilo_cefalico'])){
+      echo('percentilo_cefalico');
+      return false;}
 
-    if (empty($args['percentilo_perim_cefalico']))
-      return false;
+    if (empty($args['percentilo_perim_cefalico'])){
+      echo('percentilo_perim_cefalico');
+      return false;}
 
-    if (empty($args['talla']))
-      return false;
+    if (empty($args['talla'])){
+      echo('talla');
+      return false;}
 
-    if (empty($args['alimentacion']))
-      return false;
+    if (empty($args['alimentacion'])){
+      echo('alimentacion');
+      return false;}
 
-    if (empty($args['obs_generales']))
-      return false;
+    if (empty($args['obs_generales'])){
+      echo('obs_generales');
+      return false;}
 
-    if (empty($args['usuario']))
-      return false;
+    if (empty($args['usuario'])){
+      echo('usuario');
+      return false;}
 
-    if (empty($args['id_paciente']))
-      return false;
+    if (empty($args['id_paciente'])){
+      echo('id_paciente');
+      return false;}
 
     return true;
   }
