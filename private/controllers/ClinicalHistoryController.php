@@ -186,7 +186,6 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
 
   private function canUpdate($args)
   {
-    print_r($args);
     return $this->getRepository()->update(
       $args['fecha'],
       $args['edad'],
