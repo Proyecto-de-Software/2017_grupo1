@@ -42,7 +42,7 @@ class EditClinicalHistoryView extends ClinicalHistoryView
 
   public function show($clinicalHistory)
   {
-     $this->render(array('clinicalHistory' => $clinicalHistory));
+     $this->render(array('clinicalHistory' => $clinicalHistory[0]));
   }
 }
 

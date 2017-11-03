@@ -17,7 +17,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-8">
                   <font color="#EC2020" size= 4>* </font> Fecha de la consulta:
-                  <input id="date" name="date" type="date" value="{{ clinicalHistory.fecha }}" class="form-control" required>
+                  <input id="fecha" name="fecha" type="date" value="{{ clinicalHistory.fecha }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -176,6 +176,7 @@
               <div class="col-md-12 text-center">
                 <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar"> 
                 <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('pacients_index')"; value="Cancelar"></button>
+                <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ clinicalHistory.id_paciente}}">
               </div>
             </div>
           </div>

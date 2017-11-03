@@ -24,7 +24,8 @@ abstract class Controller
   }
 
   public function showView($args)
-  {
+  { 
+    print_r($args);
     if ($this->checkArgs($args))
       $this->doShowView($args);
     else

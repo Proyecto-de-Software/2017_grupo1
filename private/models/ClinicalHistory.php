@@ -60,7 +60,7 @@ class ClinicalHistory
 
   public function getFull_Name()
   {
-    return $this->getPacient($id_paciente)->getFull_Name();
+    return;
   }
 
   public function getId()
