@@ -37,7 +37,7 @@ class ClinicalHistoryRepository extends PDORepository {
       $this->stmtCreate = $this->newPreparedStmt("INSERT INTO clinical_history (fecha, edad, peso, vacunas_completas, vacunas_obs, maduracion_acorde, maduracion_obs, examen_fisico, examenFisico_obs, percentilo_cefalico, percentilo_perim_cefalico, talla, alimentacion, obs_generales, usuario, id_paciente)
                                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       
-      $this->stmtUpdate = $this->newPreparedStmt("UPDATE clinical_history SET fecha = ?, peso = ?, vacunas_completas = ?, vacunas_obs = ?, maduracion_acorde = ?, maduracion_obs = ?, examen_fisico = ?, examenFisico_obs = ?, percentilo_cefalico = ?, percentilo_perim_cefalico = ?, talla = ?, alimentacion = ?, obs_generales = ?, usuario = ?, id_paciente = ? WHERE id = ?");
+      $this->stmtUpdate = $this->newPreparedStmt("UPDATE clinical_history SET fecha = ?, edad = ?, peso = ?, vacunas_completas = ?, vacunas_obs = ?, maduracion_acorde = ?, maduracion_obs = ?, examen_fisico = ?, examenFisico_obs = ?, percentilo_cefalico = ?, percentilo_perim_cefalico = ?, talla = ?, alimentacion = ?, obs_generales = ?, usuario = ? WHERE id_paciente = ?");
     }
 
   public function getAll()

@@ -167,7 +167,7 @@ class ClinicalHistoryAddedController extends ClinicalHistoryCRUDController
 
   protected function doShowView($args){
     if ($this->canCreate($args))
-      return $this->getView();
+      return $this->getView()->show();
   }
 }
 
@@ -186,6 +186,7 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
 
   private function canUpdate($args)
   {
+    print_r($args);
     return $this->getRepository()->update(
       $args['fecha'],
       $args['edad'],
