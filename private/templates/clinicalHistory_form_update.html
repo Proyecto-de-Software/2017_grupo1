@@ -48,8 +48,14 @@
                 <div class="col-md-8">
                   <font color="#EC2020" size= 4>* </font> Vacunas completas?:
                   <select name="vacunas_completas" required>
+                    {% if clinicalHistory.vacunas_completas == 1 %}
                     <option value="1">SI</option>
                     <option value="0">NO</option>
+                    {% endif %}
+                    {% if clinicalHistory.vacunas_completas == 0 %}
+                    <option value="0">NO</option>
+                    <option value="1">SI</option>
+                    {% endif %}
                   </select>
                 </div>
               </div>
@@ -71,8 +77,14 @@
                 <div class="col-md-8">
                   <font color="#EC2020" size= 4>* </font> Maduración acorde?:
                   <select name="maduracion_acorde" required>
+                    {% if clinicalHistory.maduracion_acorde == 1 %}
                     <option value="1">SI</option>
                     <option value="0">NO</option>
+                    {% endif %}
+                    {% if clinicalHistory.maduracion_acorde == 0 %}
+                    <option value="0">NO</option>
+                    <option value="1">SI</option>
+                    {% endif %}
                   </select>
                 </div>
               </div>
@@ -94,8 +106,14 @@
                 <div class="col-md-8">
                 <font color="#EC2020" size= 4>* </font> Exámen físico normal?:
                   <select name="examen_fisico" required>
+                    {% if clinicalHistory.examen_fisico == 1 %}
                     <option value="1">SI</option>
                     <option value="0">NO</option>
+                    {% endif %}
+                    {% if clinicalHistory.examen_fisico == 0 %}
+                    <option value="0">NO</option>
+                    <option value="1">SI</option>
+                    {% endif %}
                   </select>
                 </div>
               </div>
