@@ -50,7 +50,7 @@ class Router
       $appConfig = new AppConfig;
       $userRepository = new UserRepository($appConfig);
       $pacientsRepository = new PacientsRepository($appConfig);
-      $clinicalHistoryRepository = new clinicalHistoryRepository();
+      $clinicalHistoryRepository = new ClinicalHistoryRepository($appConfig);
       $referenceDataService = new ReferenceDataService(
         new APIReferenceDataRepository("tipo-agua"),
         new APIReferenceDataRepository("tipo-calefaccion"),
@@ -92,6 +92,9 @@ class Router
 
 
       /* CRUD HISTORIA CLINICA */
+
+      $clinicalHistoryListController = new ClinicalHistoryListController(new ClinicalHistoryListView, $clinicalHistoryRepository);
+      self::$router->addController('clinicalHistory_index', $clinicalHistoryListController);
       self::$router->addController('clinicalHistory_form_new', new ClinicalHistoryNewController(new NewClinicalHistoryView, $clinicalHistoryRepository));
 
       self::$router->addController('clinicalHistory_added', new ClinicalHistoryAddedController(new ClinicalHistoryAddedView, $clinicalHistoryRepository));

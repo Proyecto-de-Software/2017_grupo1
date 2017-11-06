@@ -20,6 +20,19 @@ class NewClinicalHistoryView extends ClinicalHistoryView
   }
 }
 
+class ClinicalHistoryListView extends ClinicalHistoryView
+{
+  protected function getTemplateFile()
+  {
+    return "clinicalHistory_index.html";
+  }
+
+  public function show($clinicalHistory)
+  {
+   $this->render(array('historial' => $clinicalHistory));
+  }
+}
+
 class ClinicalHistoryAddedView extends ClinicalHistoryView {
 
   protected function getTemplateFile()
