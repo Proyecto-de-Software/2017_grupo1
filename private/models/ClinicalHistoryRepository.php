@@ -42,7 +42,7 @@ class ClinicalHistoryRepository extends PDORepository {
 
   public function getAll()
   {
-    return $this->queryToClinicalHistoryArray($this->queryList("SELECT * FROM clinical_history"));
+    return $this->queryToClinicalHistoryArray($this->queryList("SELECT * FROM clinical_history"),[]);
   }
 
   public function create($fecha, $edad, $peso, $vacunas_completas, $vacunas_obs, $maduracion_acorde, $maduracion_obs, $examen_fisico, $examenFisico_obs, $percentilo_cefalico, $percentilo_perim_cefalico, $talla, $alimentacion, $obs_generales, $usuario, $id_paciente)
@@ -57,7 +57,7 @@ class ClinicalHistoryRepository extends PDORepository {
     }
 
 
-    public function getClinicalHistory($pacientId)
+  public function getClinicalHistory($pacientId)
   { 
     return ($this->queryToClinicalHistoryArray($this->queryList("SELECT * FROM clinical_history WHERE id_paciente = ?", [$pacientId][0])));
   }
