@@ -30,8 +30,6 @@ abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
   public function __construct($view, $repository){
     parent::__construct($view);
     $this->repository = $repository;
-        echo("clinicalhistory crud controller");
-    print_r($this->repository);
     }
 
   protected function getRepository(){
@@ -247,9 +245,19 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
   }
 }
 
-class ClinicalHistoryListController extends ClinicalHistoryCRUDController
+class ClinicalHistoryListController extends ClinicalHistoryController
 {
 
+  private $repository;
+
+  public function __construct($view, $repository){
+    parent::__construct($view);
+    $this->repository = $repository;
+    }
+
+  protected function getRepository(){
+    return $this->repository;
+    }
 
   protected function checkArgs($args){
     
