@@ -59,7 +59,7 @@ class ClinicalHistoryRepository extends PDORepository {
 
   public function getClinicalHistory($pacientId)
   { 
-    echo"repo";
+    print("rrepo");
     print_r($_SESSION);
     return $this->queryToClinicalHistoryArray($this->queryList("SELECT * FROM clinical_history WHERE id_paciente = ?", [$pacientId]));
   }
