@@ -29,6 +29,7 @@ class ClinicalHistoryListView extends ClinicalHistoryView
 
   public function show($clinicalHistory)
   {
+    echo("hola");
    $this->render(array('historial' => $clinicalHistory));
   }
 }
