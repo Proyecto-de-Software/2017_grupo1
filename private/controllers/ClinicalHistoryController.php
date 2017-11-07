@@ -245,30 +245,15 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
   }
 }
 
-class ClinicalHistoryListController extends ClinicalHistoryController
+class ClinicalHistoryListController extends ClinicalHistoryCRUDController
 {
 
-  private $repository;
-
-  public function __construct($view, $repository){
-    parent::__construct($view);
-    $this->repository = $repository;
-    }
-
-  protected function getRepository(){
-    return $this->repository;
-    }
-
-  protected function checkArgs($args){
-    
+  protected function checkArgs($args)
+  {
     return true;
-
   }
-
   protected function doShowView($args)
   {
-    echo("controller");
-    print_r($_SESSION);
     $this->getView()->show($this->getRepository()->getClinicalHistory($args['id_paciente']));
   }
 

@@ -7,8 +7,6 @@ require_once "./private/autoloader.php";
 
 session_start();
 
-echo("index:");
-print_r($_SESSION);
 
 if (isset($_GET['action']))
   Router::getRouter()->getController($_GET['action'])->showView($_POST);
