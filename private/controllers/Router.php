@@ -94,8 +94,6 @@ class Router
       /* CRUD HISTORIA CLINICA */
 
       $clinicalHistoryListController = new ClinicalHistoryListController(new ClinicalHistoryListView, $clinicalHistoryRepository);
-      print("router ");
-      print_r($_SESSION);
       self::$router->addController('clinicalHistory_index', $clinicalHistoryListController);
       self::$router->addController('clinicalHistory_form_new', new ClinicalHistoryNewController(new NewClinicalHistoryView, $clinicalHistoryRepository));
 
