@@ -6,6 +6,7 @@ abstract class ClinicalHistoryController extends Controller
   public function __construct($view)
   {
     $this->view = $view;
+    print_r($this->view);
   }
 
   protected function doShowView($args)
@@ -33,6 +34,7 @@ abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
     }
 
   protected function getRepository(){
+    print_r($this->repository);
     return $this->repository;
     }
 
@@ -247,7 +249,10 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
 
 class ClinicalHistoryListController extends ClinicalHistoryCRUDController
 {
+
+
   protected function checkArgs($args){
+    
     return true;
 
   }
