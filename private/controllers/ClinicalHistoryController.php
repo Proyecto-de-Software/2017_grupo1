@@ -254,6 +254,7 @@ class ClinicalHistoryListController extends ClinicalHistoryCRUDController
   }
   protected function doShowView($args)
   {
+    print_r($_SESSION);
     $this->getView()->show($this->getRepository()->getClinicalHistory($args['id_paciente']));
   }
 
