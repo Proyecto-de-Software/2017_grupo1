@@ -50,7 +50,7 @@ class Router
       $appConfig = new AppConfig;
       $userRepository = new UserRepository($appConfig);
       $pacientsRepository = new PacientsRepository($appConfig);
-      $clinicalHistoryRepository = new ClinicalHistoryRepository();
+      $clinicalHistoryRepository = new ClinicalHistoryRepository($appConfig);
       $referenceDataService = new ReferenceDataService(
         new APIReferenceDataRepository("tipo-agua"),
         new APIReferenceDataRepository("tipo-calefaccion"),
