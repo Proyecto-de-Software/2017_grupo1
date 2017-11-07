@@ -7,6 +7,7 @@ require_once "./private/autoloader.php";
 
 session_start();
 
+echo("index:");
 print_r($_SESSION);
 
 if (isset($_GET['action']))

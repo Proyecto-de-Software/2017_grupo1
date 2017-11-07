@@ -248,12 +248,11 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
 class ClinicalHistoryListController extends ClinicalHistoryCRUDController
 {
 
-  protected function checkArgs($args)
-  {
-    return true;
-  }
   protected function doShowView($args)
   {
+    echo("controller");
+    print_r($_SESSION);
+    die();
     $this->getView()->show($this->getRepository()->getClinicalHistory($args['id_paciente']));
   }
 
