@@ -6,6 +6,7 @@ abstract class ClinicalHistoryController extends Controller
   public function __construct($view)
   {
     $this->view = $view;
+    echo("clinical history controller");
     print_r($this->view);
   }
 
@@ -34,6 +35,7 @@ abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
     }
 
   protected function getRepository(){
+    echo("clinicalhistory crud controller");
     print_r($this->repository);
     return $this->repository;
     }

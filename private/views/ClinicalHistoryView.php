@@ -31,7 +31,6 @@ class ClinicalHistoryListView extends ClinicalHistoryView
   {
     echo("view");
     print_r($_SESSION);
-    die();
    $this->render(array('historial' => $clinicalHistory));
   }
 }
