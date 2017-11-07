@@ -247,7 +247,8 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
 
 class ClinicalHistoryListController extends ClinicalHistoryCRUDController
 {
-
+echo("controller");
+    print_r($_SESSION);
   protected function doShowView($args)
   {
     echo("controller");
