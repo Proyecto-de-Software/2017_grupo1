@@ -1,0 +1,17 @@
+{% extends "plantilla_base.html" %}
+
+{%  block body %}
+
+<form method="POST">
+    <ul style="list-style-type:none">
+ {% for each in reports %}
+      <li>
+          <input type="submit" name="report" value="{{ each }}" id="{{ each }}">
+          <br>
+          <br>
+      </li>
+{% endfor %}
+  </ul>
+</form>
+
+{% endblock %}

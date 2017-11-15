@@ -97,6 +97,13 @@ class PacientsRepository extends PDORepository
   {
     return !empty($this->queryList("SELECT * FROM pacients where dni = ?", [$dni]));
   }
+
+  public function getPatientsBySocialInsurance()
+  {
+    $qry =$this->newPreparedStmt("SELECT COUNT(*) AS group_count, id_medical_insurance AS group_id FROM pacients GROUP BY id_medical_insurance");
+    $qry->execute();
+    return $qry->fetchAll();
+  }
 }
 
 

@@ -11,7 +11,7 @@ require_once "./private/controllers/PacientsController.php";
 require_once "./private/controllers/DisabledSiteController.php";
 require_once "./private/controllers/NonAuthorizedController.php";
 require_once "./private/controllers/ClinicalHistoryController.php";
-
+require_once "./private/controllers/ReportsController.php";
 
 require_once "./private/models/PDORepository.php";
 require_once "./private/models/UserRepository.php";
@@ -25,7 +25,6 @@ require_once "./private/models/User.php";
 require_once "./private/models/Pacient.php";
 require_once "./private/models/AppConfig.php";
 require_once "./private/models/ClinicalHistory.php";
-
 
 require_once "./private/Session.php";
 require_once "./private/UserSession.php";
@@ -52,3 +51,8 @@ require_once "./private/views/PacientUpdatedView.php";
 require_once "./private/views/PacientDestroyedView.php";
 require_once "./private/views/PacientDemographicDataView.php";
 require_once "./private/views/ClinicalHistoryView.php";
+require_once "./private/views/ReportsView.php";
+require_once "./private/views/DemographicDataReportView.php";
+
+require_once "./private/reports/DemographicDataReport.php";
+require_once "./private/reports/PacientsBySocialInsurance.php";

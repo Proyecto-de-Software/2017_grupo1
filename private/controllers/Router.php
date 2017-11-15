@@ -51,11 +51,13 @@ class Router
       $userRepository = new UserRepository($appConfig);
       $pacientsRepository = new PacientsRepository($appConfig);
       $clinicalHistoryRepository = new ClinicalHistoryRepository($appConfig);
+
+      $socialInsuranceRepository = new APIReferenceDataRepository("obra-social");
       $referenceDataService = new ReferenceDataService(
         new APIReferenceDataRepository("tipo-agua"),
         new APIReferenceDataRepository("tipo-calefaccion"),
         new APIReferenceDataRepository("tipo-documento"),
-        new APIReferenceDataRepository("obra-social"),
+        $socialInsuranceRepository,
         new APIReferenceDataRepository("tipo-vivienda")
       );
 
@@ -72,6 +74,10 @@ class Router
       self::$router->addController('do-logout', new DoLogoutController($indexController));
       self::$router->addController('admin', new AdminController(new AdminView));
       self::$router->addController('admin_updated', new AdminUpdateController($indexView, $appConfig));
+
+      $reportsController = new ReportsController;
+      $reportsController->addReport('Pacientes por Obra Social', new PacientsBySocialInsurance($pacientsRepository, $socialInsuranceRepository));
+      self::$router->addController('reportes', $reportsController);
 
       $userListController = new UserListController(new UserListView, $userRepository, $appConfig);
       self::$router->addController('users_index', $userListController);
@@ -90,24 +96,13 @@ class Router
       self::$router->addController('pacient_updated', new PacientUpdatedController(new PacientUpdatedView, $pacientsRepository));
       self::$router->addController('pacient_destroy', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
 
-
-      /* CRUD HISTORIA CLINICA */
-
       $clinicalHistoryListController = new ClinicalHistoryListController(new ClinicalHistoryListView, $clinicalHistoryRepository);
-
       self::$router->addController('clinicalHistory_index', $clinicalHistoryListController);
       self::$router->addController('clinicalHistory_form_new', new ClinicalHistoryNewController(new NewClinicalHistoryView, $clinicalHistoryRepository));
-
       self::$router->addController('clinicalHistory_added', new ClinicalHistoryAddedController(new ClinicalHistoryAddedView, $clinicalHistoryRepository));
-
       self::$router->addController('clinicalHistory_form_update', new ClinicalHistoryEditController(new EditClinicalHistoryView, $clinicalHistoryRepository));
-
       self::$router->addController('clinicalHistory_updated', new ClinicalHistoryUpdatedController(new ClinicalHistoryUpdatedView, $clinicalHistoryRepository));
-
       self::$router->addController('clinicalHistory_destroy', new ClinicalHistoryDestroyedController(new ClinicalHistoryDestroyedView, $clinicalHistoryRepository));
-
-
-      
     }
 
     return self::$router;
