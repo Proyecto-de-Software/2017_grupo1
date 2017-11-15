@@ -59,3 +59,4 @@ require_once "./private/reports/PacientsBySocialInsuranceReport.php";
 require_once "./private/reports/PacientsByWaterTypeReport.php";
 require_once "./private/reports/PacientsByHeatingTypeReport.php";
 require_once "./private/reports/PacientsByHomeTypeReport.php";
+require_once "./private/reports/PacientsByDocumentTypeReport.php";

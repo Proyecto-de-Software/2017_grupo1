@@ -126,6 +126,11 @@ class PacientsRepository extends PDORepository
   {
     return $this->groupPatientsBy('home_type');
   }
+
+  public function getPatientsByDocumentType()
+  {
+    return $this->groupPatientsBy('doc_type');
+  }
 }
 
 
