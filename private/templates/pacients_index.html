@@ -31,13 +31,13 @@
         <tr>
           <td>{{ item.first_name }}</td>
           <td>{{ item.last_name }}</td>
-          <td>{{ item.birth_date }}</td>
+          <td>{{ item.birth_date|date('Y-m-d') }}</td>
           <td>{{ item.gender }}</td>
-          <td>{{ referenceData.getDocumentTypeById(item.doc_type).description }}</td> 
+          <td>{{ referenceData.getDocumentTypeById(item.doc_type).description }}</td>
           <td>{{ item.dni }}</td>
           <td>{{ item.address }}</td>
           <td>{{ item.phone }}</td>
-          <td>{{ referenceData.getSocialInsuranceById(item.id_medical_insurance).description }}</td> 
+          <td>{{ referenceData.getSocialInsuranceById(item.id_medical_insurance).description }}</td>
           <td>
             <form action="./?action=pacient_form_update" method="post">
               <input type="submit" class="btn btn-primary" name="id" value="Modificar">
