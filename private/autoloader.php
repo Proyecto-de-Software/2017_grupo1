@@ -57,3 +57,4 @@ require_once "./private/views/DemographicDataReportView.php";
 require_once "./private/reports/DemographicDataReport.php";
 require_once "./private/reports/PacientsBySocialInsuranceReport.php";
 require_once "./private/reports/PacientsByWaterTypeReport.php";
+require_once "./private/reports/PacientsByHeatingTypeReport.php";

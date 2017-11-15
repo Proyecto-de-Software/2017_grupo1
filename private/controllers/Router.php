@@ -54,9 +54,10 @@ class Router
 
       $socialInsuranceRepository = new APIReferenceDataRepository("obra-social");
       $waterTypeRepository = new APIReferenceDataRepository("tipo-agua");
+      $heatingTypeRepository = new APIReferenceDataRepository("tipo-calefaccion");
       $referenceDataService = new ReferenceDataService(
         $waterTypeRepository,
-        new APIReferenceDataRepository("tipo-calefaccion"),
+        $heatingTypeRepository,
         new APIReferenceDataRepository("tipo-documento"),
         $socialInsuranceRepository,
         new APIReferenceDataRepository("tipo-vivienda")
@@ -79,6 +80,7 @@ class Router
       $reportsController = new ReportsController;
       $reportsController->addReport('Pacientes por Obra Social', new PacientsBySocialInsuranceReport($pacientsRepository, $socialInsuranceRepository));
       $reportsController->addReport('Pacientes por Tipo de Agua', new PacientsByWaterTypeReport($pacientsRepository, $waterTypeRepository));
+      $reportsController->addReport('Pacientes por Tipo de Calefacción', new PacientsByHeatingTypeReport($pacientsRepository, $heatingTypeRepository));
       self::$router->addController('reports_index', $reportsController);
 
       $userListController = new UserListController(new UserListView, $userRepository, $appConfig);
