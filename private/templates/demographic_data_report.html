@@ -20,7 +20,6 @@ $(function () {
           categories:  ["{{ chart_categories | join(",") }}"]
       },
       series: [{
-          name: "Obras Sociales",
           data: {{ chart_data|raw }}
       }]
   });
