@@ -8,14 +8,6 @@ class PacientsBySocialInsurance extends DemographicDataReport
 
   protected function pullData()
   {
-    $answer = [];
-    $data = $this->pacientsRepository->getPatientsBySocialInsurance();
-    foreach ($data as &$element) {
-      $answer[] = [
-          'name' => $this->demographicDataRepository->getById($element['group_id'])->getDescription(),
-          'y' => intval($element['group_count'])
-      ];
-    };
-    return $answer;
+    return $this->pacientsRepository->getPatientsBySocialInsurance();
   }
 }

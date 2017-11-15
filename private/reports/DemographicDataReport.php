@@ -36,6 +36,13 @@ abstract class DemographicDataReport
 
   protected function getData()
   {
-    return json_encode($this->pullData());
+    $data = [];
+    foreach ($this->pullData() as &$element) {
+      $data[] = [
+          'name' => $this->demographicDataRepository->getById($element['group_id'])->getDescription(),
+          'y' => intval($element['group_count'])
+      ];
+    };
+    return json_encode($data);
   }
 }
