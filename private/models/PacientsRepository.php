@@ -121,6 +121,11 @@ class PacientsRepository extends PDORepository
   {
     return $this->groupPatientsBy('heating_type');
   }
+
+  public function getPatientsByHomeType()
+  {
+    return $this->groupPatientsBy('home_type');
+  }
 }
 
 
