@@ -113,15 +113,6 @@ abstract class PacientsCRUDController extends PacientsController
     if (empty($args['id_medical_insurance']))
       return false;
 
-    if (empty($args['has_electricity']))
-      return false;
-
-    if (empty($args['has_pet']))
-      return false;
-
-    if (empty($args['has_refrigerator']))
-      return false;
-
     if (empty($args['heating_type']))
       return false;
 

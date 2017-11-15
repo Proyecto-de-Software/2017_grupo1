@@ -18,7 +18,6 @@ class Pacient
   private $home_type;
   private $water_type;
 
-
   public function __construct(
     $id,
     $first_name,

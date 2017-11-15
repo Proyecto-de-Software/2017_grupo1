@@ -1,6 +1,5 @@
 {% extends 'plantilla_base.html' %}
 
-
 {% block head%}
 <script type="text/javascript">
 function validar(){
@@ -31,10 +30,9 @@ function validar(){
 
 }
 </script>
-
 {% endblock %}
-{% block body %}
 
+{% block body %}
 <div id="div-top" align="center">
 <h1>{% block header %} {% endblock %} </h1>
 <form action="{% block action %}{% endblock %}"  onsubmit='return validar()' name="alta_paciente" method='post'>
@@ -71,7 +69,7 @@ function validar(){
                 <div class="col-md-8">
                   Fecha de Nacimiento:
                     <input id="fecha_de_nacimiento" name="birth_date" type="date"
-                    value=" {% block birth_date_value %} {% endblock %}" class="form-control" required>
+                    value={% block birth_date_value %} {% endblock %} class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -81,7 +79,7 @@ function validar(){
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-8">
                   Sexo:
-                    <select name="gender" required>
+                    <select id="gender" name="gender" required>
                       <option value="F">Femenino</option>
                       <option value="M">Masculino</option>
                     </select>
@@ -94,7 +92,7 @@ function validar(){
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Tipo de Documento:
-                    <select name="doc_type" required >
+                    <select id="doc_type" name="doc_type" required >
                       {% for item in referenceData.getAllDocumentTypes %}
                         <option value={{ item.getId }}>{{ item.getDescription }}</option>
                       {% endfor %}
@@ -141,7 +139,7 @@ function validar(){
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Obra Social:
-                    <select name="id_medical_insurance">
+                    <select id="id_medical_insurance" name="id_medical_insurance">
                       {% for item in referenceData.getAllSocialInsurances %}
                         <option value={{ item.getId }}>{{ item.getDescription }}</option>
                       {% endfor %}
@@ -155,7 +153,7 @@ function validar(){
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Tiene Heladera?:
-                  <select name="has_refrigerator" required>
+                  <select id="has_refrigerator" name="has_refrigerator" required>
                     <option value="1">SI</option>
                     <option value="0">NO</option>
                   </select>
@@ -168,7 +166,7 @@ function validar(){
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Tiene Electricidad?:
-                    <select name="has_electricity" required>
+                    <select id="has_electricity" name="has_electricity" required>
                       <option value="1">SI</option>
                       <option value="0">NO</option>
                     </select>
@@ -181,7 +179,7 @@ function validar(){
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Tiene Mascota(s)?:
-                    <select name="has_pet" required>
+                    <select id="has_pet" name="has_pet" required>
                       <option value="1">SI</option>
                       <option value="0">NO</option>
                     </select>
@@ -194,7 +192,7 @@ function validar(){
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Tipo de Vivienda:
-                    <select name="home_type" required>
+                    <select id="home_type" name="home_type" required>
                       {% for item in referenceData.getAllHomeTypes %}
                         <option value={{ item.getId }}>{{ item.getDescription }}</option>
                       {% endfor %}
@@ -208,7 +206,7 @@ function validar(){
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Tipo de Calefacci&oacute;n:
-                    <select name="heating_type" required>
+                    <select id="heating_type" name="heating_type" required>
                       {% for item in referenceData.getAllHeatingTypes %}
                         <option value={{ item.getId }}>{{ item.getDescription }}</option>
                       {% endfor %}
@@ -222,7 +220,7 @@ function validar(){
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Tipo de Agua:
-                    <select name="water_type" required>
+                    <select id="water_type" name="water_type" required>
                       {% for item in referenceData.getAllWaterTypes %}
                         <option value={{ item.getId }}>{{ item.getDescription }}</option>
                       {% endfor %}
@@ -233,7 +231,7 @@ function validar(){
             {% block form %} {% endblock %}
             <div class="form-group">
               <div class="col-md-12 text-center">
-                <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar" onclick = "return validarAltaPaciente(this)" > 
+                <input type="submit" class="btn btn-primary" id= "confirm_button" name="confirm_button" value="Confirmar" onclick = "return validarAltaPaciente(this)" >
                 <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('pacients_index')"; value="Cancelar"></button>
               </div>
             </div>
