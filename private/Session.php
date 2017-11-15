@@ -14,6 +14,14 @@ class Session
       return '';
   }
 
+  public function getIsAdmin()
+  {
+    if (!isset($_SESSION['isAdmin']))
+      return false;
+
+    return $_SESSION['isAdmin'];
+  }
+
   public function getUserId()
   {
     if ($this->getIsLoggedIn())

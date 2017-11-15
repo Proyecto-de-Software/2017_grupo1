@@ -50,6 +50,7 @@ class DoLoginController extends Controller
       $user = $this->userRepository->findUser($args['username'], $args['password']);
       $_SESSION['userId'] = $user->getId();
       $_SESSION['userName'] = $user->getFull_Name();
+      $_SESSION['isAdmin'] = $this->userRepository->hasRole($user->getId(), 'ADMINISTRADOR');
       $this->indexView->show();
     }
     else
