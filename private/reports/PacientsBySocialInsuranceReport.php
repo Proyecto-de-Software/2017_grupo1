@@ -1,5 +1,5 @@
 <?php
-class PacientsBySocialInsurance extends DemographicDataReport
+class PacientsBySocialInsuranceReport extends DemographicDataReport
 {
   protected function getTitle()
   {

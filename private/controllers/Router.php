@@ -76,7 +76,7 @@ class Router
       self::$router->addController('admin_updated', new AdminUpdateController($indexView, $appConfig));
 
       $reportsController = new ReportsController;
-      $reportsController->addReport('Pacientes por Obra Social', new PacientsBySocialInsurance($pacientsRepository, $socialInsuranceRepository));
+      $reportsController->addReport('Pacientes por Obra Social', new PacientsBySocialInsuranceReport($pacientsRepository, $socialInsuranceRepository));
       self::$router->addController('reports_index', $reportsController);
 
       $userListController = new UserListController(new UserListView, $userRepository, $appConfig);
