@@ -8,6 +8,6 @@ class PacientsBySocialInsuranceReport extends DemographicDataReport
 
   protected function pullData()
   {
-    return $this->pacientsRepository->getPatientsBySocialInsurance();
+    return $this->pacientsRepository->getPatientsByMedicalInsurance();
   }
 }

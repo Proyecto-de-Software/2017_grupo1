@@ -98,11 +98,23 @@ class PacientsRepository extends PDORepository
     return !empty($this->queryList("SELECT * FROM pacients where dni = ?", [$dni]));
   }
 
-  public function getPatientsBySocialInsurance()
+  private function groupPatientsBy($groupType)
   {
-    $qry =$this->newPreparedStmt("SELECT COUNT(*) AS group_count, id_medical_insurance AS group_id FROM pacients GROUP BY id_medical_insurance");
+    /* si uso parametros de PDO no funciona la query, por eso interpolo el string
+    Igual es un metodo privado que es utilizado por el modelo, no puede haber nunca SQL injection */
+    $qry =$this->newPreparedStmt("SELECT COUNT(*) AS group_count, $groupType AS group_id FROM pacients GROUP BY $groupType");
     $qry->execute();
     return $qry->fetchAll();
+  }
+
+  public function getPatientsByMedicalInsurance()
+  {
+    return $this->groupPatientsBy('id_medical_insurance');
+  }
+
+  public function getPatientsByWaterType()
+  {
+    return $this->groupPatientsBy('water_type');
   }
 }
 
