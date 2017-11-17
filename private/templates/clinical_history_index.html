@@ -2,7 +2,7 @@
 
 {% block header %} Historia Clinica {% endblock %}
 
-{% if historial is empty array %}
+{% if historial is null %}
   {% block new_action %} ./?action=clinical_history_form_new {% endblock %}
   {% block new_action_label %} Agregar historia {% endblock %}
 {% else %}
