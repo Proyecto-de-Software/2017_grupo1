@@ -9,7 +9,7 @@
     <td>
       {% if historial is null %}
          <form action="./?action=clinical_history_form_new" method="post">
-              <input type="submit" class="btn btn-primary" name="id" value="Modificar">
+              <input type="submit" class="btn btn-primary" name="id" value="Agregar">
               <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ historial.id_paciente }}">
         </form>
 
