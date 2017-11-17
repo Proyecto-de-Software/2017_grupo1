@@ -1,14 +1,18 @@
-{% extends 'list_base.html' %}
+{% extends 'plantilla_base.html' %}
 
- {% block header %} Historia Clinica {% endblock %}
-{% block new_action %} ./?action=clinical_history_form_update {% endblock %}
-{% block new_action_label %} Agregar una nueva modificacion {% endblock %}
+<head> Historia Clinica </head>
 
-{% block inner_body %}
+{% block body %}
 
 <div class="container">
   <div class="table-responsive">
     <table class="table table-condensed">
+      <td>
+            <form action="./?action=clinical_history_form_update" method="post">
+              <input type="submit" class="btn btn-primary" name="id" value="Modificar">
+              <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ item.id_paciente }}">
+            </form>
+      </td>
       <thead>
         <tr>
           <th>Fecha</th>
@@ -47,12 +51,6 @@
           <td>{{ item.alimentacion }}</td>
           <td>{{ item.obs_generales }}</td>
           <td>{{ item.usuario }}</td>
-          <td>
-            <form action="./?action=clinical_history_form_update" method="post">
-              <input type="submit" class="btn btn-primary" name="id" value="Modificar">
-              <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ item.id }}">
-            </form>
-          </td>
           <td>
             <form action="./?action=clinical_history_destroy" method="post">
               <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-primary" value="Eliminar" id="boton_borrar"/>
