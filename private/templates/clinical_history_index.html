@@ -4,13 +4,14 @@
 
 <div class="container">
   <div class="table-responsive">
-    <table class="table table-condensed">
-      <td>
-            <form action="./?action=clinical_history_form_update" method="post">
+    <td>
+
+        <form action="./?action=clinical_history_form_update" method="post">
               <input type="submit" class="btn btn-primary" name="id" value="Modificar">
-              <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ item.id_paciente }}">
-            </form>
+              <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ historial.id_paciente }}">
+        </form>
       </td>
+    <table class="table table-condensed">
       <thead>
         <tr>
           <th>Fecha</th>
