@@ -94,7 +94,7 @@ class UserAddedController extends UsersCRUDController
 
   private function doCreate($args)
   {
-    if ($this->getRepository()->userNameExists($args['username']))
+    if ($this->getRepository()->userNameExists($this->sanitize($args['username'])))
       return $this->getErrorView('El nombre de usuario ya existe');
 
     if ($this->canCreate($args))
@@ -226,7 +226,7 @@ class UserToggleStatusController extends Controller
 
   protected function doShowView($args)
   {
-    $this->repository->toggleActive($args['id']);
+    $this->repository->toggleActive($this->sanitize($args['id']));
     $this->userListController->showView([]);
   }
 }

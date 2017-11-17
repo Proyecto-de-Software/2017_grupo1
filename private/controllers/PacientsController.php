@@ -190,30 +190,30 @@ class PacientUpdatedController extends PacientsCRUDController
   private function canUpdate($args)
   {
     return $this->getRepository()->update(
-      $args['first_name'],
-      $args['last_name'],
-      $args['birth_date'],
-      $args['gender'],
-      $args['doc_type'],
-      $args['dni'],
-      $args['address'],
-      $args['phone'],
-      $args['id_medical_insurance'],
-      $args['has_electricity'],
-      $args['has_pet'],
-      $args['has_refrigerator'],
-      $args['heating_type'],
-      $args['home_type'],
-      $args['water_type'],
-      $args['id']
+      $this->sanitize($args['first_name']),
+      $this->sanitize($args['last_name']),
+      $this->sanitize($args['birth_date']),
+      $this->sanitize($args['gender']),
+      $this->sanitize($args['doc_type']),
+      $this->sanitize($args['dni']),
+      $this->sanitize($args['address']),
+      $this->sanitize($args['phone']),
+      $this->sanitize($args['id_medical_insurance']),
+      $this->sanitize($args['has_electricity']),
+      $this->sanitize($args['has_pet']),
+      $this->sanitize($args['has_refrigerator']),
+      $this->sanitize($args['heating_type']),
+      $this->sanitize($args['home_type']),
+      $this->sanitize($args['water_type']),
+      $this->sanitize($args['id'])
     );
   }
 
   private function doUpdate($args)
   {
-    $user = $this->getRepository()->getPacient($args['id']);
+    $user = $this->getRepository()->getPacient($this->sanitize($args['id']));
 
-    if (($user->getDni() != $args['dni']) && ($this->getRepository()->dniExists($args['dni'])))
+    if (($user->getDni() != $args['dni']) && ($this->getRepository()->dniExists($this->sanitize($args['dni']))))
       return $this->getErrorView('El DNI ya existe en el sistema');
 
     if ($this->canUpdate($args))
@@ -257,7 +257,7 @@ class PacientListController extends PacientsCRUDController
     }
     else
     {
-      $data = $this->getRepository()->getAllByFilter($args['filter'], $page);
+      $data = $this->getRepository()->getAllByFilter($this->sanitize($args['filter']), $page);
       $data_count = count($data);
     }
 

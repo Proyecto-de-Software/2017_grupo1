@@ -194,7 +194,7 @@ function validar(){
                   Tipo de Vivienda:
                     <select id="home_type" name="home_type" required>
                       {% for item in referenceData.getAllHomeTypes %}
-                        <option value={{ item.getId }}>{{ item.getDescription }}</option>
+                        <option value={{ item.getId }} > {{ item.getDescription }}</option>
                       {% endfor %}
                     </select>
                 </div>

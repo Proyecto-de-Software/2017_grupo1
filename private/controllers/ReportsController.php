@@ -16,7 +16,7 @@ class ReportsController extends Controller
   protected function doShowView($args)
   {
     if (isset($args['report']))
-      $view = $this->getReportView($args['report']);
+      $view = $this->getReportView($this->sanitize($args['report']));
     else
       $view = $this->getView();
 
