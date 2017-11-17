@@ -1,25 +1,19 @@
-{% extends 'plantilla_base.html' %}
+{% extends 'list_base.html' %}
 
+{% block header %} Listado de Pacientes {% endblock %}
 
+{% if historial is empty array %}
+  {% block new_action %} ./?action=clinical_history_form_new {% endblock %}
+  {% block new_action_label %} Agregar historia {% endblock %}
+{% else %}
+  {% block new_action %} ./?action=clinical_history_form_update {% endblock %}
+  {% block new_action_label %} Agregar una modificacion {% endblock %}
+{% block pagination_action %} ./?action=clinical_history_index {% endblock %}
 {% block body %}
 
 <h1 align="center"> Historia Clinica </h1>
 <div class="container">
   <div class="table-responsive">
-    <td>
-      {% if historial is null %}
-         <form action="./?action=clinical_history_form_new" method="post">
-              <input type="submit" class="btn btn-primary" name="id" value="Agregar">
-              <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ historial.id_paciente }}">
-        </form>
-
-      {% else %}
-        <form action="./?action=clinical_history_form_update" method="post">
-              <input type="submit" class="btn btn-primary" name="id" value="Modificar">
-              <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ historial.id_paciente }}">
-        </form>
-      {% endif %}
-      </td>
     <table class="table table-condensed">
       <thead>
         <tr>
