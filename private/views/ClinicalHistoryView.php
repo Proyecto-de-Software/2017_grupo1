@@ -24,7 +24,7 @@ class ClinicalHistoryListView extends ClinicalHistoryView
 {
   protected function getTemplateFile()
   {
-    return "clinicalHistory_index.html";
+    return "clinical_history_index.html";
   }
 
   public function show($clinicalHistory)

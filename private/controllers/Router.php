@@ -105,7 +105,7 @@ class Router
       self::$router->addController('pacient_destroy', new PacientDestroyedController(new PacientDestroyedView, $pacientsRepository));
 
       $clinicalHistoryListController = new ClinicalHistoryListController(new ClinicalHistoryListView, $clinicalHistoryRepository);
-      self::$router->addController('clinicalHistory_index', $clinicalHistoryListController);
+      self::$router->addController('clinical_history_index', $clinicalHistoryListController);
       self::$router->addController('clinicalHistory_form_new', new ClinicalHistoryNewController(new NewClinicalHistoryView, $clinicalHistoryRepository));
       self::$router->addController('clinicalHistory_added', new ClinicalHistoryAddedController(new ClinicalHistoryAddedView, $clinicalHistoryRepository));
       self::$router->addController('clinicalHistory_form_update', new ClinicalHistoryEditController(new EditClinicalHistoryView, $clinicalHistoryRepository));
