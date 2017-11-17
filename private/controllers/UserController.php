@@ -83,7 +83,13 @@ class UserAddedController extends UsersCRUDController
 
   private function canCreate($args)
   {
-    return $this->getRepository()->create($args['username'], $args['email'], $args['password'], $args['first_name'], $args['last_name']);
+    return $this->getRepository()->create(
+      $this->sanitize($args['username']), 
+      $this->sanitize($args['email']), 
+      $this->sanitize($args['password']), 
+      $this->sanitize($args['first_name']), 
+      $this->sanitize($args['last_name'])
+    );
   }
 
   private function doCreate($args)
