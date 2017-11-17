@@ -106,11 +106,11 @@ class Router
 
       $clinicalHistoryListController = new ClinicalHistoryListController(new ClinicalHistoryListView, $clinicalHistoryRepository);
       self::$router->addController('clinical_history_index', $clinicalHistoryListController);
-      self::$router->addController('clinicalHistory_form_new', new ClinicalHistoryNewController(new NewClinicalHistoryView, $clinicalHistoryRepository));
-      self::$router->addController('clinicalHistory_added', new ClinicalHistoryAddedController(new ClinicalHistoryAddedView, $clinicalHistoryRepository));
-      self::$router->addController('clinicalHistory_form_update', new ClinicalHistoryEditController(new EditClinicalHistoryView, $clinicalHistoryRepository));
-      self::$router->addController('clinicalHistory_updated', new ClinicalHistoryUpdatedController(new ClinicalHistoryUpdatedView, $clinicalHistoryRepository));
-      self::$router->addController('clinicalHistory_destroy', new ClinicalHistoryDestroyedController(new ClinicalHistoryDestroyedView, $clinicalHistoryRepository));
+      self::$router->addController('clinical_history_form_new', new ClinicalHistoryNewController(new NewClinicalHistoryView, $clinicalHistoryRepository));
+      self::$router->addController('clinical_history_added', new ClinicalHistoryAddedController(new ClinicalHistoryAddedView, $clinicalHistoryRepository));
+      self::$router->addController('clinical_history_form_update', new ClinicalHistoryEditController(new EditClinicalHistoryView, $clinicalHistoryRepository));
+      self::$router->addController('clinical_history_updated', new ClinicalHistoryUpdatedController(new ClinicalHistoryUpdatedView, $clinicalHistoryRepository));
+      self::$router->addController('clinical_history_destroy', new ClinicalHistoryDestroyedController(new ClinicalHistoryDestroyedView, $clinicalHistoryRepository));
     }
 
     return self::$router;

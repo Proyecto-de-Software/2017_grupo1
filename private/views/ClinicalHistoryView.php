@@ -11,7 +11,7 @@ class NewClinicalHistoryView extends ClinicalHistoryView
 {
   protected function getTemplateFile()
   {
-    return "clinicalHistory_form_new.html";
+    return "clinical_history_form_new.html";
   }
 
   public function show($clinicalHistory)
@@ -37,7 +37,7 @@ class ClinicalHistoryAddedView extends ClinicalHistoryView {
 
   protected function getTemplateFile()
   {
-    return "clinicalHistory_added.html";
+    return "clinical_history_added.html";
   }
 
   public function show()
@@ -50,7 +50,7 @@ class EditClinicalHistoryView extends ClinicalHistoryView
 {
   protected function getTemplateFile()
   {
-    return "clinicalHistory_form_update.html";
+    return "clinical_history_form_update.html";
   }
 
   public function show($clinicalHistory)
@@ -62,7 +62,7 @@ class EditClinicalHistoryView extends ClinicalHistoryView
 class ClinicalHistoryUpdatedView extends ClinicalHistoryView {
   
   protected function getTemplateFile(){
-    return "clinicalHistory_updated.html";
+    return "clinical_history_updated.html";
   }
    public function show()
   {
@@ -74,7 +74,7 @@ class ClinicalHistoryUpdatedView extends ClinicalHistoryView {
 class ClinicalHistoryDestroyedView extends ClinicalHistoryView {
   
   protected function getTemplateFile(){
-    return "clinicalHistory_destroyed.html";
+    return "clinical_history_destroyed.html";
   }
    public function show()
   {

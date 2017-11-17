@@ -26,7 +26,6 @@
         </tr>
       </thead>
 
-      {{ dump(historial) }}
 
       {% for item in historial %}
         <tr>
@@ -46,13 +45,13 @@
           <td>{{ item.obs_generales }}</td>
           <td>{{ item.usuario }}</td>
           <td>
-            <form action="./?action=clinicalHistory_form_update" method="post">
+            <form action="./?action=clinical_history_form_update" method="post">
               <input type="submit" class="btn btn-primary" name="id" value="Modificar">
               <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ item.id }}">
             </form>
           </td>
           <td>
-            <form action="./?action=clinicalHistory_destroy" method="post">
+            <form action="./?action=clinical_history_destroy" method="post">
               <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-primary" value="Eliminar" id="boton_borrar"/>
               <input type="hidden" name="id" id="id" value= "{{ item.id }}">
             </form>
