@@ -128,6 +128,8 @@ abstract class PacientsCRUDController extends PacientsController
     if (!in_array($args['gender'], self::$gender_types))
       return false;
 
+
+
     return true;
   }
 }
@@ -137,21 +139,21 @@ class PacientAddedController extends PacientsCRUDController
   private function canCreate($args)
   {
     return $this->getRepository()->create(
-      $args['first_name'],
-      $args['last_name'],
-      $args['birth_date'],
-      $args['gender'],
-      $args['doc_type'],
-      $args['dni'],
-      $args['address'],
-      $args['phone'],
-      $args['id_medical_insurance'],
-      $args['has_electricity'],
-      $args['has_pet'],
-      $args['has_refrigerator'],
-      $args['heating_type'],
-      $args['home_type'],
-      $args['water_type']
+      $this->sanitize($args['first_name']),
+      $this->sanitize($args['last_name']),
+      $this->sanitize($args['birth_date']),
+      $this->sanitize($args['gender']),
+      $this->sanitize($args['doc_type']),
+      $this->sanitize($args['dni']),
+      $this->sanitize($args['address']),
+      $this->sanitize($args['phone']),
+      $this->sanitize($args['id_medical_insurance']),
+      $this->sanitize($args['has_electricity']),
+      $this->sanitize($args['has_pet']),
+      $this->sanitize($args['has_refrigerator']),
+      $this->sanitize($args['heating_type']),
+      $this->sanitize($args['home_type']),
+      $this->sanitize($args['water_type'])
     );
   }
 

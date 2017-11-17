@@ -30,4 +30,9 @@ abstract class Controller
     else
       $this->showInvalidArgsView();
   }
+
+  protected function sanitize($input){
+    $input = strip_tags($input);
+    return htmlentities(($input));
+  }
 }
