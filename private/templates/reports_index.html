@@ -6,8 +6,8 @@
 
 {%  block body %}
 
-<div class="vertical-menu">
-	<form method="POST">
+<form method="POST">
+	<div class="vertical-menu">
     {% for each in reports %}
       <li>
          <input type="submit" class="active" name="report" value="{{ each }}" id="{{ each }}">
@@ -15,7 +15,8 @@
           <br>
       </li>
 	{% endfor %}
+	</div>
 	</form>
-</div>
+
 
 {% endblock %}
