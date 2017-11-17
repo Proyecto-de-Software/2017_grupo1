@@ -1,17 +1,19 @@
 {% extends "plantilla_base.html" %}
 
+<link rel="stylesheet" type="text/css" href="../private/css/reportes_style_menu.css">
+
 {%  block body %}
 
-<form method="POST">
-    <ul style="list-style-type:none">
- {% for each in reports %}
+<div class="vertical-menu">
+	<form method="POST">
+    {% for each in reports %}
       <li>
           <input type="submit" name="report" value="{{ each }}" id="{{ each }}">
           <br>
           <br>
       </li>
-{% endfor %}
-  </ul>
-</form>
+	{% endfor %}
+	</form>
+</div>
 
 {% endblock %}
