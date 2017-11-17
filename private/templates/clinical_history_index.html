@@ -2,13 +2,20 @@
 
 {% block header %} Historia Clinica {% endblock %}
 
+{% block botones %}
+
 {% if historial is null %}
-  {% block new_action %} ./?action=clinical_history_form_new {% endblock %}
-  {% block new_action_label %} Agregar historia {% endblock %}
+    {% block new_action %} ./?action=clinical_history_form_new {% endblock %}
+    {% block new_action_label %} Agregar historia {% endblock %}
 {% else %}
-  {% block new_action %} ./?action=clinical_history_form_update {% endblock %}
-  {% block new_action_label %} Agregar una modificacion {% endblock %}
+
+&nbsp;
+<form action=" ./?action=clinical_history_form_update" method="post">
+  <button type= "submit" class="btn btn-success">  Agregar una modificaci&oacute;n <span class="glyphicon glyphicon-plus"></span></button>
+</form>}
+
 {% endif %}
+{% endblock %}
 {% block pagination_action %} ./?action=clinical_history_index {% endblock %}
 {% block body %}
 
