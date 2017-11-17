@@ -45,9 +45,9 @@ class DoLoginController extends Controller
 
   protected function doShowView($args)
   {
-    if ($this->userRepository->containsUser($args['username'], $args['password']))
+    if ($this->userRepository->containsUser($this->sanitize($args['username']), $this->sanitize($args['password'])))
     {
-      $user = $this->userRepository->findUser($args['username'], $args['password']);
+      $user = $this->userRepository->findUser($this->sanitize($args['username']), $this->sanitize($args['password']));
       $_SESSION['userId'] = $user->getId();
       $_SESSION['userName'] = $user->getFull_Name();
       $_SESSION['isAdmin'] = $this->userRepository->hasRole($user->getId(), 'ADMINISTRADOR');
