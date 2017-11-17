@@ -1,11 +1,11 @@
 {% extends 'plantilla_base.html' %}
 
+{% block head %} Historia Clinica {% endblock %}
 {% block body %}
 
 <div class="container">
   <div class="table-responsive">
     <td>
-
         <form action="./?action=clinical_history_form_update" method="post">
               <input type="submit" class="btn btn-primary" name="id" value="Modificar">
               <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ historial.id_paciente }}">
