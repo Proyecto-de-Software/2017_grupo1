@@ -235,7 +235,7 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
       $args['alimentacion'],
       $args['obs_generales'],
       $args['usuario'],
-      $args['id']
+      $args['id_paciente']
     );
   }
 
