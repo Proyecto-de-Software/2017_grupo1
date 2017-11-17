@@ -51,6 +51,7 @@ require_once "./private/views/PacientUpdatedView.php";
 require_once "./private/views/PacientDestroyedView.php";
 require_once "./private/views/PacientDemographicDataView.php";
 require_once "./private/views/ClinicalHistoryView.php";
+require_once "./private/views/ClinicalHistoryListView.php";
 require_once "./private/views/ReportsView.php";
 require_once "./private/views/DemographicDataReportView.php";
 
