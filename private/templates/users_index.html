@@ -1,7 +1,20 @@
 {% extends 'list_base.html' %}
 
 {% block header %} Listado de Usuarios {% endblock %}
-{% block search_action %} ./?action=users_index {% endblock %}
+
+{% block botones %}
+ <form action=" ./?action=users_index" method="post" id="searchform">
+    &nbsp; <input type="text" placeholder="Buscar aqu&iacute;..." name="filter" id="filter" title="busqueda">
+    &nbsp;<button type= "submit" class="btn btn-info"> Buscar <span class="glyphicon glyphicon-search"></span> </button>
+</form>
+&nbsp;
+<select id="users_state" name="users_state"> &nbsp;
+  <option> Activos </option>
+  <option> Bloqueados </option>
+</select>
+
+{% endblock %}
+
 {% block new_action %} ./?action=user_new {% endblock %}
 {% block new_action_label %} Agregar usuario {% endblock %}
 {% block pagination_action %} ./?action=users_index {% endblock %}

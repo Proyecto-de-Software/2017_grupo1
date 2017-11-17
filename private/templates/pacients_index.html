@@ -1,7 +1,14 @@
 {% extends 'list_base.html' %}
 
 {% block header %} Listado de Pacientes {% endblock %}
-{% block search_action %} ./?action=pacients_index {% endblock %}
+
+{% block botones%}
+<form action="./?action=pacients_index" method="post" id="searchform">
+    &nbsp;<input type="text" placeholder="Buscar aqu&iacute;..." name="filter" id="filter" title="busqueda">
+    &nbsp;<button type= "submit" class="btn btn-info"> Buscar <span class="glyphicon glyphicon-search"></span> </button>
+</form>
+{% endblock %}
+
 {% block new_action %} ./?action=pacient_new {% endblock %}
 {% block new_action_label %} Agregar paciente {% endblock %}
 {% block pagination_action %} ./?action=pacients_index {% endblock %}
