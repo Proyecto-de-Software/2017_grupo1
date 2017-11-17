@@ -27,8 +27,7 @@ class AdminUpdateController extends Controller
 
   protected function doShowView($args)
   {
-    if ($this->appConfig->update($args['title'], $args['description'], $args['contact_mail'],
-                                 $args['page_row_size'], ($args['avaiable'] == "Si")))
+    if ($this->appConfig->update($this->sanitize($args['title']), $this->sanitize($args['description']), $this->sanitize($args['contact_mail']),$this->sanitize($args['page_row_size']), ($this->sanitize($args['avaiable'] == "Si"))))
       $this->view->show();
   }
 
