@@ -4,7 +4,7 @@
 
 {% block botones %}
 
-{% if historial is null %}
+{% if historial is empty %}
     {% block new_action %} ./?action=clinical_history_form_new {% endblock %}
     {% block new_action_label %} Agregar historia {% endblock %}
 {% else %}

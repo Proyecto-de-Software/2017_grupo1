@@ -220,22 +220,22 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
   {
 
     return $this->getRepository()->update(
-      $args['fecha'],
-      $args['edad'],
-      $args['peso'],
-      $args['vacunas_completas'],
-      $args['vacunas_obs'],
-      $args['maduracion_acorde'],
-      $args['maduracion_obs'],
-      $args['examen_fisico'],
-      $args['examenFisico_obs'],
-      $args['percentilo_cefalico'],
-      $args['percentilo_perim_cefalico'],
-      $args['talla'],
-      $args['alimentacion'],
-      $args['obs_generales'],
-      $args['usuario'],
-      $args['id_paciente']
+      $this->sanitize($args['fecha']),
+      $this->sanitize($args['edad']),
+      $this->sanitize($args['peso']),
+      $this->sanitize($args['vacunas_completas']),
+      $this->sanitize($args['vacunas_obs']),
+      $this->sanitize($args['maduracion_acorde']),
+      $this->sanitize($args['maduracion_obs']),
+      $this->sanitize($args['examen_fisico']),
+      $this->sanitize($args['examenFisico_obs']),
+      $this->sanitize($args['percentilo_cefalico']),
+      $this->sanitize($args['percentilo_perim_cefalico']),
+      $this->sanitize($args['talla']),
+      $this->sanitize($args['alimentacion']),
+      $this->sanitize($args['obs_generales']),
+      $this->sanitize($args['usuario']),
+      $this->sanitize($args['id_paciente'])
     );
   }
 
