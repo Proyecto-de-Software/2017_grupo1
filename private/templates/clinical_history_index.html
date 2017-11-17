@@ -1,6 +1,11 @@
 {% extends 'plantilla_base.html' %}
 
+{% block header %} Historia clinica {% endblock %}
+{% block new_action %} ./?action=clinical_history_form_new {% endblock %}
+{% block new_action_label %} Agregar una nueva modificacion {% endblock %}
+
 {% block body %}
+
 
 
 <div class="container">
@@ -55,6 +60,7 @@
               <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-primary" value="Eliminar" id="boton_borrar"/>
               <input type="hidden" name="id" id="id" value= "{{ item.id }}">
             </form>
+          </td>
  
         </tr>
       {% endfor %}
