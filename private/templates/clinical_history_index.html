@@ -9,10 +9,6 @@
     {% block new_action_label %} Agregar historia {% endblock %}
 {% else %}
 
-&nbsp;
-<form action=" ./?action=clinical_history_form_update" method="post">
-  <button type= "submit" class="btn btn-success">  Agregar una modificaci&oacute;n <span class="glyphicon glyphicon-plus"></span></button>
-</form>}
 
 {% endif %}
 {% endblock %}
@@ -23,8 +19,9 @@
 <div class="container">
   <div class="table-responsive">
     <td>
-        <form action="./?action=clinical_history_form_update" method="post">
-              <input type="submit" class="btn btn-primary" name="id" value="Modificar">
+      <br>
+        <form action="./?action=clinical_history_form_new" method="post">
+              &nbsp;<input type="submit" class="btn btn-primary" name="id" value="Agregar historia cl&iacute;nica">
               <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ historial.id_paciente }}">
         </form>
       </td>
@@ -52,7 +49,7 @@
 
       {% for item in historial %}
         <tr>
-          <td>{{ item.fecha }}</td>
+          <td>{{ item.fecha|date('d-m-Y.') }}</td>
           <td>{{ item.edad }}</td>
           <td>{{ item.peso }}</td>
           <td>{{ item.vacunas_completas }}</td>
@@ -68,10 +65,16 @@
           <td>{{ item.obs_generales }}</td>
           <td>{{ item.usuario }}</td>
           <td>
-            <form action="./?action=clinical_history_destroy" method="post">
-              <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-primary" value="Eliminar" id="boton_borrar"/>
-              <input type="hidden" name="id" id="id" value= "{{ item.id }}">
-            </form>
+          <form action="./?action=clinical_history_form_update" method="post">
+            <input type="submit" class="btn btn-primary" value="Modificar">
+            <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+          </form>
+          </td>
+          <td>
+          <form action="./?action=clinical_history_destroy" method="post">
+            <input type="submit" onclick='return confirm("¿Estás seguro?")' class="btn btn-primary" value="Eliminar">
+             <input type="hidden" name="id" id="id" value= "{{ item.id }}">
+          </form>
           </td>
  
         </tr>
@@ -79,4 +82,5 @@
     </table>
   </div>
 </div>
+
 {% endblock %}

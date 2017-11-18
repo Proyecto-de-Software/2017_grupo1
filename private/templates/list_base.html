@@ -1,5 +1,11 @@
 {% extends 'plantilla_base.html' %}
 
+{% block head %}
+<head>
+  <link rel="stylesheet" type="text/css" href="../private/css/list_base.css">
+</head>
+{% endblock %}
+
 {% block body %}
 
 <h1 align="center">{% block header %} {% endblock %}</h1>
@@ -41,12 +47,6 @@
 <br>
 <br>
 <br>
-
-<style>
-  div.table-responsive {
-    background: white;
-  }
-  </style>
 
 {% endblock %}
 
