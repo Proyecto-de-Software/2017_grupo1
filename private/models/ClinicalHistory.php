@@ -18,11 +18,11 @@ class ClinicalHistory
   private $obs_generales;
   private $usuario;
   private $id_paciente;
+  private $fecha_nacimiento;
 
   public function __construct(
     $id,
     $fecha,
-    $edad,
     $peso,
     $vacunas_completas,
     $vacunas_obs,
@@ -36,12 +36,12 @@ class ClinicalHistory
     $alimentacion,
     $obs_generales,
     $usuario,
-    $id_paciente
+    $id_paciente,
+    $fecha_nacimiento
    )
   {
     $this->id = $id;
     $this->fecha = $fecha;
-    $this->edad = $edad;
     $this->peso = $peso;
     $this->vacunas_completas = $vacunas_completas;
     $this->vacunas_obs = $vacunas_obs;
@@ -56,6 +56,7 @@ class ClinicalHistory
     $this->obs_generales = $obs_generales;
     $this->usuario = $usuario;
     $this->id_paciente = $id_paciente;
+    $this->fecha_nacimiento = new DateTime($fecha_nacimiento);
   }
 
   public function getFull_Name()
@@ -74,8 +75,9 @@ class ClinicalHistory
   }
 
   public function getEdad()
-  {
-    return $this->edad;
+  { 
+    $today = new DateTime('today');
+    return ($this->fecha_nacimiento->diff($today)->y);
   }
 
   public function getPeso()
