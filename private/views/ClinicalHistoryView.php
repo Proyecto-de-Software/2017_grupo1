@@ -14,9 +14,9 @@ class NewClinicalHistoryView extends ClinicalHistoryView
     return "clinical_history_form_new.html";
   }
 
-  public function show($clinicalHistory)
+  public function show($id_paciente)
   {
-    $this->doShow([]);
+   $this->render(array('id_paciente' => $id_paciente));
   }
 }
 
@@ -27,9 +27,10 @@ class ClinicalHistoryListView extends ClinicalHistoryView
     return "clinical_history_index.html";
   }
 
-  public function show($clinicalHistory)
+  public function show($id_paciente, $clinicalHistory)
   {
-   $this->render(array('historial' => $clinicalHistory));
+   $this->render(array('historial' => $clinicalHistory,
+                      'id_paciente' => $id_paciente));
   }
 }
 

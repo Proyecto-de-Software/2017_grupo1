@@ -21,6 +21,10 @@ abstract class ClinicalHistoryController extends Controller
 
 class ClinicalHistoryNewController extends ClinicalHistoryController
 {
+  protected function doShowView($args)
+  {
+    $this->getView()->show($args['id_paciente']);
+  }
 }
 
 abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
@@ -40,9 +44,6 @@ abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
   {
     return true;
     if (!isset($args['fecha'])){
-      return false;}
-
-    if (!isset($args['edad'])){
       return false;}
 
     if (!isset($args['peso'])){
@@ -90,9 +91,6 @@ abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
     if (empty($args['fecha'])){
       return false;}
 
-    if (empty($args['edad'])){
-      return false;}
-
     if (empty($args['peso'])){
       return false;}
 
@@ -138,7 +136,6 @@ class ClinicalHistoryAddedController extends ClinicalHistoryCRUDController
   {
     return $this->getRepository()->create(
       $this->sanitize($args['fecha']),
-      $this->sanitize($args['edad']),
       $this->sanitize($args['peso']),
       $this->sanitize($args['vacunas_completas']),
       $this->sanitize($args['vacunas_obs']),
@@ -181,7 +178,6 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
 
     return $this->getRepository()->update(
       $this->sanitize($args['fecha']),
-      $this->sanitize($args['edad']),
       $this->sanitize($args['peso']),
       $this->sanitize($args['vacunas_completas']),
       $this->sanitize($args['vacunas_obs']),
@@ -214,7 +210,7 @@ class ClinicalHistoryListController extends ClinicalHistoryCRUDController
   }
   protected function doShowView($args)
   {
-    $this->getView()->show($this->getRepository()->getPacientClinicalHistory($args['id_paciente']));
+    $this->getView()->show($args['id_paciente'], $this->getRepository()->getPacientClinicalHistory($args['id_paciente']));
   }
 
 }

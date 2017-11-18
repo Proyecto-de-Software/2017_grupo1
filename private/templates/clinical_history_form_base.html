@@ -25,20 +25,10 @@
             <br>
             <fieldset>
               <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-8">
-                  Edad:
-                    <input id="edad" name="edad" type="numeric" value="{% block edad %} {% endblock %}"" class="form-control">
-                </div>
-              </div>
-            </fieldset>
-            <br>
-            <fieldset>
-              <div class="form-group">
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                  <font color="#EC2020" size= 4>* </font> Peso:
-                    <input id="peso" name="peso" type="numeric" value="{% block peso %} {% endblock %}" class="form-control" required>
+                    <input id="peso" name="peso" type="number" value="{% block peso %} {% endblock %}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -117,7 +107,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   PC: percentilo cefálico:
-                    <input id="percentilo_cefalico" name="percentilo_cefalico" type="numeric" value="{% block percentilo_cefalico %} {% endblock %}" class="form-control" required>
+                    <input id="percentilo_cefalico" name="percentilo_cefalico" type="number" value="{% block percentilo_cefalico %} {% endblock %}" class="form-control">
                 </div>
               </div>
             </fieldset>
@@ -127,7 +117,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   PPC: percentilo perímetro cefálico:
-                    <input id="percentilo_perim_cefalico" name="percentilo_perim_cefalico" type="numeric" value="{% block percentilo_perim_cefalico %} {% endblock %}  class="form-control" required>
+                    <input id="percentilo_perim_cefalico" name="percentilo_perim_cefalico" type="number" value="{% block percentilo_perim_cefalico %} {% endblock %}"  class="form-control">
                 </div>
               </div>
             </fieldset>
@@ -137,7 +127,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Talla:
-                    <input id="talla" name="talla" type="text" value="{% block talla %} {% endblock %}" class="form-control" required>
+                    <input id="talla" name="talla" type="number" value="{% block talla %} {% endblock %}" class="form-control">
                 </div>
               </div>
             </fieldset>
@@ -147,7 +137,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Alimentación:
-                    <input id="alimentacion" name="alimentacion" type="text" value="{% block alimentacion %} {% endblock %}" class="form-control" required>
+                    <input id="alimentacion" name="alimentacion" type="text" value="{% block alimentacion %} {% endblock %}" class="form-control">
                 </div>
               </div>
             </fieldset>
@@ -167,7 +157,7 @@
               <div class="col-md-12 text-center">
                 <input type="submit" class="btn btn-primary" value="Confirmar"> 
                 <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('pacients_index')"; value="Cancelar"></button>
-                <input type="hidden" name="usuario" id="usuario" value= "{{ session.getUserId}} ">
+                <input type="hidden" name="usuario" id="usuario" value= "{{ session.UserId}} ">
               </div>
             </div>
           </div>

@@ -22,7 +22,7 @@
       <br>
         <form action="./?action=clinical_history_form_new" method="post">
               &nbsp;<input type="submit" class="btn btn-primary" name="id" value="Agregar historia cl&iacute;nica">
-              <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ historial.id_paciente }}">
+              <input type="hidden" id="id_paciente" name="id_paciente" value=" {{ id_paciente }} ">
         </form>
       </td>
     <table class="table table-condensed">
@@ -49,7 +49,7 @@
 
       {% for item in historial %}
         <tr>
-          <td>{{ item.fecha|date('d-m-Y.') }}</td>
+          <td>{{ item.fecha|date('d-m-Y') }}</td>
           <td>{{ item.edad }}</td>
           <td>{{ item.peso }}</td>
 
