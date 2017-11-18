@@ -1,12 +1,12 @@
 {% extends "plantilla_base.html" %}
 
-{% block stylesheets %}
+{% block head %}
  <link rel="stylesheet" type="text/css" href="../private/css/reportes_style_menu.css">
 {% endblock %}
 
 {%  block body %}
 
-<ul class="vertical-menu">
+<div class="vertical-menu">
 <form method="POST">
     {% for each in reports %}
       <li>
@@ -15,8 +15,8 @@
           <br>
       </li>
 	{% endfor %}
-	
+
 	</form>
-</ul>
+</div>
 
 {% endblock %}
