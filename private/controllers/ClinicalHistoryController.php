@@ -242,10 +242,10 @@ class ClinicalHistoryDestroyedController extends ClinicalHistoryCRUDController
 {
   protected function checkArgs($args)
   {
-    if (!isset($args['id_paciente']))
+    if (!isset($args['id']))
       return false;
 
-    if (!is_numeric($args['id_paciente']))
+    if (!is_numeric($args['id']))
       return false;
 
     return true;
@@ -253,7 +253,7 @@ class ClinicalHistoryDestroyedController extends ClinicalHistoryCRUDController
 
   protected function doShowView($args)
   {
-    if ($this->getRepository()->delete($args['id_paciente']))
+    if ($this->getRepository()->delete($args['id']))
       $this->getView()->show();
   }
 }

@@ -38,6 +38,7 @@ class ClinicalHistoryRepository extends PDORepository {
                                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       
       $this->stmtUpdate = $this->newPreparedStmt("UPDATE clinical_history SET fecha = ?, peso = ?, vacunas_completas = ?, vacunas_obs = ?, maduracion_acorde = ?, maduracion_obs = ?, examen_fisico = ?, examenFisico_obs = ?, percentilo_cefalico = ?, percentilo_perim_cefalico = ?, talla = ?, alimentacion = ?, obs_generales = ?, usuario = ? WHERE id = ?");
+      $this->stmtDelete = $this->newPreparedStmt("DELETE FROM clinical_history WHERE id = ?");
     }
 
   public function getAll()
@@ -56,6 +57,11 @@ class ClinicalHistoryRepository extends PDORepository {
 
       return $this->stmtUpdate->execute([$fecha, $peso, $vacunas_completas, $vacunas_obs, $maduracion_acorde, $maduracion_obs, $examen_fisico, $examenFisico_obs, $percentilo_cefalico, $percentilo_perim_cefalico, $talla, $alimentacion, $obs_generales, $usuario, $id]);
     }
+  
+    public function delete($historyId)
+  {
+    return $this->stmtDelete->execute([$historyId]);
+  }
 
 
   public function getPacientClinicalHistory($pacientId)
