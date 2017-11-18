@@ -52,11 +52,29 @@
           <td>{{ item.fecha|date('d-m-Y.') }}</td>
           <td>{{ item.edad }}</td>
           <td>{{ item.peso }}</td>
-          <td>{{ item.vacunas_completas }}</td>
+
+          {% if item.vacunas_completas == 1 %}
+          <td> SI </td>
+          {% else %}
+          <td> NO </td>
+          {% endif %}
+
           <td>{{ item.vacunas_obs }}</td> 
-          <td>{{ item.maduracion_acorde }}</td>
+         
+           {% if item.maduracion_acorde == 1 %}
+          <td> SI </td>
+          {% else %}
+          <td> NO </td>
+          {% endif %}
+
           <td>{{ item.maduracion_obs }}</td>
-          <td>{{ item.examen_fisico }}</td>
+        
+           {% if item.examen_fisico == 1 %}
+          <td> SI </td>
+          {% else %}
+          <td> NO </td>
+          {% endif %}
+
           <td>{{ item.examenFisico_obs }}</td> 
           <td>{{ item.percentilo_cefalico }}</td>
           <td>{{ item.percentilo_perim_cefalico }}</td>

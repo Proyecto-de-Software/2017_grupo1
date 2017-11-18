@@ -1,4 +1,15 @@
 {% extends 'plantilla_base.html' %}
+
+{% block head %}
+<script>
+$(document).ready(function() {
+  document.getElementById('vacunas_completas').value = "{{ clinicalHistory.vacunas_completas }}";
+  document.getElementById('maduracion_acorde').value = "{{ clinicalHistory.maduracion_acorde }}";
+  document.getElementById('examen_fisico').value = "{{ clinicalHistory.examen_fisico }}";
+});
+</script>
+{% endblock %}
+
 {% block body%}
 
 
@@ -47,21 +58,10 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   <font color="#EC2020" size= 4>* </font> Vacunas completas?:
-                 <!-- <select name="vacunas_completas" required>
-                    {% if clinicalHistory.vacunas_completas == 1 %}
+                  <select id="vacunas_completas" name="vacunas_completas" required>
                     <option value="1">SI</option>
                     <option value="0">NO</option>
-                    {% endif %}
-                    {% if clinicalHistory.vacunas_completas == 0 %}
-                    <option value="0">NO</option>
-                    <option value="1">SI</option>
-                    {% endif %}
-                  </select> -->
-
-                    <select name="vacunas_completas" required>
-                      <option value="1">SI</option>
-                      <option value="0">NO</option>
-                    </select>
+                  </select>
                 </div>
               </div>
             </fieldset>
@@ -81,15 +81,9 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   <font color="#EC2020" size= 4>* </font> Maduración acorde?:
-                  <select name="maduracion_acorde" required>
-                    {% if clinicalHistory.maduracion_acorde == 1 %}
+                  <select id="maduracion_acorde" name="maduracion_acorde" required>
                     <option value="1">SI</option>
                     <option value="0">NO</option>
-                    {% endif %}
-                    {% if clinicalHistory.maduracion_acorde == 0 %}
-                    <option value="0">NO</option>
-                    <option value="1">SI</option>
-                    {% endif %}
                   </select>
                 </div>
               </div>
@@ -110,15 +104,9 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                 <font color="#EC2020" size= 4>* </font> Exámen físico normal?:
-                  <select name="examen_fisico" required>
-                    {% if clinicalHistory.examen_fisico == 1 %}
+                  <select id="examen_fisico" name="examen_fisico" required>
                     <option value="1">SI</option>
                     <option value="0">NO</option>
-                    {% endif %}
-                    {% if clinicalHistory.examen_fisico == 0 %}
-                    <option value="0">NO</option>
-                    <option value="1">SI</option>
-                    {% endif %}
                   </select>
                 </div>
               </div>

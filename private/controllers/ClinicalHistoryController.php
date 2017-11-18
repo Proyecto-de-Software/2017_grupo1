@@ -40,119 +40,90 @@ abstract class ClinicalHistoryCRUDController extends ClinicalHistoryController
   {
     return true;
     if (!isset($args['fecha'])){
-      var_dump('fecha');
       return false;}
 
     if (!isset($args['edad'])){
-      var_dump('edad');
       return false;}
 
     if (!isset($args['peso'])){
-      var_dump('peso');
       return false;}
 
     if (!isset($args['vacunas_completas'])){
-      var_dump('vacunas_completas');
       return false;}
 
     if (!isset($args['vacunas_obs'])){
-      var_dump('vacunas_obs');
       return false;}
 
     if (!isset($args['maduracion_acorde'])){
-      var_dump('maduracion_acorde');
       return false;}
 
     if (!isset($args['maduracion_obs'])){
-      var_dump('maduracion_acorde');
       return false;}
 
     if (!isset($args['examen_fisico'])){
-      var_dump('examen_fisico');
       return false;}
 
     if (!isset($args['examenFisico_obs'])){
-      var_dump('examenFisico_obs');
       return false;}
 
     if (!isset($args['percentilo_cefalico'])){
-      var_dump('percentilo_cefalico');
       return false;}
 
     if (!isset($args['percentilo_perim_cefalico'])){
-      var_dump('percentilo_perim_cefalico');
       return false;}
 
     if (!isset($args['talla'])){
-      var_dump('talla');
       return false;}
 
     if (!isset($args['alimentacion'])){
-      var_dump('alimentacion');
       return false;}
 
     if (!isset($args['obs_generales'])){
-      var_dump('obs_generales');
       return false;}
 
     if (!isset($args['usuario'])){
-      var_dump('usuario');
       return false;}
 
     if(!isset($args['id_paciente'])){
-      var_dump('id_paciente');
       return false;}
 
     if (empty($args['fecha'])){
-      var_dump('fecha');
       return false;}
 
     if (empty($args['edad'])){
-      var_dump('edad');
       return false;}
 
     if (empty($args['peso'])){
-      var_dump('peso');
       return false;}
 
     if (empty($args['vacunas_obs'])){
-      var_dump('vacunas_obs');
       return false;}
 
     if (empty($args['maduracion_obs'])){
-      var_dump('maduracion_obs');
       return false;}
 
     if (empty($args['examenFisico_obs'])){
-      var_dump('examenFisico_obs');
       return false;}
 
     if (empty($args['percentilo_cefalico'])){
-      var_dump('percentilo_cefalico');
       return false;}
 
     if (empty($args['percentilo_perim_cefalico'])){
-      var_dump('percentilo_perim_cefalico');
       return false;}
 
     if (empty($args['talla'])){
-      var_dump('talla');
       return false;}
 
     if (empty($args['alimentacion'])){
-      var_dump('alimentacion');
       return false;}
 
     if (empty($args['obs_generales'])){
-      var_dump('obs_generales');
       return false;}
 
     if (empty($args['usuario'])){
-      var_dump('usuario');
       return false;}
 
     if (empty($args['id_paciente'])){
-      var_dump('id_paciente');
       return false;}
 
     return true;
