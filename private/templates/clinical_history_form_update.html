@@ -4,7 +4,7 @@
 
 <div id="div-top" align="center">
 <h1> Historia Cl&iacute;nica de {{ clinicalHistory.getFull_Name() }}</h1>
-<form action='./?action=clinicalHistory_updated'  method='post'>
+<form action='./?action=clinical_history_updated'  method='post'>
   <div class="container">
     <div class="row">
       <div align="left">
@@ -17,7 +17,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-8">
                   <font color="#EC2020" size= 4>* </font> Fecha de la consulta:
-                  <input id="fecha" name="fecha" type="date" value="{{ clinicalHistory.fecha|date('Y-m-d') }}" class="form-control" required>
+                  <input id="fecha" name="fecha" type="date" value={{ clinicalHistory.fecha|date('Y-m-d') }} class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -159,7 +159,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Talla:
-                    <input id="talla" name="talla" type="number" value="{{ clinicalHistory.talla }}" class="form-control" required>
+                    <input id="talla" name="talla" type="text0" value="{{ clinicalHistory.talla }}" class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -183,23 +183,14 @@
                 </div>
               </div>
             </fieldset>
-            <br>
-            <br>
-            <fieldset>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
-                <div class="col-md-8">
-                  Usuario:
-                    <input id="usuario" name="usuario" type="text" value="{{ clinicalHistory.usuario }}" class="form-control" required>
-                </div>
-              </div>
-            </fieldset>
+
             <br>
             <div class="form-group">
               <div class="col-md-12 text-center">
                 <input type="submit" class="btn btn-primary" value="Confirmar"> 
                 <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('pacients_index')"; value="Cancelar"></button>
-                <input type="hidden" name="id_paciente" id="id_paciente" value= "{{ clinicalHistory.id_paciente}}">
+                <input type="hidden" name="id" id="id" value= "{{ clinicalHistory.id}}">
+                <input type="hidden" name="usuario" id="usuario" value= "{{ session.getUserId}}">
               </div>
             </div>
           </div>

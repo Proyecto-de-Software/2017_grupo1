@@ -37,7 +37,7 @@ class ClinicalHistoryRepository extends PDORepository {
       $this->stmtCreate = $this->newPreparedStmt("INSERT INTO clinical_history (fecha, edad, peso, vacunas_completas, vacunas_obs, maduracion_acorde, maduracion_obs, examen_fisico, examenFisico_obs, percentilo_cefalico, percentilo_perim_cefalico, talla, alimentacion, obs_generales, usuario, id_paciente)
                                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       
-      $this->stmtUpdate = $this->newPreparedStmt("UPDATE clinical_history SET fecha = ?, edad = ?, peso = ?, vacunas_completas = ?, vacunas_obs = '?', maduracion_acorde = ?, maduracion_obs = '?', examen_fisico = ?, examenFisico_obs = '?', percentilo_cefalico = ?, percentilo_perim_cefalico = ?, talla = ?, alimentacion = '?', obs_generales = '?', usuario = ? WHERE id_paciente = ?");
+      $this->stmtUpdate = $this->newPreparedStmt("UPDATE clinical_history SET fecha = ?, edad = ?, peso = ?, vacunas_completas = ?, vacunas_obs = ?, maduracion_acorde = ?, maduracion_obs = ?, examen_fisico = ?, examenFisico_obs = ?, percentilo_cefalico = ?, percentilo_perim_cefalico = ?, talla = ?, alimentacion = ?, obs_generales = ?, usuario = ? WHERE id = ?");
     }
 
   public function getAll()
@@ -51,14 +51,20 @@ class ClinicalHistoryRepository extends PDORepository {
     }
 
 
-  public function update($fecha, $edad, $peso, $vacunas_completas, $vacunas_obs, $maduracion_acorde, $maduracion_obs, $examen_fisico, $examenFisico_obs, $percentilo_cefalico, $percentilo_perim_cefalico, $talla, $alimentacion, $obs_generales, $usuario, $id_paciente)
+  public function update($fecha, $edad, $peso, $vacunas_completas, $vacunas_obs, $maduracion_acorde, $maduracion_obs, $examen_fisico, $examenFisico_obs, $percentilo_cefalico, $percentilo_perim_cefalico, $talla, $alimentacion, $obs_generales, $usuario, $id)
     {
-      return $this->stmtUpdate->execute([$fecha, $edad, $peso, $vacunas_completas, $vacunas_obs, $maduracion_acorde, $maduracion_obs, $examen_fisico, $examenFisico_obs, $percentilo_cefalico, $percentilo_perim_cefalico, $talla, $alimentacion, $obs_generales, $usuario, $id_paciente]);
+
+      return $this->stmtUpdate->execute([$fecha, $edad, $peso, $vacunas_completas, $vacunas_obs, $maduracion_acorde, $maduracion_obs, $examen_fisico, $examenFisico_obs, $percentilo_cefalico, $percentilo_perim_cefalico, $talla, $alimentacion, $obs_generales, $usuario, $id]);
     }
 
 
-  public function getClinicalHistory($pacientId)
+  public function getPacientClinicalHistory($pacientId)
   { 
     return $this->queryToClinicalHistoryArray($this->queryList("SELECT * FROM clinical_history WHERE id_paciente = ?", [$pacientId]));
+  }
+
+    public function getClinicalHistory($historyId)
+  { 
+    return $this->queryToClinicalHistoryArray($this->queryList("SELECT * FROM clinical_history WHERE id = ?", [$historyId]))[0];
   }
 }
