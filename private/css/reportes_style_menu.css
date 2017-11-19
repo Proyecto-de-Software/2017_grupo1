@@ -18,12 +18,13 @@
     vertical-align: middle;
     width: 50%;
 }
+
 .vertical-menu input:hover {
     background-color: #ccc;
 }
 
 .vertical-menu input.active {
     background-color: #5F9EA0;
-    color: white; 
+    color: white;
     width:100%;
 }
