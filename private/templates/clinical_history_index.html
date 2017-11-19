@@ -2,29 +2,11 @@
 
 {% block header %} Historia Clinica {% endblock %}
 
-{% block botones %}
+{% block new_action %} ./?action=clinical_history_form_new {% endblock %}
+{% block new_action_label %} Agregar historia cl&iacute;nica {% endblock %}
+{% block new_hidden %}  <input type="hidden" id="id_paciente" name="id_paciente" value=" {{ id_paciente }} "> {% endblock %}
 
-{% if historial is empty %}
-    {% block new_action %} ./?action=clinical_history_form_new {% endblock %}
-    {% block new_action_label %} Agregar historia {% endblock %}
-{% else %}
-
-
-{% endif %}
-{% endblock %}
-{% block pagination_action %} ./?action=clinical_history_index {% endblock %}
-
-{% block body %}
-
-<div class="container">
-  <div class="table-responsive">
-    <td>
-      <br>
-        <form action="./?action=clinical_history_form_new" method="post">
-              &nbsp;<input type="submit" class="btn btn-primary" name="id" value="Agregar historia cl&iacute;nica">
-              <input type="hidden" id="id_paciente" name="id_paciente" value=" {{ id_paciente }} ">
-        </form>
-      </td>
+{% block inner_body %}
     <table class="table table-condensed">
       <thead>
         <tr>

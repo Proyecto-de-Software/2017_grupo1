@@ -197,7 +197,8 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
 
   protected function doShowView($args){
      if ($this->canUpdate($args))
-      return $this->getView()->show();
+      print_r($args);
+      return $this->getView()->show($args['id']); //id de la historia clinica que se modifico 
   }
 }
 

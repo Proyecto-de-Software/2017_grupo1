@@ -20,7 +20,8 @@
           &nbsp;
           <form action="{% block new_action %} {% endblock %}" method="post">
             <button type= "submit" class="btn btn-success"> {% block new_action_label %} {% endblock %} <span class="glyphicon glyphicon-plus"></span></button>
-          </form>
+            {% block new_hidden %} {% endblock %}
+           </form>
         </tr>
       
 
