@@ -50,7 +50,7 @@ class Router
       $appConfig = new AppConfig;
       $userRepository = new UserRepository($appConfig);
       $pacientsRepository = new PacientsRepository($appConfig);
-      $clinicalHistoryRepository = new ClinicalHistoryRepository($appConfig);
+      $clinicalHistoryRepository = new ClinicalHistoryRepository;
 
       $socialInsuranceRepository = new APIReferenceDataRepository("obra-social");
       $waterTypeRepository = new APIReferenceDataRepository("tipo-agua");
@@ -82,9 +82,17 @@ class Router
       $reportsController = new ReportsController;
       $reportsController->addReport('Pacientes por Obra Social', new PacientsBySocialInsuranceReport($pacientsRepository, $socialInsuranceRepository));
       $reportsController->addReport('Pacientes por Tipo de Agua', new PacientsByWaterTypeReport($pacientsRepository, $waterTypeRepository));
-      $reportsController->addReport('Pacientes por Tipo de Calefacción', new PacientsByHeatingTypeReport($pacientsRepository, $heatingTypeRepository));
+      $reportsController->addReport('Pacientes por Tipo de Calefaccion', new PacientsByHeatingTypeReport($pacientsRepository, $heatingTypeRepository));
       $reportsController->addReport('Pacientes por Tipo de Vivienda', new PacientsByHomeTypeReport($pacientsRepository, $homeTypeRepository));
       $reportsController->addReport('Pacientes por Tipo de Documento', new PacientsByDocumentTypeReport($pacientsRepository, $documentTypeRepository));
+
+      $reportsController->addReport('Curva de crecimiento de ninas hasta 13 semanas', new GrilsWeightGrowthReport($clinicalHistoryRepository));
+      $reportsController->addReport('Curva de crecimiento de ninos hasta 13 semanas', new BoysWeightGrowthReport($clinicalHistoryRepository));
+      $reportsController->addReport('Curva de talla de ninas hasta 2 anos', new GrilsTallGrowthReport($clinicalHistoryRepository));
+      $reportsController->addReport('Curva de talla de ninos hasta 2 anos', new BoysTallGrowthReport($clinicalHistoryRepository));
+      $reportsController->addReport('Curva de PPC de ninas hasta 2 anos', new GirlsPPCGrowthReport($clinicalHistoryRepository));
+      $reportsController->addReport('Curva de PPC de ninos hasta 2 anos', new BoysPPCGrowthReport($clinicalHistoryRepository));
+
       self::$router->addController('reports_index', $reportsController);
 
       $userListController = new UserListController(new UserListView, $userRepository, $appConfig);
