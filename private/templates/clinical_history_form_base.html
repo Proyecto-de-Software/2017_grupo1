@@ -28,7 +28,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                  <font color="#EC2020" size= 4>* </font> Peso:
-                    <input id="peso" name="peso" type="number" value="{% block peso %} {% endblock %}" class="form-control" required>
+                    <input id="peso" name="peso" type="number" value={% block peso %} {% endblock %} class="form-control" required>
                 </div>
               </div>
             </fieldset>
@@ -107,7 +107,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   PC: percentilo cefálico:
-                    <input id="percentilo_cefalico" name="percentilo_cefalico" type="number" value="{% block percentilo_cefalico %} {% endblock %}" class="form-control">
+                    <input id="percentilo_cefalico" name="percentilo_cefalico" type="number" value={% block percentilo_cefalico %} {% endblock %} class="form-control">
                 </div>
               </div>
             </fieldset>
@@ -117,7 +117,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   PPC: percentilo perímetro cefálico:
-                    <input id="percentilo_perim_cefalico" name="percentilo_perim_cefalico" type="number" value="{% block percentilo_perim_cefalico %} {% endblock %}"  class="form-control">
+                    <input id="percentilo_perim_cefalico" name="percentilo_perim_cefalico" type="number" value={% block percentilo_perim_cefalico %} {% endblock %} class="form-control">
                 </div>
               </div>
             </fieldset>
@@ -127,7 +127,7 @@
                 <span class="col-md-1 col-md-offset-2 text-left"><i class="fa fa-envelope-o bigicon"></i></span>
                 <div class="col-md-8">
                   Talla:
-                    <input id="talla" name="talla" type="number" value="{% block talla %} {% endblock %}" class="form-control">
+                    <input id="talla" name="talla" type="number" value={% block talla %} {% endblock %} class="form-control">
                 </div>
               </div>
             </fieldset>
@@ -155,7 +155,7 @@
             <br>
             <div class="form-group">
               <div class="col-md-12 text-center">
-                <input type="submit" class="btn btn-primary" value="Confirmar"> 
+                <input type="submit" class="btn btn-primary" value="Confirmar">
                 <input type="button" class="btn btn-danger" id= "cancel_button" name="cancel_button" onclick="return cancelar('pacients_index')"; value="Cancelar"></button>
                 <input type="hidden" name="usuario" id="usuario" value= "{{ session.UserId}} ">
               </div>
