@@ -67,7 +67,8 @@ class ClinicalHistoryRepository extends PDORepository
       FROM clinical_history H
       INNER JOIN pacients P ON (H.id_paciente = P.id)
       INNER JOIN users U ON (U.id = H.usuario)
-      WHERE H.id_paciente = ?", [$pacientId]));
+      WHERE H.id_paciente = ?
+      ORDER BY H.fecha", [$pacientId]));
   }
 
   public function getClinicalHistoryChartData($pacientId, $week_count)
@@ -89,6 +90,7 @@ class ClinicalHistoryRepository extends PDORepository
       FROM clinical_history H
       INNER JOIN pacients P ON (H.id_paciente = P.id)
       INNER JOIN users U ON (U.id = H.usuario)
-      WHERE H.id = ?", [$historyId]))[0];
+      WHERE H.id = ?
+      ORDER BY H.fecha", [$historyId]))[0];
   }
 }
