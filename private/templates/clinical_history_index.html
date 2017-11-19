@@ -6,6 +6,21 @@
 {% block new_action_label %} Agregar historia cl&iacute;nica {% endblock %}
 {% block new_hidden %}  <input type="hidden" id="id_paciente" name="id_paciente" value=" {{ id_paciente }} "> {% endblock %}
 
+{% block botones %}
+<form method="POST" action ="./?action=weigth_growth_report">
+  <button type= "submit" class="btn btn-primary">Curva de creimiento</button>
+  <input type="hidden" id="id_paciente" name="id_paciente" value=" {{ id_paciente }} ">
+</form> &nbsp;
+<form method="POST" action ="./?action=tall_growth_report">
+  <button type= "submit" class="btn btn-primary">Curva de talla</button>
+  <input type="hidden" id="id_paciente" name="id_paciente" value=" {{ id_paciente }} ">
+</form> &nbsp;
+<form method="POST" action ="./?action=ppc_growth_report">
+  <button type= "submit" class="btn btn-primary">Curva de PPC</button>
+  <input type="hidden" id="id_paciente" name="id_paciente" value=" {{ id_paciente }} ">
+</form>
+{% endblock %}
+
 {% block inner_body %}
     <table class="table table-condensed">
       <thead>
@@ -41,8 +56,8 @@
           <td> NO </td>
           {% endif %}
 
-          <td>{{ item.vacunas_obs }}</td> 
-         
+          <td>{{ item.vacunas_obs }}</td>
+
            {% if item.maduracion_acorde == 1 %}
           <td> SI </td>
           {% else %}
@@ -50,14 +65,14 @@
           {% endif %}
 
           <td>{{ item.maduracion_obs }}</td>
-        
+
            {% if item.examen_fisico == 1 %}
           <td> SI </td>
           {% else %}
           <td> NO </td>
           {% endif %}
 
-          <td>{{ item.examenFisico_obs }}</td> 
+          <td>{{ item.examenFisico_obs }}</td>
           <td>{{ item.percentilo_cefalico }}</td>
           <td>{{ item.percentilo_perim_cefalico }}</td>
           <td>{{ item.talla }}</td>
@@ -76,7 +91,7 @@
              <input type="hidden" name="id" id="id" value= "{{ item.id }}">
           </form>
           </td>
- 
+
         </tr>
       {% endfor %}
     </table>
