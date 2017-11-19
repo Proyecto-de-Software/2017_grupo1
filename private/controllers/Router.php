@@ -79,6 +79,10 @@ class Router
       self::$router->addController('admin', new AdminController(new AdminView));
       self::$router->addController('admin_updated', new AdminUpdateController($indexView, $appConfig));
 
+      self::$router->addController('weigth_growth_report', new GrowthReportController($clinicalHistoryRepository, $pacientsRepository));
+      self::$router->addController('tall_growth_report', new TallReportController($clinicalHistoryRepository, $pacientsRepository));
+      self::$router->addController('ppc_growth_report', new PPCReportController($clinicalHistoryRepository, $pacientsRepository));
+
       $reportsController = new ReportsController;
       $reportsController->addReport('Pacientes por Obra Social', new PacientsBySocialInsuranceReport($pacientsRepository, $socialInsuranceRepository));
       $reportsController->addReport('Pacientes por Tipo de Agua', new PacientsByWaterTypeReport($pacientsRepository, $waterTypeRepository));

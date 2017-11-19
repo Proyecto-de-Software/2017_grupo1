@@ -12,6 +12,7 @@ require_once "./private/controllers/DisabledSiteController.php";
 require_once "./private/controllers/NonAuthorizedController.php";
 require_once "./private/controllers/ClinicalHistoryController.php";
 require_once "./private/controllers/ReportsController.php";
+require_once "./private/controllers/PatientsReportController.php";
 
 require_once "./private/models/PDORepository.php";
 require_once "./private/models/UserRepository.php";
