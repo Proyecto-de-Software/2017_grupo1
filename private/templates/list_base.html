@@ -15,15 +15,13 @@
       <thead>
         <tr>
         <br>
+        <form action="{% block new_action %} {% endblock %}" method="post">
+            &nbsp; <button type= "submit" class="btn btn-success"> {% block new_action_label %} {% endblock %} <span class="glyphicon glyphicon-plus"></span></button>
+            {% block new_hidden %} {% endblock %}
+           </form> &nbsp;
           {% block botones %}
           {% endblock %}
-          &nbsp;
-          <form action="{% block new_action %} {% endblock %}" method="post">
-            <button type= "submit" class="btn btn-success"> {% block new_action_label %} {% endblock %} <span class="glyphicon glyphicon-plus"></span></button>
-            {% block new_hidden %} {% endblock %}
-           </form>
         </tr>
-      
 
 {% block inner_body %}
 {% endblock %}
