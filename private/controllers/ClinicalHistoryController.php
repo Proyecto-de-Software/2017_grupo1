@@ -197,8 +197,7 @@ class ClinicalHistoryUpdatedController extends ClinicalHistoryCRUDController
 
   protected function doShowView($args){
      if ($this->canUpdate($args))
-      print_r($args);
-      return $this->getView()->show($args['id']); //id de la historia clinica que se modifico 
+      return $this->getView()->show($args['id']); //id de la historia clinica que se modifico
   }
 }
 
@@ -230,7 +229,7 @@ class ClinicalHistoryEditController extends ClinicalHistoryCRUDController
   }
 
   protected function doShowView($args)
-  { print_r($args);
+  {
     $this->getView()->show($this->getRepository()->getClinicalHistory($args['id']));
   }
 }
