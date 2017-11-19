@@ -24,7 +24,7 @@ class ClinicalHistoryRepository extends PDORepository
         $element['talla'],
         $element['alimentacion'],
         $element['obs_generales'],
-        $element['usuario'],
+        $element['last_name'] . ',' . $element['first_name'],
         $element['id_paciente'],
         $element['birth_date']
       );
@@ -63,18 +63,20 @@ class ClinicalHistoryRepository extends PDORepository
 
   public function getPacientClinicalHistory($pacientId)
   {
-    return $this->queryToClinicalHistoryArray($this->queryList("SELECT H.*, P.birth_date
+    return $this->queryToClinicalHistoryArray($this->queryList("SELECT U.last_name, U.first_name, H.*, P.birth_date
       FROM clinical_history H
       INNER JOIN pacients P ON (H.id_paciente = P.id)
+      INNER JOIN users U ON (U.id = H.usuario)
       WHERE H.id_paciente = ?", [$pacientId]));
   }
 
   public function getClinicalHistoryChartData($pacientId, $week_count)
   {
     /* PDO no me permite pasar el valor del LIMIT por parametro, por eso interpolo el string */
-    return $this->queryToClinicalHistoryArray($this->queryList("SELECT H.*, P.birth_date
+    return $this->queryToClinicalHistoryArray($this->queryList("SELECT U.last_name, U.first_name, H.*, P.birth_date
       FROM clinical_history H
       INNER JOIN pacients P ON (H.id_paciente = P.id)
+      INNER JOIN users U ON (U.id = H.usuario)
       WHERE H.id_paciente = ? AND
       H.fecha <= NOW()
       ORDER BY H.fecha
@@ -83,9 +85,10 @@ class ClinicalHistoryRepository extends PDORepository
 
   public function getClinicalHistory($historyId)
   {
-    return $this->queryToClinicalHistoryArray($this->queryList("SELECT H.*, P.birth_date
+    return $this->queryToClinicalHistoryArray($this->queryList("SELECT U.last_name, U.first_name, H.*, P.birth_date
       FROM clinical_history H
       INNER JOIN pacients P ON (H.id_paciente = P.id)
+      INNER JOIN users U ON (U.id = H.usuario)
       WHERE H.id = ?", [$historyId]))[0];
   }
 }

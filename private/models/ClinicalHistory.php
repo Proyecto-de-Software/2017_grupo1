@@ -59,11 +59,6 @@ class ClinicalHistory
     $this->fecha_nacimiento = new DateTime($fecha_nacimiento);
   }
 
-  public function getFull_Name()
-  {
-    return;
-  }
-
   public function getId()
   {
     return $this->id;
