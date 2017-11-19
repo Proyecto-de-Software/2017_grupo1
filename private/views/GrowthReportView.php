@@ -1,22 +1,35 @@
 <?php
 abstract class GrowthReportView extends TwigView
 {
-  abstract protected function getChartTitle();
-  abstract protected function getXAxis_title();
-  abstract protected function getYAxis_title();
-  abstract protected function getChartData();
+  private $clinical_history_repository;
 
-  public function show()
+  public function __construct($clinical_history_repository)
+  {
+    $this->clinical_history_repository = $clinical_history_repository;
+  }
+
+  public function show($patientId)
   {
     $this->render(
         [
           'chart_title' => $this->getChartTitle(),
           'xAxis_title' => $this->getXAxis_title(),
           'yAxis_title' => $this->getYAxis_title(),
-          'chart_data' => $this->getChartData()
+          'chart_data' => $this->getChartData($patientId)
         ]
       );
   }
+
+  protected function getClinicalHistory($patientId)
+  {
+    return $this->clinical_history_repository->getClinicalHistoryChartData($patientId, $this->getWeek_count());
+  }
+
+  abstract protected function getChartTitle();
+  abstract protected function getXAxis_title();
+  abstract protected function getYAxis_title();
+  abstract protected function getChartData($patientId);
+  abstract protected function getWeek_count();
 
   protected function getTemplateFile()
   {
@@ -41,7 +54,26 @@ class GrilsWeightGrowthReport extends GrowthReportView
     return 'Peso (kg)';
   }
 
-  protected function getChartData()
+  protected function getWeek_count()
+  {
+    return 13;
+  }
+
+  protected function getChartData($patientId)
+  {
+    $data = [];
+    $week_count = 0;
+    foreach ($this->getClinicalHistory($patientId) as &$element) {
+      $data[] = [$week_count, intval($element->getPeso())];
+      $week_count = $week_count + 1;
+    };
+
+    $json = json_encode($data);
+    $answer = $this->getStaticChartData() . ", { name: 'paciente', data: $json}";
+    return $answer;
+  }
+
+  private function getStaticChartData()
   {
     return "
     {
@@ -84,7 +116,26 @@ class BoysWeightGrowthReport extends GrowthReportView
     return 'Peso (kg)';
   }
 
-  protected function getChartData()
+  protected function getWeek_count()
+  {
+    return 13;
+  }
+
+  protected function getChartData($patientId)
+  {
+    $data = [];
+    $week_count = 0;
+    foreach ($this->getClinicalHistory($patientId) as &$element) {
+      $data[] = [$week_count, intval($element->getPeso())];
+      $week_count = $week_count + 1;
+    };
+
+    $json = json_encode($data);
+    $answer = $this->getStaticChartData() . ", { name: 'paciente', data: $json}";
+    return $answer;
+  }
+
+  private function getStaticChartData()
   {
     return "
     {
@@ -127,7 +178,19 @@ class GrilsTallGrowthReport extends GrowthReportView
       return 'Peso (kg)';
     }
 
-  protected function getChartData()
+    protected function getWeek_count()
+    {
+      return 132;
+    }
+
+    protected function getChartData($patientId)
+    {
+      $data = [];
+      $data = json_encode($data);
+      return $this->getStaticChartData() . ',' . $data;
+    }
+
+  private function getStaticChartData()
   {
     return "
     {
@@ -260,7 +323,19 @@ class BoysTallGrowthReport extends GrowthReportView
     return 'Peso (kg)';
   }
 
-  protected function getChartData()
+  protected function getWeek_count()
+  {
+    return 132;
+  }
+
+  protected function getChartData($patientId)
+  {
+    $data = [];
+    $data = json_encode($data);
+    return $this->getStaticChartData() . ',' . $data;
+  }
+
+  private function getStaticChartData()
   {
     return "
     {
@@ -384,7 +459,19 @@ class GirlsPPCGrowthReport extends GrowthReportView
     return 'Circunferencia cefálica (cm)';
   }
 
-  protected function getChartData()
+  protected function getWeek_count()
+  {
+    return 13;
+  }
+
+  protected function getChartData($patientId)
+  {
+    $data = [];
+    $data = json_encode($data);
+    return $this->getStaticChartData() . ',' . $data;
+  }
+
+  private function getStaticChartData()
   {
     return "
     {
@@ -427,33 +514,40 @@ class BoysPPCGrowthReport extends GrowthReportView
     return 'Circunferencia cefálica (cm)';
   }
 
-  protected function getChartData()
+  protected function getWeek_count()
+  {
+    return 13;
+  }
+
+  protected function getChartData($patientId)
+  {
+    $data = [];
+    $data = json_encode($data);
+    return $this->getStaticChartData() . ',' . $data;
+  }
+
+  private function getStaticChartData()
   {
     return "
     {
       name: '3rd',
-      data: [[0, 32.1], [1, 32.9], [2, 33.7], [3, 34.3], [4, 34.9], [5, 35.4], [6, 35.9], [7, 36.3],
-      [8, 36.7], [9, 37], [10, 37.4], [11, 37.7], [12, 38], [13, 38.3]]
+      data: [[0, 32.1], [1, 32.9], [2, 33.7], [3, 34.3], [4, 34.9], [5, 35.4], [6, 35.9], [7, 36.3], [8, 36.7], [9, 37], [10, 37.4], [11, 37.7], [12, 38], [13, 38.3]]
     },
     {
       name: '15th',
-      data: [[0, 33.1], [1, 33.9], [2, 34.7], [3, 35.3], [4, 35.9], [5, 36.4], [6, 36.8], [7, 37.3],
-      [8, 37.7], [9, 38], [10, 38.4], [11, 38.7], [12, 39], [13, 39.3]]
+      data: [[0, 33.1], [1, 33.9], [2, 34.7], [3, 35.3], [4, 35.9], [5, 36.4], [6, 36.8], [7, 37.3], [8, 37.7], [9, 38], [10, 38.4], [11, 38.7], [12, 39], [13, 39.3]]
     },
     {
       name: '50th',
-      data: [[0, 34.5], [1, 35.2], [2, 35.9], [3, 36.5], [4, 37.1], [5, 37.6], [6, 38.1], [7, 38.5],
-      [8, 38.9], [9, 39.2], [10, 39.6], [11, 39.9], [12, 40.2], [13, 40.5]]
+      data: [[0, 34.5], [1, 35.2], [2, 35.9], [3, 36.5], [4, 37.1], [5, 37.6], [6, 38.1], [7, 38.5], [8, 38.9], [9, 39.2], [10, 39.6], [11, 39.9], [12, 40.2], [13, 40.5]]
     },
     {
       name: '85th',
-      data: [[0, 35.8], [1, 36.4], [2, 37.1], [3, 37.7], [4, 38.3], [5, 38.8], [6, 39.3], [7, 39.7],
-      [8, 40.1], [9, 40.5], [10, 40.8], [11, 41.1], [12, 41.4], [13, 41.7]]
+      data: [[0, 35.8], [1, 36.4], [2, 37.1], [3, 37.7], [4, 38.3], [5, 38.8], [6, 39.3], [7, 39.7], [8, 40.1], [9, 40.5], [10, 40.8], [11, 41.1], [12, 41.4], [13, 41.7]]
     },
     {
       name: '97th',
-      data: [[0, 36.9], [1, 37.5], [2, 38.1], [3, 38.7], [4, 39.3], [5, 39.8], [6, 40.3], [7, 40.7],
-      [8, 41.1], [9, 41.4], [10, 41.8], [11, 42.1], [12, 42.4], [13, 42.7]]
+      data: [[0, 36.9], [1, 37.5], [2, 38.1], [3, 38.7], [4, 39.3], [5, 39.8], [6, 40.3], [7, 40.7], [8, 41.1], [9, 41.4], [10, 41.8], [11, 42.1], [12, 42.4], [13, 42.7]]
     }";
   }
 }
