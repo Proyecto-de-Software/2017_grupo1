@@ -1,23 +1,19 @@
 <?php
 abstract class GrowthReportView extends TwigView
 {
-  public function __construct($chartTitle, $xAxis_title, $yAxis_title)
-  {
-    $this->chartTitle = $chartTitle;
-    $this->xAxis_title = $xAxis_title;
-    $this->yAxis_title = $yAxis_title;
-  }
-
-  abstract protected function chartData();
+  abstract protected function getChartTitle();
+  abstract protected function getXAxis_title();
+  abstract protected function getYAxis_title();
+  abstract protected function getChartData();
 
   public function show()
   {
     $this->render(
         [
-          'chart_title' => $this->chartTitle,
-          'xAxis_title' => $this->xAxis_title,
-          'yAxis_title' => $this->yAxis_title,
-          'chart_data' => $this->chartData()
+          'chart_title' => $this->getChartTitle(),
+          'xAxis_title' => $this->getXAxis_title(),
+          'yAxis_title' => $this->getYAxis_title(),
+          'chart_data' => $this->getChartData()
         ]
       );
   }
@@ -30,12 +26,22 @@ abstract class GrowthReportView extends TwigView
 
 class GrilsWeightGrowthReport extends GrowthReportView
 {
-  public function __construct()
+  protected function getChartTitle()
   {
-    parent::__construct('Curva de crecimiento de niñas hasta 13 semanas', 'Edad (en semanas)', 'Peso (kg)');
+    return 'Curva de crecimiento de niñas hasta 13 semanas';
   }
 
-  protected function chartData()
+  protected function getXAxis_title()
+  {
+    return 'Edad (en semanas)';
+  }
+
+  protected function getYAxis_title()
+  {
+    return 'Peso (kg)';
+  }
+
+  protected function getChartData()
   {
     return "
     {
@@ -63,12 +69,22 @@ class GrilsWeightGrowthReport extends GrowthReportView
 
 class BoysWeightGrowthReport extends GrowthReportView
 {
-  public function __construct()
+  protected function getChartTitle()
   {
-    parent::__construct('Curva de crecimiento de niños hasta 13 semanas', 'Edad (en semanas)', 'Peso (kg)');
+    return 'Curva de crecimiento de niños hasta 13 semanas';
   }
 
-  protected function chartData()
+  protected function getXAxis_title()
+  {
+    return 'Edad (en semanas)';
+  }
+
+  protected function getYAxis_title()
+  {
+    return 'Peso (kg)';
+  }
+
+  protected function getChartData()
   {
     return "
     {
@@ -96,12 +112,22 @@ class BoysWeightGrowthReport extends GrowthReportView
 
 class GrilsTallGrowthReport extends GrowthReportView
 {
-  public function __construct()
-  {
-    parent::__construct('Curva de talla de niñas hasta 2 años', 'Longitud (cm)', 'Peso (kg)');
-  }
+    protected function getChartTitle()
+    {
+      return 'Curva de talla de niñas hasta 2 años';
+    }
 
-  protected function chartData()
+    protected function getXAxis_title()
+    {
+      return 'Longuitud (cm)';
+    }
+
+    protected function getYAxis_title()
+    {
+      return 'Peso (kg)';
+    }
+
+  protected function getChartData()
   {
     return "
     {
@@ -219,12 +245,22 @@ class GrilsTallGrowthReport extends GrowthReportView
 
 class BoysTallGrowthReport extends GrowthReportView
 {
-  public function __construct()
+  protected function getChartTitle()
   {
-    parent::__construct('Curva de talla de niños hasta 2 años', 'Longitud (cm)', 'Peso (kg)');
+    return 'Curva de talla de niños hasta 2 años';
   }
 
-  protected function chartData()
+  protected function getXAxis_title()
+  {
+    return 'Edad (en semanas)';
+  }
+
+  protected function getYAxis_title()
+  {
+    return 'Peso (kg)';
+  }
+
+  protected function getChartData()
   {
     return "
     {
@@ -333,12 +369,22 @@ class BoysTallGrowthReport extends GrowthReportView
 
 class GirlsPPCGrowthReport extends GrowthReportView
 {
-  public function __construct()
+  protected function getChartTitle()
   {
-    parent::__construct('Curva de percentil perímetro cefálico niñas hasta 13 semanas', 'Edad (en semanas)', 'Circunferencia cefálica (cm)');
+    return 'Curva de percentil perímetro cefálico niñas hasta 13 semana';
   }
 
-  protected function chartData()
+  protected function getXAxis_title()
+  {
+    return 'Edad (en semanas)';
+  }
+
+  protected function getYAxis_title()
+  {
+    return 'Circunferencia cefálica (cm)';
+  }
+
+  protected function getChartData()
   {
     return "
     {
@@ -366,12 +412,22 @@ class GirlsPPCGrowthReport extends GrowthReportView
 
 class BoysPPCGrowthReport extends GrowthReportView
 {
-  public function __construct()
+  protected function getChartTitle()
   {
-    parent::__construct('Curva de percentil perímetro cefálico niños hasta 13 semanas', 'Edad (en semanas)', 'Circunferencia cefálica (cm)');
+    return 'Curva de percentil perímetro cefálico niños hasta 13 semana';
   }
 
-  protected function chartData()
+  protected function getXAxis_title()
+  {
+    return 'Edad (en semanas)';
+  }
+
+  protected function getYAxis_title()
+  {
+    return 'Circunferencia cefálica (cm)';
+  }
+
+  protected function getChartData()
   {
     return "
     {
