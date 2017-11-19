@@ -163,32 +163,39 @@ class BoysWeightGrowthReport extends GrowthReportView
 
 class GrilsTallGrowthReport extends GrowthReportView
 {
-    protected function getChartTitle()
-    {
-      return 'Curva de talla de niñas hasta 2 años';
-    }
+  protected function getChartTitle()
+  {
+    return 'Curva de talla de niñas hasta 2 años';
+  }
 
-    protected function getXAxis_title()
-    {
-      return 'Longuitud (cm)';
-    }
+  protected function getXAxis_title()
+  {
+    return 'Longuitud (cm)';
+  }
 
-    protected function getYAxis_title()
-    {
-      return 'Peso (kg)';
-    }
+  protected function getYAxis_title()
+  {
+    return 'Peso (kg)';
+  }
 
-    protected function getWeek_count()
-    {
-      return 132;
-    }
+  protected function getWeek_count()
+  {
+    return 132;
+  }
 
-    protected function getChartData($patientId)
-    {
-      $data = [];
-      $data = json_encode($data);
-      return $this->getStaticChartData() . ',' . $data;
-    }
+  protected function getChartData($patientId)
+  {
+    $data = [];
+    $week_count = 0;
+    foreach ($this->getClinicalHistory($patientId) as &$element) {
+      $data[] = [$week_count, intval($element->getTalla())];
+      $week_count = $week_count + 1;
+    };
+
+    $json = json_encode($data);
+    $answer = $this->getStaticChartData() . ", { name: 'paciente', data: $json}";
+    return $answer;
+  }
 
   private function getStaticChartData()
   {
@@ -331,8 +338,15 @@ class BoysTallGrowthReport extends GrowthReportView
   protected function getChartData($patientId)
   {
     $data = [];
-    $data = json_encode($data);
-    return $this->getStaticChartData() . ',' . $data;
+    $week_count = 0;
+    foreach ($this->getClinicalHistory($patientId) as &$element) {
+      $data[] = [$week_count, intval($element->getTalla())];
+      $week_count = $week_count + 1;
+    };
+
+    $json = json_encode($data);
+    $answer = $this->getStaticChartData() . ", { name: 'paciente', data: $json}";
+    return $answer;
   }
 
   private function getStaticChartData()
