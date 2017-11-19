@@ -75,7 +75,7 @@ class ClinicalHistory
   }
 
   public function getEdad()
-  { 
+  {
     $today = new DateTime('today');
     return ($this->fecha_nacimiento->diff($today)->y);
   }
@@ -94,10 +94,12 @@ class ClinicalHistory
   {
     return $this->vacunas_obs;
   }
+
   public function getMaduracion_acorde()
   {
     return $this->maduracion_acorde;
   }
+
   public function getMaduracion_obs()
   {
     return $this->maduracion_obs;
@@ -112,6 +114,7 @@ class ClinicalHistory
   {
     return $this->examenFisico_obs;
   }
+
   public function getPercentilo_cefalico()
   {
     return $this->percentilo_cefalico;
@@ -146,7 +149,6 @@ class ClinicalHistory
   {
     return $this->id_paciente;
   }
-
 }
 
 

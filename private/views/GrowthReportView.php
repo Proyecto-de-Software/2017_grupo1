@@ -446,7 +446,7 @@ class GirlsPPCGrowthReport extends GrowthReportView
 {
   protected function getChartTitle()
   {
-    return 'Curva de percentil perímetro cefálico niñas hasta 13 semana';
+    return 'Curva de percentil perímetro cefálico niñas hasta 13 semanas';
   }
 
   protected function getXAxis_title()
@@ -467,8 +467,15 @@ class GirlsPPCGrowthReport extends GrowthReportView
   protected function getChartData($patientId)
   {
     $data = [];
-    $data = json_encode($data);
-    return $this->getStaticChartData() . ',' . $data;
+    $week_count = 0;
+    foreach ($this->getClinicalHistory($patientId) as &$element) {
+      $data[] = [$week_count, intval($element->getPercentilo_perim_cefalico())];
+      $week_count = $week_count + 1;
+    };
+
+    $json = json_encode($data);
+    $answer = $this->getStaticChartData() . ", { name: 'paciente', data: $json}";
+    return $answer;
   }
 
   private function getStaticChartData()
@@ -501,7 +508,7 @@ class BoysPPCGrowthReport extends GrowthReportView
 {
   protected function getChartTitle()
   {
-    return 'Curva de percentil perímetro cefálico niños hasta 13 semana';
+    return 'Curva de percentil perímetro cefálico niños hasta 13 semanas';
   }
 
   protected function getXAxis_title()
@@ -522,8 +529,15 @@ class BoysPPCGrowthReport extends GrowthReportView
   protected function getChartData($patientId)
   {
     $data = [];
-    $data = json_encode($data);
-    return $this->getStaticChartData() . ',' . $data;
+    $week_count = 0;
+    foreach ($this->getClinicalHistory($patientId) as &$element) {
+      $data[] = [$week_count, intval($element->getPercentilo_perim_cefalico())];
+      $week_count = $week_count + 1;
+    };
+
+    $json = json_encode($data);
+    $answer = $this->getStaticChartData() . ", { name: 'paciente', data: $json}";
+    return $answer;
   }
 
   private function getStaticChartData()
