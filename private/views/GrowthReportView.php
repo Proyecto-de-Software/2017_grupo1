@@ -64,7 +64,7 @@ class GrilsWeightGrowthReport extends GrowthReportView
     $data = [];
     $week_count = 0;
     foreach ($this->getClinicalHistory($patientId) as &$element) {
-      $data[] = [$week_count, intval($element->getPeso())];
+      $data[] = [$week_count, floatval($element->getPeso())];
       $week_count = $week_count + 1;
     };
 
@@ -126,7 +126,7 @@ class BoysWeightGrowthReport extends GrowthReportView
     $data = [];
     $week_count = 0;
     foreach ($this->getClinicalHistory($patientId) as &$element) {
-      $data[] = [$week_count, intval($element->getPeso())];
+      $data[] = [$week_count, floatval($element->getPeso())];
       $week_count = $week_count + 1;
     };
 
@@ -188,7 +188,7 @@ class GrilsTallGrowthReport extends GrowthReportView
     $data = [];
     $week_count = 0;
     foreach ($this->getClinicalHistory($patientId) as &$element) {
-      $data[] = [$week_count, intval($element->getTalla())];
+      $data[] = [$week_count, floatval($element->getTalla())];
       $week_count = $week_count + 1;
     };
 
@@ -340,7 +340,7 @@ class BoysTallGrowthReport extends GrowthReportView
     $data = [];
     $week_count = 0;
     foreach ($this->getClinicalHistory($patientId) as &$element) {
-      $data[] = [$week_count, intval($element->getTalla())];
+      $data[] = [$week_count, floatval($element->getTalla())];
       $week_count = $week_count + 1;
     };
 
@@ -483,7 +483,7 @@ class GirlsPPCGrowthReport extends GrowthReportView
     $data = [];
     $week_count = 0;
     foreach ($this->getClinicalHistory($patientId) as &$element) {
-      $data[] = [$week_count, intval($element->getPercentilo_perim_cefalico())];
+      $data[] = [$week_count, floatval($element->getPercentilo_perim_cefalico())];
       $week_count = $week_count + 1;
     };
 
@@ -545,7 +545,7 @@ class BoysPPCGrowthReport extends GrowthReportView
     $data = [];
     $week_count = 0;
     foreach ($this->getClinicalHistory($patientId) as &$element) {
-      $data[] = [$week_count, intval($element->getPercentilo_perim_cefalico())];
+      $data[] = [$week_count, floatval($element->getPercentilo_perim_cefalico())];
       $week_count = $week_count + 1;
     };
 
