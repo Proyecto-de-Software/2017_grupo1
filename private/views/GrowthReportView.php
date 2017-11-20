@@ -170,7 +170,7 @@ class GrilsTallGrowthReport extends GrowthReportView
 
   protected function getXAxis_title()
   {
-    return 'Longuitud (cm)';
+    return 'Longitud (cm)';
   }
 
   protected function getYAxis_title()
@@ -322,7 +322,7 @@ class BoysTallGrowthReport extends GrowthReportView
 
   protected function getXAxis_title()
   {
-    return 'Edad (en semanas)';
+    return 'Longitud (cm)';
   }
 
   protected function getYAxis_title()
