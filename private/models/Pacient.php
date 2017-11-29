@@ -10,7 +10,7 @@ class Pacient
   private $dni;
   private $address;
   private $phone;
-  private $id_medical_insurance;
+  private $medical_insurance;
   private $has_electricity;
   private $has_pet;
   private $has_refrigerator;
@@ -28,7 +28,7 @@ class Pacient
     $dni,
     $address,
     $phone,
-    $id_medical_insurance,
+    $medical_insurance,
     $has_electricity,
     $has_pet,
     $has_refrigerator,
@@ -46,7 +46,7 @@ class Pacient
     $this->dni = $dni;
     $this->address = $address;
     $this->phone = $phone;
-    $this->id_medical_insurance = $id_medical_insurance;
+    $this->medical_insurance = $medical_insurance;
     $this->has_electricity = $has_electricity;
     $this->has_pet = $has_pet;
     $this->has_refrigerator = $has_refrigerator;
@@ -89,10 +89,12 @@ class Pacient
   {
     return $this->doc_type;
   }
+
   public function getDNI()
   {
     return $this->dni;
   }
+
   public function getAddress()
   {
     return $this->address;
@@ -103,10 +105,11 @@ class Pacient
     return $this->phone;
   }
 
-  public function getId_Medical_Insurance()
+  public function getMedical_insurance()
   {
-    return $this->id_medical_insurance;
+    return $this->medical_insurance;
   }
+
   public function getHas_Electricity()
   {
     return $this->has_electricity;
@@ -131,11 +134,11 @@ class Pacient
   {
     return $this->home_type;
   }
+
    public function getWater_Type()
   {
     return $this->water_type;
   }
-
 }
 
 

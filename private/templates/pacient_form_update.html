@@ -4,14 +4,14 @@
 <script>
 $(document).ready(function() {
   document.getElementById('gender').value = "{{ pacient.gender }}";
-  document.getElementById('doc_type').value = "{{ pacient.doc_type }}";
-  document.getElementById('id_medical_insurance').value = "{{ pacient.id_medical_insurance }}";
+  document.getElementById('doc_type').value = "{{ pacient.doc_type.id }}";
+  document.getElementById('id_medical_insurance').value = "{{ pacient.medical_insurance.id }}";
   document.getElementById('has_refrigerator').value = "{{ pacient.has_refrigerator }}";
   document.getElementById('has_electricity').value = "{{ pacient.has_electricity }}";
   document.getElementById('has_pet').value = "{{ pacient.has_pet }}";
-  document.getElementById('home_type').value = "{{ pacient.home_type }}";
-  document.getElementById('heating_type').value = "{{ pacient.heating_type }}";
-  document.getElementById('water_type').value = "{{ pacient.water_type }}";
+  document.getElementById('home_type').value = "{{ pacient.home_type.id }}";
+  document.getElementById('heating_type').value = "{{ pacient.heating_type.id }}";
+  document.getElementById('water_type').value = "{{ pacient.water_type.id }}";
 });
 </script>
 {% endblock %}

@@ -5,7 +5,11 @@ abstract class PacientsFormView extends TwigView
 
   protected function doShow($args = [])
   {
-    $args['referenceData'] = $this->referenceDataService;
+    $args['documentTypes'] = $this->referenceDataService->getAllDocumentTypes();
+    $args['socialInsurances'] = $this->referenceDataService->getAllSocialInsurances();
+    $args['homeTypes'] = $this->referenceDataService->getAllHomeTypes();
+    $args['heatingTypes'] = $this->referenceDataService->getAllHeatingTypes();
+    $args['waterTypes'] = $this->referenceDataService->getAllWaterTypes();
     $this->render($args);
   }
 
@@ -37,7 +41,6 @@ class EditPacientView extends PacientsFormView
 
   public function show($pacient)
   {
-
     $this->doShow(array('pacient' => $pacient));
   }
 }

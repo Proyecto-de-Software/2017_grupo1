@@ -93,7 +93,7 @@ function validar(){
                 <div class="col-md-8">
                   Tipo de Documento:
                     <select id="doc_type" name="doc_type" required >
-                      {% for item in referenceData.getAllDocumentTypes %}
+                      {% for item in documentTypes %}
                         <option value={{ item.getId }}>{{ item.getDescription }}</option>
                       {% endfor %}
                     </select>
@@ -140,7 +140,7 @@ function validar(){
                 <div class="col-md-8">
                   Obra Social:
                     <select id="id_medical_insurance" name="id_medical_insurance">
-                      {% for item in referenceData.getAllSocialInsurances %}
+                      {% for item in socialInsurances %}
                         <option value={{ item.getId }}>{{ item.getDescription }}</option>
                       {% endfor %}
                     </select>
@@ -193,7 +193,7 @@ function validar(){
                 <div class="col-md-8">
                   Tipo de Vivienda:
                     <select id="home_type" name="home_type" required>
-                      {% for item in referenceData.getAllHomeTypes %}
+                      {% for item in homeTypes %}
                         <option value={{ item.getId }} > {{ item.getDescription }}</option>
                       {% endfor %}
                     </select>
@@ -207,7 +207,7 @@ function validar(){
                 <div class="col-md-8">
                   Tipo de Calefacci&oacute;n:
                     <select id="heating_type" name="heating_type" required>
-                      {% for item in referenceData.getAllHeatingTypes %}
+                      {% for item in heatingTypes %}
                         <option value={{ item.getId }}>{{ item.getDescription }}</option>
                       {% endfor %}
                     </select>
@@ -221,7 +221,7 @@ function validar(){
                 <div class="col-md-8">
                   Tipo de Agua:
                     <select id="water_type" name="water_type" required>
-                      {% for item in referenceData.getAllWaterTypes %}
+                      {% for item in waterTypes %}
                         <option value={{ item.getId }}>{{ item.getDescription }}</option>
                       {% endfor %}
                     </select>

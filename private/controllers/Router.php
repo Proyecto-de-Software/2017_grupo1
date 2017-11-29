@@ -49,7 +49,6 @@ class Router
     if (!isset(self::$router)) {
       $appConfig = new AppConfig;
       $userRepository = new UserRepository($appConfig);
-      $pacientsRepository = new PacientsRepository($appConfig);
       $clinicalHistoryRepository = new ClinicalHistoryRepository;
 
       $socialInsuranceRepository = new APIReferenceDataRepository("obra-social");
@@ -65,6 +64,7 @@ class Router
         $homeTypeRepository
       );
 
+      $pacientsRepository = new PacientsRepository($appConfig, $referenceDataService);
       $indexView = new IndexView;
       $loginView = new LoginView;
       $indexController = new IndexController($indexView);

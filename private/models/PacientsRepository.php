@@ -5,6 +5,7 @@ class PacientsRepository extends PDORepository
   private $stmtCreate;
   private $stmtUpdate;
   private $appConfig;
+  private $referenceDataService;
 
   private function queryToPacientArray($query)
   {
@@ -16,23 +17,23 @@ class PacientsRepository extends PDORepository
         $element['last_name'],
         $element['birth_date'],
         $element['gender'],
-        $element['doc_type'],
+        $this->referenceDataService->getDocumentTypeById($element['doc_type']),
         $element['dni'],
         $element['address'],
         $element['phone'],
-        $element['id_medical_insurance'],
+        $this->referenceDataService->getSocialInsuranceById($element['id_medical_insurance']),
         $element['has_electricity'],
         $element['has_pet'],
         $element['has_refrigerator'],
-        $element['heating_type'],
-        $element['home_type'],
-        $element['water_type']
+        $this->referenceDataService->getHeatingTypeById($element['heating_type']),
+        $this->referenceDataService->getHomeTypeById($element['home_type']),
+        $this->referenceDataService->getWaterTypeById($element['water_type'])
       );
     }
     return $answer;
   }
 
-  public function __construct($appConfig)
+  public function __construct($appConfig, $referenceDataService)
   {
     $this->stmtDelete = $this->newPreparedStmt("DELETE FROM pacients WHERE id = ?");
     $this->stmtCreate = $this->newPreparedStmt("INSERT INTO pacients (first_name, last_name, birth_date, gender, doc_type,
@@ -41,6 +42,7 @@ class PacientsRepository extends PDORepository
     $this->stmtUpdate = $this->newPreparedStmt("UPDATE pacients SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, doc_type = ?,
                                                 dni = ?, address = ?, phone = ?, id_medical_insurance = ?, has_electricity = ?, has_pet = ?, has_refrigerator = ?, heating_type = ?, home_type = ?, water_type = ? WHERE id = ?");
     $this->appConfig = $appConfig;
+    $this->referenceDataService = $referenceDataService;
   }
 
    public function getAll($page)
