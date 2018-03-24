@@ -41,6 +41,12 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+// disable logging
+$app->configureMonologUsing(function ($monolog) {
+    $nullLogger = new \Monolog\Handler\NullHandler();
+    $monolog->setHandlers(array($nullLogger));
+});
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
