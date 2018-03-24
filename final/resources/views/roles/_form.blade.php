@@ -1,0 +1,21 @@
+{{ csrf_field() }}
+
+<div class="field">
+    <label class="label has-text-grey">Role</label>
+
+    <div class="control">
+        <input class="input" type="text" name="name" value="{{ old('name', $role->name) }}" placeholder="The Role name" autofocus>
+
+        @include('layouts._field_errors', ['errors,' => 'errors', 'field' => 'name'])
+    </div>
+</div>
+
+<div class="field is-grouped">
+    <div class="control">
+        <button type="submit" class="button is-primary">{{ $submitButtonText }}</button>
+    </div>
+
+    <div class="control">
+        {!! link_to('Cancel', 'roles.index', [], 'button is-danger is-outlined') !!}
+    </div>
+</div>
