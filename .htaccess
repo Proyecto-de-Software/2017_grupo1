@@ -1,4 +1,3 @@
 RewriteEngine On
 RewriteRule api/bot473002661:AAEizN1pskV5usMG2yKh7vzhYEDQL71DLCY$ TelegramBot.php
 RewriteRule ^api api/index.php
-RewriteRule ^final final/public/index.php

@@ -13,8 +13,8 @@ export default {
        */
       axios
         .post("/logout")
-        .then(() => location.replace("/"))
-        .catch(() => location.replace("/"));
+        .then(() => location.replace("/final"))
+        .catch(() => location.replace("/final"));
     }
   }
 };

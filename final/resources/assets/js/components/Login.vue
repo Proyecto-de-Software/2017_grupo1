@@ -18,7 +18,7 @@ export default {
 
       axios
         .post("/login", this.form)
-        .then(() => location.replace("/"))
+        .then(() => location.replace("/final"))
         .catch(error => {
           this.loading = false;
 
@@ -27,7 +27,7 @@ export default {
           }
 
           if (error.response.status == 503) {
-            location.replace("/");
+            location.replace("/final");
           }
         });
     },

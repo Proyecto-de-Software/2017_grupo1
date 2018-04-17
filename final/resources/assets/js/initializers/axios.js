@@ -9,6 +9,7 @@ import axios from 'axios';
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.baseURL = 'https://grupo1.proyecto2017.linti.unlp.edu.ar/final/';
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that

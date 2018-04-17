@@ -28,15 +28,15 @@
   </div>
 
   <footer class="card-footer">
-    <a :href="patient.path" class="card-footer-item">View</a>
-    <a :href="patient.path + '/reports'" class="card-footer-item">Reports</a>
+    <a :href="'/final' + patient.path" class="card-footer-item">View</a>
+    <a :href="'/final' + patient.path + '/reports'" class="card-footer-item">Reports</a>
 
     @can ('view', \App\MedicalRecord::class)
-      <a :href="patient.path + '/medical_records'" class="card-footer-item">Medical Records</a>
+      <a :href="'/final' + patient.path + '/medical_records'" class="card-footer-item">Medical Records</a>
     @endcan
 
     @can ('update', \App\Patient::class)
-        <a :href="patient.path + '/edit'" class="card-footer-item">Edit</a>
+        <a :href="'/final' + patient.path + '/edit'" class="card-footer-item">Edit</a>
     @endcan
   </footer>
 </b-collapse>
