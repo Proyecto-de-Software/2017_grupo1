@@ -11,7 +11,7 @@
     "postinstall": "npm run production"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.18.1",
     "buefy": "^0.6.3",
     "chart.js": "^2.7.1",
     "cross-env": "^5.0.1",
